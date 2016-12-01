@@ -1,25 +1,21 @@
-<div class="header_inner" id="divInnerMaster">
+<div class="header_inner" id="divInnerMaster" ng-controller='headctrl'>
 
     <div class="container_my clearfix">
 
-        <a id="IbtnLogodisplay" class="logo_inner_new pull-left" />
-        <input type="button" value="Login" id="btnLoginsubmit" class="pull-right button_custom login_show" ng-click="divloginblock();" />
-        <input type="button" value="Logout" id="btnLogOut" ng-hide="true" class="pull-right button_custom" onclick="return ClearlocalStorage();" />
-
-
-
-        <div class="login_block_header" style="display: none;" id="divLogin">
-
-            <input type="text" ng-model="log.txtUserName" ng-blur="vali(log);" />
-            <input type="password" ng-model="log.txtPassword" />
-            <span class="clear">&nbsp;</span>
-            <div class="login_help">
-                <a id="lnkForgotPassword" onclick="return ShowForgotPassword();">Forgot Password</a>
-                <a href="CustomerRegistration.aspx">New User Sign Up</a>
-
-            </div>
-            <input type="button" id="btnUserLogin" ng-click="login(log);" class="button_custom" value="Login" />
-
+        <a id="IbtnLogodisplay" class="logo3 pull-left" />
+        <input type="button" value="Login" ng-show="loginstatus" id="btnLoginsubmit" class="pull-right button_custom login_show" ng-click="divloginblock();" />
+        <input type="button" value="Logout" ng-show="loginoutstatus" id="btnLogOut" class="pull-right button_custom" ng-click="ClearlocalStorage();" />
+        <div class="login_block_header" ng-show="loginpopup" id="divLogin">
+            <form name="myForm">
+                <input type="text" id="txtUserName" style="height: 38px;" ng-model="username" required/>
+                <input type="password" id="txtPassword" style="height: 38px;" ng-model="password" required/>
+                <span class="clear">&nbsp;</span>
+                <div class="login_help">
+                    <a id="lnkForgotPassword">Forgot Password</a>
+                    <a href="#/Registration">New User Sign Up</a>
+                </div>
+                <input type="button" id="btnUserLogin" ng-click="loginsubmit()" ng-disabled="myForm.$invalid" class="button_custom" value="Login" />
+            </form>
             <span class="clear">&nbsp;</span>
         </div>
 
@@ -33,18 +29,18 @@
             <h4>Support No<span>+1-734-926-1011</span></h4>
         </div>
     </div>
-    <div class="navbar_inner" id="divMemberName">
+    <div class="navbar_inner" id="divMemberName" ng-show="withlogin" set-class-when-at-top="fix-to-top">
 
         <div class="container_my clearfix">
             <div class="profile_own_name pull-left clearfix">
-                <input type="image" id="IMasterpic" style="height: 31px; width: 31px;" onclick="IMasterpic_Click1" />
+                <img id="IMasterpic" ng-src="{{profilepic}}" style="width: 31px !important; height: 31px !important; border: solid 2px #fc6a1b;border-radius: 3px;display: inline-block; float: left;" />
                 <h2>
-                    <label id="lblCustFName"></label> &nbsp;&nbsp;
-                    <label id="lblcustLname"></label> (
-                    <label id="lblprofile"></label>)
+                    <label id="lblCustFName">{{usernamepersonal}}</label> &nbsp;&nbsp;(
+
+                    <label id="lblprofile">{{profileid}}</label>)
                     <br />
                     <span>Accout type :</span>
-                    <a id="lblpaid" onclick="lblpaid_Click" forecolor="White"></a>
+                    <a id="lblpaid" href="#" style="color:White;">{{paidstatus}}</a>
                 </h2>
             </div>
             <div class="profile_own_menu profile_own_menu2 pull-right" id="MenuDiv">
@@ -52,23 +48,23 @@
                 <ul class="pull-right">
 
                     <li>
-                        <a id="lnkMyHome" href="#/home">My Home</a>
+                        <a id="lnkMyHome" href="javascript:void(0)" ng-click="redirectTohome()">My Home</a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">my account</a>
 
                         <ul>
                             <li>
-                                <a id="linkviewmyprofile" href="#/ViewMyProfile">View My Profile</a>
+                                <a id="linkviewmyprofile" href="javascript:void(0);" ng-click="viewfullmyprofile()">View My Profile</a>
                             </li>
                             <li>
-                                <a id="linkeditprofile" href="#/EditProfile">Edit Profile</a>
+                                <a id="linkeditprofile" href="#/editview">Edit Profile</a>
                             </li>
                             <li>
-                                <a id="linkmanagephoto" href="#/ManagePhoto">Manage Photo</a>
+                                <a id="linkmanagephoto" href="#/editview/editManagePhoto">Manage Photo</a>
                             </li>
                             <li>
-                                <a id="linkmanagehoroscope" href="#/ManageHoroscope">Manage Horoscope</a>
+                                <a id="linkmanagehoroscope" href="#/editview/editAstro">Manage Horoscope</a>
                             </li>
                             <li>
                                 <a id="linkprofilesettings" href="#/profilesettings">Profile Settings</a>
@@ -78,16 +74,16 @@
 
                     </li>
                     <li>
-                        <a id="lnksearch" href="#/Home">Search</a>
+                        <a id="lnksearch" href="#/General">Search</a>
                         <ul>
                             <li>
-                                <a id="linkgenaralsearch" href="#/GeneralSearch">General Search</a>
+                                <a id="linkgenaralsearch" href="#/General">General Search</a>
                             </li>
                             <li>
-                                <a id="linkAdvancedSearch" href="#/AdvancedSearch">Advanced Search</a>
+                                <a id="linkAdvancedSearch" href="#/General">Advanced Search</a>
                             </li>
                             <li>
-                                <a id="linkprofileidsearch" href="#/ProfileidSearch">Profileid Search</a>
+                                <a id="linkprofileidsearch" href="#/General">Profileid Search</a>
                             </li>
 
                         </ul>
@@ -100,13 +96,13 @@
                                 <a id="linkupgrademembership" href="#/UpgradeMembership">Upgrade Membership</a>
                             </li>
                             <li>
-                                <a id="linkmyorders" href="#/MyOrdersAndStatistics">My Orders and Statistics</a>
+                                <a id="linkmyorders" href="#/myorders">My Orders and Statistics</a>
                             </li>
                             <li>
-                                <a id="linkmembershipfaqs" href="#/MembershipFaqsHome">Membership Faqs</a>
+                                <a id="linkmembershipfaqs" href="#/faqs">Membership Faqs</a>
                             </li>
                             <li>
-                                <a id="linkAddOnPacks" href="#/AddOnPacks" visible="false">Add On Packs</a>
+                                <a id="linkAddOnPacks" href="#/AddOnPacks" ng-hide="true">Add On Packs</a>
                             </li>
 
                         </ul>
@@ -124,7 +120,7 @@
                                 <a id="linkigonredprofile" href="#/home">Ignored Profiles</a>
                             </li>
                             <li>
-                                <a id="linkviewedbutnotexpress" href="#/<home></home>">My profile viewed by others</a>
+                                <a id="linkviewedbutnotexpress" href="#/home">My profile viewed by others</a>
                             </li>
 
                         </ul>
@@ -166,27 +162,66 @@
         </div>
     </div>
 
-
-    <div class="navbar_inner" id="divwithoutlogin" ng-hide="true">
+    <div class="navbar_inner" id="divwithoutlogin" ng-show="withoutlogin">
         <div class="container_my clearfix">
 
             <div class="profile_own_menu pull-right">
                 <a class="menu_toggle pull-right">Menu</a>
                 <ul class="pull-right">
 
-                    <li><a href="CustomerRegistration.aspx">Register free</a></li>
-                    <li><a href="KaakateeyaCustomerProfileIDsearchNew.aspx">Search <span></span></a></li>
-                    <li><a onclick="return divloginblock(); return false;" href="javascript:void(0)">Upgrade</a></li>
+                    <li><a href="#/Registration">Register free</a></li>
+                    <li><a href="#/General">Search <span></span></a></li>
+                    <li><a href="#/General">Upgrade</a></li>
                     <li>
-                        <a id="lnkSucessstoreiesFooter" href="#/Home">success stories <span></span></a>
+                        <a id="lnkSucessstoreiesFooter" href="#/successstories">success stories <span></span></a>
                     </li>
                     <li>
                         <a id="linkfooterhelp" href="#/help">Help</a>
                     </li>
-                    <li><a href="#/mobileVerification">Home</a></li>
+                    <li><a href="#/">Home</a></li>
 
                 </ul>
             </div>
         </div>
     </div>
+
+    <script type="text/ng-template" id="sessionalert.html">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3> Confirmation</h3>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <h4 class="col-lg-offset-1">Do you want to continue Session</h4>
+                </div>
+                <div class="clearfix"></div>
+                <br>
+                <div class='row'>
+                    <div class='col-lg-4 col-lg-offset-2'>
+                        <button type='button' class='btn btn-danger' ng-click='closesession()'>close</button>
+                    </div>
+                    <div class='col-lg-5'>
+                        <button type='button' class='btn btn-success' ng-click='acceptcontinue()'>Continue</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </script>
 </div>
+
+
+<style type="text/css">
+    .fix-to-top {
+        position: fixed;
+        margin: 0 auto;
+        z-index: 999999999;
+        top: 0;
+        left: 0%;
+        width: 100%;
+        padding: 20px 1%;
+    }
+</style>
