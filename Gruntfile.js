@@ -125,10 +125,10 @@ module.exports = function(grunt) {
             myapp: {
                 options: {
                     base: "web",
-                    module: "KaakateeyaEdit",
-                    prefix: 'editview/',
+                    module: "KaakateeyaRegistration",
+                    prefix: 'registration/',
                 },
-                src: ['app/**/*.html', 'masterView/*.html'],
+                src: ['app/**/*.html', 'masterTemplate/*.html'],
                 dest: "dist/html/templates.js"
             }
         }

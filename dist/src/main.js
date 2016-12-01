@@ -1353,10 +1353,10 @@ regApp.factory('SelectBindService', ["$http", function(http) {
         },
     };
 }]);
-angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache) {
+angular.module('KaakateeyaRegistration').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('editview/app/views/basicRegistration.html',
+  $templateCache.put('registration/app/views/basicRegistration.html',
     "<div class=\"register_page_main\" ng-controller=\"basicRegistrationctrl\">\r" +
     "\n" +
     "\r" +
@@ -1971,7 +1971,7 @@ angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache)
   );
 
 
-  $templateCache.put('editview/app/views/managePhoto.html',
+  $templateCache.put('registration/app/views/managePhoto.html',
     "<div class=\"register_page_main\">\r" +
     "\n" +
     "    <h4>\r" +
@@ -2412,7 +2412,7 @@ angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache)
   );
 
 
-  $templateCache.put('editview/app/views/materialMultiSelect.html',
+  $templateCache.put('registration/app/views/materialMultiSelect.html',
     "<md-select ng-model=\"model\" md-on-close=\"clearSearchTerm()\" data-md-container-class=\"selectdemoSelectHeader\" multiple>\r" +
     "\n" +
     "    <md-select-header class=\"demo-select-header\">\r" +
@@ -2441,7 +2441,7 @@ angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache)
   );
 
 
-  $templateCache.put('editview/app/views/payment.html',
+  $templateCache.put('registration/app/views/payment.html',
     "<div class=\"control-group span7 select-box-my\">\r" +
     "\n" +
     "    <label class=\"control-label\">Mother tongue</label>\r" +
@@ -2518,7 +2518,7 @@ angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache)
   );
 
 
-  $templateCache.put('editview/app/views/secondaryRegisrtation.html',
+  $templateCache.put('registration/app/views/secondaryRegisrtation.html',
     "<div class=\"register_page_main\">\r" +
     "\n" +
     "\r" +
@@ -3328,6 +3328,692 @@ angular.module('KaakateeyaEdit').run(['$templateCache', function($templateCache)
     "        max-width: 328px;\r" +
     "\n" +
     "        padding: 0 0 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "</style>"
+  );
+
+
+  $templateCache.put('registration/masterTemplate/footerTemplate.html',
+    "<footer>\r" +
+    "\n" +
+    "    <div class=\"footer_in\" id=\"divFooterinner\">\r" +
+    "\n" +
+    "        <a class=\"logo pull-left\">&nbsp;</a>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div id=\"livechat\">\r" +
+    "\n" +
+    "            &nbsp;&nbsp;&nbsp;\r" +
+    "\n" +
+    "            <a onclick=\"OpenLHNChat();return false;\" href=\"#\" target=\"_blank\" id=\"lhnWin\" class=\"live_chat_footer_new pull-left\"></a>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <div id=\"livechatdiv\">\r" +
+    "\n" +
+    "                <!-- This code must be installed within the body tags 3422-->\r" +
+    "\n" +
+    "                <script type=\"text/javascript\" defer='defer'>\r" +
+    "\n" +
+    "                    var lhnAccountN = \"3422\";\r" +
+    "\n" +
+    "                    var lhnButtonN = 4720;\r" +
+    "\n" +
+    "                    var lhnChatPosition = '100';\r" +
+    "\n" +
+    "                    var lhnInviteEnabled = 1;\r" +
+    "\n" +
+    "                    var lhnWindowN = 0;\r" +
+    "\n" +
+    "                    var lhnDepartmentN = 0;\r" +
+    "\n" +
+    "                </script>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <script type=\"text/javascript\" defer='defer'>\r" +
+    "\n" +
+    "            function OpenLHNChat() {\r" +
+    "\n" +
+    "                if (typeof CustomOpenLHNChat == 'function') {\r" +
+    "\n" +
+    "                    CustomOpenLHNChat();\r" +
+    "\n" +
+    "                    return false;\r" +
+    "\n" +
+    "                }\r" +
+    "\n" +
+    "                var wleft = (screen.width - 580 - 32) / 2;\r" +
+    "\n" +
+    "                var wtop = (screen.height - 420 - 96) / 2;\r" +
+    "\n" +
+    "                alert(bLHNOnline);\r" +
+    "\n" +
+    "                var sScrollbars = (bLHNOnline == 0) ? \"yes\" : \"no\";\r" +
+    "\n" +
+    "                if (document.location.protocol == 'https:' || (typeof lhnJsHost != 'undefined' && lhnJsHost == \"https://\")) {\r" +
+    "\n" +
+    "                    lhnWin = window.open('https://www.livehelpnow.net/lhn/livechatvisitor.aspx?zzwindow=' + lhnwindow + '&lhnid=' + 3422 + '&d=' + 0, 'lhnchat', 'left=' + wleft + ',top=' + wtop + ',width=580,height=435,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=' + sScrollbars + ',copyhistory=no,resizable=yes');\r" +
+    "\n" +
+    "                } else {\r" +
+    "\n" +
+    "                    lhnWin = window.open('http://www.livehelpnow.net/lhn/livechatvisitor.aspx?zzwindow=' + lhnwindow + '&lhnid=' + 3422 + '&d=' + 0, 'lhnchat', 'left=' + wleft + ',top=' + wtop + ',width=580,height=435,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=' + sScrollbars + ',copyhistory=no,resizable=yes');\r" +
+    "\n" +
+    "                }\r" +
+    "\n" +
+    "                if (typeof Zstepx != 'undefined') {\r" +
+    "\n" +
+    "                    if (Zstepx == 10) {\r" +
+    "\n" +
+    "                        Zslide();\r" +
+    "\n" +
+    "                    }\r" +
+    "\n" +
+    "                }\r" +
+    "\n" +
+    "            }\r" +
+    "\n" +
+    "        </script>\r" +
+    "\n" +
+    "        <div class=\"social pull-right\">\r" +
+    "\n" +
+    "            <ul>\r" +
+    "\n" +
+    "                <li><a href=\"javascript:void(0)\">&nbsp;</a></li>\r" +
+    "\n" +
+    "                <li><a href=\"javascript:void(0)\">&nbsp;</a></li>\r" +
+    "\n" +
+    "                <li><a href=\"javascript:void(0)\">&nbsp;</a></li>\r" +
+    "\n" +
+    "            </ul>\r" +
+    "\n" +
+    "            <span class=\"clear\">&nbsp;</span>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clear\">&nbsp;</div>\r" +
+    "\n" +
+    "        <hr />\r" +
+    "\n" +
+    "        <div class=\"footer_block_1 span4\">\r" +
+    "\n" +
+    "            <h6>about kaakateeya</h6>\r" +
+    "\n" +
+    "            <p><span>Kaakateeya.com</span>, a top-notch online matrimonial site committed to deliver high quality match making service since 1982.</p>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"span2\">\r" +
+    "\n" +
+    "            <h6>our services</h6>\r" +
+    "\n" +
+    "            <ul>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnkFooterSucess\" href=\"#/successstories\">success stories</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnkSearchFooter\">Search</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"linkcareers\">careers</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"linkfaq\">faq’s</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnktermsFooter\">Terms Of Use</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "            </ul>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"span2\">\r" +
+    "\n" +
+    "            <h6>information</h6>\r" +
+    "\n" +
+    "            <ul>\r" +
+    "\n" +
+    "                <li><a onclick=\"return ShowForgotPassword();\" href=\"javascript:void(0)\">Forgot Password</a></li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnkFeedBackFooter\" href=\"#/feedback\">Feed Back</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnkBranchesFooter\">Our Branches</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"linkHelp\" href=\"#/help\">Help</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                <li>\r" +
+    "\n" +
+    "                    <a id=\"lnkPrivacyFooter\">Privacy Policy</a>\r" +
+    "\n" +
+    "                </li>\r" +
+    "\n" +
+    "            </ul>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"span3\">\r" +
+    "\n" +
+    "            <h6>contact inforamtion</h6>\r" +
+    "\n" +
+    "            <h3>103,109,Vijayasree Apartments,\r" +
+    "\n" +
+    "                <br /> Behind Chermas,Ameerpet,Hyderabad\r" +
+    "\n" +
+    "                <br />\r" +
+    "\n" +
+    "                <span>Contact: 91- 7675818080,040-23747777</span>\r" +
+    "\n" +
+    "                <br /> Email :info@telugumarriages.com\r" +
+    "\n" +
+    "                <br /> Timings :8:00:00 AM To 8:00:00 PM</h3>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clear\">&nbsp;</div>\r" +
+    "\n" +
+    "        <p class=\"copy_rights\">\r" +
+    "\n" +
+    "            &copy; 2004-2013 www.Kaakateeya.com Matrimony - Online Marriage Site. All Rights Reserved.\r" +
+    "\n" +
+    "        </p>\r" +
+    "\n" +
+    "        <div class=\"color_strip\">&nbsp;</div>\r" +
+    "\n" +
+    "        <div class=\"color_strip color_strip2\">&nbsp;</div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</footer>"
+  );
+
+
+  $templateCache.put('registration/masterTemplate/headerTemplate.html',
+    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl'>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"container_my clearfix\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <a id=\"IbtnLogodisplay\" class=\"logo3 pull-left\" />\r" +
+    "\n" +
+    "        <input type=\"button\" value=\"Login\" ng-show=\"loginstatus\" id=\"btnLoginsubmit\" class=\"pull-right button_custom login_show\" ng-click=\"divloginblock();\" />\r" +
+    "\n" +
+    "        <input type=\"button\" value=\"Logout\" ng-show=\"loginoutstatus\" id=\"btnLogOut\" class=\"pull-right button_custom\" ng-click=\"ClearlocalStorage();\" />\r" +
+    "\n" +
+    "        <div class=\"login_block_header\" ng-show=\"loginpopup\" id=\"divLogin\">\r" +
+    "\n" +
+    "            <form name=\"myForm\">\r" +
+    "\n" +
+    "                <input type=\"text\" id=\"txtUserName\" style=\"height: 38px;\" ng-model=\"username\" required/>\r" +
+    "\n" +
+    "                <input type=\"password\" id=\"txtPassword\" style=\"height: 38px;\" ng-model=\"password\" required/>\r" +
+    "\n" +
+    "                <span class=\"clear\">&nbsp;</span>\r" +
+    "\n" +
+    "                <div class=\"login_help\">\r" +
+    "\n" +
+    "                    <a id=\"lnkForgotPassword\">Forgot Password</a>\r" +
+    "\n" +
+    "                    <a href=\"#/Registration\">New User Sign Up</a>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <input type=\"button\" id=\"btnUserLogin\" ng-click=\"loginsubmit()\" ng-disabled=\"myForm.$invalid\" class=\"button_custom\" value=\"Login\" />\r" +
+    "\n" +
+    "            </form>\r" +
+    "\n" +
+    "            <span class=\"clear\">&nbsp;</span>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"header_inner_rt clearfix\">\r" +
+    "\n" +
+    "            <h3>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                <a id=\"lnkFeedbackMenu\" href=\"#/feedback\">Feedback</a>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            </h3>\r" +
+    "\n" +
+    "            <h4>make a missed call<span><em>+91-9390999999</em></span></h4>\r" +
+    "\n" +
+    "            <h4>Support No<span>+1-734-926-1011</span></h4>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"navbar_inner\" id=\"divMemberName\" ng-show=\"withlogin\" set-class-when-at-top=\"fix-to-top\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"container_my clearfix\">\r" +
+    "\n" +
+    "            <div class=\"profile_own_name pull-left clearfix\">\r" +
+    "\n" +
+    "                <img id=\"IMasterpic\" ng-src=\"{{profilepic}}\" style=\"width: 31px !important; height: 31px !important; border: solid 2px #fc6a1b;border-radius: 3px;display: inline-block; float: left;\" />\r" +
+    "\n" +
+    "                <h2>\r" +
+    "\n" +
+    "                    <label id=\"lblCustFName\">{{usernamepersonal}}</label> &nbsp;&nbsp;(\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <label id=\"lblprofile\">{{profileid}}</label>)\r" +
+    "\n" +
+    "                    <br />\r" +
+    "\n" +
+    "                    <span>Accout type :</span>\r" +
+    "\n" +
+    "                    <a id=\"lblpaid\" href=\"#\" style=\"color:White;\">{{paidstatus}}</a>\r" +
+    "\n" +
+    "                </h2>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"profile_own_menu profile_own_menu2 pull-right\" id=\"MenuDiv\">\r" +
+    "\n" +
+    "                <a class=\"menu_toggle pull-right\">Menu</a>\r" +
+    "\n" +
+    "                <ul class=\"pull-right\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a id=\"lnkMyHome\" href=\"javascript:void(0)\" ng-click=\"redirectTohome()\">My Home</a>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a href=\"javascript:void(0)\">my account</a>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkviewmyprofile\" href=\"javascript:void(0);\" ng-click=\"viewfullmyprofile()\">View My Profile</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkeditprofile\" href=\"#/editview\">Edit Profile</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmanagephoto\" href=\"#/editview/editManagePhoto\">Manage Photo</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmanagehoroscope\" href=\"#/editview/editAstro\">Manage Horoscope</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkprofilesettings\" href=\"#/profilesettings\">Profile Settings</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a id=\"lnksearch\" href=\"#/General\">Search</a>\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkgenaralsearch\" href=\"#/General\">General Search</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkAdvancedSearch\" href=\"#/General\">Advanced Search</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkprofileidsearch\" href=\"#/General\">Profileid Search</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a href=\"javascript:void(0)\">my package</a>\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkupgrademembership\" href=\"#/UpgradeMembership\">Upgrade Membership</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmyorders\" href=\"#/myorders\">My Orders and Statistics</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmembershipfaqs\" href=\"#/faqs\">Membership Faqs</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkAddOnPacks\" href=\"#/AddOnPacks\" ng-hide=\"true\">Add On Packs</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a href=\"javascript:void(0)\">matches</a>\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmybookmarks\" href=\"#/home\">My BookMarked Profiles</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkwhobookmarkedme\" href=\"#/home\">Who BookMarked Me</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkigonredprofile\" href=\"#/home\">Ignored Profiles</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkviewedbutnotexpress\" href=\"#/home\">My profile viewed by others</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a href=\"javascript:void(0)\">messages</a>\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkPersonalizedmsg\" href=\"#/home\">Chats</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkrequests\" href=\"#/home\">Requests</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkMyContact\" href=\"#/home\">Express interest</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a href=\"#/help\">Help</a>\r" +
+    "\n" +
+    "                        <ul>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"lnkcontactus\" href=\"#/help\">Contact Us</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"linkmysupportickets\" href=\"#/MySupportTickets\">My Support Tickets</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"lnkfeedback\" href=\"#/feedback\">Feed Back</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a id=\"lnktakeatour\" href=\"#/takeatour\">Take A Tour</a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                </ul>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"navbar_inner\" id=\"divwithoutlogin\" ng-show=\"withoutlogin\">\r" +
+    "\n" +
+    "        <div class=\"container_my clearfix\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <div class=\"profile_own_menu pull-right\">\r" +
+    "\n" +
+    "                <a class=\"menu_toggle pull-right\">Menu</a>\r" +
+    "\n" +
+    "                <ul class=\"pull-right\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    <li><a href=\"#/Registration\">Register free</a></li>\r" +
+    "\n" +
+    "                    <li><a href=\"#/General\">Search <span></span></a></li>\r" +
+    "\n" +
+    "                    <li><a href=\"#/General\">Upgrade</a></li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a id=\"lnkSucessstoreiesFooter\" href=\"#/successstories\">success stories <span></span></a>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li>\r" +
+    "\n" +
+    "                        <a id=\"linkfooterhelp\" href=\"#/help\">Help</a>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                    <li><a href=\"#/\">Home</a></li>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </ul>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <script type=\"text/ng-template\" id=\"sessionalert.html\">\r" +
+    "\n" +
+    "        <div class=\"modal-content\">\r" +
+    "\n" +
+    "            <div class=\"modal-header\">\r" +
+    "\n" +
+    "                <h3> Confirmation</h3>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            <div class=\"modal-body\">\r" +
+    "\n" +
+    "                <div class=\"row\">\r" +
+    "\n" +
+    "                    <h4 class=\"col-lg-offset-1\">Do you want to continue Session</h4>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"clearfix\"></div>\r" +
+    "\n" +
+    "                <br>\r" +
+    "\n" +
+    "                <div class='row'>\r" +
+    "\n" +
+    "                    <div class='col-lg-4 col-lg-offset-2'>\r" +
+    "\n" +
+    "                        <button type='button' class='btn btn-danger' ng-click='closesession()'>close</button>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <div class='col-lg-5'>\r" +
+    "\n" +
+    "                        <button type='button' class='btn btn-success' ng-click='acceptcontinue()'>Continue</button>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"modal-footer\">\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </script>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<style type=\"text/css\">\r" +
+    "\n" +
+    "    .fix-to-top {\r" +
+    "\n" +
+    "        position: fixed;\r" +
+    "\n" +
+    "        margin: 0 auto;\r" +
+    "\n" +
+    "        z-index: 999999999;\r" +
+    "\n" +
+    "        top: 0;\r" +
+    "\n" +
+    "        left: 0%;\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        padding: 20px 1%;\r" +
     "\n" +
     "    }\r" +
     "\n" +
