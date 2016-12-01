@@ -1,0 +1,61 @@
+/**
+ * AngularJS 
+ * @author vinu <vinodanasuri@gmail.com>
+ */
+
+/**
+ * Main App Creation
+ */
+
+var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
+regApp.apipath = 'http://183.82.0.58:8010/Api/';
+// regApp.templateroot = 'registration/';
+regApp.templateroot = '';
+
+
+
+
+regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
+regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
+
+regApp.prefixPath = 'Imagesnew/ProfilePics/';
+regApp.S3PhotoPath = '';
+regApp.Mnoimage = regApp.GlobalImgPath + "Images/customernoimages/Mnoimage.jpg";
+regApp.Fnoimage = regApp.GlobalImgPath + "Images/customernoimages/Fnoimage.jpg";
+regApp.accesspathdots = regApp.GlobalImgPathforimage + regApp.prefixPath;
+regApp.BucketName = 'angularkaknew';
+
+// regApp.templateroot = '';
+
+regApp.config(function($stateProvider, $urlRouterProvider) {
+
+    var states = [
+        { name: 'registration', url: '/registration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
+        { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
+        { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
+        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
+        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'payment' }
+
+    ];
+
+    $urlRouterProvider.otherwise('registration');
+
+    _.each(states, function(item) {
+        var innerView = {
+            "topbar@": {
+                templateUrl: regApp.templateroot + "masterTemplate/headerTemplate.html"
+            },
+            "content@": {
+                templateUrl: item.templateUrl,
+                controller: item.controller
+            },
+            "bottompanel@": {
+                templateUrl: regApp.templateroot + "masterTemplate/footerTemplate.html"
+            }
+        };
+        $stateProvider.state(item.name, {
+            url: item.url,
+            views: innerView
+        })
+    });
+});
