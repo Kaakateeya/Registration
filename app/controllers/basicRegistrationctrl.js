@@ -23,7 +23,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         var Arr = [];
         Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = from; i <= to; i++) {
-
+            var strValue = null;
             if (i <= 9) {
                 strValue = "0" + i;
             } else {

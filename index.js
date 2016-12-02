@@ -13,8 +13,6 @@ regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
 
 
-
-
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 

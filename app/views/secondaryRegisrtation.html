@@ -225,10 +225,9 @@
                             <md-select name="ddlVisaStatus" ng-model="regsec.ddlVisaStatus">
                                 <md-option ng-value="h.value" ng-repeat="h in visastatus">{{h.label}} </md-option>
                             </md-select>
-
                         </md-input-container>
 
-                        <date-picker ng-model="regsec.from" classval="span4" strdisplay="Residing since" ng-hide="regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn"></date-picker>
+                        <date-pickerreg ng-model="regsec.from" classval="span4" strdisplay="Residing since" ng-hide="regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn"></date-pickerreg>
 
                         <div class="clear"></div>
                         <hr>

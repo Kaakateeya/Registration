@@ -1618,13 +1618,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </md-select>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "                        </md-input-container>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <date-picker ng-model=\"regsec.from\" classval=\"span4\" strdisplay=\"Residing since\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\"></date-picker>\r" +
+    "                        <date-pickerreg ng-model=\"regsec.from\" classval=\"span4\" strdisplay=\"Residing since\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\"></date-pickerreg>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2210,7 +2208,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/masterTemplate/headerTemplate.html',
-    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl'>\r" +
+    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller=\"headctrl\">\r" +
     "\n" +
     "\r" +
     "\n" +

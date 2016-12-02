@@ -1,4 +1,4 @@
-regApp.directive('datePicker', function() {
+regApp.directive('datePickerreg', function() {
     return {
         scope: {
             myDate: '=ngModel',

@@ -9,8 +9,6 @@ regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
 
 
-
-
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
@@ -355,7 +353,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         var Arr = [];
         Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = from; i <= to; i++) {
-
+            var strValue = null;
             if (i <= 9) {
                 strValue = "0" + i;
             } else {
@@ -804,7 +802,7 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
 
 
 }]);
-regApp.directive('datePicker', function() {
+regApp.directive('datePickerreg', function() {
     return {
         scope: {
             myDate: '=ngModel',
@@ -2973,13 +2971,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </md-select>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "                        </md-input-container>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <date-picker ng-model=\"regsec.from\" classval=\"span4\" strdisplay=\"Residing since\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\"></date-picker>\r" +
+    "                        <date-pickerreg ng-model=\"regsec.from\" classval=\"span4\" strdisplay=\"Residing since\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\"></date-pickerreg>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -3565,7 +3561,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/masterTemplate/headerTemplate.html',
-    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl'>\r" +
+    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller=\"headctrl\">\r" +
     "\n" +
     "\r" +
     "\n" +
