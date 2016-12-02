@@ -804,17 +804,7 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
 }]);
 regApp.directive('datePickerreg', function() {
     return {
-        scope: {
-            myDate: '=ngModel',
-            strdisplay: '@',
-            classval: '@'
-        },
-        template: '<md-input-container class="{{classval}}">' +
-            '<label style="padding-left:61px">{{strdisplay}}</label><md-datepicker ng-model="myDate" md-min-date="minDate" md-max-date="maxDate">' +
-            '</md-datepicker> </md-input-container>',
-        link: function(scope) {
 
-        }
     };
 });
 regApp.directive('fileModel', ['$parse', function($parse) {
@@ -2975,7 +2965,15 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                        <date-pickerreg ng-model=\"regsec.from\" classval=\"span4\" strdisplay=\"Residing since\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\"></date-pickerreg>\r" +
+    "                        <md-input-container class=\"span4\">\r" +
+    "\n" +
+    "                            <label style=\"padding-left:61px\">Residing since</label>\r" +
+    "\n" +
+    "                            <md-datepicker ng-model=\"regsec.from\" md-min-date=\"minDate\" md-max-date=\"maxDate\">\r" +
+    "\n" +
+    "                            </md-datepicker>\r" +
+    "\n" +
+    "                        </md-input-container>\r" +
     "\n" +
     "\r" +
     "\n" +
