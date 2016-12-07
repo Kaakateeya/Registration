@@ -7,12 +7,10 @@
  * Main App Creation
  */
 
-var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
+var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword']);
 regApp.apipath = 'http://183.82.0.58:8010/Api/';
 regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
-
-
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
@@ -32,8 +30,9 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
         { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
         { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
-        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'payment' }
-
+        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'upgrademembership' },
+        { name: 'registration.CreatePwd', url: '/CreatePwd/:eid', templateUrl: regApp.templateroot + 'app/views/createNewPassoward.html', controller: 'createNewPwdCtrl' },
+        { name: 'registration.confirmEmail', url: '/confirmEmail', templateUrl: regApp.templateroot + 'app/views/confirmEmail.html', controller: 'confirmEmailCtrl' }
     ];
 
     $urlRouterProvider.otherwise('registration');
@@ -41,7 +40,7 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
     _.each(states, function(item) {
         var innerView = {
             "topbar@": {
-                templateUrl: regApp.templateroot + "masterTemplate/headerTemplate.html"
+                templateUrl: regApp.templateroot + (item.url === '/confirmEmail' ? '' : "masterTemplate/headerTemplate.html")
             },
             "content@": {
                 templateUrl: item.templateUrl,

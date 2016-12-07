@@ -57,8 +57,7 @@
     <div ui-view="bottompanel"></div>
 
     <!-- SCRIPTS DATA -->
-
-    <script src="src/js/jquery-1.8.3.min.js"></script>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
@@ -78,6 +77,7 @@
     <script src="node_modules/angular-messages/angular-messages.min.js"></script>
     <script src="node_modules/angular-material/angular-material.min.js"></script>
     <script src="node_modules/angular-material-icons/angular-material-icons.min.js"></script>
+    <script src="node_modules/angular-password/angular-password.min.js"></script>
     <script src="node_modules/moment/moment.js"></script>
     <script src="index.js"></script>
     <script src="app/constants/arrayBindConstatns.js"></script>
@@ -99,13 +99,18 @@
     <script src="app/services/paymentService.js"></script>
     <script src="app/services/secondaryRegistrationService.js"></script>
     <script src="app/services/selectBindServices.js"></script>
+    <script src="app/controllers/createNewPassword.js"></script>
+    <script src="app/controllers/confirmEmail.js"></script>
+
+    <script src="app/services/createNewPwdService.js"></script>
+    <script src="app/services/EmailVerificationService.js"></script>
+    <script src="app/directives/AlertDirective.js"></script>
+
     <!--SCRIPTS END-->
 
     <!-- SCRIPTSP DATA --#>
     <script src="dist/src/main.js"></script>
     <!--SCRIPTSP END-->
-
-
 
 </body>
 

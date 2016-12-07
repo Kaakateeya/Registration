@@ -7,8 +7,11 @@ regApp.factory('myAppFactory', ["$http", function(http) {
             });
         },
         getpayment: function(custid) {
-
             return http.get(regApp.apipath + 'Payment/GetPaymentDetails', { params: { CustID: custid } });
+        },
+        sendsms: function(CategoryID, Cust_ID, SendPhonenumber) {
+            return http.get(regApp.apipath + 'StaticPages/getUnpaidMembersOwnerNotification', { params: { CategoryID: CategoryID, Cust_ID: Cust_ID, SendPhonenumber: SendPhonenumber } });
         }
+
     };
 }]);

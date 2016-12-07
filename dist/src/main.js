@@ -3,12 +3,10 @@
  * Main App Creation
  */
 
-var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons']);
+var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword']);
 regApp.apipath = 'http://183.82.0.58:8010/Api/';
 regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
-
-
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
@@ -28,8 +26,9 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
         { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
         { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
-        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'payment' }
-
+        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'upgrademembership' },
+        { name: 'registration.CreatePwd', url: '/CreatePwd/:eid', templateUrl: regApp.templateroot + 'app/views/createNewPassoward.html', controller: 'createNewPwdCtrl' },
+        { name: 'registration.confirmEmail', url: '/confirmEmail', templateUrl: regApp.templateroot + 'app/views/confirmEmail.html', controller: 'confirmEmailCtrl' }
     ];
 
     $urlRouterProvider.otherwise('registration');
@@ -37,7 +36,7 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
     _.each(states, function(item) {
         var innerView = {
             "topbar@": {
-                templateUrl: regApp.templateroot + "masterTemplate/headerTemplate.html"
+                templateUrl: regApp.templateroot + (item.url === '/confirmEmail' ? '' : "masterTemplate/headerTemplate.html")
             },
             "content@": {
                 templateUrl: item.templateUrl,
@@ -475,6 +474,36 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
 }]);
+regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', function(scope, emailVerificationService) {
+    emailVerificationService.verifyEmail('010022CED05EF32F2C9808F42CE9D6906144AD1461FF12CC0996').then(function(res) {
+        console.log(res);
+        if (res.data !== '0' && res.data !== 0) {
+            window.location = "#/registration/CreatePwd/010022CED05EF32F2C9808F42CE9D6906144AD1461FF12CC0996";
+        } else {
+
+        }
+    });
+
+}]);
+regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', function(scope, cerateNewPwd, stateParams) {
+    scope.custID = '0';
+    scope.Email = '';
+    scope.profileID = '';
+
+    cerateNewPwd.getEmailAndProfileID(stateParams.eid).then(function(res) {
+        var custData = (res.data).split(';');
+        console.log(custData);
+        scope.Email = custData[0];
+        scope.profileID = custData[1];
+        scope.custID = custData[2];
+    });
+
+    scope.CerateNewPwdSubmit = function(obj) {
+        cerateNewPwd.createNewPwdSub(scope.custID, obj.txtPassword).then(function(res) {
+            console.log(res);
+        });
+    };
+}]);
 regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency', 'editmanagePhotoServices', '$http', 'fileUpload', 'authSvc', '$stateParams', function(uibModal, scope, Commondependency, editmanagePhotoServices, http, fileUpload, authSvc, stateParams) {
 
     var up = {};
@@ -663,16 +692,53 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
 
 
 }]);
-regApp.controller('payment', ['$scope', '$element', 'arrayConstants', 'SelectBindServiceApp', 'customerDashboardServices', function(scope, $element, arrayConstants, service, customerDashboardServices) {
-    scope.Mothertongue = arrayConstants.Mothertongue;
-    scope.mothertongue = [1, 2, 3];
-    scope.mothertongueccc = [1, 2, 3];
+regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
+    'authSvc', 'alert',
+    function(scope, $interval, myAppFactory, authSvc, alerts) {
+        scope.paymentarray = [];
+        var logincustid = authSvc.getCustId();
+        scope.custid = logincustid !== undefined && logincustid !== null && logincustid !== "" ? logincustid : null;
+        myAppFactory.getpayment(scope.custid).then(function(response) {
+            console.log(response);
+            scope.paymentarray = [];
+            scope.paymentarray.push({
+                MembershipName: "Services & Features",
+                MembershipAmount: "My Plans",
+                AllottedServicePoints: "Profile Count",
+                onlineaccess: "Online Access",
+                offlineaccess: "Offline Access"
+            });
+            _.each(response.data, function(item) {
+                scope.paymentarray.push(item);
+            });
+        });
 
-    scope.generalsearchsubmit = function() {
-        alert(scope.mothertongue);
-        alert(scope.mothertongueccc);
-    };
-}]);
+        scope.selectpaymantoption = function(membershipd, amount, profilecount, discount, custid, servicename, year) {
+            var paymentobject = {
+                MembershipID: membershipd,
+                Amount: amount,
+                Points: profilecount,
+                DiscountID: discount,
+                CustID: custid,
+                MembershipName: servicename,
+                Duration: year
+            };
+            sessionStorage.setItem("paymentobject", JSON.stringify(paymentobject));
+            var realpath = '#/paymentresponse';
+            window.open(realpath, "_self");
+        };
+
+        scope.sendsmspayment = function(payment) {
+            myAppFactory.sendsms(15, scope.custid, payment.mobilenumber).then(function(response) {
+                console.log(response);
+                alerts.open("Thanks ! You shall be contacted soon by our priority manager", 'success');
+            });
+        };
+        scope.ccavenuepage = function() {
+            window.open("https://secure.ccavenue.com/transaction/TransactionInitiator", "_self");
+        };
+    }
+]);
 regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc) {
 
     scope.MaritalStatus = getArray.GArray('MaritalStatus');
@@ -802,6 +868,74 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
 
 
 }]);
+regApp.factory('alert', ['$mdDialog', function($mdDialog) {
+    var modalinstance;
+    return {
+        open: function(msg, classname) {
+            classname = classname || "success";
+            toastr.options = {
+                "closeButton": true,
+                "debug": true,
+                "newestOnTop": true,
+                "progressBar": true,
+                "positionClass": app.global.alertType,
+                "preventDuplicates": false,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": 5000,
+                "extendedTimeOut": 2000,
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut",
+                "onclick": null
+            };
+            switch (classname) {
+                case 'success':
+                    toastr.success(msg, "done");
+                    break;
+                case 'error':
+                    toastr.error(msg, 'Oops');
+                    break;
+                case 'warning':
+                    toastr.warning(msg, 'Alert');
+                    break;
+                case 'info':
+                    toastr.info(msg, 'Info');
+                    break;
+                default:
+                    toastr.success(msg, 'Done');
+                    break;
+            }
+        },
+        dynamicpopup: function(url, scope, uibModal, custid, size) {
+            modalinstance = uibModal.open({
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: url,
+                scope: scope,
+                size: size || 'lg'
+            });
+        },
+        dynamicpopupclose: function() {
+            modalinstance.close();
+        },
+        showloginpopup: function() {
+            $mdDialog.show({
+                controller: DialogController,
+                templateUrl: 'login.html',
+                parent: angular.element(document.body),
+                clickOutsideToClose: true,
+
+            });
+        },
+        mddiologcancel: function() {
+            $mdDialog.hide();
+        }
+
+
+    };
+}]);
 regApp.directive('datePickerreg', function() {
     return {
 
@@ -876,6 +1010,13 @@ regApp.directive('textboxDirective', function() {
 });
 
 //  <textbox-directive strdisplay="'First name'" name="'txtfirstname'" errmsg="reg.txtfirstname"></textbox-directive>
+regApp.factory('emailVerificationService', ['$http', function(http) {
+    return {
+        verifyEmail: function(obj) {
+            return http.get(regApp.apipath + 'StaticPages/getConfirmUserEmail', { params: { VerificationCode: obj } });
+        }
+    };
+}]);
 regApp.factory('basicRegistrationService', ['$http', function(http) {
     return {
         submitBasicRegistration: function(obj) {
@@ -883,6 +1024,16 @@ regApp.factory('basicRegistrationService', ['$http', function(http) {
         },
         emailExists: function(obj) {
             return http.get(regApp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
+        }
+    };
+}]);
+regApp.factory('cerateNewPwd', ['$http', function(http) {
+    return {
+        createNewPwdSub: function(custID, newpwd) {
+            return http.get(regApp.apipath + 'StaticPages/getCreateNewPassword', { params: { intCusID: custID, strPassword: newpwd } });
+        },
+        getEmailAndProfileID: function(obj) {
+            return http.get(regApp.apipath + 'StaticPages/getEmilVerificationCode', { params: { VerificationCode: obj } });
         }
     };
 }]);
@@ -1263,9 +1414,12 @@ regApp.factory('myAppFactory', ["$http", function(http) {
             });
         },
         getpayment: function(custid) {
-
             return http.get(regApp.apipath + 'Payment/GetPaymentDetails', { params: { CustID: custid } });
+        },
+        sendsms: function(CategoryID, Cust_ID, SendPhonenumber) {
+            return http.get(regApp.apipath + 'StaticPages/getUnpaidMembersOwnerNotification', { params: { CategoryID: CategoryID, Cust_ID: Cust_ID, SendPhonenumber: SendPhonenumber } });
         }
+
     };
 }]);
 regApp.factory('SecondaryRegistrationService', ['$http', function(http) {
@@ -1959,6 +2113,342 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
   );
 
 
+  $templateCache.put('registration/app/views/confirmEmail.html',
+    "<div id=\"invalidVerificationDiv\">\r" +
+    "\n" +
+    "    <div class=\"header\">\r" +
+    "\n" +
+    "        Welcome to kaakateeya website\r" +
+    "\n" +
+    "        <div>\r" +
+    "\n" +
+    "            verification\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"blink\" align=\"center\">\r" +
+    "\n" +
+    "        <!--<a ID=\"lnkbtnConfirmStatus\" href=\"/home\">Invalid verification code.</a>-->\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <md-button class=\"md-primary\" ng-href=\"{{googleUrl}}\" target=\"_blank\">Invalid verification code.</md-button>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<style type=\"text/css\">\r" +
+    "\n" +
+    "    .header {\r" +
+    "\n" +
+    "        color: #ff0000;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-variant: small-caps;\r" +
+    "\n" +
+    "        background-color: Yellow;\r" +
+    "\n" +
+    "        color: Black;\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        letter-spacing: normal;\r" +
+    "\n" +
+    "        margin-top: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .blink {\r" +
+    "\n" +
+    "        text-decoration: blink;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "</style>"
+  );
+
+
+  $templateCache.put('registration/app/views/createNewPassoward.html',
+    "<div class=\"wrapper\">\r" +
+    "\n" +
+    "    <br />\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div>\r" +
+    "\n" +
+    "        <div class=\"row\">\r" +
+    "\n" +
+    "            <b class=\"col-lg-10 col-lg-offset-1\" style=\"color: #000;\">Congratulations ! your Email has been successfully Verified .If you know your  password click on LOGIN button at top right or else Enter your desired password to login to your account.</b>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"row\">\r" +
+    "\n" +
+    "            <br />\r" +
+    "\n" +
+    "            <br />\r" +
+    "\n" +
+    "            <center>\r" +
+    "\n" +
+    "                <div id=\"rndcorner\" style=\"width:450px;border-top-left-radius:10px;border-top-right-radius:10px; border:1px solid #d9d9d9; display:block;\">\r" +
+    "\n" +
+    "                    <div style=\"padding:15px 25px;border-top-left-radius:10px;border-top-right-radius:10px;color:rgb(189, 92, 21);font-size:16px;\" class=\"jumbotron title\">\r" +
+    "\n" +
+    "                        <label>Create New Password</label></div>\r" +
+    "\n" +
+    "                    <div style=\"width:400px;\">\r" +
+    "\n" +
+    "                        <div class=\"row\"><label style=\"color:#2c2828\">you can either use your primary email id or profile id as userid</label></div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        <div class=\"form-horizontal\">\r" +
+    "\n" +
+    "                            <br />\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <div class=\"form-group\">\r" +
+    "\n" +
+    "                                    <div class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                        <label class=\"labelclass\" style=\"color:#323232;\" id=\"\">Primary Email</label></div>\r" +
+    "\n" +
+    "                                    <div class=\"col-lg-4\"><label ID=\"txtlogin\" style=\"color:#323232;font-weight: normal;\">{{Email}}</label></div>\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <div class=\"form-group\">\r" +
+    "\n" +
+    "                                    <div class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                        <label class=\"labelclass\" style=\"color:#323232;\" id=\"Label1\">Profile Id</label></div>\r" +
+    "\n" +
+    "                                    <div class=\"col-lg-3\"><label ID=\"lblprofileid\" Enabled=\"false\" style=\"color:#323232;font-weight: normal;\">{{profileID}}</label></div>\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            <div layout=\"column\" ng-cloak=\"\" class=\"inputdemoErrors\">\r" +
+    "\n" +
+    "                                <md-content layout-padding=\"\">\r" +
+    "\n" +
+    "                                    <form name=\"pwdForm\" novalidate role=\"form\">\r" +
+    "\n" +
+    "                                        <md-input-container class=\"md-block\" style=\"text-align: left;\">\r" +
+    "\n" +
+    "                                            <label>Password</label>\r" +
+    "\n" +
+    "                                            <input type=\"password\" maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtPassword\" ng-model=\"pwd.txtPassword\">\r" +
+    "\n" +
+    "                                            <div ng-messages=\"pwdForm.txtPassword.$error\">\r" +
+    "\n" +
+    "                                                <div ng-message=\"required\">This is required.</div>\r" +
+    "\n" +
+    "                                            </div>\r" +
+    "\n" +
+    "                                        </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                        <md-input-container class=\"md-block\" style=\"text-align: left;\">\r" +
+    "\n" +
+    "                                            <label>Confirm Password</label>\r" +
+    "\n" +
+    "                                            <input type=\"password\" maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtnewPassword\" ng-model=\"pwd.txtnewPassword\" match-password=\"txtPassword\">\r" +
+    "\n" +
+    "                                            <div ng-messages=\"pwdForm.txtnewPassword.$error\">\r" +
+    "\n" +
+    "                                                <div ng-message=\"required\">This is required.</div>\r" +
+    "\n" +
+    "                                                <div ng-message=\"passwordMatch\" class=\"message slide-left\">Your Password did not match</div>\r" +
+    "\n" +
+    "                                            </div>\r" +
+    "\n" +
+    "                                        </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                    </form>\r" +
+    "\n" +
+    "                                </md-content>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <!--<input type=\"submit\" ID=\"btnlogin\" value=\"login to your account\" class=\"btn btn-success\" OnClick=\"btnlogin_Click\" />-->\r" +
+    "\n" +
+    "                                <md-button class=\"md-raised md-warn md-hue-2\" ng-click=\"pwdForm.$valid && CerateNewPwdSubmit(pwd);\">login to your account</md-button>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                            <br />\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        </div>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <br />\r" +
+    "\n" +
+    "            </center>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "<style>\r" +
+    "\n" +
+    "    .btn-group {\r" +
+    "\n" +
+    "        width: 98%;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .multiselect {\r" +
+    "\n" +
+    "        border: solid 1px #ADA2A2 !important;\r" +
+    "\n" +
+    "        color: #000;\r" +
+    "\n" +
+    "        background: #fff !important;\r" +
+    "\n" +
+    "        box-shadow: none !important;\r" +
+    "\n" +
+    "        height: 34px !important;\r" +
+    "\n" +
+    "        line-height: 33px;\r" +
+    "\n" +
+    "        margin: 0 !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .register_page_main input[type=\"email\"] {\r" +
+    "\n" +
+    "        box-shadow: none;\r" +
+    "\n" +
+    "        border-radius: 3px !important;\r" +
+    "\n" +
+    "        height: 35px;\r" +
+    "\n" +
+    "        width: 98%;\r" +
+    "\n" +
+    "        line-height: 28px;\r" +
+    "\n" +
+    "        padding: 4px 2%;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .input-group {\r" +
+    "\n" +
+    "        width: 98%;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input[type=\"email\"],\r" +
+    "\n" +
+    "    input[type=\"password\"] {\r" +
+    "\n" +
+    "        border: 0 !important;\r" +
+    "\n" +
+    "        border-bottom: 1px solid red !important;\r" +
+    "\n" +
+    "        outline: 0 !important;\r" +
+    "\n" +
+    "        border-style: solid !important;\r" +
+    "\n" +
+    "        border-color: rgba(0, 0, 0, 0.12) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-invalid .md-input {\r" +
+    "\n" +
+    "        border-color: rgb(221, 44, 0) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-datepicker-input {\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        border: none;\r" +
+    "\n" +
+    "        box-shadow: none;\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        background: transparent;\r" +
+    "\n" +
+    "        min-width: 299px;\r" +
+    "\n" +
+    "        max-width: 328px;\r" +
+    "\n" +
+    "        padding: 0 0 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "</style>"
+  );
+
+
   $templateCache.put('registration/app/views/managePhoto.html',
     "<div class=\"register_page_main\">\r" +
     "\n" +
@@ -1996,7 +2486,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <h6>Upload your recent Photos for better response</h6>\r" +
     "\n" +
-    "            <a class=\"skip_button\" href=\"javascript:void(0);\" ng-click=\"skip();\">skip this page</a>\r" +
+    "            <a class=\"skip_button\" href=\"#/registration/upgradeMemberShip\">skip this page</a>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2430,79 +2920,309 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/app/views/payment.html',
-    "<div class=\"control-group span7 select-box-my\">\r" +
+    "<div class=\"register_page_main\">\r" +
     "\n" +
-    "    <label class=\"control-label\">Mother tongue</label>\r" +
+    "\r" +
     "\n" +
-    "    <div class=\"controls clearfix\">\r" +
+    "    <h4 class=\"pull-left\">\r" +
     "\n" +
-    "        <angular-multiselect array=\"Mothertongue\" change=\"true\" model=\"mothertongueccc\">\r" +
+    "        <label>registration</label>\r" +
     "\n" +
-    "        </angular-multiselect>\r" +
+    "    </h4>\r" +
+    "\n" +
+    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"javascript:void(0);\">Complete My Registration </a>\r" +
+    "\n" +
+    "    <div class=\"clear\"></div>\r" +
+    "\n" +
+    "    <div class=\"register_page_main_in clearfix\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"register_page_main_steps clearfix\">\r" +
+    "\n" +
+    "            <ul>\r" +
+    "\n" +
+    "                <li><a class=\"active\" href=\"#\">Basic information</a></li>\r" +
+    "\n" +
+    "                <li><a class=\"active\" href=\"#\">profile details</a></li>\r" +
+    "\n" +
+    "                <li><a class=\"active\" href=\"#\">my photos</a></li>\r" +
+    "\n" +
+    "                <li><a class=\"active\" href=\"#\">my payments</a></li>\r" +
+    "\n" +
+    "            </ul>\r" +
+    "\n" +
+    "            <div class=\"clear\">&nbsp;</div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div ng-cloak=\"\" class=\"virtualRepeatdemoHorizontalUsage\">\r" +
+    "\n" +
+    "            <md-content layout=\"column\">\r" +
+    "\n" +
+    "                <md-virtual-repeat-container id=\"horizontal-container\" md-orient-horizontal=\"\">\r" +
+    "\n" +
+    "                    <div md-virtual-repeat=\"payment in paymentarray\" class=\"repeated-item\" flex=\"\">\r" +
+    "\n" +
+    "                        <table class=\"package_table_inner my_packages_main clearfix package_table_main\">\r" +
+    "\n" +
+    "                            <tbody>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td class=\"pack_heading1\">\r" +
+    "\n" +
+    "                                        <label>{{payment.MembershipName}}</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td class=\"pack_heading2\">\r" +
+    "\n" +
+    "                                        <small class=\"payment-label\">\r" +
+    "\n" +
+    "                                       <label  class=\"duration_of_pack\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\">{{payment.MemberShipDuration}} Months</label>\r" +
+    "\n" +
+    "                                       </small>\r" +
+    "\n" +
+    "                                        <label><span ng-hide=\"payment.MembershipName=='Services & Features'?true:false\">RS :</span>{{payment.MembershipAmount}}</label>\r" +
+    "\n" +
+    "                                        <button class=\"button_custom\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" ng-click=\"selectpaymantoption(payment.Emp_Membership_ID,payment.MembershipAmount,payment.AllottedServicePoints,'',custid,payment.MembershipName,payment.MemberShipDuration)\">Select</button>\r" +
+    "\n" +
+    "                                        <div ng-show=\"payment.MembershipName=='Services & Features'?true:false\">\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td class=\"pack_heading1\">\r" +
+    "\n" +
+    "                                        <b>\r" +
+    "\n" +
+    "                                  <label>{{payment.AllottedServicePoints}}</label></b>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td class=\"pack_heading3\">\r" +
+    "\n" +
+    "                                        <b>\r" +
+    "\n" +
+    "                                         <img src=\"src/images/icon_tick_mark.png\"  ng-hide=\"payment.MembershipName=='Services & Features'?true:false\"/>\r" +
+    "\n" +
+    "                                          <label   ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">SA Agreed</label>\r" +
+    "\n" +
+    "                                        </b>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td>\r" +
+    "\n" +
+    "                                        <label>{{payment.onlineaccess}}</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td>\r" +
+    "\n" +
+    "                                        <label>{{payment.offlineaccess}}</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td>\r" +
+    "\n" +
+    "                                        <img src=\"{{payment.Ppath}}\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
+    "\n" +
+    "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Relationship Manager</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td>\r" +
+    "\n" +
+    "                                        <img ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" src='{{payment.Ppluspath}}' />\r" +
+    "\n" +
+    "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Senior Relationship Manager</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                                <tr>\r" +
+    "\n" +
+    "                                    <td>\r" +
+    "\n" +
+    "                                        <img src=\"src/images/icon_tick_mark.png\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
+    "\n" +
+    "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Express Interest</label>\r" +
+    "\n" +
+    "                                    </td>\r" +
+    "\n" +
+    "                                </tr>\r" +
+    "\n" +
+    "                            </tbody>\r" +
+    "\n" +
+    "                        </table>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </md-virtual-repeat-container>\r" +
+    "\n" +
+    "            </md-content>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div id=\"ttttt\">\r" +
+    "\n" +
+    "            <div class=\"my_packages_main_bottom clearfix\">\r" +
+    "\n" +
+    "                <div layout-gt-sm=\"row\">\r" +
+    "\n" +
+    "                    <md-input-container class=\"md-block\" flex=55>\r" +
+    "\n" +
+    "                        <p>Interested in, exclusive match making services for our super special members, Contact us!</p>\r" +
+    "\n" +
+    "                    </md-input-container>\r" +
+    "\n" +
+    "                    <md-input-container class=\"md-block\" flex=20>\r" +
+    "\n" +
+    "                        <label>Number</label>\r" +
+    "\n" +
+    "                        <input ng-model=\"payment.mobilenumber\">\r" +
+    "\n" +
+    "                    </md-input-container>\r" +
+    "\n" +
+    "                    <md-input-container class=\"md-block\" flex=20>\r" +
+    "\n" +
+    "                        <md-button class=\"md-raised md-warn md-hue-2\" ng-click=\"sendsmspayment(payment)\">Submit</md-button>\r" +
+    "\n" +
+    "                    </md-input-container>\r" +
+    "\n" +
+    "                    <div class=\"clear\">&nbsp;</div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
     "\n" +
     "    </div>\r" +
     "\n" +
-    "    <md-content class=\"md-padding\">\r" +
+    "</div>\r" +
     "\n" +
-    "        <md-tabs md-selected=\"selectedIndex\" flex md-border-bottom md-autoselect>\r" +
+    "<style type=\"text/css\">\r" +
     "\n" +
-    "            <md-tab label=\"General Search\">\r" +
+    "    .virtualRepeatdemoHorizontalUsage #horizontal-container {\r" +
     "\n" +
-    "                <div class=\"tab\">\r" +
+    "        height: 580px;\r" +
     "\n" +
-    "\r" +
+    "        width: 100%;\r" +
     "\n" +
-    "\r" +
+    "        /*max-width: 930px; */\r" +
     "\n" +
-    "                    <div class=\"row\">\r" +
+    "    }\r" +
     "\n" +
-    "                        <div layout-gt-sm=\"row\">\r" +
+    "    \r" +
     "\n" +
-    "                            <md-radio-group layout=\"row\" ng-model=\"mailyes\" class=\"md-block\" flex-gt-sm ng-disabled=\"manageakerts\">\r" +
+    "    .virtualRepeatdemoHorizontalUsage .repeated-item {\r" +
     "\n" +
-    "                                <md-radio-button value=\"2\" class=\"md-primary\"> Bride</md-radio-button>\r" +
+    "        border-right: 1px solid #ddd;\r" +
     "\n" +
-    "                                <md-radio-button value=\"1\"> Groom </md-radio-button>\r" +
+    "        box-sizing: border-box;\r" +
     "\n" +
-    "                            </md-radio-group>\r" +
+    "        display: inline-block;\r" +
     "\n" +
-    "                        </div>\r" +
+    "        height: 484px;\r" +
     "\n" +
-    "                    </div>\r" +
+    "        padding-top: 35px;\r" +
     "\n" +
-    "                    <br>\r" +
+    "        text-align: center;\r" +
     "\n" +
-    "                    <div class=\"row\">\r" +
+    "        width: auto;\r" +
     "\n" +
-    "\r" +
+    "    }\r" +
     "\n" +
-    "                        <div class=\"control-group span3 select-box-my\">\r" +
+    "    \r" +
     "\n" +
-    "                            <label class=\"control-label\">Mother tongue</label>\r" +
+    "    .virtualRepeatdemoHorizontalUsage md-content {\r" +
     "\n" +
-    "                            <div class=\"controls clearfix\">\r" +
+    "        margin: 16px;\r" +
     "\n" +
-    "                                <angular-multiselect array=\"Mothertongue\" change=\"true\" model=\"mothertongue\">\r" +
+    "    }\r" +
     "\n" +
-    "                                </angular-multiselect>\r" +
+    "    \r" +
     "\n" +
-    "                            </div>\r" +
+    "    .virtualRepeatdemoHorizontalUsage md-virtual-repeat-container {\r" +
     "\n" +
-    "                        </div>\r" +
+    "        border: solid 1px grey;\r" +
     "\n" +
-    "\r" +
+    "    }\r" +
     "\n" +
-    "                    </div>\r" +
+    "    \r" +
     "\n" +
-    "            </md-tab>\r" +
+    "    td.pack_heading1 {\r" +
     "\n" +
-    "        </md-tabs>\r" +
+    "        font-size: 18px !important;\r" +
     "\n" +
-    "    </md-content>\r" +
+    "        line-height: 18px !important;\r" +
     "\n" +
-    "    <md-button class=\"md-raised md-warn md-hue-2\" ng-click=\"generalsearchsubmit()\">Search</md-button>\r" +
+    "        padding: 6px 64px !important;\r" +
     "\n" +
-    "    </div>"
+    "        text-transform: uppercase;\r" +
+    "\n" +
+    "        color: #000 !important;\r" +
+    "\n" +
+    "        font-weight: 700;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    td.pack_heading2 {\r" +
+    "\n" +
+    "        text-transform: uppercase;\r" +
+    "\n" +
+    "        color: #000 !important;\r" +
+    "\n" +
+    "        font-size: 18px !important;\r" +
+    "\n" +
+    "        line-height: 32px !important;\r" +
+    "\n" +
+    "        font-weight: 700;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "</style>"
   );
 
 
@@ -3559,7 +4279,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/masterTemplate/headerTemplate.html',
-    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller=\"headctrl\">\r" +
+    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl'>\r" +
     "\n" +
     "\r" +
     "\n" +
