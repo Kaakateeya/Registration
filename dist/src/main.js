@@ -54,14 +54,14 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
 });
 regApp.constant('arrayConstantsreg', {
     'MaritalStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Unmarried", "title": "Unmarried", "value": 43 },
         { "label": "Divorce", "title": "Divorce", "value": 44 },
         { "label": "Widow/Widower", "title": "Widow/Widower", "value": 45 },
         { "label": "Separated", "title": "Separated", "value": 46 }
     ],
     "height": [
-        { "label": "--Select--", "title": "--select--", "value": "" },
+
         { "label": "4'0 in - 122 cms", "title": "4'0 in - 122 cms", "value": 1 }, { "label": "4'1 in - 124 cms", "title": "4'1 in - 124 cms", "value": 2 },
         { "label": "4'2 in - 127 cms", "title": "4'2 in - 127 cms", "value": 3 },
         { "label": "4'3 in - 130 cms", "title": "4'3 in - 130 cms", "value": 4 }, { "label": "4'4 in - 132 cms", "title": "4'4 in - 132 cms", "value": 5 },
@@ -85,7 +85,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "7'1 in - 215 cms\t", "title": "7'1 in - 215 cms\t", "value": 38 }, { "label": "7'2 in - 218 cms\t", "title": "7'2 in - 218 cms\t", "value": 39 }
     ],
     "Religion": [
-        { "label": "--Select--", "title": "--select--", "value": "" },
+
         { "label": "Hindu", "title": "Hindu", "value": 1 },
         { "label": "Christian", "title": "Christian", "value": 2 },
         { "label": "Muslim", "title": "Muslim", "value": 3 },
@@ -95,7 +95,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "ROMAN CATHOLIC", "title": "ROMAN CATHOLIC", "value": 16 }
     ],
     "Mothertongue": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Telugu", "title": "Telugu", "value": 1 },
         { "label": "Tamil", "title": "Tamil", "value": 2 },
         { "label": "Kannada", "title": "Kannada", "value": 3 },
@@ -111,7 +111,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "telugu", "title": "telugu", "value": 14 }
     ],
     "educationcategory": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Bachelors in Engineering", "title": "Bachelors in Engineering", "value": 1 },
         { "label": "Bachelors in Degree", "title": "Bachelors in Degree", "value": 2 },
         { "label": "Diploma", "title": "Diploma", "value": 3 },
@@ -127,7 +127,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Other", "title": "Other", "value": 22 }
     ],
     "visastatus": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Student Visa", "title": "Student Visa", "value": 284 },
         { "label": "Work Permit", "title": "Work Permit", "value": 285 },
         { "label": "Temporary Visa", "title": "Temporary Visa", "value": 286 },
@@ -136,7 +136,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Green Card", "title": "Green Card", "value": 553 }
     ],
     "stars": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Bharani", "title": "Bharani", "value": 2 },
         { "label": "Krithika", "title": "Krithika", "value": 3 },
         { "label": "Rohini", "title": "Rohini", "value": 4 },
@@ -191,19 +191,19 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Uttarabhadra", "title": "Uttarabhadra", "value": 55 }
     ],
     'starLanguage': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Telugu", "title": "Telugu", "value": 1 },
         { "label": "Tamil", "title": "Tamil", "value": 2 },
         { "label": "Kannada", "title": "Kannada", "value": 3 },
     ],
     'region': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "AP", "title": "AP", "value": 408 },
         { "label": "TN", "title": "TN", "value": 409 },
         { "label": "KT", "title": "KT", "value": 410 }
     ],
     'bodyType': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Athletic", "title": "Athletic", "value": 21 },
         { "label": "Average", "title": "Average", "value": 22 },
         { "label": "Slim", "title": "Slim", "value": 23 },
@@ -211,7 +211,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Doesn't Matter", "title": "Doesn't Matter", "value": 37 }
     ],
     'bloodGroup': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "O+", "title": "O+", "value": 61 },
         { "label": "A+", "title": "A+", "value": 63 },
         { "label": "B+", "title": "B+", "value": 64 },
@@ -221,7 +221,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "B-", "title": "B-", "value": 68 }
     ],
     'healthCondition': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "No Health Problems", "title": "No Health Problems", "value": 220 },
         { "label": "HIV", "title": "HIV", "value": 222 },
         { "label": "Diabetes", "title": "Diabetes", "value": 223 },
@@ -230,7 +230,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Heart Ailments", "title": "Heart Ailments", "value": 226 }
     ],
     'lagnam': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Dhansu", "title": "Dhansu", "value": 1 },
         { "label": "Kanya", "title": "Kanya", "value": 2 },
         { "label": "Karkatakam", "title": "Karkatakam", "value": 3 },
@@ -245,7 +245,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Vrushabam", "title": "Vrushabam", "value": 12 }
     ],
     'ZodaicSign': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "mesha", "title": "mesha", "value": 527 },
         { "label": "vrushaba", "title": "vrushaba", "value": 528 },
         { "label": "midhuna", "title": "midhuna", "value": 529 },
@@ -260,7 +260,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Meena", "title": "Meena", "value": 538 },
     ],
     'paadam': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "1", "title": "1", "value": 304 },
         { "label": "2", "title": "2", "value": 305 },
         { "label": "3", "title": "3", "value": 306 },
@@ -268,7 +268,7 @@ regApp.constant('arrayConstantsreg', {
 
     ],
     'familyStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Lower Middle Class", "title": "Lower Middle Class", "value": 290 },
         { "label": "Middle Class", "title": "Middle Class", "value": 291 },
         { "label": "Upper Middle Class", "title": "Upper Middle Class", "value": 292 },
@@ -278,7 +278,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "High Class", "title": "High Class", "value": 517 }
     ],
     'RelationshipType': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Friend", "title": "Friend", "value": 318 },
         { "label": "Relative", "title": "Relative", "value": 319 },
         { "label": "Not Given", "title": "Not Given", "value": 549 },
@@ -313,7 +313,7 @@ regApp.constant('arrayConstantsreg', {
 
     ],
     'Complexion': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Very Fair", "title": "Very Fair", "value": 17 },
         { "label": "Fair", "title": "Fair", "value": 18 },
         { "label": "Medium", "title": "Medium", "value": 19 },
@@ -321,19 +321,19 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Doesn't Matter", "title": "Doesn't Matter", "value": 38 }
     ],
     'PhysicalStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Normal", "title": "Normal", "value": 25 },
         { "label": "Physically Challenged", "title": "Physically Challenged", "value": 26 }
     ]
 
 });
-regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc) {
+regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout) {
     scope.childStayingWith = 'childStayingWith';
     scope.Religion = 'Religion';
-    scope.Mothertongue = 'Mothertongue';
+    //scope.Mothertongue = 'Mothertongue';
     scope.Caste = 'Caste';
     scope.Country = 'Country';
-    scope.countryCode = 'countryCode';
+    // scope.countryCode = 'countryCode';
     scope.month = 'month';
     scope.reg = {};
     scope.monthArr = [];
@@ -342,7 +342,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     scope.monthBind = function() {
 
         var option = [];
-        option.push({ "label": 'MM', "title": 'MM', "value": '' });
+
         _.each(monthArr, function(item) {
             option.push({ "label": item, "title": item, "value": item });
         });
@@ -350,7 +350,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     };
     scope.date = function(str, from, to) {
         var Arr = [];
-        Arr.push({ "label": str, "title": str, "value": '' });
+        // Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = from; i <= to; i++) {
             var strValue = null;
             if (i <= 9) {
@@ -364,24 +364,29 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     };
 
     scope.year = function(str, from, to) {
-
         var Arr = [];
-        Arr.push({ "label": str, "title": str, "value": '' });
+        // Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = to; i >= from; i--) {
             Arr.push({ "label": i, "title": i, "value": i });
         }
         return Arr;
     };
     scope.monthArr = scope.monthBind();
-    scope.dateArr = scope.date('DD', 1, 31);
-    scope.yearArr = scope.year('Year', 1936, 1998);
-    scope.postedby = getArray.GArray('childStayingWith');
-    scope.religion = getArray.GArray('Religion');
-    scope.Mothertongue = getArray.GArray('Mothertongue');
-    scope.Caste = getArray.GArray('Caste');
+    scope.dateArr = scope.date('', 1, 31);
+    scope.yearArr = scope.year('', 1936, 1998);
     scope.Country = getArray.GArray('Country');
-    scope.countryCode = getArray.GArray('countryCode');
 
+    timeout(function() {
+        scope.postedby = getArray.GArray('childStayingWith');
+        scope.religion = getArray.GArray('Religion');
+        scope.Mothertongue = getArray.GArray('Mothertongue');
+        scope.Caste = getArray.GArray('Caste');
+        scope.countryCode = getArray.GArray('countryCode');
+
+    }, 1000);
+    // timeout(function() {
+    //    
+    // }, 100);
 
     scope.statuses = ['Planned', 'Confirmed', 'Cancelled'];
 
@@ -697,6 +702,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
     function(scope, $interval, myAppFactory, authSvc, alerts) {
         scope.paymentarray = [];
         var logincustid = authSvc.getCustId();
+        alert(logincustid);
         scope.custid = logincustid !== undefined && logincustid !== null && logincustid !== "" ? logincustid : null;
         myAppFactory.getpayment(scope.custid).then(function(response) {
             console.log(response);
@@ -1033,7 +1039,7 @@ regApp.factory('cerateNewPwd', ['$http', function(http) {
             return http.get(regApp.apipath + 'StaticPages/getCreateNewPassword', { params: { intCusID: custID, strPassword: newpwd } });
         },
         getEmailAndProfileID: function(obj) {
-            return http.get(regApp.apipath + 'StaticPages/getEmilVerificationCode', { params: { VerificationCode: obj } });
+            return http.get(regApp.apipath + 'StaticPages/getEmilVerificationCode', { params: { VerificationCode: obj, i_EmilMobileVerification: 1, CustContactNumbersID: '' } });
         }
     };
 }]);
@@ -1068,7 +1074,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         StateBind: function(parentval) {
             var stateArr = [];
-            stateArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // stateArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.stateSelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     stateArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1078,7 +1084,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         districtBind: function(parentval) {
             var disttrictArr = [];
-            disttrictArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // disttrictArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.districtSelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -1089,7 +1095,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         cityBind: function(parentval) {
             var cityeArr = [];
-            cityeArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // cityeArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.citySelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -1101,7 +1107,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
 
         professionBind: function(parentval) {
             var professionArr = [];
-            professionArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // professionArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.ProfessionSpecialisation(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -1112,7 +1118,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         educationGroupBind: function(parentval) {
             var educationGroupArr = [];
-            educationGroupArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // educationGroupArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.EducationGroup(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     educationGroupArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1122,7 +1128,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         educationSpeciakisationBind: function(parentval) {
             var educationSpecialArr = [];
-            educationSpecialArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // educationSpecialArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.EducationSpecialisation(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     educationSpecialArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1134,7 +1140,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         numbersBind: function(str, from, to) {
             var numArr = [];
 
-            numArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // numArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             for (var i = from; i <= to; i++) {
                 numArr.push({ "label": i + " " + str, "title": i + " " + str, "value": i });
             }
@@ -1155,7 +1161,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         starBind: function(parentval) {
             var starArr = [];
-            starArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // starArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.stars(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     starArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1165,7 +1171,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         casteDepedency: function(parentval1, parentval2) {
             var casteArr = [];
-            casteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // casteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.castedependency(parentval1, parentval2).then(function(response) {
                 _.each(response.data, function(item) {
                     casteArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1175,7 +1181,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         subCaste: function(parentval1) {
             var subcasteArr = [];
-            subcasteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // subcasteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.subCasteBind(parentval1).then(function(response) {
                 _.each(response.data, function(item) {
                     subcasteArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1185,7 +1191,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         branch: function(parentval1) {
             var branchArr = [];
-            branchArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // branchArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.branch(parentval1).then(function(response) {
                 _.each(response.data, function(item) {
                     branchArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -1315,7 +1321,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'Country':
                     service.countrySelect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        // option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1327,7 +1333,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
 
                     service.ProfessionCatgory().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1338,7 +1344,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'ProfGroup':
                     service.ProfessionGroup().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1349,7 +1355,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'indiaStates':
                     service.stateSelect('1').then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1359,7 +1365,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'countryCode':
                     service.countryCodeselect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1369,7 +1375,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'caste':
                     service.casteselect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1379,7 +1385,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'currency':
                     service.currency().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -1507,7 +1513,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"\">\r" +
+    "    <div class=\"regmain\">\r" +
     "\n" +
     "        <div class=\"register_page_main_steps\">\r" +
     "\n" +
@@ -1571,7 +1577,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <md-input-container class=\"md-block span4\">\r" +
     "\n" +
-    "                                <label>First name</label>\r" +
+    "                                <label> First name</label>\r" +
     "\n" +
     "                                <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"reg.txtfirstname\">\r" +
     "\n" +
@@ -1665,7 +1671,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                    <label>date</label>\r" +
     "\n" +
@@ -1685,7 +1691,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                    <label>Month</label>\r" +
     "\n" +
@@ -1705,7 +1711,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:34%;\">\r" +
     "\n" +
     "                                    <label>year</label>\r" +
     "\n" +
@@ -1859,11 +1865,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"span4\">\r" +
     "\n" +
-    "                            <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                <label>Land code</label>\r" +
     "\n" +
-    "                                <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\" required=\"\">\r" +
+    "                                <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.ddllandcountry.$valid)?false:true\">\r" +
     "\n" +
     "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1879,11 +1885,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container class=\"md-block span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                <label>Area code</label>\r" +
     "\n" +
-    "                                <input maxlength=\"8\" required=\"\" md-no-asterisk=\"\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtArea.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtArea.$error\">\r" +
     "\n" +
@@ -1897,11 +1903,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container class=\"md-block span4\" style=\"width:34%;\">\r" +
     "\n" +
     "                                <label>Landline number</label>\r" +
     "\n" +
-    "                                <input maxlength=\"8\" required=\"\" md-no-asterisk=\"\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtlandNum.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
     "\n" +
@@ -1985,9 +1991,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
-    "    \r" +
-    "\n" +
-    "    .multiselect {\r" +
+    "    /*.multiselect {\r" +
     "\n" +
     "        border: solid 1px #ADA2A2 !important;\r" +
     "\n" +
@@ -2005,9 +2009,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    */\r" +
+    "\n" +
     "    \r" +
     "\n" +
     "    .register_page_main input[type=\"email\"],\r" +
+    "\n" +
+    "    .register_page_main input[type=\"password\"],\r" +
     "\n" +
     "    .register_page_main input[type=\"text\"] {\r" +
     "\n" +
@@ -2015,7 +2023,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        border-radius: 3px !important;\r" +
     "\n" +
-    "        height: 35px;\r" +
+    "        height: 30px;\r" +
     "\n" +
     "        width: 98%;\r" +
     "\n" +
@@ -2065,6 +2073,26 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-focused {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.87);\r" +
+    "\n" +
+    "        border-color: rgba(0, 0, 0, 0.12);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-invalid) label input[type=\"password\"],\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-invalid) .md-input {\r" +
+    "\n" +
+    "        border-color: rgb(63, 81, 181) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "    /*.selectdemoSelectHeader .demo-header-searchbox {\r" +
     "\n" +
     "        border: none;\r" +
@@ -2106,6 +2134,26 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "    [class*=\"span\"] {\r" +
     "\n" +
     "        margin-left: 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 {\r" +
+    "\n" +
+    "        padding-right: 3%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2930,7 +2978,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </h4>\r" +
     "\n" +
-    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"javascript:void(0);\">Complete My Registration </a>\r" +
+    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"#/mobileverf\">Complete My Registration </a>\r" +
     "\n" +
     "    <div class=\"clear\"></div>\r" +
     "\n" +
@@ -3235,7 +3283,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"\">\r" +
+    "    <div class=\"regmain\">\r" +
     "\n" +
     "        <div class=\"register_page_main_steps\">\r" +
     "\n" +
@@ -3381,11 +3429,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <h4>Education details</h4>\r" +
+    "                        <h4 class=\"well\">Education details</h4>\r" +
     "\n" +
     "                        </br>\r" +
     "\n" +
@@ -3449,23 +3497,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"control-group span12\">\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\">\r" +
+    "                            <md-input-container class=\"md-block span12\">\r" +
     "\n" +
     "                                <label>Education merits</label>\r" +
     "\n" +
-    "                                <input maxlength=\"500\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\">\r" +
+    "                                <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\"></textarea>\r" +
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
     "                        </div>\r" +
     "\n" +
+    "\r" +
+    "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <h4>profession details</h4>\r" +
+    "                        <h4 class=\"well\">profession details</h4>\r" +
     "\n" +
     "                        </br>\r" +
     "\n" +
@@ -3571,11 +3621,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                        <md-input-container class=\"md-block span4\">\r" +
+    "                        <md-input-container class=\"md-block span12\">\r" +
     "\n" +
     "                            <label>Occupation details</label>\r" +
     "\n" +
-    "                            <input maxlength=\"500\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\">\r" +
+    "                            <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\"></textarea>\r" +
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
@@ -3583,9 +3633,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
-    "                        <h4>Candidate location details</h4>\r" +
+    "                        <h4 class=\"well\">Candidate location details</h4>\r" +
     "\n" +
     "                        <br>\r" +
     "\n" +
@@ -3687,7 +3737,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <md-input-container class=\"span4\">\r" +
     "\n" +
-    "                            <label style=\"padding-left:61px\">Residing since</label>\r" +
+    "                            <label>Residing since</label>\r" +
     "\n" +
     "                            <md-datepicker ng-model=\"regsec.from\" md-min-date=\"minDate\" md-max-date=\"maxDate\">\r" +
     "\n" +
@@ -3699,9 +3749,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
-    "                        <h4>Family details</h4>\r" +
+    "                        <h4 class=\"well\">Family details</h4>\r" +
     "\n" +
     "                        <br>\r" +
     "\n" +
@@ -3853,13 +3903,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
     "                        <div>\r" +
     "\n" +
-    "                            <h4>About yourself</h4>\r" +
+    "                            <h4 class=\"well\">About yourself</h4>\r" +
     "\n" +
     "                            <p>\r" +
     "\n" +
@@ -3881,7 +3931,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>About yourself</label>\r" +
     "\n" +
-    "                                <input maxlength=\"1000\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\">\r" +
+    "                                <textarea maxlength=\"1000\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
@@ -3967,7 +4017,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    .register_page_main input[type=\"email\"] {\r" +
+    "    .register_page_main textarea {\r" +
     "\n" +
     "        box-shadow: none;\r" +
     "\n" +
@@ -3997,9 +4047,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    input[type=\"email\"],\r" +
-    "\n" +
-    "    input[type=\"password\"] {\r" +
+    "    textarea {\r" +
     "\n" +
     "        border: 0 !important;\r" +
     "\n" +
@@ -4042,6 +4090,64 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        max-width: 328px;\r" +
     "\n" +
     "        padding: 0 0 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 {\r" +
+    "\n" +
+    "        padding-right: 3%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 md-datepicker {\r" +
+    "\n" +
+    "        padding-right: 0% !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .well {\r" +
+    "\n" +
+    "        padding: 11px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    ._md-datepicker-floating-label>md-datepicker .md-datepicker-button {\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "        margin-top: -2.5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    ._md-datepicker-floating-label._md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore) {\r" +
+    "\n" +
+    "        right: 18px;\r" +
+    "\n" +
+    "        left: 0;\r" +
+    "\n" +
+    "        width: calc(100% - 84px);\r" +
     "\n" +
     "    }\r" +
     "\n" +

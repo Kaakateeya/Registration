@@ -1,10 +1,10 @@
-regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc) {
+regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout) {
     scope.childStayingWith = 'childStayingWith';
     scope.Religion = 'Religion';
-    scope.Mothertongue = 'Mothertongue';
+    //scope.Mothertongue = 'Mothertongue';
     scope.Caste = 'Caste';
     scope.Country = 'Country';
-    scope.countryCode = 'countryCode';
+    // scope.countryCode = 'countryCode';
     scope.month = 'month';
     scope.reg = {};
     scope.monthArr = [];
@@ -13,7 +13,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     scope.monthBind = function() {
 
         var option = [];
-        option.push({ "label": 'MM', "title": 'MM', "value": '' });
+
         _.each(monthArr, function(item) {
             option.push({ "label": item, "title": item, "value": item });
         });
@@ -21,7 +21,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     };
     scope.date = function(str, from, to) {
         var Arr = [];
-        Arr.push({ "label": str, "title": str, "value": '' });
+        // Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = from; i <= to; i++) {
             var strValue = null;
             if (i <= 9) {
@@ -35,24 +35,29 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     };
 
     scope.year = function(str, from, to) {
-
         var Arr = [];
-        Arr.push({ "label": str, "title": str, "value": '' });
+        // Arr.push({ "label": str, "title": str, "value": '' });
         for (var i = to; i >= from; i--) {
             Arr.push({ "label": i, "title": i, "value": i });
         }
         return Arr;
     };
     scope.monthArr = scope.monthBind();
-    scope.dateArr = scope.date('DD', 1, 31);
-    scope.yearArr = scope.year('Year', 1936, 1998);
-    scope.postedby = getArray.GArray('childStayingWith');
-    scope.religion = getArray.GArray('Religion');
-    scope.Mothertongue = getArray.GArray('Mothertongue');
-    scope.Caste = getArray.GArray('Caste');
+    scope.dateArr = scope.date('', 1, 31);
+    scope.yearArr = scope.year('', 1936, 1998);
     scope.Country = getArray.GArray('Country');
-    scope.countryCode = getArray.GArray('countryCode');
 
+    timeout(function() {
+        scope.postedby = getArray.GArray('childStayingWith');
+        scope.religion = getArray.GArray('Religion');
+        scope.Mothertongue = getArray.GArray('Mothertongue');
+        scope.Caste = getArray.GArray('Caste');
+        scope.countryCode = getArray.GArray('countryCode');
+
+    }, 1000);
+    // timeout(function() {
+    //    
+    // }, 100);
 
     scope.statuses = ['Planned', 'Confirmed', 'Cancelled'];
 

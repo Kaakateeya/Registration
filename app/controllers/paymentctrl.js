@@ -3,6 +3,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
     function(scope, $interval, myAppFactory, authSvc, alerts) {
         scope.paymentarray = [];
         var logincustid = authSvc.getCustId();
+        alert(logincustid);
         scope.custid = logincustid !== undefined && logincustid !== null && logincustid !== "" ? logincustid : null;
         myAppFactory.getpayment(scope.custid).then(function(response) {
             console.log(response);

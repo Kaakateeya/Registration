@@ -10,7 +10,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"\">\r" +
+    "    <div class=\"regmain\">\r" +
     "\n" +
     "        <div class=\"register_page_main_steps\">\r" +
     "\n" +
@@ -74,7 +74,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <md-input-container class=\"md-block span4\">\r" +
     "\n" +
-    "                                <label>First name</label>\r" +
+    "                                <label> First name</label>\r" +
     "\n" +
     "                                <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"reg.txtfirstname\">\r" +
     "\n" +
@@ -168,7 +168,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                    <label>date</label>\r" +
     "\n" +
@@ -188,7 +188,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                    <label>Month</label>\r" +
     "\n" +
@@ -208,7 +208,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"span4\" style=\"width:34%;\">\r" +
     "\n" +
     "                                    <label>year</label>\r" +
     "\n" +
@@ -362,11 +362,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"span4\">\r" +
     "\n" +
-    "                            <md-input-container flex=\"50\" class=\"span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container flex=\"50\" class=\"span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                <label>Land code</label>\r" +
     "\n" +
-    "                                <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\" required=\"\">\r" +
+    "                                <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.ddllandcountry.$valid)?false:true\">\r" +
     "\n" +
     "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -382,11 +382,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container class=\"md-block span4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                <label>Area code</label>\r" +
     "\n" +
-    "                                <input maxlength=\"8\" required=\"\" md-no-asterisk=\"\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtArea.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtArea.$error\">\r" +
     "\n" +
@@ -400,11 +400,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\" style=\"width:30%;\">\r" +
+    "                            <md-input-container class=\"md-block span4\" style=\"width:34%;\">\r" +
     "\n" +
     "                                <label>Landline number</label>\r" +
     "\n" +
-    "                                <input maxlength=\"8\" required=\"\" md-no-asterisk=\"\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtlandNum.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
     "\n" +
@@ -488,9 +488,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
-    "    \r" +
-    "\n" +
-    "    .multiselect {\r" +
+    "    /*.multiselect {\r" +
     "\n" +
     "        border: solid 1px #ADA2A2 !important;\r" +
     "\n" +
@@ -508,9 +506,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    */\r" +
+    "\n" +
     "    \r" +
     "\n" +
     "    .register_page_main input[type=\"email\"],\r" +
+    "\n" +
+    "    .register_page_main input[type=\"password\"],\r" +
     "\n" +
     "    .register_page_main input[type=\"text\"] {\r" +
     "\n" +
@@ -518,7 +520,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        border-radius: 3px !important;\r" +
     "\n" +
-    "        height: 35px;\r" +
+    "        height: 30px;\r" +
     "\n" +
     "        width: 98%;\r" +
     "\n" +
@@ -568,6 +570,26 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-focused {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.87);\r" +
+    "\n" +
+    "        border-color: rgba(0, 0, 0, 0.12);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-invalid) label input[type=\"password\"],\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-invalid) .md-input {\r" +
+    "\n" +
+    "        border-color: rgb(63, 81, 181) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "    /*.selectdemoSelectHeader .demo-header-searchbox {\r" +
     "\n" +
     "        border: none;\r" +
@@ -609,6 +631,26 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "    [class*=\"span\"] {\r" +
     "\n" +
     "        margin-left: 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 {\r" +
+    "\n" +
+    "        padding-right: 3%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -1433,7 +1475,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </h4>\r" +
     "\n" +
-    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"javascript:void(0);\">Complete My Registration </a>\r" +
+    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"#/mobileverf\">Complete My Registration </a>\r" +
     "\n" +
     "    <div class=\"clear\"></div>\r" +
     "\n" +
@@ -1738,7 +1780,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "    <div class=\"\">\r" +
+    "    <div class=\"regmain\">\r" +
     "\n" +
     "        <div class=\"register_page_main_steps\">\r" +
     "\n" +
@@ -1884,11 +1926,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <h4>Education details</h4>\r" +
+    "                        <h4 class=\"well\">Education details</h4>\r" +
     "\n" +
     "                        </br>\r" +
     "\n" +
@@ -1952,23 +1994,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"control-group span12\">\r" +
     "\n" +
-    "                            <md-input-container class=\"md-block span4\">\r" +
+    "                            <md-input-container class=\"md-block span12\">\r" +
     "\n" +
     "                                <label>Education merits</label>\r" +
     "\n" +
-    "                                <input maxlength=\"500\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\">\r" +
+    "                                <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\"></textarea>\r" +
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
     "                        </div>\r" +
     "\n" +
+    "\r" +
+    "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                        <h4>profession details</h4>\r" +
+    "                        <h4 class=\"well\">profession details</h4>\r" +
     "\n" +
     "                        </br>\r" +
     "\n" +
@@ -2074,11 +2118,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                        <md-input-container class=\"md-block span4\">\r" +
+    "                        <md-input-container class=\"md-block span12\">\r" +
     "\n" +
     "                            <label>Occupation details</label>\r" +
     "\n" +
-    "                            <input maxlength=\"500\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\">\r" +
+    "                            <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\"></textarea>\r" +
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
@@ -2086,9 +2130,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
-    "                        <h4>Candidate location details</h4>\r" +
+    "                        <h4 class=\"well\">Candidate location details</h4>\r" +
     "\n" +
     "                        <br>\r" +
     "\n" +
@@ -2190,7 +2234,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <md-input-container class=\"span4\">\r" +
     "\n" +
-    "                            <label style=\"padding-left:61px\">Residing since</label>\r" +
+    "                            <label>Residing since</label>\r" +
     "\n" +
     "                            <md-datepicker ng-model=\"regsec.from\" md-min-date=\"minDate\" md-max-date=\"maxDate\">\r" +
     "\n" +
@@ -2202,9 +2246,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
-    "                        <h4>Family details</h4>\r" +
+    "                        <h4 class=\"well\">Family details</h4>\r" +
     "\n" +
     "                        <br>\r" +
     "\n" +
@@ -2356,13 +2400,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <hr>\r" +
+    "                        <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
     "                        <div>\r" +
     "\n" +
-    "                            <h4>About yourself</h4>\r" +
+    "                            <h4 class=\"well\">About yourself</h4>\r" +
     "\n" +
     "                            <p>\r" +
     "\n" +
@@ -2384,7 +2428,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>About yourself</label>\r" +
     "\n" +
-    "                                <input maxlength=\"1000\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\">\r" +
+    "                                <textarea maxlength=\"1000\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
@@ -2470,7 +2514,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    .register_page_main input[type=\"email\"] {\r" +
+    "    .register_page_main textarea {\r" +
     "\n" +
     "        box-shadow: none;\r" +
     "\n" +
@@ -2500,9 +2544,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    input[type=\"email\"],\r" +
-    "\n" +
-    "    input[type=\"password\"] {\r" +
+    "    textarea {\r" +
     "\n" +
     "        border: 0 !important;\r" +
     "\n" +
@@ -2545,6 +2587,64 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        max-width: 328px;\r" +
     "\n" +
     "        padding: 0 0 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 {\r" +
+    "\n" +
+    "        padding-right: 3%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .span4 md-datepicker {\r" +
+    "\n" +
+    "        padding-right: 0% !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .well {\r" +
+    "\n" +
+    "        padding: 11px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    ._md-datepicker-floating-label>md-datepicker .md-datepicker-button {\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "        margin-top: -2.5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    ._md-datepicker-floating-label._md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore) {\r" +
+    "\n" +
+    "        right: 18px;\r" +
+    "\n" +
+    "        left: 0;\r" +
+    "\n" +
+    "        width: calc(100% - 84px);\r" +
     "\n" +
     "    }\r" +
     "\n" +

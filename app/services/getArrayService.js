@@ -88,7 +88,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'Country':
                     service.countrySelect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        // option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -100,7 +100,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
 
                     service.ProfessionCatgory().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -111,7 +111,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'ProfGroup':
                     service.ProfessionGroup().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -122,7 +122,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'indiaStates':
                     service.stateSelect('1').then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -132,7 +132,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'countryCode':
                     service.countryCodeselect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -142,7 +142,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'caste':
                     service.casteselect().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });
@@ -152,7 +152,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(c
                 case 'currency':
                     service.currency().then(function(response) {
 
-                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
                         _.each(response.data, function(item) {
                             option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         });

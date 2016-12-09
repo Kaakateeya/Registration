@@ -2,7 +2,7 @@
 
     <h4>registration</h4>
 
-    <div class="">
+    <div class="regmain">
         <div class="register_page_main_steps">
             <ul>
                 <li><a class="active" href="#" style="text-transform: capitalize;">Basic information</a></li>
@@ -75,9 +75,9 @@
                         </md-input-container>
 
                         <div class="clear"></div>
-                        <hr>
+                        <!--<hr>-->
 
-                        <h4>Education details</h4>
+                        <h4 class="well">Education details</h4>
                         </br>
                         <md-input-container flex="50" class="span4">
                             <label>Education category</label>
@@ -109,15 +109,16 @@
                         </md-input-container>
 
                         <div class="control-group span12">
-                            <md-input-container class="md-block span4">
+                            <md-input-container class="md-block span12">
                                 <label>Education merits</label>
-                                <input maxlength="500" md-no-asterisk="" name="txtEducationMerits" ng-model="regsec.txtEducationMerits">
+                                <textarea maxlength="500" md-no-asterisk="" name="txtEducationMerits" ng-model="regsec.txtEducationMerits"></textarea>
                             </md-input-container>
                         </div>
-                        <div class="clear"></div>
-                        <hr>
 
-                        <h4>profession details</h4>
+                        <div class="clear"></div>
+                        <!--<hr>-->
+
+                        <h4 class="well">profession details</h4>
                         </br>
                         <md-input-container flex="50" class="span4">
                             <label>Employed in</label>
@@ -170,14 +171,14 @@
                             <input maxlength="7" md-no-asterisk="" name="txtSalary" ng-model="regsec.txtSalary">
                         </md-input-container>
 
-                        <md-input-container class="md-block span4">
+                        <md-input-container class="md-block span12">
                             <label>Occupation details</label>
-                            <input maxlength="500" md-no-asterisk="" name="txtOcccupationDetails" ng-model="regsec.txtOcccupationDetails">
+                            <textarea maxlength="500" md-no-asterisk="" name="txtOcccupationDetails" ng-model="regsec.txtOcccupationDetails"></textarea>
                         </md-input-container>
 
                         <div class="clear"></div>
-                        <hr>
-                        <h4>Candidate location details</h4>
+                        <!--<hr>-->
+                        <h4 class="well">Candidate location details</h4>
                         <br>
                         <md-input-container flex="50" class="span4">
                             <label>Country living in</label>
@@ -228,14 +229,14 @@
                         </md-input-container>
 
                         <md-input-container class="span4">
-                            <label style="padding-left:61px">Residing since</label>
+                            <label>Residing since</label>
                             <md-datepicker ng-model="regsec.from" md-min-date="minDate" md-max-date="maxDate">
                             </md-datepicker>
                         </md-input-container>
 
                         <div class="clear"></div>
-                        <hr>
-                        <h4>Family details</h4>
+                        <!--<hr>-->
+                        <h4 class="well">Family details</h4>
                         <br>
                         <md-input-container class="md-block span4">
                             <label>Father Name</label>
@@ -311,10 +312,10 @@
                             </md-input-container>
                         </div>
                         <div class="clear"></div>
-                        <hr>
+                        <!--<hr>-->
 
                         <div>
-                            <h4>About yourself</h4>
+                            <h4 class="well">About yourself</h4>
                             <p>
                                 Write About your unique characteristics,The Most Important Things In your life like your Aspiration, Interests, things you like to do,,,,,
 
@@ -325,7 +326,7 @@
 
                             <md-input-container class="md-block">
                                 <label>About yourself</label>
-                                <input maxlength="1000" ng-minlength="50" required="" md-asterisk="" name="txtabouturself" ng-model="regsec.txtabouturself">
+                                <textarea maxlength="1000" ng-minlength="50" required="" md-asterisk="" name="txtabouturself" ng-model="regsec.txtabouturself"></textarea>
                                 <div ng-messages="secregForm.txtabouturself.$error">
                                     <div ng-message-exp="['required', 'minlength']">
                                         This is required and enter Minimum 50 characters
@@ -368,7 +369,7 @@
         margin: 0 !important;
     }
     
-    .register_page_main input[type="email"] {
+    .register_page_main textarea {
         box-shadow: none;
         border-radius: 3px !important;
         height: 35px;
@@ -383,8 +384,7 @@
         text-align: left;
     }
     
-    input[type="email"],
-    input[type="password"] {
+    textarea {
         border: 0 !important;
         border-bottom: 1px solid red !important;
         outline: 0 !important;
@@ -406,5 +406,34 @@
         min-width: 299px;
         max-width: 328px;
         padding: 0 0 5px;
+    }
+    
+    .span4 {
+        padding-right: 3%;
+    }
+    
+    .span4 md-datepicker {
+        padding-right: 0% !important;
+    }
+    
+    .well {
+        padding: 11px;
+    }
+    
+    .regmain {
+        border: solid 1px #ccc;
+        border-radius: 5px;
+        padding: 7px;
+    }
+    
+    ._md-datepicker-floating-label>md-datepicker .md-datepicker-button {
+        float: right;
+        margin-top: -2.5px;
+    }
+    
+    ._md-datepicker-floating-label._md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore) {
+        right: 18px;
+        left: 0;
+        width: calc(100% - 84px);
     }
 </style>

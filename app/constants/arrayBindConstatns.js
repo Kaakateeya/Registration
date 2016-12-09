@@ -1,13 +1,13 @@
 regApp.constant('arrayConstantsreg', {
     'MaritalStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Unmarried", "title": "Unmarried", "value": 43 },
         { "label": "Divorce", "title": "Divorce", "value": 44 },
         { "label": "Widow/Widower", "title": "Widow/Widower", "value": 45 },
         { "label": "Separated", "title": "Separated", "value": 46 }
     ],
     "height": [
-        { "label": "--Select--", "title": "--select--", "value": "" },
+
         { "label": "4'0 in - 122 cms", "title": "4'0 in - 122 cms", "value": 1 }, { "label": "4'1 in - 124 cms", "title": "4'1 in - 124 cms", "value": 2 },
         { "label": "4'2 in - 127 cms", "title": "4'2 in - 127 cms", "value": 3 },
         { "label": "4'3 in - 130 cms", "title": "4'3 in - 130 cms", "value": 4 }, { "label": "4'4 in - 132 cms", "title": "4'4 in - 132 cms", "value": 5 },
@@ -31,7 +31,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "7'1 in - 215 cms\t", "title": "7'1 in - 215 cms\t", "value": 38 }, { "label": "7'2 in - 218 cms\t", "title": "7'2 in - 218 cms\t", "value": 39 }
     ],
     "Religion": [
-        { "label": "--Select--", "title": "--select--", "value": "" },
+
         { "label": "Hindu", "title": "Hindu", "value": 1 },
         { "label": "Christian", "title": "Christian", "value": 2 },
         { "label": "Muslim", "title": "Muslim", "value": 3 },
@@ -41,7 +41,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "ROMAN CATHOLIC", "title": "ROMAN CATHOLIC", "value": 16 }
     ],
     "Mothertongue": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Telugu", "title": "Telugu", "value": 1 },
         { "label": "Tamil", "title": "Tamil", "value": 2 },
         { "label": "Kannada", "title": "Kannada", "value": 3 },
@@ -57,7 +57,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "telugu", "title": "telugu", "value": 14 }
     ],
     "educationcategory": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Bachelors in Engineering", "title": "Bachelors in Engineering", "value": 1 },
         { "label": "Bachelors in Degree", "title": "Bachelors in Degree", "value": 2 },
         { "label": "Diploma", "title": "Diploma", "value": 3 },
@@ -73,7 +73,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Other", "title": "Other", "value": 22 }
     ],
     "visastatus": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Student Visa", "title": "Student Visa", "value": 284 },
         { "label": "Work Permit", "title": "Work Permit", "value": 285 },
         { "label": "Temporary Visa", "title": "Temporary Visa", "value": 286 },
@@ -82,7 +82,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Green Card", "title": "Green Card", "value": 553 }
     ],
     "stars": [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Bharani", "title": "Bharani", "value": 2 },
         { "label": "Krithika", "title": "Krithika", "value": 3 },
         { "label": "Rohini", "title": "Rohini", "value": 4 },
@@ -137,19 +137,19 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Uttarabhadra", "title": "Uttarabhadra", "value": 55 }
     ],
     'starLanguage': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Telugu", "title": "Telugu", "value": 1 },
         { "label": "Tamil", "title": "Tamil", "value": 2 },
         { "label": "Kannada", "title": "Kannada", "value": 3 },
     ],
     'region': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "AP", "title": "AP", "value": 408 },
         { "label": "TN", "title": "TN", "value": 409 },
         { "label": "KT", "title": "KT", "value": 410 }
     ],
     'bodyType': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Athletic", "title": "Athletic", "value": 21 },
         { "label": "Average", "title": "Average", "value": 22 },
         { "label": "Slim", "title": "Slim", "value": 23 },
@@ -157,7 +157,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Doesn't Matter", "title": "Doesn't Matter", "value": 37 }
     ],
     'bloodGroup': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "O+", "title": "O+", "value": 61 },
         { "label": "A+", "title": "A+", "value": 63 },
         { "label": "B+", "title": "B+", "value": 64 },
@@ -167,7 +167,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "B-", "title": "B-", "value": 68 }
     ],
     'healthCondition': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "No Health Problems", "title": "No Health Problems", "value": 220 },
         { "label": "HIV", "title": "HIV", "value": 222 },
         { "label": "Diabetes", "title": "Diabetes", "value": 223 },
@@ -176,7 +176,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Heart Ailments", "title": "Heart Ailments", "value": 226 }
     ],
     'lagnam': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Dhansu", "title": "Dhansu", "value": 1 },
         { "label": "Kanya", "title": "Kanya", "value": 2 },
         { "label": "Karkatakam", "title": "Karkatakam", "value": 3 },
@@ -191,7 +191,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Vrushabam", "title": "Vrushabam", "value": 12 }
     ],
     'ZodaicSign': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "mesha", "title": "mesha", "value": 527 },
         { "label": "vrushaba", "title": "vrushaba", "value": 528 },
         { "label": "midhuna", "title": "midhuna", "value": 529 },
@@ -206,7 +206,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Meena", "title": "Meena", "value": 538 },
     ],
     'paadam': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "1", "title": "1", "value": 304 },
         { "label": "2", "title": "2", "value": 305 },
         { "label": "3", "title": "3", "value": 306 },
@@ -214,7 +214,7 @@ regApp.constant('arrayConstantsreg', {
 
     ],
     'familyStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Lower Middle Class", "title": "Lower Middle Class", "value": 290 },
         { "label": "Middle Class", "title": "Middle Class", "value": 291 },
         { "label": "Upper Middle Class", "title": "Upper Middle Class", "value": 292 },
@@ -224,7 +224,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "High Class", "title": "High Class", "value": 517 }
     ],
     'RelationshipType': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Friend", "title": "Friend", "value": 318 },
         { "label": "Relative", "title": "Relative", "value": 319 },
         { "label": "Not Given", "title": "Not Given", "value": 549 },
@@ -259,7 +259,7 @@ regApp.constant('arrayConstantsreg', {
 
     ],
     'Complexion': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Very Fair", "title": "Very Fair", "value": 17 },
         { "label": "Fair", "title": "Fair", "value": 18 },
         { "label": "Medium", "title": "Medium", "value": 19 },
@@ -267,7 +267,7 @@ regApp.constant('arrayConstantsreg', {
         { "label": "Doesn't Matter", "title": "Doesn't Matter", "value": 38 }
     ],
     'PhysicalStatus': [
-        { "label": "--Select--", "title": "--Select--", "value": "" },
+
         { "label": "Normal", "title": "Normal", "value": 25 },
         { "label": "Physically Challenged", "title": "Physically Challenged", "value": 26 }
     ]

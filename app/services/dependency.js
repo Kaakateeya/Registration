@@ -29,7 +29,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         StateBind: function(parentval) {
             var stateArr = [];
-            stateArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // stateArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.stateSelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     stateArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -39,7 +39,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         districtBind: function(parentval) {
             var disttrictArr = [];
-            disttrictArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // disttrictArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.districtSelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -50,7 +50,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         cityBind: function(parentval) {
             var cityeArr = [];
-            cityeArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // cityeArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.citySelect(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -62,7 +62,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
 
         professionBind: function(parentval) {
             var professionArr = [];
-            professionArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // professionArr.push({ "label": "--select--", "title": "--select--", "value": "" });
 
             SelectBindService.ProfessionSpecialisation(parentval).then(function(response) {
                 _.each(response.data, function(item) {
@@ -73,7 +73,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         educationGroupBind: function(parentval) {
             var educationGroupArr = [];
-            educationGroupArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // educationGroupArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.EducationGroup(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     educationGroupArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -83,7 +83,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         educationSpeciakisationBind: function(parentval) {
             var educationSpecialArr = [];
-            educationSpecialArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // educationSpecialArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.EducationSpecialisation(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     educationSpecialArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -95,7 +95,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         numbersBind: function(str, from, to) {
             var numArr = [];
 
-            numArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // numArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             for (var i = from; i <= to; i++) {
                 numArr.push({ "label": i + " " + str, "title": i + " " + str, "value": i });
             }
@@ -116,7 +116,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         starBind: function(parentval) {
             var starArr = [];
-            starArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // starArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.stars(parentval).then(function(response) {
                 _.each(response.data, function(item) {
                     starArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -126,7 +126,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         casteDepedency: function(parentval1, parentval2) {
             var casteArr = [];
-            casteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // casteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.castedependency(parentval1, parentval2).then(function(response) {
                 _.each(response.data, function(item) {
                     casteArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -136,7 +136,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         subCaste: function(parentval1) {
             var subcasteArr = [];
-            subcasteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // subcasteArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.subCasteBind(parentval1).then(function(response) {
                 _.each(response.data, function(item) {
                     subcasteArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
@@ -146,7 +146,7 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
         },
         branch: function(parentval1) {
             var branchArr = [];
-            branchArr.push({ "label": "--select--", "title": "--select--", "value": "" });
+            // branchArr.push({ "label": "--select--", "title": "--select--", "value": "" });
             SelectBindService.branch(parentval1).then(function(response) {
                 _.each(response.data, function(item) {
                     branchArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
