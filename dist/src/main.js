@@ -2157,6 +2157,16 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    .reg_fields_entry .span4 {\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        min-height: 70px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "</style>"
   );
 
@@ -3501,7 +3511,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>Education merits</label>\r" +
     "\n" +
-    "                                <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\"></textarea>\r" +
+    "                                <textarea maxlength=\"500\" rows=\"2\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"regsec.txtEducationMerits\"></textarea>\r" +
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
@@ -3625,7 +3635,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <label>Occupation details</label>\r" +
     "\n" +
-    "                            <textarea maxlength=\"500\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\"></textarea>\r" +
+    "                            <textarea maxlength=\"500\" rows=\"2\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"regsec.txtOcccupationDetails\"></textarea>\r" +
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
@@ -3931,7 +3941,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>About yourself</label>\r" +
     "\n" +
-    "                                <textarea maxlength=\"1000\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\"></textarea>\r" +
+    "                                <textarea maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
@@ -4045,9 +4055,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
-    "    \r" +
-    "\n" +
-    "    textarea {\r" +
+    "    /*textarea {\r" +
     "\n" +
     "        border: 0 !important;\r" +
     "\n" +
@@ -4059,7 +4067,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        border-color: rgba(0, 0, 0, 0.12) !important;\r" +
     "\n" +
-    "    }\r" +
+    "    }*/\r" +
     "\n" +
     "    \r" +
     "\n" +
@@ -4148,6 +4156,24 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        left: 0;\r" +
     "\n" +
     "        width: calc(100% - 84px);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-block>textarea {\r" +
+    "\n" +
+    "        border: 1px solid rgb(201, 188, 188) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .reg_fields_entry .span4 {\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        min-height: 70px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
