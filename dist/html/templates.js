@@ -18,11 +18,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li><a class=\"active\" href=\"#\" style=\"text-transform: capitalize;\">Basic information</a></li>\r" +
     "\n" +
-    "                <li><a href=\"#\" style=\"text-transform: capitalize;\">profile details</a></li>\r" +
+    "                <li><a href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">profile details</a></li>\r" +
     "\n" +
-    "                <li><a href=\"#\" style=\"text-transform: capitalize;\">my photos</a></li>\r" +
+    "                <li><a href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">my photos</a></li>\r" +
     "\n" +
-    "                <li><a href=\"#\" style=\"text-transform: capitalize;\">my payments</a></li>\r" +
+    "                <li><a href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">my payments</a></li>\r" +
     "\n" +
     "            </ul>\r" +
     "\n" +
@@ -1796,13 +1796,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <ul>\r" +
     "\n" +
-    "                <li><a class=\"active\" href=\"#\" style=\"text-transform: capitalize;\">Basic information</a></li>\r" +
+    "                <li><a class=\"active\" href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">Basic information</a></li>\r" +
     "\n" +
-    "                <li><a class=\"active\" href=\"#\" style=\"text-transform: capitalize;\">Profile details</a></li>\r" +
+    "                <li><a class=\"active\" href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">Profile details</a></li>\r" +
     "\n" +
-    "                <li><a href=\"#\" style=\"text-transform: capitalize;\">my photos</a></li>\r" +
+    "                <li><a href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">my photos</a></li>\r" +
     "\n" +
-    "                <li><a href=\"#\" style=\"text-transform: capitalize;\">my payments</a></li>\r" +
+    "                <li><a href=\"javascript:void(0);\" style=\"text-transform: capitalize;\">my payments</a></li>\r" +
     "\n" +
     "            </ul>\r" +
     "\n" +
@@ -1816,13 +1816,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <md-content layout-padding=\"\">\r" +
     "\n" +
-    "                <form name=\"secregForm\" novalidate role=\"form\" ng-submit=\"secondRegSubmit(regsec);\">\r" +
+    "                <form name=\"secregForm\" novalidate role=\"form\" ng-submit=\"secregForm.$valid && secondRegSubmit(regsec);\">\r" +
     "\n" +
     "\r" +
     "\n" +
     "                    <div class=\"reg_fields_entry clearfix\">\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "                        <md-input-container class=\"md-block span4\">\r" +
     "\n" +
@@ -2122,7 +2120,17 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <label>Monthly Salary</label>\r" +
     "\n" +
-    "                            <input maxlength=\"7\" md-no-asterisk=\"\" name=\"txtSalary\" ng-model=\"regsec.txtSalary\">\r" +
+    "                            <input maxlength=\"7\" md-no-asterisk=\"\" name=\"txtSalary\" ng-model=\"regsec.txtSalary\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "\n" +
+    "                            <div ng-messages=\"regsec.txtSalary.$error\">\r" +
+    "\n" +
+    "                                <div ng-message-exp=\"['pattern']\">\r" +
+    "\n" +
+    "                                    enter only numbers.\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                            </div>\r" +
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
@@ -2242,7 +2250,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                        <md-input-container class=\"span4\">\r" +
+    "                        <md-input-container class=\"span4\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\">\r" +
     "\n" +
     "                            <label>Residing since</label>\r" +
     "\n" +
@@ -2327,10 +2335,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "                            <input maxlength=\"150\" md-no-asterisk=\"\" name=\"txtMotherEducation\" ng-model=\"regsec.txtMotherEducation\">\r" +
     "\n" +
     "                        </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "\r" +
     "\n" +

@@ -231,7 +231,7 @@ regApp.constant('arrayConstantsreg', {
 
     ],
     "childStayingWith": [
-        { "label": "--select-- ", "title": "--select--", "value": 0 },
+        // { "label": "--select-- ", "title": "--select--", "value": 0 },
         { "label": "Father", "title": "Father", "value": 39 },
         { "label": "Mother", "title": "Mother", "value": 40 },
         { "label": "YoungerBrother", "title": "YoungerBrother", "value": 41 },

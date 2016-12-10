@@ -45,7 +45,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     scope.monthArr = scope.monthBind();
     scope.dateArr = scope.date('', 1, 31);
     scope.yearArr = scope.year('', 1936, 1998);
-    scope.Country = getArray.GArray('Country');
+
 
     timeout(function() {
         scope.postedby = getArray.GArray('childStayingWith');
@@ -55,9 +55,10 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         scope.countryCode = getArray.GArray('countryCode');
 
     }, 1000);
-    // timeout(function() {
-    //    
-    // }, 100);
+    timeout(function() {
+        scope.Country = getArray.GArray('Country');
+
+    }, 500);
 
     scope.statuses = ['Planned', 'Confirmed', 'Cancelled'];
 
