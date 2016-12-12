@@ -1635,7 +1635,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <td>\r" +
     "\n" +
-    "                                        <img src=\"{{payment.Ppath}}\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
+    "\r" +
+    "\n" +
+    "                                        <img ng-src=\"{{payment.Ppath==='../images/icon_tick_mark.png'?'src/images/icon_tick_mark.png':'src/images/icon_x_mark.png'}}\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
     "\n" +
     "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Relationship Manager</label>\r" +
     "\n" +
@@ -1647,7 +1649,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <td>\r" +
     "\n" +
-    "                                        <img ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" src='{{payment.Ppluspath}}' />\r" +
+    "\r" +
+    "\n" +
+    "                                        <img ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" ng-src=\"{{payment.Ppluspath==='../images/icon_tick_mark.png'?'src/images/icon_tick_mark.png':'src/images/icon_x_mark.png'}}\" />\r" +
     "\n" +
     "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Senior Relationship Manager</label>\r" +
     "\n" +
@@ -1655,15 +1659,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                </tr>\r" +
     "\n" +
-    "                                <tr>\r" +
+    "                                <td>\r" +
     "\n" +
-    "                                    <td>\r" +
+    "                                    <img src=\"src/images/icon_tick_mark.png\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
     "\n" +
-    "                                        <img src=\"src/images/icon_tick_mark.png\" ng-hide=\"payment.MembershipName=='Services & Features'?true:false\" />\r" +
+    "                                    <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Express Interest</label>\r" +
     "\n" +
-    "                                        <label ng-hide=\"payment.MembershipName=='Services & Features'?false:true\">Express Interest</label>\r" +
-    "\n" +
-    "                                    </td>\r" +
+    "                                </td>\r" +
     "\n" +
     "                                </tr>\r" +
     "\n" +
@@ -6078,9 +6080,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <form name=\"myForm\">\r" +
     "\n" +
-    "                <input type=\"text\" id=\"txtUserName\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"username\" required/>\r" +
+    "                <input type=\"text\" id=\"txtUserName\" placeholder=\"ProfileID/EmailID\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"username\" required/>\r" +
     "\n" +
-    "                <input type=\"password\" id=\"txtPassword\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"password\" required/>\r" +
+    "                <input type=\"password\" id=\"txtPassword\" placeholder=\"Password\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"password\" required/>\r" +
     "\n" +
     "                <span class=\"clear\">&nbsp;</span>\r" +
     "\n" +

@@ -17,7 +17,12 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
             authSvc.login(scope.profileID, obj.txtPassword).then(function(response) {
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 sessionStorage.removeItem("LoginPhotoIsActive");
-                window.location = "#/home";
+                if (response.response[0].isemailverified === true && response.response[0].isnumberverifed === true) {
+                    window.location = "#/home";
+                } else {
+                    window.location = "#/mobileverf";
+                }
+
             });
         });
     };
