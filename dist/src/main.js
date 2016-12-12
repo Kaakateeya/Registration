@@ -28,7 +28,7 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
         { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
         { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'upgrademembership' },
         { name: 'registration.CreatePwd', url: '/CreatePwd/:eid', templateUrl: regApp.templateroot + 'app/views/createNewPassoward.html', controller: 'createNewPwdCtrl' },
-        { name: 'registration.confirmEmail', url: '/confirmEmail', templateUrl: regApp.templateroot + 'app/views/confirmEmail.html', controller: 'confirmEmailCtrl' },
+        { name: 'registration.confirmEmail', url: '/confirmEmail/:vid', templateUrl: regApp.templateroot + 'app/views/confirmEmail.html', controller: 'confirmEmailCtrl' },
         { name: 'registration.photoGuideLines', url: '/photoGuideLines', templateUrl: regApp.templateroot + 'app/views/photoGuideLines.html', controller: 'photoGuideLinesctrl' },
         { name: 'registration.uploadTips', url: '/uploadTips', templateUrl: regApp.templateroot + 'app/views/uploadTips.html', controller: 'uploadTipsctrl' }
 
@@ -484,18 +484,21 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
 }]);
-regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', function(scope, emailVerificationService) {
-    emailVerificationService.verifyEmail('010022CED05EF32F2C9808F42CE9D6906144AD1461FF12CC0996').then(function(res) {
+regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', '$stateParams', function(scope, emailVerificationService, stateParams) {
+
+    var verificationCode = stateParams.vid;
+
+    emailVerificationService.verifyEmail(verificationCode).then(function(res) {
         console.log(res);
         if (res.data !== '0' && res.data !== 0) {
-            window.location = "#/registration/CreatePwd/010022CED05EF32F2C9808F42CE9D6906144AD1461FF12CC0996";
+            window.location = "#/registration/CreatePwd/" + verificationCode;
         } else {
 
         }
     });
 
 }]);
-regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', function(scope, cerateNewPwd, stateParams) {
+regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', 'authSvc', function(scope, cerateNewPwd, stateParams, authSvc) {
     scope.custID = '0';
     scope.Email = '';
     scope.profileID = '';
@@ -511,6 +514,11 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
     scope.CerateNewPwdSubmit = function(obj) {
         cerateNewPwd.createNewPwdSub(scope.custID, obj.txtPassword).then(function(res) {
             console.log(res);
+            authSvc.login(scope.profileID, obj.txtPassword).then(function(response) {
+                authSvc.user(response.response !== null ? response.response[0] : null);
+                sessionStorage.removeItem("LoginPhotoIsActive");
+                window.location = "#/home";
+            });
         });
     };
 }]);
@@ -1050,7 +1058,9 @@ regApp.factory('cerateNewPwd', ['$http', function(http) {
             return http.get(regApp.apipath + 'StaticPages/getCreateNewPassword', { params: { intCusID: custID, strPassword: newpwd } });
         },
         getEmailAndProfileID: function(obj) {
+            console.log(JSON.stringify({ VerificationCode: obj, i_EmilMobileVerification: 1, CustContactNumbersID: '' }));
             return http.get(regApp.apipath + 'StaticPages/getEmilVerificationCode', { params: { VerificationCode: obj, i_EmilMobileVerification: 1, CustContactNumbersID: '' } });
+
         }
     };
 }]);
@@ -2667,7 +2677,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        </a>\r" +
     "\n" +
-    "                    <a ID=\"photoupload\" href=\"javascript:void(0);\" ng-click=\"redirectPage('uploadTips');\">Photo upload tips\r" +
+    "                    <a ID=\"photoupload\" href=\"javascript:void(0);\"   ng-click=\"redirectPage('uploadTips');\">Photo upload tips\r" +
     "\n" +
     "                        </a>\r" +
     "\n" +

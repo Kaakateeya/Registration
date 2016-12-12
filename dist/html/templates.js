@@ -1153,7 +1153,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        </a>\r" +
     "\n" +
-    "                    <a ID=\"photoupload\" href=\"javascript:void(0);\" ng-click=\"redirectPage('uploadTips');\">Photo upload tips\r" +
+    "                    <a ID=\"photoupload\" href=\"javascript:void(0);\"   ng-click=\"redirectPage('uploadTips');\">Photo upload tips\r" +
     "\n" +
     "                        </a>\r" +
     "\n" +

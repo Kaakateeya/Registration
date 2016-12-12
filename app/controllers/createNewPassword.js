@@ -1,4 +1,4 @@
-regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', function(scope, cerateNewPwd, stateParams) {
+regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', 'authSvc', function(scope, cerateNewPwd, stateParams, authSvc) {
     scope.custID = '0';
     scope.Email = '';
     scope.profileID = '';
@@ -14,6 +14,11 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
     scope.CerateNewPwdSubmit = function(obj) {
         cerateNewPwd.createNewPwdSub(scope.custID, obj.txtPassword).then(function(res) {
             console.log(res);
+            authSvc.login(scope.profileID, obj.txtPassword).then(function(response) {
+                authSvc.user(response.response !== null ? response.response[0] : null);
+                sessionStorage.removeItem("LoginPhotoIsActive");
+                window.location = "#/home";
+            });
         });
     };
 }]);
