@@ -2,13 +2,13 @@
 
     <div class="container_my clearfix">
 
-        <a id="IbtnLogodisplay" class="logo3 pull-left" />
+        <a id="IbtnLogodisplay" href="javascript:void(0)" ng-click="redirecthomeordashboard()" class="logo3 pull-left" />
         <input type="button" value="Login" ng-show="loginstatus" id="btnLoginsubmit" class="pull-right button_custom login_show" ng-click="divloginblock();" />
         <input type="button" value="Logout" ng-show="loginoutstatus" id="btnLogOut" class="pull-right button_custom" ng-click="ClearlocalStorage();" />
         <div class="login_block_header" ng-show="loginpopup" id="divLogin">
             <form name="myForm">
-                <input type="text" id="txtUserName" style="height: 38px;" ng-model="username" required/>
-                <input type="password" id="txtPassword" style="height: 38px;" ng-model="password" required/>
+                <input type="text" id="txtUserName" style="height: 38px;border: 1px solid #cbc0c0 !important;" ng-model="username" required/>
+                <input type="password" id="txtPassword" style="height: 38px;border: 1px solid #cbc0c0 !important;" ng-model="password" required/>
                 <span class="clear">&nbsp;</span>
                 <div class="login_help">
                     <a id="lnkForgotPassword">Forgot Password</a>
@@ -48,7 +48,7 @@
                 <ul class="pull-right">
 
                     <li>
-                        <a id="lnkMyHome" href="javascript:void(0)" ng-click="redirectTohome()">My Home</a>
+                        <a id="lnkMyHome" href="javascript:void(0)" ng-click="homepagelinks('myhome')">My Home</a>
                     </li>
                     <li>
                         <a href="javascript:void(0)">my account</a>
@@ -74,16 +74,16 @@
 
                     </li>
                     <li>
-                        <a id="lnksearch" href="#/General">Search</a>
+                        <a id="lnksearch" href="javascript:void(0)" ng-click="searchpage('profile')">Search</a>
                         <ul>
                             <li>
-                                <a id="linkgenaralsearch" href="#/General">General Search</a>
+                                <a id="linkgenaralsearch" href="javascript:void(0)" ng-click="searchpage('general')">General Search</a>
                             </li>
                             <li>
-                                <a id="linkAdvancedSearch" href="#/General">Advanced Search</a>
+                                <a id="linkAdvancedSearch" href="javascript:void(0)" ng-click="searchpage('advanced')">Advanced Search</a>
                             </li>
                             <li>
-                                <a id="linkprofileidsearch" href="#/General">Profileid Search</a>
+                                <a id="linkprofileidsearch" href="javascript:void(0)" ng-click="searchpage('profile')">Profileid Search</a>
                             </li>
 
                         </ul>
@@ -111,16 +111,16 @@
                         <a href="javascript:void(0)">matches</a>
                         <ul>
                             <li>
-                                <a id="linkmybookmarks" href="#/home">My BookMarked Profiles</a>
+                                <a id="linkmybookmarks" href="javascript:void(0)" ng-click="homepagelinks('BookMarked')">My BookMarked Profiles</a>
                             </li>
                             <li>
-                                <a id="linkwhobookmarkedme" href="#/home">Who BookMarked Me</a>
+                                <a id="linkwhobookmarkedme" href="javascript:void(0)" ng-click="homepagelinks('BookMarkedme')">Who BookMarked Me</a>
                             </li>
                             <li>
-                                <a id="linkigonredprofile" href="#/home">Ignored Profiles</a>
+                                <a id="linkigonredprofile" href="javascript:void(0)" ng-click="homepagelinks('Ignored')">Ignored Profiles</a>
                             </li>
                             <li>
-                                <a id="linkviewedbutnotexpress" href="#/home">My profile viewed by others</a>
+                                <a id="linkviewedbutnotexpress" href="javascript:void(0)" ng-click="homepagelinks('myprofile')">My profile viewed by others</a>
                             </li>
 
                         </ul>
@@ -129,13 +129,13 @@
                         <a href="javascript:void(0)">messages</a>
                         <ul>
                             <li>
-                                <a id="linkPersonalizedmsg" href="#/home">Chats</a>
+                                <a id="linkPersonalizedmsg" href="javascript:void(0)" ng-click="homepagelinks('Chats')">Chats</a>
                             </li>
                             <li>
-                                <a id="linkrequests" href="#/home">Requests</a>
+                                <a id="linkrequests" href="javascript:void(0)" ng-click="homepagelinks('Requests')">Requests</a>
                             </li>
                             <li>
-                                <a id="linkMyContact" href="#/home">Express interest</a>
+                                <a id="linkMyContact" href="javascript:void(0)" ng-click="homepagelinks('Express')">Express interest</a>
                             </li>
 
                         </ul>
@@ -169,9 +169,9 @@
                 <a class="menu_toggle pull-right">Menu</a>
                 <ul class="pull-right">
 
-                    <li><a href="#/Registration">Register free</a></li>
-                    <li><a href="#/General">Search <span></span></a></li>
-                    <li><a href="#/General">Upgrade</a></li>
+                    <li><a href="#/registration">Register free</a></li>
+                    <li><a href="javascript:void(0)" ng-click="searchpage('profile')">Search <span></span></a></li>
+                    <li><a href="javascript:void(0);" ng-click="divloginblock()">Upgrade</a></li>
                     <li>
                         <a id="lnkSucessstoreiesFooter" href="#/successstories">success stories <span></span></a>
                     </li>

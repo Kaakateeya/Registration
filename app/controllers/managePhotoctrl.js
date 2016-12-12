@@ -1,4 +1,4 @@
-regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency', 'editmanagePhotoServices', '$http', 'fileUpload', 'authSvc', '$stateParams', function(uibModal, scope, Commondependency, editmanagePhotoServices, http, fileUpload, authSvc, stateParams) {
+regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency', 'editmanagePhotoServices', '$http', 'fileUpload', 'authSvc', '$stateParams', '$window', function(uibModal, scope, Commondependency, editmanagePhotoServices, http, fileUpload, authSvc, stateParams, window) {
 
     var up = {};
 
@@ -183,6 +183,19 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
     scope.skip = function() {
         //window.location = "#/registration/managePhoto" + stateParams.genderID;
     };
+    scope.redirectPage = function(type) {
 
+        switch (type) {
+            case 'PhotoGuideLines':
+                window.open('#/registration/photoGuideLines', '_blank');
+                break;
+            case 'Faqs':
+                window.open('#/faqs', '_blank');
+                break;
+            case 'uploadTips':
+                window.open('#/registration/uploadTips', '_blank');
+                break;
+        }
+    };
 
 }]);
