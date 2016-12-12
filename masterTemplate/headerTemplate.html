@@ -29,7 +29,7 @@
             <h4>Support No<span>+1-734-926-1011</span></h4>
         </div>
     </div>
-    <div class="navbar_inner" id="divMemberName" set-class-when-at-top="fix-to-top">
+    <div class="navbar_inner" id="divMemberName" ng-show="withlogin" set-class-when-at-top="fix-to-top">
 
         <div class="container_my clearfix">
             <div class="profile_own_name pull-left clearfix">
@@ -178,7 +178,7 @@
                     <li>
                         <a id="linkfooterhelp" href="#/help">Help</a>
                     </li>
-                    <li><a href="#/">Home</a></li>
+                    <li><a href="javascript:void(0);" ng-click="redirecthomeordashboard()">Home</a></li>
 
                 </ul>
             </div>

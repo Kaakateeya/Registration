@@ -6122,7 +6122,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </div>\r" +
     "\n" +
-    "    <div class=\"navbar_inner\" id=\"divMemberName\" set-class-when-at-top=\"fix-to-top\">\r" +
+    "    <div class=\"navbar_inner\" id=\"divMemberName\" ng-show=\"withlogin\" set-class-when-at-top=\"fix-to-top\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -6420,7 +6420,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                    </li>\r" +
     "\n" +
-    "                    <li><a href=\"#/\">Home</a></li>\r" +
+    "                    <li><a href=\"javascript:void(0);\" ng-click=\"redirecthomeordashboard()\">Home</a></li>\r" +
     "\n" +
     "\r" +
     "\n" +
