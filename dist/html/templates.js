@@ -6088,9 +6088,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <div class=\"login_help\">\r" +
     "\n" +
-    "                    <a id=\"lnkForgotPassword\">Forgot Password</a>\r" +
+    "                    <a id=\"lnkForgotPassword\" href=\"javascript:void(0)\" ng-click=\"showforgetpasswordpopup()\">Forgot Password</a>\r" +
     "\n" +
-    "                    <a href=\"#/Registration\">New User Sign Up</a>\r" +
+    "                    <a href=\"#/registration\">New User Sign Up</a>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -6434,7 +6434,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </div>\r" +
     "\n" +
-    "\r" +
+    "    <forgot-password></forgot-password>\r" +
     "\n" +
     "    <script type=\"text/ng-template\" id=\"sessionalert.html\">\r" +
     "\n" +
