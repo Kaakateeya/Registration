@@ -7607,7 +7607,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        <div class=\"login_block_header\" ng-show=\"loginpopup\" id=\"divLogin\">\r" +
     "\n" +
-    "            <form name=\"myForm\">\r" +
+    "            <form name=\"myForms\">\r" +
     "\n" +
     "                <input type=\"text\" id=\"txtUserName\" placeholder=\"ProfileID/EmailID\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"username\" required/>\r" +
     "\n" +
@@ -7623,7 +7623,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                </div>\r" +
     "\n" +
-    "                <input type=\"button\" id=\"btnUserLogin\" ng-click=\"loginsubmit()\" ng-disabled=\"myForm.$invalid\" class=\"button_custom\" value=\"Login\" />\r" +
+    "                <md-button id=\"btnUserLogin\" ng-click=\"loginsubmit()\" ng-disabled=\"myForms.$invalid\" class=\"md-raised md-warn\">Login</md-button>\r" +
     "\n" +
     "            </form>\r" +
     "\n" +
