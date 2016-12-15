@@ -7380,8 +7380,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                </script>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "            </div>\r" +
     "\n" +
     "        </div>\r" +
@@ -7671,7 +7669,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                    <span>Accout type :</span>\r" +
     "\n" +
-    "                    <a id=\"lblpaid\" href=\"#\" style=\"color:White;\">{{paidstatus}}</a>\r" +
+    "                    <a id=\"lblpaid\" ng-href=\"{{hrefpaid}}\" style=\"color:White;\">{{paidstatus}}</a>\r" +
     "\n" +
     "                </h2>\r" +
     "\n" +
