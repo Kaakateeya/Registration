@@ -4264,10 +4264,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        </div>\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
     "    </div>\r" +
     "\n" +
     "    <!--<button ng-click=\"redirect();\">test</button>-->\r" +
