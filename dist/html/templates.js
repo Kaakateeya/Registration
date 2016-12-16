@@ -6074,9 +6074,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <form name=\"myForms\">\r" +
     "\n" +
-    "                <input type=\"text\" id=\"txtUserName\" placeholder=\"ProfileID/EmailID\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"username\" required/>\r" +
+    "                <input type=\"text\" id=\"txtUserName\" ng-keyup=\"myForms.$valid && $event.keyCode == 13 && loginsubmit()\" placeholder=\"ProfileID/EmailID\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"username\" required/>\r" +
     "\n" +
-    "                <input type=\"password\" id=\"txtPassword\" placeholder=\"Password\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"password\" required/>\r" +
+    "                <input type=\"password\" id=\"txtPassword\" ng-keyup=\"myForms.$valid && $event.keyCode == 13 && loginsubmit()\" placeholder=\"Password\" style=\"height: 38px;border: 1px solid #cbc0c0 !important;\" ng-model=\"password\" required/>\r" +
     "\n" +
     "                <span class=\"clear\">&nbsp;</span>\r" +
     "\n" +
