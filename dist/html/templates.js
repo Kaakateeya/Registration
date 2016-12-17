@@ -432,7 +432,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                I agree to the\r" +
     "\n" +
-    "                                <a ng-model=\"reg.lnkprivacyPolicy\" Font-Size=\"12px\" onclick=\"PrivacyPolicy()\">Privacy Policy and T&C.</a>\r" +
+    "                                <a ng-model=\"reg.lnkprivacyPolicy\" Font-Size=\"12px\" ng-click=\"redirectprivacy()\">Privacy Policy and T&C.</a>\r" +
     "\n" +
     "                            </md-checkbox>\r" +
     "\n" +

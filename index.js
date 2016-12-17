@@ -36,7 +36,6 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
         { name: 'registration.photoGuideLines', url: '/photoGuideLines', templateUrl: regApp.templateroot + 'app/views/photoGuideLines.html', controller: 'photoGuideLinesctrl' },
         { name: 'registration.uploadTips', url: '/uploadTips', templateUrl: regApp.templateroot + 'app/views/uploadTips.html', controller: 'uploadTipsctrl' }
 
-
     ];
 
     $urlRouterProvider.otherwise('registration');

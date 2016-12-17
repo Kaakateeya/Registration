@@ -150,4 +150,11 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     });
 
 
+
+    scope.redirectprivacy = function(type) {
+        window.open('#/privacyPolicy', '_blank');
+    };
+
+
+
 }]);
