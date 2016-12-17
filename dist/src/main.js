@@ -3,7 +3,7 @@
  * Main App Creation
  */
 
-var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'jcs-autoValidate', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword']);
+var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword']);
 regApp.apipath = 'http://183.82.0.58:8010/Api/';
 regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
