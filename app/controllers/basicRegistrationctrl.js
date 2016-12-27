@@ -121,7 +121,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 console.log(response);
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 scope.genderID = response.response[0].GenderID;
-                window.location = "#/registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
                 return false;
             });
         });
@@ -152,7 +152,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
     scope.redirectprivacy = function(type) {
-        window.open('#/privacyPolicy', '_blank');
+        window.open('privacyPolicy', '_blank');
     };
 
 

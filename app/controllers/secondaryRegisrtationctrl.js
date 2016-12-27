@@ -114,16 +114,13 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
         console.log(scope.secondRegSubmit);
         SecondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
             console.log(res);
-            window.location = "#/registration/managePhoto/" + stateParams.genderID;
+            window.location = "registration/managePhoto/" + stateParams.genderID;
         });
 
     };
 
-
     // scope.redirect = function() {
     //     window.location = "#/registration/managePhoto/0";
     // };
-
-
 
 }]);

@@ -31,7 +31,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
                 Duration: year
             };
             sessionStorage.setItem("paymentobject", JSON.stringify(paymentobject));
-            var realpath = '#/paymentresponse';
+            var realpath = 'paymentresponse';
             window.open(realpath, "_self");
         };
 

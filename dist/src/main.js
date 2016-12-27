@@ -453,7 +453,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 console.log(response);
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 scope.genderID = response.response[0].GenderID;
-                window.location = "#/registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
                 return false;
             });
         });
@@ -484,7 +484,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
     scope.redirectprivacy = function(type) {
-        window.open('#/privacyPolicy', '_blank');
+        window.open('privacyPolicy', '_blank');
     };
 
 
@@ -497,7 +497,7 @@ regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', '$s
     emailVerificationService.verifyEmail(verificationCode).then(function(res) {
         console.log(res);
         if (res.data !== '0' && res.data !== 0) {
-            window.location = "#/registration/CreatePwd/" + verificationCode;
+            window.location = "registration/CreatePwd/" + verificationCode;
         } else {
 
         }
@@ -524,9 +524,9 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 sessionStorage.removeItem("LoginPhotoIsActive");
                 if (response.response[0].isemailverified === true && response.response[0].isnumberverifed === true) {
-                    window.location = "#/home";
+                    window.location = "home";
                 } else {
-                    window.location = "#/mobileverf";
+                    window.location = "mobileverf";
                 }
 
             });
@@ -722,13 +722,13 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
 
         switch (type) {
             case 'PhotoGuideLines':
-                window.open('#/registration/photoGuideLines', '_blank');
+                window.open('registration/photoGuideLines', '_blank');
                 break;
             case 'Faqs':
-                window.open('#/faqs', '_blank');
+                window.open('faqs', '_blank');
                 break;
             case 'uploadTips':
-                window.open('#/registration/uploadTips', '_blank');
+                window.open('registration/uploadTips', '_blank');
                 break;
         }
     };
@@ -767,7 +767,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
                 Duration: year
             };
             sessionStorage.setItem("paymentobject", JSON.stringify(paymentobject));
-            var realpath = '#/paymentresponse';
+            var realpath = 'paymentresponse';
             window.open(realpath, "_self");
         };
 
@@ -902,17 +902,14 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
         console.log(scope.secondRegSubmit);
         SecondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
             console.log(res);
-            window.location = "#/registration/managePhoto/" + stateParams.genderID;
+            window.location = "registration/managePhoto/" + stateParams.genderID;
         });
 
     };
 
-
     // scope.redirect = function() {
     //     window.location = "#/registration/managePhoto/0";
     // };
-
-
 
 }]);
 regApp.controller('uploadTipsctrl', ['$scope', function(scope) {
@@ -2576,7 +2573,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <h6>Upload your recent Photos for better response</h6>\r" +
     "\n" +
-    "            <a class=\"skip_button\" href=\"#/registration/upgradeMemberShip\">skip this page</a>\r" +
+    "            <a class=\"skip_button\" href=\"registration/upgradeMemberShip\">skip this page</a>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -7476,7 +7473,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkFooterSucess\" href=\"#/successstories\" class=\"linkdisableCls\">success stories</a>\r" +
+    "                    <a id=\"lnkFooterSucess\" href=\"successstories\" class=\"linkdisableCls\">success stories</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -7490,19 +7487,19 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkcareers\" href=\"#/help\" class=\"linkdisableCls\">careers</a>\r" +
+    "                    <a id=\"linkcareers\" href=\"help\" class=\"linkdisableCls\">careers</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkfaq\" href=\"#/faqs\" class=\"linkdisableCls\">faq’s</a>\r" +
+    "                    <a id=\"linkfaq\" href=\"faqs\" class=\"linkdisableCls\">faq’s</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnktermsFooter\" href=\"#/termsAndConditions\" class=\"linkdisableCls\">Terms Of Use</a>\r" +
+    "                    <a id=\"lnktermsFooter\" href=\"termsAndConditions\" class=\"linkdisableCls\">Terms Of Use</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -7520,19 +7517,19 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkFeedBackFooter\" href=\"#/feedback\" class=\"linkdisableCls\">Feed Back</a>\r" +
+    "                    <a id=\"lnkFeedBackFooter\" href=\"feedback\" class=\"linkdisableCls\">Feed Back</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkBranchesFooter\" href=\"#/ourbranches\" class=\"linkdisableCls\">Our Branches</a>\r" +
+    "                    <a id=\"lnkBranchesFooter\" href=\"ourbranches\" class=\"linkdisableCls\">Our Branches</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkHelp\" href=\"#/help\" class=\"linkdisableCls\">Help</a>\r" +
+    "                    <a id=\"linkHelp\" href=\"help\" class=\"linkdisableCls\">Help</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -7540,7 +7537,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkPrivacyFooter\" href=\"#/privacyPolicy\" class=\"linkdisableCls\">Privacy Policy</a>\r" +
+    "                    <a id=\"lnkPrivacyFooter\" href=\"privacyPolicy\" class=\"linkdisableCls\">Privacy Policy</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -7696,8 +7693,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "                    <li>\r" +
     "\n" +
     "                        <a href=\"javascript:void(0)\" class=\"linkdisableCls\">my account</a>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +

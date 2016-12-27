@@ -1041,7 +1041,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <h6>Upload your recent Photos for better response</h6>\r" +
     "\n" +
-    "            <a class=\"skip_button\" href=\"#/registration/upgradeMemberShip\">skip this page</a>\r" +
+    "            <a class=\"skip_button\" href=\"registration/upgradeMemberShip\">skip this page</a>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -5941,7 +5941,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkFooterSucess\" href=\"#/successstories\" class=\"linkdisableCls\">success stories</a>\r" +
+    "                    <a id=\"lnkFooterSucess\" href=\"successstories\" class=\"linkdisableCls\">success stories</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -5955,19 +5955,19 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkcareers\" href=\"#/help\" class=\"linkdisableCls\">careers</a>\r" +
+    "                    <a id=\"linkcareers\" href=\"help\" class=\"linkdisableCls\">careers</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkfaq\" href=\"#/faqs\" class=\"linkdisableCls\">faq’s</a>\r" +
+    "                    <a id=\"linkfaq\" href=\"faqs\" class=\"linkdisableCls\">faq’s</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnktermsFooter\" href=\"#/termsAndConditions\" class=\"linkdisableCls\">Terms Of Use</a>\r" +
+    "                    <a id=\"lnktermsFooter\" href=\"termsAndConditions\" class=\"linkdisableCls\">Terms Of Use</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -5985,19 +5985,19 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkFeedBackFooter\" href=\"#/feedback\" class=\"linkdisableCls\">Feed Back</a>\r" +
+    "                    <a id=\"lnkFeedBackFooter\" href=\"feedback\" class=\"linkdisableCls\">Feed Back</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkBranchesFooter\" href=\"#/ourbranches\" class=\"linkdisableCls\">Our Branches</a>\r" +
+    "                    <a id=\"lnkBranchesFooter\" href=\"ourbranches\" class=\"linkdisableCls\">Our Branches</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"linkHelp\" href=\"#/help\" class=\"linkdisableCls\">Help</a>\r" +
+    "                    <a id=\"linkHelp\" href=\"help\" class=\"linkdisableCls\">Help</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -6005,7 +6005,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                <li>\r" +
     "\n" +
-    "                    <a id=\"lnkPrivacyFooter\" href=\"#/privacyPolicy\" class=\"linkdisableCls\">Privacy Policy</a>\r" +
+    "                    <a id=\"lnkPrivacyFooter\" href=\"privacyPolicy\" class=\"linkdisableCls\">Privacy Policy</a>\r" +
     "\n" +
     "                </li>\r" +
     "\n" +
@@ -6161,8 +6161,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "                    <li>\r" +
     "\n" +
     "                        <a href=\"javascript:void(0)\" class=\"linkdisableCls\">my account</a>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +
