@@ -23,8 +23,7 @@ regApp.BucketName = 'angularkaknew';
 
 // regApp.templateroot = '';
 
-regApp.config(function($stateProvider, $urlRouterProvider) {
-
+regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     var states = [
         { name: 'registration', url: '/registration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
@@ -57,5 +56,6 @@ regApp.config(function($stateProvider, $urlRouterProvider) {
             url: item.url,
             views: innerView
         })
+        $locationProvider.html5Mode(true);
     });
 });

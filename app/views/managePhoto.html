@@ -39,7 +39,7 @@
                                                 <ng-md-icon icon="add_a_photo" style="fill:#665454" size="25">Add</ng-md-icon>
                                             </a>
 
-                                            <a href="javascript:void(0);" ng-show="{{item.deleteVisibility}}" ng-click="DeleteImage(item.keyname,item.Cust_Photos_ID);">
+                                            <a href="javascript:void(0);" ng-show="{{item.IsMain==1?false:(item.PhotoName!=null?true:false)}}" ng-click="DeleteImage(item.keyname,item.Cust_Photos_ID);">
                                                 <ng-md-icon icon="delete" style="fill:#665454" size="25">Delete</ng-md-icon>
                                             </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             <a href="javascript:void(0);" class="set_pic" ng-click="setAsProfilePic(item.Cust_Photos_ID);" style="color:#665454;font-weight:bold;" ng-show='{{item.IsMain=="1"?false:(item.PhotoName!=null?true:false) }}'>

@@ -1087,7 +1087,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                                            <a href=\"javascript:void(0);\" ng-show=\"{{item.deleteVisibility}}\" ng-click=\"DeleteImage(item.keyname,item.Cust_Photos_ID);\">\r" +
+    "                                            <a href=\"javascript:void(0);\" ng-show=\"{{item.IsMain==1?false:(item.PhotoName!=null?true:false)}}\" ng-click=\"DeleteImage(item.keyname,item.Cust_Photos_ID);\">\r" +
     "\n" +
     "                                                <ng-md-icon icon=\"delete\" style=\"fill:#665454\" size=\"25\">Delete</ng-md-icon>\r" +
     "\n" +
@@ -6070,7 +6070,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "        <input type=\"button\" value=\"Logout\" ng-show=\"loginoutstatus\" id=\"btnLogOut\" class=\"pull-right button_custom\" ng-click=\"ClearlocalStorage();\" />\r" +
     "\n" +
-    "        <div class=\"login_block_header\" ng-show=\"loginpopup\" id=\"divLogin\">\r" +
+    "\r" +
+    "\n" +
+    "        <div class=\"login_block_header\" ng-style=\"loginpopup===true?{'display':'block'}:{'display':'none'}\" id=\"divLogin\">\r" +
     "\n" +
     "            <form name=\"myForms\">\r" +
     "\n" +
@@ -6084,7 +6086,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                    <a id=\"lnkForgotPassword\" href=\"javascript:void(0)\" ng-click=\"showforgetpasswordpopup()\">Forgot Password</a>\r" +
     "\n" +
-    "                    <a href=\"#/registration\">New User Sign Up</a>\r" +
+    "                    <a href=\"registration\">New User Sign Up</a>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -6102,11 +6104,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <h3>\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "                <a id=\"lnkFeedbackMenu\" href=\"#/feedback\">Feedback</a>\r" +
-    "\n" +
-    "\r" +
+    "                <a id=\"lnkFeedbackMenu\" href=\"feedback\">Feedback</a>\r" +
     "\n" +
     "            </h3>\r" +
     "\n" +
@@ -6176,25 +6174,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkeditprofile\" href=\"#/editview\">Edit Profile</a>\r" +
+    "                                <a id=\"linkeditprofile\" href=\"editview\">Edit Profile</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkmanagephoto\" href=\"#/editview/editManagePhoto\">Manage Photo</a>\r" +
+    "                                <a id=\"linkmanagephoto\" href=\"editview/editManagePhoto\">Manage Photo</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkmanagehoroscope\" href=\"#/editview/editAstro\">Manage Horoscope</a>\r" +
+    "                                <a id=\"linkmanagehoroscope\" href=\"editview/editAstro\">Manage Horoscope</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkprofilesettings\" href=\"#/profilesettings\">Profile Settings</a>\r" +
+    "                                <a id=\"linkprofilesettings\" href=\"profilesettings\">Profile Settings</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
@@ -6246,25 +6244,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkupgrademembership\" href=\"#/UpgradeMembership\">Upgrade Membership</a>\r" +
+    "                                <a id=\"linkupgrademembership\" href=\"UpgradeMembership\">Upgrade Membership</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkmyorders\" href=\"#/myorders\">My Orders and Statistics</a>\r" +
+    "                                <a id=\"linkmyorders\" href=\"myorders\">My Orders and Statistics</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkmembershipfaqs\" href=\"#/faqs\">Membership Faqs</a>\r" +
+    "                                <a id=\"linkmembershipfaqs\" href=\"faqs\">Membership Faqs</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkAddOnPacks\" href=\"#/AddOnPacks\" ng-hide=\"true\">Add On Packs</a>\r" +
+    "                                <a id=\"linkAddOnPacks\" href=\"AddOnPacks\" ng-hide=\"true\">Add On Packs</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
@@ -6342,31 +6340,31 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                    <li>\r" +
     "\n" +
-    "                        <a href=\"#/help\" class=\"linkdisableCls\">Help</a>\r" +
+    "                        <a href=\"help\" class=\"linkdisableCls\">Help</a>\r" +
     "\n" +
     "                        <ul>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"lnkcontactus\" href=\"#/help\">Contact Us</a>\r" +
+    "                                <a id=\"lnkcontactus\" href=\"help\">Contact Us</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"linkmysupportickets\" href=\"#/MySupportTickets\">My Support Tickets</a>\r" +
+    "                                <a id=\"linkmysupportickets\" href=\"MySupportTickets\">My Support Tickets</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"lnkfeedback\" href=\"#/feedback\">Feed Back</a>\r" +
+    "                                <a id=\"lnkfeedback\" href=\"feedback\">Feed Back</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
     "                            <li>\r" +
     "\n" +
-    "                                <a id=\"lnktakeatour\" href=\"#/takeatour\">Take A Tour</a>\r" +
+    "                                <a id=\"lnktakeatour\" href=\"takeatour\">Take A Tour</a>\r" +
     "\n" +
     "                            </li>\r" +
     "\n" +
@@ -6398,7 +6396,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                    <li><a href=\"#/registration\">Register free</a></li>\r" +
+    "                    <li><a href=\"registration\">Register free</a></li>\r" +
     "\n" +
     "                    <li><a href=\"javascript:void(0)\" ng-click=\"searchpage('profile')\">Search <span></span></a></li>\r" +
     "\n" +
@@ -6406,13 +6404,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                    <li>\r" +
     "\n" +
-    "                        <a id=\"lnkSucessstoreiesFooter\" href=\"#/successstories\">success stories <span></span></a>\r" +
+    "                        <a id=\"lnkSucessstoreiesFooter\" href=\"successstories\">success stories <span></span></a>\r" +
     "\n" +
     "                    </li>\r" +
     "\n" +
     "                    <li>\r" +
     "\n" +
-    "                        <a id=\"linkfooterhelp\" href=\"#/help\">Help</a>\r" +
+    "                        <a id=\"linkfooterhelp\" href=\"help\">Help</a>\r" +
     "\n" +
     "                    </li>\r" +
     "\n" +
@@ -6427,6 +6425,14 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        </div>\r" +
     "\n" +
     "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "    <forgot-password></forgot-password>\r" +
     "\n" +
