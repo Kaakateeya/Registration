@@ -1,4 +1,4 @@
-regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout) {
+regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', 'route', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout, route) {
     scope.childStayingWith = 'childStayingWith';
     scope.Religion = 'Religion';
     //scope.Mothertongue = 'Mothertongue';
@@ -121,7 +121,8 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 console.log(response);
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 scope.genderID = response.response[0].GenderID;
-                window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                //  window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                route.go('registration.seconadryRegistration', { fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
                 return false;
             });
         });

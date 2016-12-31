@@ -43,6 +43,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
         };
         scope.ccavenuepage = function() {
             window.open("https://secure.ccavenue.com/transaction/TransactionInitiator", "_self");
+
         };
     }
 ]);

@@ -1,4 +1,4 @@
-regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc) {
+regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', 'route', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc, route) {
 
     scope.MaritalStatus = getArray.GArray('MaritalStatus');
     scope.Complexion = getArray.GArray('Complexion');
@@ -114,7 +114,10 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
         console.log(scope.secondRegSubmit);
         SecondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
             console.log(res);
-            window.location = "registration/managePhoto/" + stateParams.genderID;
+            // window.location = "registration/managePhoto/" + stateParams.genderID;
+
+            route.go('registration.managePhoto', { genderID: stateParams.genderID });
+
         });
 
     };

@@ -330,7 +330,7 @@ regApp.constant('arrayConstantsreg', {
     ]
 
 });
-regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout) {
+regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondependency', 'basicRegistrationService', '$filter', 'authSvc', '$timeout', 'route', function(scope, getArray, commondependency, basicRegistrationService, filter, authSvc, timeout, route) {
     scope.childStayingWith = 'childStayingWith';
     scope.Religion = 'Religion';
     //scope.Mothertongue = 'Mothertongue';
@@ -453,7 +453,8 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 console.log(response);
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 scope.genderID = response.response[0].GenderID;
-                window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                //  window.location = "registration/seconadryRegistration/" + obj.txtfirstname + "/" + obj.txtlastname + "/" + obj.ddlcountry + "/" + response.response[0].GenderID;
+                route.go('registration.seconadryRegistration', { fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
                 return false;
             });
         });
@@ -490,21 +491,24 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
 }]);
-regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', '$stateParams', function(scope, emailVerificationService, stateParams) {
+regApp.controller('confirmEmailCtrl', ['$scope', 'emailVerificationService', '$stateParams', 'route', function(scope, emailVerificationService, stateParams, route) {
 
     var verificationCode = stateParams.vid;
 
     emailVerificationService.verifyEmail(verificationCode).then(function(res) {
         console.log(res);
         if (res.data !== '0' && res.data !== 0) {
-            window.location = "registration/CreatePwd/" + verificationCode;
+            // window.location = "registration/CreatePwd/" + verificationCode;
+            route.go('registration.CreatePwd', { eid: verificationCode });
+
+
         } else {
 
         }
     });
 
 }]);
-regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', 'authSvc', function(scope, cerateNewPwd, stateParams, authSvc) {
+regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams', 'authSvc', 'route', function(scope, cerateNewPwd, stateParams, authSvc, route) {
     scope.custID = '0';
     scope.Email = '';
     scope.profileID = '';
@@ -524,9 +528,12 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
                 authSvc.user(response.response !== null ? response.response[0] : null);
                 sessionStorage.removeItem("LoginPhotoIsActive");
                 if (response.response[0].isemailverified === true && response.response[0].isnumberverifed === true) {
-                    window.location = "home";
+                    // window.location = "home";
+                    route.go('dashboard', { type: 'C' });
+
                 } else {
-                    window.location = "mobileverf";
+                    // window.location = "mobileverf";
+                    route.go('mobileverf', {});
                 }
 
             });
@@ -779,6 +786,7 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
         };
         scope.ccavenuepage = function() {
             window.open("https://secure.ccavenue.com/transaction/TransactionInitiator", "_self");
+
         };
     }
 ]);
@@ -786,7 +794,7 @@ regApp.controller('photoGuideLinesctrl', ['$scope', function(scope) {
 
 
 }]);
-regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc) {
+regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', 'route', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc, route) {
 
     scope.MaritalStatus = getArray.GArray('MaritalStatus');
     scope.Complexion = getArray.GArray('Complexion');
@@ -902,7 +910,10 @@ regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondep
         console.log(scope.secondRegSubmit);
         SecondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
             console.log(res);
-            window.location = "registration/managePhoto/" + stateParams.genderID;
+            // window.location = "registration/managePhoto/" + stateParams.genderID;
+
+            route.go('registration.managePhoto', { genderID: stateParams.genderID });
+
         });
 
     };
