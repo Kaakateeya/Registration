@@ -1507,7 +1507,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </h4>\r" +
     "\n" +
-    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"#/mobileverf\">Complete My Registration </a>\r" +
+    "    <a class=\"skip_button pull-right\" OnClick=\"skipreg_Click\" href=\"mobileverf\">Complete My Registration </a>\r" +
     "\n" +
     "    <div class=\"clear\"></div>\r" +
     "\n" +
