@@ -1100,10 +1100,10 @@ regApp.factory('Commondependency', ['SelectBindService', function(SelectBindServ
             modalpopupopen.close();
         },
         listSelectedVal: function(val) {
-            var str = null;
-            if (val !== null && val !== undefined) {
+            var str = '';
+            if (val !== null && val !== undefined && val !== '') {
                 if (angular.isString(val)) {
-                    str = val === '' ? null : val;
+                    str = val === '' ? '' : val;
                 } else if (angular.isNumber(val)) {
                     str = val;
                 } else {
