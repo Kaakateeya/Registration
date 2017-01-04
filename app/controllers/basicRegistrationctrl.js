@@ -129,18 +129,20 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
     };
 
     scope.valueExists = function(type, flag, val) {
-        basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
-            console.log(response);
-            if (response.data === 1) {
-                if (type === 'email') {
-                    scope.reg.txtEmail = '';
-                    alert('Email Already Exists');
-                } else {
-                    scope.reg.txtMobileNo = '';
-                    alert('Mobile number Already Exists');
+        if (val !== undefined) {
+            basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
+                console.log(response);
+                if (response.data === 1) {
+                    if (type === 'email') {
+                        scope.reg.txtEmail = '';
+                        alert('Email Already Exists');
+                    } else {
+                        scope.reg.txtMobileNo = '';
+                        alert('Mobile number Already Exists');
+                    }
                 }
-            }
-        });
+            });
+        }
     };
 
 
