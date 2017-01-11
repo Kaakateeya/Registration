@@ -150,9 +150,6 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
         } else {
             alert("This browser does not support HTML5.");
         }
-
-
-
     };
 
     scope.DeleteImage = function(key, Cust_Photoid) {

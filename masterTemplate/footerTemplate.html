@@ -4,7 +4,7 @@
 
         <div id="livechat">
             &nbsp;&nbsp;&nbsp;
-            <a onclick="OpenLHNChat();return false;" href="#" target="_blank" id="lhnWin" class="icon-chat-footer pull-left"></a>
+            <a onclick="OpenLHNChat();return false;" href="javascript:void(0)" target="_blank" id="lhnWin" class="icon-chat-footer pull-left"></a>
 
             <div id="livechatdiv">
                 <!-- This code must be installed within the body tags 3422-->
@@ -26,7 +26,8 @@
                 }
                 var wleft = (screen.width - 580 - 32) / 2;
                 var wtop = (screen.height - 420 - 96) / 2;
-                alert(bLHNOnline);
+                var bLHNOnline = 0;
+                var lhnwindow = 0;
                 var sScrollbars = (bLHNOnline == 0) ? "yes" : "no";
                 if (document.location.protocol == 'https:' || (typeof lhnJsHost != 'undefined' && lhnJsHost == "https://")) {
                     lhnWin = window.open('https://www.livehelpnow.net/lhn/livechatvisitor.aspx?zzwindow=' + lhnwindow + '&lhnid=' + 3422 + '&d=' + 0, 'lhnchat', 'left=' + wleft + ',top=' + wtop + ',width=580,height=435,toolbar=no,location=no,directories=no,status=yes,menubar=no,scrollbars=' + sScrollbars + ',copyhistory=no,resizable=yes');

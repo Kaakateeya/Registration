@@ -694,9 +694,6 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
         } else {
             alert("This browser does not support HTML5.");
         }
-
-
-
     };
 
     scope.DeleteImage = function(key, Cust_Photoid) {
@@ -7395,7 +7392,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            &nbsp;&nbsp;&nbsp;\r" +
     "\n" +
-    "            <a onclick=\"OpenLHNChat();return false;\" href=\"#\" target=\"_blank\" id=\"lhnWin\" class=\"icon-chat-footer pull-left\"></a>\r" +
+    "            <a onclick=\"OpenLHNChat();return false;\" href=\"javascript:void(0)\" target=\"_blank\" id=\"lhnWin\" class=\"icon-chat-footer pull-left\"></a>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -7439,7 +7436,9 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                var wtop = (screen.height - 420 - 96) / 2;\r" +
     "\n" +
-    "                alert(bLHNOnline);\r" +
+    "                var bLHNOnline = 0;\r" +
+    "\n" +
+    "                var lhnwindow = 0;\r" +
     "\n" +
     "                var sScrollbars = (bLHNOnline == 0) ? \"yes\" : \"no\";\r" +
     "\n" +
@@ -7624,7 +7623,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/masterTemplate/headerTemplate.html',
-    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl'>\r" +
+    "<div class=\"header_inner\" id=\"divInnerMaster\" ng-controller='headctrl' ng-init=\"headerinit()\">\r" +
     "\n" +
     "\r" +
     "\n" +
