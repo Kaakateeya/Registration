@@ -95,9 +95,6 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
             } else if (size > 4 * 1024) {
                 alert('Sorry,Upload Photo Size Must Be Less than 1 mb');
             } else {
-
-
-
                 console.log(obj.myFile);
                 // var extension = ((obj.myFile.name).split('.'))[1];
                 var keyname = regApp.prefixPath + 'KMPL_' + CustID + '_Images/Img' + scope.photorowID + '.' + extension;
@@ -144,8 +141,6 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
 
                     }
                 });
-
-
             }
         } else {
             alert("This browser does not support HTML5.");

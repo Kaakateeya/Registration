@@ -29,7 +29,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="pack_heading2">
+                                    <td class="pack_heading2" style="font-size: 13px !important;">
                                         <small class="payment-label">
                                        <label  class="duration_of_pack" ng-hide="payment.MembershipName=='Services & Features'?true:false">{{payment.MemberShipDuration}} Months</label>
                                        </small>
@@ -111,7 +111,7 @@
 </div>
 <style type="text/css">
     .virtualRepeatdemoHorizontalUsage #horizontal-container {
-        height: 580px;
+        height: 494px;
         width: 100%;
         /*max-width: 930px; */
     }
@@ -143,22 +143,8 @@
         font-weight: 700;
     }
     
-    td.pack_heading2 {
-        text-transform: uppercase;
-        color: #000 !important;
-        font-size: 18px !important;
-        line-height: 32px !important;
-        font-weight: 700;
-    }
-    
-    .linkdisableCls {
-        pointer-events: none;
-        cursor: default;
-    }
-    
-    .profile_own_menu ul li:hover ul {
-        top: 25px;
-        opacity: 1;
-        display: none;
+    .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {
+        overflow-x: hidden;
+        overflow-y: hidden;
     }
 </style>

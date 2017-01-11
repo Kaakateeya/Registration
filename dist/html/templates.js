@@ -1559,7 +1559,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <tr>\r" +
     "\n" +
-    "                                    <td class=\"pack_heading2\">\r" +
+    "                                    <td class=\"pack_heading2\" style=\"font-size: 13px !important;\">\r" +
     "\n" +
     "                                        <small class=\"payment-label\">\r" +
     "\n" +
@@ -1723,7 +1723,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    .virtualRepeatdemoHorizontalUsage #horizontal-container {\r" +
     "\n" +
-    "        height: 580px;\r" +
+    "        height: 494px;\r" +
     "\n" +
     "        width: 100%;\r" +
     "\n" +
@@ -1787,39 +1787,11 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    td.pack_heading2 {\r" +
+    "    .md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {\r" +
     "\n" +
-    "        text-transform: uppercase;\r" +
+    "        overflow-x: hidden;\r" +
     "\n" +
-    "        color: #000 !important;\r" +
-    "\n" +
-    "        font-size: 18px !important;\r" +
-    "\n" +
-    "        line-height: 32px !important;\r" +
-    "\n" +
-    "        font-weight: 700;\r" +
-    "\n" +
-    "    }\r" +
-    "\n" +
-    "    \r" +
-    "\n" +
-    "    .linkdisableCls {\r" +
-    "\n" +
-    "        pointer-events: none;\r" +
-    "\n" +
-    "        cursor: default;\r" +
-    "\n" +
-    "    }\r" +
-    "\n" +
-    "    \r" +
-    "\n" +
-    "    .profile_own_menu ul li:hover ul {\r" +
-    "\n" +
-    "        top: 25px;\r" +
-    "\n" +
-    "        opacity: 1;\r" +
-    "\n" +
-    "        display: none;\r" +
+    "        overflow-y: hidden;\r" +
     "\n" +
     "    }\r" +
     "\n" +
