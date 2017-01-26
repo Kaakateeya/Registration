@@ -15,12 +15,12 @@
 
         <div layout="column" ng-cloak="" class="inputdemoErrors">
             <md-content layout-padding="">
-                <form name="secregForm" novalidate role="form" ng-submit="secregForm.$valid && secondRegSubmit(regsec);">
+                <form name="secregForm" accessible-form novalidate role="form" ng-submit="secregForm.$valid && secondRegSubmit(regsec);">
 
                     <div class="reg_fields_entry clearfix">
                         <md-input-container class="md-block span4">
                             <label>Name</label>
-                            <input maxlength="100" required="" readonly md-no-asterisk="" name="LabelName" ng-model="regsec.LabelName">
+                            <input readonly md-no-asterisk="" name="LabelName" ng-model="regsec.LabelName">
                         </md-input-container>
                         <md-input-container flex="50" class="span4">
                             <label>Marital Status</label>

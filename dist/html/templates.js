@@ -340,13 +340,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>Mobile number</label>\r" +
     "\n" +
-    "                                <input maxlength=\"10\" required=\"\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"reg.txtMobileNo\" ng-blur=\"valueExists('number',1,reg.txtMobileNo);\">\r" +
+    "                                <input maxlength=\"10\" ng-minlength=\"10\" required=\"\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"reg.txtMobileNo\" ng-blur=\"valueExists('number',1,reg.txtMobileNo);\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
     "\n" +
-    "                                    <div ng-message-exp=\"['required', 'pattern']\">\r" +
+    "                                    <div ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
     "\n" +
-    "                                        This is required and enter only numbers.\r" +
+    "                                        This is required and enter only numbers(10 digits).\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -2041,7 +2041,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <md-content layout-padding=\"\">\r" +
     "\n" +
-    "                <form name=\"secregForm\" novalidate role=\"form\" ng-submit=\"secregForm.$valid && secondRegSubmit(regsec);\">\r" +
+    "                <form name=\"secregForm\" accessible-form novalidate role=\"form\" ng-submit=\"secregForm.$valid && secondRegSubmit(regsec);\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2051,7 +2051,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <label>Name</label>\r" +
     "\n" +
-    "                            <input maxlength=\"100\" required=\"\" readonly md-no-asterisk=\"\" name=\"LabelName\" ng-model=\"regsec.LabelName\">\r" +
+    "                            <input readonly md-no-asterisk=\"\" name=\"LabelName\" ng-model=\"regsec.LabelName\">\r" +
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
