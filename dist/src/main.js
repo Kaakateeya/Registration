@@ -1123,7 +1123,7 @@ regApp.factory('cerateNewPwd', ['$http', function(http) {
         }
     };
 }]);
-regApp.factory('Commondependency', ['SelectBindService', function(SelectBindService) {
+regApp.factory('Commondependency', ['SelectBindServicereg', function(SelectBindService) {
     var modalpopupopen;
 
     return {
@@ -1311,7 +1311,7 @@ regApp.service('fileUpload', ['$http', function($http) {
         });
     };
 }]);
-regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(cons, service) {
+regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', function(cons, service) {
     return {
         GArray: function(type) {
             var option = [];
@@ -1515,7 +1515,7 @@ regApp.factory('SecondaryRegistrationService', ['$http', function(http) {
         }
     };
 }]);
-regApp.factory('SelectBindService', ["$http", function(http) {
+regApp.factory('SelectBindServicereg', ["$http", function(http) {
     return {
         countrySelect: function() {
             return http.get(regApp.apipath + 'Dependency/getCountryDependency', { params: { dependencyName: "", dependencyValue: "" } });

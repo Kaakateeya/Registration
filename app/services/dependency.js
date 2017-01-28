@@ -1,4 +1,4 @@
-regApp.factory('Commondependency', ['SelectBindService', function(SelectBindService) {
+regApp.factory('Commondependency', ['SelectBindServicereg', function(SelectBindService) {
     var modalpopupopen;
 
     return {

@@ -1,4 +1,4 @@
-regApp.factory('SelectBindService', ["$http", function(http) {
+regApp.factory('SelectBindServicereg', ["$http", function(http) {
     return {
         countrySelect: function() {
             return http.get(regApp.apipath + 'Dependency/getCountryDependency', { params: { dependencyName: "", dependencyValue: "" } });

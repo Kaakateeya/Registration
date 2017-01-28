@@ -1,4 +1,4 @@
-regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindService', function(cons, service) {
+regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', function(cons, service) {
     return {
         GArray: function(type) {
             var option = [];

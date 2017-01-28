@@ -1,7 +1,7 @@
 // AngularJS: 1.3.15
 // bootstrap-multiselect: 0.9.6
 //var statticdata=require('./staticArrayBindings.json');
-regApp.directive('multiselectdropdownreg', ['arrayConstantsreg', 'SelectBindService', function(cons, service) {
+regApp.directive('multiselectdropdownreg', ['arrayConstantsreg', 'SelectBindServicereg', function(cons, service) {
     return {
         require: 'ng-model',
         scope: {
