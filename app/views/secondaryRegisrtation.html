@@ -186,7 +186,7 @@
                         <br>
                         <md-input-container flex="50" class="span4">
                             <label>Country living in</label>
-                            <md-select name="ddlCountryLivingIn" ng-model="regsec.ddlCountryLivingIn" required="" ng-change="changeBind('Country',regsec.ddlCountryLivingIn)">
+                            <md-select name="ddlCountryLivingIn" ng-model="regsec.ddlCountryLivingIn" ng-change="changeBind('Country',regsec.ddlCountryLivingIn)">
                                 <md-option ng-value="h.value" ng-repeat="h in Country">{{h.label}} </md-option>
                             </md-select>
                             <div class="errors" ng-messages="secregForm.ddlCountryLivingIn.$error">
