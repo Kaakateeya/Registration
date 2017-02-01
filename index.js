@@ -8,11 +8,11 @@
  */
 
 var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword', 'jcs-autoValidate']);
-// regApp.apipath = 'http://54.169.133.223:8070/Api/';
+regApp.apipath = 'http://54.169.133.223:8070/Api/';
 
 // regApp.apipath = 'http://183.82.0.58:8010/Api/';
 
-regApp.apipath = '/webroot/Api/';
+// regApp.apipath = '/webroot/Api/';
 
 regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
