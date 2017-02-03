@@ -2,7 +2,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
   'use strict';
 
   $templateCache.put('registration/app/views/basicRegistration.html',
-    "<div class=\"register_page_main\" ng-controller=\"basicRegistrationctrl\">\r" +
+    "<div class=\"register_page_main\">\r" +
     "\n" +
     "\r" +
     "\n" +

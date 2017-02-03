@@ -159,6 +159,25 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', functio
                         option = option;
                     });
                     break;
+
+                    // case 'CountrYWithCode':
+                    //     var Country = [],
+                    //         CountryCode = [];
+                    //     service.CountryWithCode().then(function(response) {
+
+                    //         _.each(response.data, function(item) {
+                    //             Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                    //             CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
+                    //         });
+                    //         option = [Country, CountryCode];
+                    //         console.log('test..');
+                    //         console.log(option);
+                    //     });
+
+
+                    //     break;
+
+
             }
             return option;
         }

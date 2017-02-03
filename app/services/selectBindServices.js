@@ -62,5 +62,9 @@ regApp.factory('SelectBindServicereg', ["$http", function(http) {
 
             return http.get(regApp.apipath + 'Dependency/getDropdownValues_dependency_injection', { params: { dependencyName: 'Region', dependencyValue: obj1, dependencyflagID: '' } });
         },
+        CountryWithCode: function() {
+            return http.get(regApp.apipath + 'Dependency/getCountryDependencyCountryCode', { params: { dependencyName: "", dependencyValue: "" } });
+        }
+
     };
 }]);
