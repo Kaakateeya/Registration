@@ -7719,7 +7719,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </div>\r" +
     "\n" +
-    "    <div class=\"navbar_inner\" id=\"divMemberName\" ng-show=\"withlogin\" set-class-when-at-top=\"fix-to-top\">\r" +
+    "    <div class=\"navbar_inner\" id=\"divMemberName\" ng-show=\"withlogin\">\r" +
     "\n" +
     "\r" +
     "\n" +
