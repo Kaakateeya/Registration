@@ -4046,7 +4046,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        </md-input-container>\r" +
     "\n" +
-    "                        <md-input-container flex=\"50\" class=\"span4\" ng-hide=\"regsec.ddlCountryLivingIn!=1\">\r" +
+    "                        <md-input-container flex=\"50\" class=\"span4\" ng-if=\"regsec.ddlCountryLivingIn==1\">\r" +
     "\n" +
     "                            <label>District</label>\r" +
     "\n" +

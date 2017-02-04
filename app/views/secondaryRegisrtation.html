@@ -203,7 +203,7 @@
                                 <div ng-message="required">Required</div>
                             </div>
                         </md-input-container>
-                        <md-input-container flex="50" class="span4" ng-hide="regsec.ddlCountryLivingIn!=1">
+                        <md-input-container flex="50" class="span4" ng-if="regsec.ddlCountryLivingIn==1">
                             <label>District</label>
                             <md-select name="ddlDistricLivingIn" ng-model="regsec.ddlDistricLivingIn" required="" ng-change="changeBind('district',regsec.ddlDistricLivingIn)">
                                 <md-option ng-value="h.value" ng-repeat="h in districtArr">{{h.label}} </md-option>
