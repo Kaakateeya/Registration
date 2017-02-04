@@ -2475,7 +2475,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "                        <md-input-container class=\"span4\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\">\r" +
+    "                        <md-input-container class=\"span4\" style=\"padding-right: 0px;\" ng-hide=\"regsec.ddlBornCitizenship==regsec.ddlCountryLivingIn\">\r" +
     "\n" +
     "                            <label>Residing since</label>\r" +
     "\n" +
