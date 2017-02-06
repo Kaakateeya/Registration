@@ -18,7 +18,7 @@ regApp.apipath = 'http://35.154.148.74:8070/Api/';
 regApp.templateroot = 'registration/';
 //regApp.templateroot = '';
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
-regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
+regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
 
 regApp.prefixPath = 'Images/ProfilePics/';
 regApp.S3PhotoPath = '';
