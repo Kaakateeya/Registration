@@ -16,12 +16,12 @@ regApp.templateroot = 'registration/';
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
-regApp.prefixPath = 'Imagesnew/ProfilePics/';
+regApp.prefixPath = 'Images/ProfilePics/';
 regApp.S3PhotoPath = '';
 regApp.Mnoimage = regApp.GlobalImgPath + "Images/customernoimages/Mnoimage.jpg";
 regApp.Fnoimage = regApp.GlobalImgPath + "Images/customernoimages/Fnoimage.jpg";
 regApp.accesspathdots = regApp.GlobalImgPathforimage + regApp.prefixPath;
-regApp.BucketName = 'angularkaknew';
+regApp.BucketName = 'kaakateeyaprod';
 
 // regApp.templateroot = '';
 
@@ -602,19 +602,19 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
                 item.deleteVisibility = true;
                 switch (item.DisplayOrder) {
                     case 1:
-                        var photoshoppath = "img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                        var photoshoppath = "Img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
                         var path = imagepath + strCustDirName + "/" + photoshoppath;
                         item.ImageUrl = path;
                         item.keyname = strCustDirName + "/" + photoshoppath;
                         break;
                     case 2:
-                        var photoshoppathnew = "img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                        var photoshoppathnew = "Img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
                         var pathnew = imagepath + strCustDirName + "/" + photoshoppathnew;
                         item.ImageUrl = pathnew;
                         item.keyname = strCustDirName + "/" + photoshoppathnew;
                         break;
                     case 3:
-                        var photoshoppathneew3 = "img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                        var photoshoppathneew3 = "Img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
                         var pathneww = imagepath + strCustDirName + "/" + photoshoppathneew3;
                         item.ImageUrl = pathneww;
                         item.keyname = strCustDirName + "/" + photoshoppathneew3;

@@ -20,12 +20,12 @@ regApp.templateroot = 'registration/';
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
-regApp.prefixPath = 'Imagesnew/ProfilePics/';
+regApp.prefixPath = 'Images/ProfilePics/';
 regApp.S3PhotoPath = '';
 regApp.Mnoimage = regApp.GlobalImgPath + "Images/customernoimages/Mnoimage.jpg";
 regApp.Fnoimage = regApp.GlobalImgPath + "Images/customernoimages/Fnoimage.jpg";
 regApp.accesspathdots = regApp.GlobalImgPathforimage + regApp.prefixPath;
-regApp.BucketName = 'angularkaknew';
+regApp.BucketName = 'kaakateeyaprod';
 
 // regApp.templateroot = '';
 
