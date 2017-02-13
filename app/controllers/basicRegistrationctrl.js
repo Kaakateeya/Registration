@@ -105,7 +105,10 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         scope.regSubmit = function(obj) {
 
             var valmm = _.indexOf(monthArr, obj.ddlMM);
-            var date = obj.ddlDD + '-' + (valmm != -1 ? parseInt(valmm) + 1 : 0) + '-' + obj.ddlYear;
+
+            valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
+            valmm = valmm >= 10 ? valmm : '0' + valmm;
+            var date = obj.ddlDD + '-' + valmm + '-' + obj.ddlYear;
             var inputObj = {
                 strFirstName: obj.txtfirstname,
                 strLastName: obj.txtlastname,
@@ -120,8 +123,8 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 IsCustomer: 1,
                 strMobileNo: obj.txtMobileNo,
                 ID: 1,
-                strAreaCode: obj.txtArea,
-                strLandNo: obj.txtlandNum,
+                strAreaCode: obj.txtArea !== '' ? obj.txtArea : '',
+                strLandNo: obj.txtlandNum !== '' ? obj.txtlandNum : '',
                 strEmail: obj.txtEmail,
                 strPassword: obj.txtpassword,
                 intProfileRegisteredBy: null,

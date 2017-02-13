@@ -10,9 +10,8 @@ var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate',
 
 regApp.apipath = 'http://52.66.131.254:8010/Api/';
 
-
 regApp.templateroot = 'registration/';
-//regApp.templateroot = '';
+// regApp.templateroot = '';
 regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
 
@@ -443,7 +442,10 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         scope.regSubmit = function(obj) {
 
             var valmm = _.indexOf(monthArr, obj.ddlMM);
-            var date = obj.ddlDD + '-' + (valmm != -1 ? parseInt(valmm) + 1 : 0) + '-' + obj.ddlYear;
+
+            valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
+            valmm = valmm >= 10 ? valmm : '0' + valmm;
+            var date = obj.ddlDD + '-' + valmm + '-' + obj.ddlYear;
             var inputObj = {
                 strFirstName: obj.txtfirstname,
                 strLastName: obj.txtlastname,
@@ -458,8 +460,8 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 IsCustomer: 1,
                 strMobileNo: obj.txtMobileNo,
                 ID: 1,
-                strAreaCode: obj.txtArea,
-                strLandNo: obj.txtlandNum,
+                strAreaCode: obj.txtArea !== '' ? obj.txtArea : '',
+                strLandNo: obj.txtlandNum !== '' ? obj.txtlandNum : '',
                 strEmail: obj.txtEmail,
                 strPassword: obj.txtpassword,
                 intProfileRegisteredBy: null,
@@ -1128,6 +1130,7 @@ regApp.factory('emailVerificationService', ['$http', function(http) {
 regApp.factory('basicRegistrationService', ['$http', function(http) {
     return {
         submitBasicRegistration: function(obj) {
+            console.log(obj);
             return http.post(regApp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
         },
         emailExists: function(obj) {
@@ -3977,7 +3980,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <input maxlength=\"7\" md-no-asterisk=\"\" name=\"txtSalary\" ng-model=\"regsec.txtSalary\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
-    "                            <div ng-messages=\"regsec.txtSalary.$error\">\r" +
+    "                            <div ng-messages=\"secregForm.txtSalary.$error\">\r" +
     "\n" +
     "                                <div ng-message-exp=\"['pattern']\">\r" +
     "\n" +

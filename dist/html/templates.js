@@ -2347,7 +2347,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            <input maxlength=\"7\" md-no-asterisk=\"\" name=\"txtSalary\" ng-model=\"regsec.txtSalary\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
-    "                            <div ng-messages=\"regsec.txtSalary.$error\">\r" +
+    "                            <div ng-messages=\"secregForm.txtSalary.$error\">\r" +
     "\n" +
     "                                <div ng-message-exp=\"['pattern']\">\r" +
     "\n" +

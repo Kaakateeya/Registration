@@ -168,7 +168,7 @@
                         <md-input-container class="md-block span4">
                             <label>Monthly Salary</label>
                             <input maxlength="7" md-no-asterisk="" name="txtSalary" ng-model="regsec.txtSalary" ng-pattern="/^[0-9]+$/">
-                            <div ng-messages="regsec.txtSalary.$error">
+                            <div ng-messages="secregForm.txtSalary.$error">
                                 <div ng-message-exp="['pattern']">
                                     enter only numbers.
                                 </div>
