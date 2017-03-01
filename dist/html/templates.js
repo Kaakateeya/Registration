@@ -5801,33 +5801,37 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <a onclick=\"OpenLHNChat();return false;\" href=\"javascript:void(0)\" target=\"_blank\" id=\"lhnWin\" class=\"icon-chat-footer pull-left\"></a>\r" +
     "\n" +
-    "\r" +
+    "            <script type=\"text/javascript\" src=\"https://www.livehelpnow.net/lhn/scripts/livehelpnow.aspx?lhnid=3422&;iv=1&amp;ivid=0&amp;d=2666&amp;ver=5.3&amp;rnd=0.2933060332253514\"></script>\r" +
     "\n" +
     "            <div id=\"livechatdiv\">\r" +
     "\n" +
     "                <!-- This code must be installed within the body tags 3422-->\r" +
     "\n" +
-    "                <script type=\"text/javascript\" defer='defer'>\r" +
+    "                <script type=\"text/javascript\">\r" +
     "\n" +
-    "                    var lhnAccountN = \"3422\";\r" +
+    "                    var lhnAccountN = \"3422-1\";\r" +
     "\n" +
-    "                    var lhnButtonN = 4720;\r" +
+    "                    var lhnButtonN = -1;\r" +
     "\n" +
-    "                    var lhnChatPosition = '100';\r" +
+    "                    var lhnChatPosition = 'default';\r" +
     "\n" +
     "                    var lhnInviteEnabled = 1;\r" +
     "\n" +
     "                    var lhnWindowN = 0;\r" +
     "\n" +
-    "                    var lhnDepartmentN = 0;\r" +
+    "                    var lhnDepartmentN = 2666;\r" +
     "\n" +
     "                </script>\r" +
+    "\n" +
+    "                <!--<script src=\"src/js/livechat_currentstorage.js\" type=\"text/javascript\" id=\"lhnscript\"></script>-->\r" +
+    "\n" +
+    "                <script src=\"//www.livehelpnow.net/lhn/widgets/chatbutton/lhnchatbutton-current.min.js\" type=\"text/javascript\" id=\"lhnscript\"></script>\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <script type=\"text/javascript\" defer='defer'>\r" +
+    "        <!--<script type=\"text/javascript\" defer='defer'>\r" +
     "\n" +
     "            function OpenLHNChat() {\r" +
     "\n" +
@@ -5871,7 +5875,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            }\r" +
     "\n" +
-    "        </script>\r" +
+    "        </script>-->\r" +
     "\n" +
     "        <div class=\"social pull-right\">\r" +
     "\n" +
