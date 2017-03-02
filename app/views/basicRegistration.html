@@ -29,91 +29,91 @@
                                 </div>
                             </md-input-container>
                         </div>
+
+                        <md-input-container>
+                            <md-checkbox ng-model="reg.Chkfree_reg" name="Chkfree_reg" aria-label="Chkfree_reg">
+                                Free member
+
+                            </md-checkbox>
+
+                        </md-input-container>
                         <br />
 
                         <div class="clearfix">
 
-                            <md-input-container class="md-block span4">
-                                <label> First name</label>
-                                <input maxlength="100" required="" md-asterisk="" name="txtfirstname" ng-model="reg.txtfirstname">
-                                <div ng-messages="regForm.txtfirstname.$error">
-                                    <div ng-message="required">This is required.</div>
-                                    <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                        </div>
+                        <md-input-container class="md-block span4">
+                            <label> First name</label>
+                            <input maxlength="100" required="" md-asterisk="" name="txtfirstname" ng-model="reg.txtfirstname">
+                            <div ng-messages="regForm.txtfirstname.$error">
+                                <div ng-message="required">This is required.</div>
+                                <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="md-block span4">
+                            <label>Last name</label>
+                            <input maxlength="50" required="" md-asterisk="" name="txtlastname" ng-model="reg.txtlastname">
+                            <div ng-messages="regForm.txtlastname.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+
+
+                        <md-input-container class="md-block span4">
+                            <label>Email</label>
+                            <input required="" maxlength="50" md-asterisk="" name="txtEmail" ng-model="reg.txtEmail" ng-pattern="/^.+@.+\..+$/" ng-blur="valueExists('email',0,reg.txtEmail);">
+                            <div ng-messages="regForm.txtEmail.$error" role="alert">
+                                <div ng-message-exp="['required', 'pattern']">
+                                    This is required and enter valid e-mail address.
                                 </div>
-                            </md-input-container>
-
-                            <md-input-container class="md-block span4">
-                                <label>Last name</label>
-                                <input maxlength="50" required="" md-asterisk="" name="txtlastname" ng-model="reg.txtlastname">
-                                <div ng-messages="regForm.txtlastname.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
-                            </md-input-container>
+                            </div>
+                        </md-input-container>
 
 
-                            <md-input-container class="md-block span4">
-                                <label>Email</label>
-                                <input required="" maxlength="50" md-asterisk="" name="txtEmail" ng-model="reg.txtEmail" ng-pattern="/^.+@.+\..+$/" ng-blur="valueExists('email',0,reg.txtEmail);">
-                                <div ng-messages="regForm.txtEmail.$error" role="alert">
-                                    <div ng-message-exp="['required', 'pattern']">
-                                        This is required and enter valid e-mail address.
-                                    </div>
-                                </div>
-                            </md-input-container>
+                        <md-input-container flex="50" class="span4">
+                            <label>Posted by</label>
+                            <md-select name="ddlpostedby" ng-model="reg.ddlpostedby" required="">
+                                <md-option ng-value="h.value" ng-repeat="h in postedby">{{h.label}} </md-option>
+                            </md-select>
+                            <div class="errors" ng-messages="regForm.ddlpostedby.$error">
+                                <div ng-message="required">Required</div>
+                            </div>
+                        </md-input-container>
 
+                        <div class="span4">
 
-                            <md-input-container class="md-block span4">
-                                <label>Password</label>
-                                <input maxlength="15" required="" md-asterisk="" name="txtpassword" ng-model="reg.txtpassword" type="password">
-                                <div ng-messages="regForm.txtpassword.$error">
-                                    <div ng-message="required">This is required.</div>
-                                </div>
-                            </md-input-container>
-                            <md-input-container flex="50" class="span4">
-                                <label>Posted by</label>
-                                <md-select name="ddlpostedby" ng-model="reg.ddlpostedby" required="">
-                                    <md-option ng-value="h.value" ng-repeat="h in postedby">{{h.label}} </md-option>
+                            <md-input-container flex="50" class="span4" style="width:33%;">
+                                <label>date</label>
+                                <md-select name="ddlDD" ng-model="reg.ddlDD" required="" ng-change="dayChange(reg,'day');">
+                                    <md-option ng-value="h.value" ng-repeat="h in dateArr">{{h.label}} </md-option>
                                 </md-select>
-                                <div class="errors" ng-messages="regForm.ddlpostedby.$error">
+                                <div class="errors" ng-messages="regForm.ddlDD.$error">
                                     <div ng-message="required">Required</div>
                                 </div>
                             </md-input-container>
 
-                            <div class="span4">
+                            <md-input-container flex="50" class="span4" style="width:33%;">
+                                <label>Month</label>
+                                <md-select name="ddlMM" ng-model="reg.ddlMM" required="" ng-change="dayChange(reg,'month');">
+                                    <md-option ng-value="h.value" ng-repeat="h in monthArr">{{h.label}} </md-option>
+                                </md-select>
+                                <div class="errors" ng-messages="regForm.ddlMM.$error">
+                                    <div ng-message="required">Required</div>
+                                </div>
+                            </md-input-container>
 
-                                <md-input-container flex="50" class="span4" style="width:33%;">
-                                    <label>date</label>
-                                    <md-select name="ddlDD" ng-model="reg.ddlDD" required="" ng-change="dayChange(reg,'day');">
-                                        <md-option ng-value="h.value" ng-repeat="h in dateArr">{{h.label}} </md-option>
-                                    </md-select>
-                                    <div class="errors" ng-messages="regForm.ddlDD.$error">
-                                        <div ng-message="required">Required</div>
-                                    </div>
-                                </md-input-container>
+                            <md-input-container flex="50" class="span4" style="width:34%;">
+                                <label>year</label>
+                                <md-select name="ddlYear" ng-model="reg.ddlYear" required="">
+                                    <md-option ng-value="h.value" ng-repeat="h in yearArr">{{h.label}} </md-option>
+                                </md-select>
+                                <div class="errors" ng-messages="regForm.ddlYear.$error">
+                                    <div ng-message="required">Required</div>
+                                </div>
+                            </md-input-container>
 
-                                <md-input-container flex="50" class="span4" style="width:33%;">
-                                    <label>Month</label>
-                                    <md-select name="ddlMM" ng-model="reg.ddlMM" required="" ng-change="dayChange(reg,'month');">
-                                        <md-option ng-value="h.value" ng-repeat="h in monthArr">{{h.label}} </md-option>
-                                    </md-select>
-                                    <div class="errors" ng-messages="regForm.ddlMM.$error">
-                                        <div ng-message="required">Required</div>
-                                    </div>
-                                </md-input-container>
-
-                                <md-input-container flex="50" class="span4" style="width:34%;">
-                                    <label>year</label>
-                                    <md-select name="ddlYear" ng-model="reg.ddlYear" required="">
-                                        <md-option ng-value="h.value" ng-repeat="h in yearArr">{{h.label}} </md-option>
-                                    </md-select>
-                                    <div class="errors" ng-messages="regForm.ddlYear.$error">
-                                        <div ng-message="required">Required</div>
-                                    </div>
-                                </md-input-container>
-
-                            </div>
                         </div>
-
                         <md-input-container flex="50" class="span4">
                             <label>Religion</label>
                             <md-select name="ddlreligion" ng-model="reg.ddlreligion" required="" ng-change="changeBind(reg.ddlreligion,reg.ddlmothertongue);">
