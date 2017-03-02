@@ -44,7 +44,7 @@ regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             "topbar@": {
                 templateUrl: regApp.templateroot + (item.url === '/confirmEmail' || item.url === '/uploadTips' ? '' : "masterTemplate/headerTemplate.html")
             },
-            "content@": {
+            "lazyLoadView@": {
                 templateUrl: item.templateUrl,
                 controller: item.controller
             },
