@@ -126,9 +126,9 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 strAreaCode: obj.txtArea !== '' ? obj.txtArea : '',
                 strLandNo: obj.txtlandNum !== '' ? obj.txtlandNum : '',
                 strEmail: obj.txtEmail,
-                strPassword: obj.txtpassword,
+                strPassword: '123456',
                 intProfileRegisteredBy: null,
-                intEmpID: null,
+                intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
                 //strMobileVerificationCode: obj.
             };
@@ -136,7 +136,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 console.log(res);
                 scope.genderID = 0;
-                authSvc.login(scope.reg.txtEmail, scope.reg.txtpassword).then(function(response) {
+                authSvc.login(scope.reg.txtEmail, '123456').then(function(response) {
                     console.log(response);
                     authSvc.user(response.response !== null ? response.response[0] : null);
                     scope.genderID = response.response[0].GenderID;

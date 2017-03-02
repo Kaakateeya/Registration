@@ -20,43 +20,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+    <!-- Bootstrap -->
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="build/css/custom.min.css" rel="stylesheet" />
+    <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet" />
+    <link href="node_modules/bootstrap-multiselect/dist/css/bootstrap-multiselect.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="node_modules\font-awesome\css\font-awesome.min.css">
-    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap.min.css">
-    <link rel="stylesheet" href="node_modules\bootstrap\dist\css\bootstrap-theme.min.css">
-    <link href="src/css/bootstrap-responsive.min.css" rel="stylesheet"></link>
-    <link href="src/css/stylekaakateeya.css" rel="stylesheet"></link>
-
-    <link href="src/css/style_responsive.css" rel="stylesheet"></link>
-
-    <link href="src/css/uniform.default.css" rel="stylesheet"></link>
-    <link href="src/css/chosen.css" rel="stylesheet"></link>
-    <link href="src/css/jquery-css.css" rel="stylesheet"></link>
-    <link href="src/css/bootstrap-fileupload.css" rel="stylesheet"></link>
-    <link href="src/css/custom_styles.css" rel="stylesheet"></link>
-    <link href="src/css/custom_responsive.css" rel="stylesheet"></link>
-    <link href="src/css/GITheWall.css" rel="stylesheet"></link>
-
-    <link href="src/css/CustomerSearchResult_New.css" rel="stylesheet"></link>
-
-
-    <link href="node_modules/angular-material/angular-material.min.css" rel="stylesheet"></link>
-
-
-
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:700,300,600,800,400" rel="stylesheet"></link>
-
-    <link href="http://fonts.googleapis.com/css?family=Roboto:500,900,300,700,400" rel="stylesheet"></link>
-
-    <link href="http://fonts.googleapis.com/css?family=Oswald:400,700,300" rel="stylesheet"></link>
 </head>
 
-<body ng-app="KaakateeyaRegistration" ui-router-styles>
+<body ng-app="KaakateeyaRegistration" ui-router-styles class="nav-sm">
 
-    <div ui-view="topbar"></div>
-    <div ui-view="content"></div>
-    <div ui-view="bottompanel"></div>
-
+    <div class="container body">
+        <div class="main_container">
+            <div ui-view="topbar">
+            </div>
+            <div ui-view="content">
+            </div>
+            <div ui-view="bottompanel">
+            </div>
+        </div>
+    </div>
     <!-- SCRIPTS DATA --#>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -67,7 +52,6 @@
     <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="src/js/jquery.blockui.js"></script>
     <script src="src/js/bootstrap-multiselect.js"></script>
-    <script src="src/js/scriptsKaakateeya.js"></script>
     <script src="src/js/jquery.alert.js"></script>
     <script src="src/js/GI.TheWall.min.js"></script>
     <script src="src/js/jquery-ui.js"></script>
@@ -84,7 +68,6 @@
     <script src="app/constants/arrayBindConstatns.js"></script>
     <script src="app/controllers/basicRegistrationctrl.js"></script>
     <script src="app/controllers/managePhotoctrl.js"></script>
-    <script src="app/controllers/paymentctrl.js"></script>
     <script src="app/controllers/secondaryRegisrtationctrl.js"></script>
     <script src="app/directives/datePicker.js"></script>
     <script src="app/directives/fileModel.js"></script>
@@ -97,26 +80,13 @@
     <script src="app/services/fileUpload.js"></script>
     <script src="app/services/getArrayService.js"></script>
     <script src="app/services/managePhotoService.js"></script>
-    <script src="app/services/paymentService.js"></script>
     <script src="app/services/secondaryRegistrationService.js"></script>
     <script src="app/services/selectBindServices.js"></script>
-    <script src="app/controllers/createNewPassword.js"></script>
-    <script src="app/controllers/confirmEmail.js"></script>
-
-    <script src="app/services/createNewPwdService.js"></script>
-    <script src="app/services/EmailVerificationService.js"></script>
     <script src="app/directives/AlertDirective.js"></script>
-    <script src="app/controllers/headercontroller.js"></script>
-    <script src="app/controllers/photoGuideLines.js"></script>
-    <script src="app/controllers/uploadTips.js"></script>
-
     <script src="app/services/route.js"></script>
-
     <script src="app/directives/accessibleForm.js"></script>
 
-
-
-    <!--SCRIPTS END-->
+    <!--SCRIPTS END--#>
 
     <!-- SCRIPTSP DATA --><script src="dist/js/main.min.js"></script><!--SCRIPTSP END-->
 
