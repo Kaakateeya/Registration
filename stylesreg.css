@@ -350,3 +350,313 @@
 
 
 /*------*/
+
+.photo_guidlines_main {}
+
+.photo_guidlines_main table {
+    margin: 0;
+}
+
+.photo_guidlines_main_item {
+    padding: 0 20px;
+    border: solid 1px #ccc;
+    border-radius: 3px;
+    margin: 0 0 20px 0;
+}
+
+.photo_guidlines_main_item_lt {
+    width: 50%;
+    float: left;
+    position: relative;
+    padding: 20px 0;
+}
+
+.photo_guidlines_main_item_lt:after {
+    width: 1px;
+    height: 100%;
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: #ccc;
+}
+
+.photo_guidlines_main_item_rt {
+    width: 46%;
+    float: left;
+    padding: 54px 1% 0 3%;
+}
+
+.photo_guidlines_main h3 {
+    background: url(../images/icon_tick_mark.png) no-repeat center left;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #000;
+    line-height: 18px;
+    display: block;
+    padding: 0 0 0 30px;
+    margin: 0 0 20px 0;
+}
+
+.photo_guidlines_main_item_lt.pics_incorrect_list h3 {
+    background: url("../images/icon_x_mark.png") no-repeat scroll left center;
+    color: #F26522;
+}
+
+.photo_guidlines_main_item_lt.pics_correct_list h3 {
+    background: url("../images/icon_tick_mark.png") no-repeat scroll left center;
+    color: #58B111;
+}
+
+.photo_guidlines_main_item_lt p {
+    font-size: 14px;
+    color: #d42e02;
+}
+
+.photo_guidlines_main_item_rt p {
+    font-size: 12px;
+    color: #717171;
+    padding: 0 0 10px 0;
+}
+
+.photo_guidlines_main_guideslist {
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    padding: 0 0 20px 0;
+}
+
+.photo_guidlines_main_guideslist h6 {
+    text-transform: uppercase;
+    color: #d42e02;
+    text-transform: uppercase;
+    border-radius: 5px 5px 0 0;
+    line-height: 18px;
+    font-size: 14px;
+    background: #eaeaea;
+    padding: 16px 20px;
+    margin: 0 0 20px 0;
+    border-bottom: solid 1px #ccc;
+}
+
+.photo_guidlines_main_guideslist p {
+    color: #000;
+    line-height: 18px;
+    font-size: 13px;
+    padding: 10px 20px 10px 70px;
+    margin: 2px 0;
+    position: relative;
+}
+
+.photo_guidlines_main_guideslist p:before {
+    content: attr(title);
+    display: block;
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
+    line-height: 20px;
+    color: #000;
+    border: solid 1px #ccc;
+    border-radius: 100%;
+    text-align: center;
+    background: #eaeaea;
+    position: absolute;
+    left: 30px;
+    top: 9px;
+}
+
+.faq_main {
+    border: solid 1px #ccc;
+}
+
+.faq_main_head {
+    padding: 20px;
+}
+
+.faq_main_search {
+    float: left;
+    width: 54%;
+}
+
+.faq_main_search input {
+    float: left;
+    width: 68%;
+    padding: 10px 12px;
+    box-shadow: none;
+    font-size: 13px;
+    color: #717171;
+    line-height: 18px;
+    border-radius: 3px 0 0 3px !important;
+}
+
+.faq_search_button {
+    display: inline-block;
+    float: left;
+    background: url(../images/drag_icon.png) no-repeat center center;
+    width: 42px;
+    height: 42px;
+    margin: 0 0 0 -42px;
+}
+
+.faq_grid {
+    float: right;
+}
+
+.faq_expand,
+.faq_collapse {
+    display: inline-block;
+    float: left;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #000 !important;
+    font-weight: 600;
+    padding: 4px 0 4px 26px;
+    cursor: pointer;
+    margin: 0 0 0 24px;
+}
+
+.faq_expand {
+    background: url(../images/icon_expand.png) no-repeat center left;
+}
+
+.faq_collapse {
+    background: url(../images/icon_collapse.png) no-repeat center left;
+}
+
+.faqs_list_main {
+    border: solid 1px #ccc;
+    border-bottom: 0 none;
+    margin: 0 20px 20px 20px;
+    border-radius: 3px;
+}
+
+.faqs_list_main_item {
+    padding: 0 20px;
+    border-bottom: solid 1px #ccc;
+}
+
+.faqs_list_main h5 {
+    line-height: 18px;
+    font-size: 14px;
+    color: #4f4f4f;
+    font-weight: 600;
+    padding: 14px 0;
+    background: url(../images/icon_plus.png) no-repeat center right;
+    cursor: pointer;
+}
+
+.faqs_list_main h5 span {
+    color: #000;
+}
+
+.faq_ans_block {
+    padding: 14px 0;
+    border-top: solid 1px #ccc;
+}
+
+.faq_ans_block p {
+    font-size: 14px;
+    line-height: 20px;
+    color: #717171;
+}
+
+.faqs_list_main_item.active h5 {
+    background-image: url(../images/icon_minus.png);
+    color: #d42e02;
+}
+
+.faqs_list_main_item.active h5 span {
+    color: #d42e02;
+}
+
+.faq_main_head input[type="text"] {
+    height: 42px !important;
+}
+
+
+/* 22-09-2015 */
+
+.policy_list_desc {
+    display: block !important;
+}
+
+.privacy_page_main {
+    border: 0 none !important;
+}
+
+.privacy_page_main h5 {
+    background: none !important;
+    cursor: default !important;
+}
+
+.privacy_page_main .faqs_list_main_item {
+    border: solid 1px #ccc;
+    margin: 0 0 20px 0;
+    border-radius: 5px;
+}
+
+.privacy_topic_links {}
+
+.privacy_topic_links a {
+    display: block;
+    float: left;
+    text-transform: capitalize;
+    color: #717171;
+    margin: 0 20px 4px 0;
+    position: relative;
+}
+
+.privacy_topic_links a:after {
+    display: block;
+    width: 1px;
+    height: 14px;
+    background: #717171;
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 4px;
+}
+
+.privacy_topic_links a:nth-last-child(1):after {
+    display: none;
+}
+
+.privacy_page_main p {
+    font-size: 13px;
+    line-height: 22px;
+}
+
+.back-to-top {
+    position: fixed;
+    width: 42px;
+    height: 42px;
+    background: url(../images/arrow-down-2.png) no-repeat center center #bd1b00;
+    background-size: 22px;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 100%;
+    transform: rotate(180deg);
+    cursor: pointer;
+    z-index: 999999999;
+}
+
+.cd-top {
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+}
+
+.cd-top.cd-is-visible,
+.cd-top.cd-fade-out,
+.no-touch .cd-top:hover {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+}
+
+.cd-top.cd-is-visible {
+    visibility: visible;
+    opacity: 1;
+}

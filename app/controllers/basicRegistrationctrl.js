@@ -6,11 +6,15 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         //scope.Mothertongue = 'Mothertongue';
         scope.Caste = 'Caste';
         scope.Country = 'Country';
+
         // scope.countryCode = 'countryCode';
         scope.month = 'month';
         scope.reg = {};
         scope.monthArr = [];
-
+        scope.reg.Chkprivacy = true;
+        scope.emailrequired = true;
+        scope.mobilenumberrequired = true;
+        scope.mobilecountrycoderequired = true;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         scope.monthBind = function() {
 
@@ -120,13 +124,13 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 intCountryLivingID: obj.ddlcountry,
                 intMobileCode: obj.ddlmobilecountry,
                 intLandCode: obj.ddllandcountry,
-                IsCustomer: 1,
-                strMobileNo: obj.txtMobileNo,
+                IsCustomer: 0,
+                strMobileNo: (obj.txtMobileNo !== '') && (obj.txtMobileNo !== null) && (obj.txtMobileNo !== undefined) ? (obj.txtMobileNo) : "0000000000",
                 ID: 1,
-                strAreaCode: obj.txtArea !== '' ? obj.txtArea : '',
-                strLandNo: obj.txtlandNum !== '' ? obj.txtlandNum : '',
-                strEmail: obj.txtEmail,
-                strPassword: obj.txtpassword,
+                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : '',
+                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : '',
+                strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
+                strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
                 intEmpID: null,
                 intCustPostedBY: obj.ddlpostedby,
@@ -150,6 +154,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         scope.valueExists = function(type, flag, val) {
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
+
                     console.log(response);
                     if (response.data === 1) {
                         if (type === 'email') {
@@ -159,11 +164,41 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                             scope.reg.txtMobileNo = '';
                             alert('Mobile number Already Exists');
                         }
+                    } else {
+                        if (scope.reg.Chkfree_reg === true) {
+                            if (type === 'email') {
+                                scope.emailrequired = true;
+                                scope.mobilenumberrequired = false;
+                                scope.mobilecountrycoderequired = false;
+                            } else {
+                                scope.emailrequired = false;
+                                scope.mobilenumberrequired = true;
+                                scope.mobilecountrycoderequired = true;
+                            }
+                        }
                     }
                 });
             }
         };
+        scope.mobilemailvalidation = function() {
+            if (scope.reg.Chkfree_reg === true) {
 
+                if ((scope.reg.txtEmail === null || scope.reg.txtEmail === "" || scope.reg.txtEmail === undefined) && (scope.reg.txtMobileNo === null || scope.reg.txtMobileNo === "" || scope.reg.txtMobileNo === undefined)) {
+                    scope.emailrequired = false;
+                    scope.mobilenumberrequired = true;
+                    scope.mobilecountrycoderequired = true;
+                } else if ((scope.reg.txtEmail !== null && scope.reg.txtEmail !== "" && scope.reg.txtEmail !== undefined) || (scope.reg.txtMobileNo !== null && scope.reg.txtMobileNo !== "" && scope.reg.txtMobileNo !== undefined)) {
+                    scope.emailrequired = false;
+                    scope.mobilenumberrequired = false;
+                    scope.mobilecountrycoderequired = false;
+                }
+            } else {
+                scope.emailrequired = true;
+                scope.mobilenumberrequired = true;
+                scope.mobilecountrycoderequired = true;
+
+            }
+        };
 
         scope.$watch(function() {
             return scope.reg.ddlcountry;
@@ -174,7 +209,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
         scope.redirectprivacy = function(type) {
-            window.open('privacyPolicy', '_blank');
+            window.open('registration/privacyPolicy', '_blank');
         };
 
 

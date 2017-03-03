@@ -29,9 +29,14 @@ regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         { name: 'registration', url: '/registration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
-        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' }
+        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
+        { name: 'registration.photoGuideLines', url: '/photoGuideLines', templateUrl: regApp.templateroot + 'app/views/photoGuideLines.html', controller: 'photoGuideLinesctrl' },
+        { name: 'registration.uploadTips', url: '/uploadTips', templateUrl: regApp.templateroot + 'app/views/uploadTips.html', controller: 'uploadTipsctrl' },
+        { name: 'registration.faqs', url: '/faqs', templateUrl: 'app/views/faqs.html', controller: 'faqs' },
+        { name: 'registration.privacyPolicy', url: '/privacyPolicy', templateUrl: 'app/views/privacyPolicy.html', controller: 'privacypolicy' }
 
     ];
+
 
     $urlRouterProvider.otherwise('registration');
 
@@ -51,7 +56,7 @@ regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView
-        })
+        });
         $locationProvider.html5Mode(true);
     });
 });
@@ -338,11 +343,15 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         //scope.Mothertongue = 'Mothertongue';
         scope.Caste = 'Caste';
         scope.Country = 'Country';
+
         // scope.countryCode = 'countryCode';
         scope.month = 'month';
         scope.reg = {};
         scope.monthArr = [];
-
+        scope.reg.Chkprivacy = true;
+        scope.emailrequired = true;
+        scope.mobilenumberrequired = true;
+        scope.mobilecountrycoderequired = true;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         scope.monthBind = function() {
 
@@ -452,13 +461,13 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 intCountryLivingID: obj.ddlcountry,
                 intMobileCode: obj.ddlmobilecountry,
                 intLandCode: obj.ddllandcountry,
-                IsCustomer: 1,
-                strMobileNo: obj.txtMobileNo,
+                IsCustomer: 0,
+                strMobileNo: (obj.txtMobileNo !== '') && (obj.txtMobileNo !== null) && (obj.txtMobileNo !== undefined) ? (obj.txtMobileNo) : "0000000000",
                 ID: 1,
-                strAreaCode: obj.txtArea !== '' ? obj.txtArea : '',
-                strLandNo: obj.txtlandNum !== '' ? obj.txtlandNum : '',
-                strEmail: obj.txtEmail,
-                strPassword: obj.txtpassword,
+                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : '',
+                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : '',
+                strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
+                strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
                 intEmpID: null,
                 intCustPostedBY: obj.ddlpostedby,
@@ -482,6 +491,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
         scope.valueExists = function(type, flag, val) {
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
+
                     console.log(response);
                     if (response.data === 1) {
                         if (type === 'email') {
@@ -491,11 +501,41 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                             scope.reg.txtMobileNo = '';
                             alert('Mobile number Already Exists');
                         }
+                    } else {
+                        if (scope.reg.Chkfree_reg === true) {
+                            if (type === 'email') {
+                                scope.emailrequired = true;
+                                scope.mobilenumberrequired = false;
+                                scope.mobilecountrycoderequired = false;
+                            } else {
+                                scope.emailrequired = false;
+                                scope.mobilenumberrequired = true;
+                                scope.mobilecountrycoderequired = true;
+                            }
+                        }
                     }
                 });
             }
         };
+        scope.mobilemailvalidation = function() {
+            if (scope.reg.Chkfree_reg === true) {
 
+                if ((scope.reg.txtEmail === null || scope.reg.txtEmail === "" || scope.reg.txtEmail === undefined) && (scope.reg.txtMobileNo === null || scope.reg.txtMobileNo === "" || scope.reg.txtMobileNo === undefined)) {
+                    scope.emailrequired = false;
+                    scope.mobilenumberrequired = true;
+                    scope.mobilecountrycoderequired = true;
+                } else if ((scope.reg.txtEmail !== null && scope.reg.txtEmail !== "" && scope.reg.txtEmail !== undefined) || (scope.reg.txtMobileNo !== null && scope.reg.txtMobileNo !== "" && scope.reg.txtMobileNo !== undefined)) {
+                    scope.emailrequired = false;
+                    scope.mobilenumberrequired = false;
+                    scope.mobilecountrycoderequired = false;
+                }
+            } else {
+                scope.emailrequired = true;
+                scope.mobilenumberrequired = true;
+                scope.mobilecountrycoderequired = true;
+
+            }
+        };
 
         scope.$watch(function() {
             return scope.reg.ddlcountry;
@@ -506,7 +546,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
 
 
         scope.redirectprivacy = function(type) {
-            window.open('privacyPolicy', '_blank');
+            window.open('registration/privacyPolicy', '_blank');
         };
 
 
@@ -562,6 +602,57 @@ regApp.controller('createNewPwdCtrl', ['$scope', 'cerateNewPwd', '$stateParams',
         });
     };
 }]);
+regApp.controller("faqs", ['$scope', function(scope) {
+    scope.filters = {
+        search: ''
+    };
+    scope.arrayfaqs = [
+        { questons: 'How do I Bookmark profile?', answers: 'In every view profile you will find the book mark option for future reference before you express interest to filter suitable profiles' },
+        { questons: 'How do I delete my profile? (Manage Profile)', answers: 'You can delete your profile including your picture by clicking on Delete Profile in the services page after you login. You have to login to your account to delete your profilfre.4r554r' },
+        { questons: 'How do I edit profile?', answers: 'You can edit details by going to Menu bar?MY ACCOUNT?EDIT PROFILE.(Note: You can edit all the fields except Name, Lastname, Date of Birth, Height & Caste. If you want to edit them contact us @ 91-40-30666666.' },
+        { questons: 'How do I ignore profile and how do I remove ignore profile from the list?', answers: 'In every view profile your will find an ignore profile(with (X) Into symbol)to avoid profile from your list. All ignored profiles list can be checked in the Option MATCHES?IGNORED PROFILES(Note: You cannot remove ignored profile completely but you can either bookmark or express interest)' },
+        { questons: 'How do I overwrite an existing photo? (Photograph)', answers: 'Go to Manage photo ,delete the existing photo first to upload new recent photo which will be processed during the business hours and made visible .' },
+        { questons: 'How do I register?', answers: 'Click www.kaakateeya.com and get registered for whom your searching(Bride/Groom) with the details' },
+        { questons: 'How do I restrict other members from viewing my Profile? (Manage Profile)', answers: 'Click on Hide profile in the profile settlings in my account menu option' },
+        { questons: 'How do I Upload my Photograph and which format is acceptable?', answers: 'You can upload upto 3 photographs of JPEG or jpgFormat by going to Menu bar?MY ACCOUNT?MANAGE PHOTO and upload photo. We will activate your photo within 24 hours after we review it. If you experience any issues in uploading your photo please send us at photos@telugumarriages.com or send them through WHATSAPP 9848535373 with your PROFILE ID and we will upload it for you.' },
+        { questons: 'How to show interest', answers: 'to show interest to a profile which suits your re-quirements click on Express interest after you completely view that profile ,then proceed if its ok' },
+        { questons: 'I am a FREE Member. Can I send any email messages to other members? (Contact Members)', answers: 'If you are registered as a FREE member you cannot send Email Messages to other Members.' },
+        { questons: 'I am a FREE service member. How do I upgrade my profile? (Paid Member)', answers: 'Log on to www.kaakateeya.comgo to Menu bar?MY PACKAGE?UPGRADE MEMBERSHIP and choose the package and upgrade by using any visa debit/credit card, also input your correct billing address whatever provided in the banker of the card' },
+        { questons: 'I am a paid member of Kaakateeya Marriages India office. I cannot view pictures or request profiles online? (Kaakateeya Marriages Indian Offices)', answers: 'Kaakateeya Marriages India office registered members are only allowed to view, modify their profile and search new profiles on Kaakateeya.com. There is an additional fee to view pictures,addition details also can express interest . online membership details are in the UPGRADE MEMBERSHIP option in UPGRADE menu option' },
+        { questons: 'I Forgot Password who can I retrieve password?', answers: 'You can only reset your password by clicking on forgot password link with your registered primary email id' },
+        { questons: 'I uploaded my photo but I cannot see it? (Photograph)', answers: 'New photograph uploaded by you will be processed during the business hours from 10 am to 6 pm .' },
+        { questons: 'Terms & Conditions to get Register with kaakateeya.com?', answers: 'Everyone who is for marriage can register profile by giving details with genuine information. You can register a new profile with UNIQUE EMAIL AND UNIQUE MOBILE NUMBER. If you get a message like “email id exists” or “mobile number exists”then click on forget password to reset your password otherwise contact us @ 91-40-30666666' },
+        { questons: 'What individually identifiable information is logged on your server? (Privacy Policy)', answers: 'All email messages sent using our website Kaakateeya.com are logged on the server. These messages are deleted every week.' },
+        { questons: 'What is Bookmarked By section? (Bookmarks)', answers: 'If somebody Bookmarks your profile, you can check the list in the "Who Bookmarked me " in the menu' },
+        { questons: 'What is Online Service and Offline(OFFICE) Service?', answers: 'Online Services: You can Register Freely into www.kaakateeya.com and search for Brides/Grooms based on your requirement. You can also become a paid member to express interest, Send and receive messages directly by yourself Offline(OFFICE) Services: Offline Service is provided by our service provider/relationship manager wherein you will be sent profiles to your email regularly as per your requirement manually on behalf of you and will involve in arranging match meetings(PelliChupulu) to Settle' },
+        { questons: 'What picture formats are accepted? (Photograph)', answers: 'Pictures of .jpg ,Png etc formats can be uploaded ' },
+        { questons: 'Who receives the Messages I send using messages button', answers: 'your messages are sent to the other member ,which will be displayed in my contact list ,messages option' }
+    ];
+    scope.styleanswer = false;
+    scope.activeClass = 'faqs_list_main_item';
+}]);
+regApp.directive('faqdirective', function() {
+    return {
+        link: function(scope, element, attrs) {
+            scope.expanall = function() {
+                _.each(scope.arrayfaqs, function(item) {
+                    item.styleanswer = true;
+                    item.activeClass = 'faqs_list_main_item active';
+                });
+            };
+            scope.collapseall = function() {
+                _.each(scope.arrayfaqs, function(item) {
+                    item.styleanswer = false;
+                    item.activeClass = 'faqs_list_main_item';
+                });
+            };
+            scope.toggleans = function(faqs) {
+                faqs.styleanswer = !faqs.styleanswer;
+                faqs.activeClass = (faqs.styleanswer === true ? 'faqs_list_main_item active' : 'faqs_list_main_item');
+            };
+        }
+    };
+});
 regApp.controller('headctrl', ['$scope', function(scope) {
 
 
@@ -774,7 +865,7 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
                 window.open('registration/photoGuideLines', '_blank');
                 break;
             case 'Faqs':
-                window.open('faqs', '_blank');
+                window.open('registration/faqs', '_blank');
                 break;
             case 'uploadTips':
                 window.open('registration/uploadTips', '_blank');
@@ -832,6 +923,28 @@ regApp.controller("upgrademembership", ['$scope', '$interval', 'myAppFactory',
 ]);
 regApp.controller('photoGuideLinesctrl', ['$scope', function(scope) {
 
+
+}]);
+regApp.controller('privacypolicy', ['$scope', function(scope) {
+    //hide #back-top first
+    $(".back-to-top").hide();
+    scope.initprivacy = function() {
+        // fade in #back-top    
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.back-to-top').fadeIn();
+            } else {
+                $('.back-to-top').fadeOut();
+            }
+        });
+        // scroll body to 0px on click
+        $('.back-to-top').click(function() {
+            $('body,html').animate({
+                scrollTop: 0
+            }, 800);
+            return false;
+        });
+    };
 
 }]);
 regApp.controller("secondaryRegistrationctrl", ['$scope', 'getArray', 'Commondependency', 'SecondaryRegistrationService', '$filter', '$timeout', '$stateParams', 'authSvc', 'route', function(scope, getArray, commondependency, SecondaryRegistrationService, filter, timeout, stateParams, authSvc, route) {
@@ -1982,7 +2095,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "            <div layout=\"column\" ng-cloak=\"\" class=\"inputdemoErrors\">\r" +
     "\n" +
-    "                <md-content layout-padding=\"\">\r" +
+    "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
     "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && regSubmit(reg);\">\r" +
     "\n" +
@@ -2020,7 +2133,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <md-input-container>\r" +
     "\n" +
-    "                                        <md-checkbox ng-model=\"reg.Chkfree_reg\" name=\"Chkfree_reg\" aria-label=\"Chkfree_reg\">\r" +
+    "                                        <md-checkbox ng-model=\"reg.Chkfree_reg\" name=\"Chkfree_reg\" aria-label=\"Chkfree_reg\" ng-change=\"mobilemailvalidation()\">\r" +
     "\n" +
     "                                            Free member\r" +
     "\n" +
@@ -2068,7 +2181,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                <label>Email</label>\r" +
     "\n" +
-    "                                <input required=\"\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"valueExists('email',0,reg.txtEmail);\">\r" +
+    "                                <input ng-required=\"emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"valueExists('email',0,reg.txtEmail);\">\r" +
     "\n" +
     "                                <div ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
     "\n" +
@@ -2248,7 +2361,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <label>country code</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlmobilecountry\" ng-model=\"reg.ddlmobilecountry\" required=\"\">\r" +
+    "                                    <md-select name=\"ddlmobilecountry\" ng-model=\"reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -2268,7 +2381,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <label>Mobile number</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"10\" ng-minlength=\"10\" required=\"\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"reg.txtMobileNo\" ng-blur=\"valueExists('number',1,reg.txtMobileNo);\">\r" +
+    "                                    <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"reg.txtMobileNo\" ng-blur=\"valueExists('number',1,reg.txtMobileNo);\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
     "\n" +
@@ -2294,17 +2407,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <label>Land code</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.ddllandcountry.$valid)?false:true\">\r" +
+    "                                    <md-select name=\"ddllandcountry\" ng-model=\"reg.ddllandcountry\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
     "                                    </md-select>\r" +
     "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddllandcountry.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                    </div>\r" +
+    "\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -2314,13 +2423,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <label>Area code</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtArea.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                    <input maxlength=\"8\" name=\"txtArea\" ng-model=\"reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtArea.$error\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['required', 'pattern']\">\r" +
+    "                                        <div ng-message=\"pattern\">\r" +
     "\n" +
-    "                                            This is required and enter only numbers.\r" +
+    "                                            Enter only numbers.\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -2332,13 +2441,13 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                                    <label>Landline number</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"8\" ng-required=\"((regForm.txtMobileNo.$valid && regForm.ddlmobilecountry.$valid) || regForm.txtlandNum.$valid)?false:true\" md-no-asterisk=\"\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                    <input maxlength=\"8\" name=\"txtlandNum\" ng-model=\"reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['required', 'pattern']\">\r" +
+    "                                        <div ng-message=\"pattern\">\r" +
     "\n" +
-    "                                            This is required and enter only numbers.\r" +
+    "                                            Enter only numbers.\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -2419,26 +2528,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        text-align: left;\r" +
     "\n" +
     "    }\r" +
-    "\n" +
-    "    /*.multiselect {\r" +
-    "\n" +
-    "        border: solid 1px #ADA2A2 !important;\r" +
-    "\n" +
-    "        color: #000;\r" +
-    "\n" +
-    "        background: #fff !important;\r" +
-    "\n" +
-    "        box-shadow: none !important;\r" +
-    "\n" +
-    "        height: 34px !important;\r" +
-    "\n" +
-    "        line-height: 33px;\r" +
-    "\n" +
-    "        margin: 0 !important;\r" +
-    "\n" +
-    "    }\r" +
-    "\n" +
-    "    */\r" +
     "\n" +
     "    \r" +
     "\n" +
@@ -2522,42 +2611,6 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
-    "    /*.selectdemoSelectHeader .demo-header-searchbox {\r" +
-    "\n" +
-    "        border: none;\r" +
-    "\n" +
-    "        outline: none;\r" +
-    "\n" +
-    "        height: 100%;\r" +
-    "\n" +
-    "        width: 100%;\r" +
-    "\n" +
-    "        padding: 0;\r" +
-    "\n" +
-    "    }\r" +
-    "\n" +
-    "    \r" +
-    "\n" +
-    "    .selectdemoSelectHeader .demo-select-header {\r" +
-    "\n" +
-    "        box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);\r" +
-    "\n" +
-    "        padding-left: 10.667px;\r" +
-    "\n" +
-    "        height: 48px;\r" +
-    "\n" +
-    "        cursor: pointer;\r" +
-    "\n" +
-    "        position: relative;\r" +
-    "\n" +
-    "        display: flex;\r" +
-    "\n" +
-    "        align-items: center;\r" +
-    "\n" +
-    "        width: auto;\r" +
-    "\n" +
-    "    }*/\r" +
-    "\n" +
     "    \r" +
     "\n" +
     "    [class*=\"span\"] {\r" +
@@ -2620,9 +2673,92 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    md-content {\r" +
+    "\n" +
+    "        display: block;\r" +
+    "\n" +
+    "        position: relative;\r" +
+    "\n" +
+    "        overflow: hidden;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "</style>\r" +
     "\n" +
     "<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>"
+  );
+
+
+  $templateCache.put('registration/app/views/faqs.html',
+    "<div class=\"right_col\" role=\"main\">\r" +
+    "\n" +
+    "    <div class=\"register_page_main\">\r" +
+    "\n" +
+    "        <h4>FAQ's</h4>\r" +
+    "\n" +
+    "        <div class=\"faq_main\">\r" +
+    "\n" +
+    "            <div class=\"faq_main_head clearfix\">\r" +
+    "\n" +
+    "                <div class=\"faq_main_search clearfix\">\r" +
+    "\n" +
+    "                    <fieldset>\r" +
+    "\n" +
+    "                        <input id=\"filter\" autocomplete=\"off\" type=\"text\" ng-model=\"filters.search\">\r" +
+    "\n" +
+    "                        <span id=\"filter-count\"></span>\r" +
+    "\n" +
+    "                    </fieldset>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faq_grid clearfix\">\r" +
+    "\n" +
+    "                    <a class=\"faq_expand\" faqdirective ng-click=\"expanall()\">Expand All</a>\r" +
+    "\n" +
+    "                    <a class=\"faq_collapse\" faqdirective ng-click=\"collapseall()\">Collapse All</a>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"faqs_list_main\">\r" +
+    "\n" +
+    "                <div class=\"\">\r" +
+    "\n" +
+    "                    <div class=\"faqs_list_main_item\" ng-class=\"faqs.activeClass\" ng-repeat=\"faqs in arrayfaqs | filter:filters.search\">\r" +
+    "\n" +
+    "                        <h5 faqdirective class=\"faq_toggle_heading\" ng-click=\"toggleans(faqs)\">\r" +
+    "\n" +
+    "                            <span class=\"HeaderCSS\">{{faqs.questons}}</span></h5>\r" +
+    "\n" +
+    "                        <div class=\"faq_ans_block\" ng-show=\"faqs.styleanswer\">\r" +
+    "\n" +
+    "                            <p>\r" +
+    "\n" +
+    "                                <span>{{faqs.answers}}</span>\r" +
+    "\n" +
+    "                            </p>\r" +
+    "\n" +
+    "                        </div>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>\r" +
+    "\n" +
+    "<div id=\"ctl00_modalPopup_backgroundElement\" style=\"display:none; position: fixed; left: 0px; top: 0px; z-index: 10000;\" class=\"modalBackground\"></div>"
   );
 
 
@@ -3123,167 +3259,109 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/app/views/photoGuideLines.html',
-    "<div class=\"register_page_main\">\r" +
+    "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
-    "    <h4>Guidelines for uploading correct photos</h4>\r" +
+    "    <div class=\"register_page_main\">\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "    <div class=\"photo_guidlines_main\">\r" +
-    "\n" +
-    "        <div class=\"photo_guidlines_main_item clearfix\">\r" +
-    "\n" +
-    "            <div class=\"photo_guidlines_main_item_lt pics_incorrect_list clearfix\">\r" +
-    "\n" +
-    "                <h3>such photos cannot be uploaded</h3>\r" +
-    "\n" +
-    "                <table id=\"DataList3\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
-    "\n" +
-    "                    <tbody>\r" +
-    "\n" +
-    "                        <tr>\r" +
-    "\n" +
-    "                            <td>\r" +
-    "\n" +
-    "                                <img id=\"DataList3_ctl00_images\" src=\"src\\images/Side-face.png\">\r" +
-    "\n" +
-    "                                <p>\r" +
-    "\n" +
-    "                                    Side Face\r" +
-    "\n" +
-    "                                </p>\r" +
+    "        <h4>Guidelines for uploading correct photos</h4>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                            </td>\r" +
+    "        <div class=\"photo_guidlines_main\">\r" +
     "\n" +
-    "                            <td>\r" +
+    "            <div class=\"photo_guidlines_main_item clearfix\">\r" +
     "\n" +
-    "                                <img id=\"DataList3_ctl01_images\" src=\"src\\images/Blir.png\">\r" +
+    "                <div class=\"photo_guidlines_main_item_lt pics_incorrect_list clearfix\">\r" +
     "\n" +
-    "                                <p>\r" +
+    "                    <h3>such photos cannot be uploaded</h3>\r" +
     "\n" +
-    "                                    Blur\r" +
+    "                    <table id=\"DataList3\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
     "\n" +
-    "                                </p>\r" +
+    "                        <tbody>\r" +
     "\n" +
-    "\r" +
+    "                            <tr>\r" +
     "\n" +
-    "                            </td>\r" +
+    "                                <td>\r" +
     "\n" +
-    "                            <td>\r" +
+    "                                    <img id=\"DataList3_ctl00_images\" src=\"src\\images/Side-face.png\">\r" +
     "\n" +
-    "                                <img id=\"DataList3_ctl02_images\" src=\"src\\images/Group-photos.png\">\r" +
+    "                                    <p>\r" +
     "\n" +
-    "                                <p>\r" +
+    "                                        Side Face\r" +
     "\n" +
-    "                                    Group Photo\r" +
-    "\n" +
-    "                                </p>\r" +
+    "                                    </p>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                            </td>\r" +
+    "                                </td>\r" +
     "\n" +
-    "                            <td>\r" +
+    "                                <td>\r" +
     "\n" +
-    "                                <img id=\"DataList3_ctl03_images\" src=\"src\\images/Water-mark.png\">\r" +
+    "                                    <img id=\"DataList3_ctl01_images\" src=\"src\\images/Blir.png\">\r" +
     "\n" +
-    "                                <p>\r" +
+    "                                    <p>\r" +
     "\n" +
-    "                                    Watermark\r" +
+    "                                        Blur\r" +
     "\n" +
-    "                                </p>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            </td>\r" +
-    "\n" +
-    "                        </tr>\r" +
-    "\n" +
-    "                    </tbody>\r" +
-    "\n" +
-    "                </table>\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "            <div class=\"photo_guidlines_main_item_rt\">\r" +
-    "\n" +
-    "                <p>\r" +
-    "\n" +
-    "                    Do not send a photo which shows only a side of your face, blurred or unclear photos, or where your face is partially visible, They will be rejected during screening process.\r" +
-    "\n" +
-    "                </p>\r" +
-    "\n" +
-    "                <p>\r" +
-    "\n" +
-    "                    Please ensure that you do not upload celebrity photographs, if such is the case, we may deactivate your membership.\r" +
+    "                                    </p>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                </p>\r" +
+    "                                </td>\r" +
     "\n" +
-    "            </div>\r" +
+    "                                <td>\r" +
     "\n" +
-    "\r" +
+    "                                    <img id=\"DataList3_ctl02_images\" src=\"src\\images/Group-photos.png\">\r" +
     "\n" +
-    "        </div>\r" +
+    "                                    <p>\r" +
     "\n" +
-    "\r" +
+    "                                        Group Photo\r" +
     "\n" +
-    "        <div class=\"photo_guidlines_main_item clearfix\">\r" +
-    "\n" +
-    "            <div class=\"photo_guidlines_main_item_lt  pics_incorrect_list pics_correct_list clearfix\">\r" +
-    "\n" +
-    "                <h3>Photos that can be uploaded</h3>\r" +
-    "\n" +
-    "                <table id=\"DataList2\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
-    "\n" +
-    "                    <tbody>\r" +
-    "\n" +
-    "                        <tr>\r" +
-    "\n" +
-    "                            <td>\r" +
-    "\n" +
-    "                                <img id=\"DataList2_ctl00_images\" src=\"src\\images/Close-up.png\">\r" +
-    "\n" +
-    "                                <p>\r" +
-    "\n" +
-    "                                    Close Up\r" +
-    "\n" +
-    "                                </p>\r" +
-    "\n" +
-    "                            </td>\r" +
-    "\n" +
-    "                            <td>\r" +
-    "\n" +
-    "                                <img id=\"DataList2_ctl01_images\" src=\"src\\images/Fulsize.png\">\r" +
-    "\n" +
-    "                                <p>\r" +
-    "\n" +
-    "                                    Full Size\r" +
-    "\n" +
-    "                                </p>\r" +
-    "\n" +
-    "                            </td>\r" +
-    "\n" +
-    "                        </tr>\r" +
-    "\n" +
-    "                    </tbody>\r" +
-    "\n" +
-    "                </table>\r" +
+    "                                    </p>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "            </div>\r" +
+    "                                </td>\r" +
     "\n" +
-    "            <div class=\"photo_guidlines_main_item_rt\">\r" +
+    "                                <td>\r" +
     "\n" +
-    "                <p>\r" +
+    "                                    <img id=\"DataList3_ctl03_images\" src=\"src\\images/Water-mark.png\">\r" +
     "\n" +
-    "                    Please upload half-size or full-size recent photographs.\r" +
+    "                                    <p>\r" +
     "\n" +
-    "                </p>\r" +
+    "                                        Watermark\r" +
+    "\n" +
+    "                                    </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                        </tbody>\r" +
+    "\n" +
+    "                    </table>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"photo_guidlines_main_item_rt\">\r" +
+    "\n" +
+    "                    <p>\r" +
+    "\n" +
+    "                        Do not send a photo which shows only a side of your face, blurred or unclear photos, or where your face is partially visible, They will be rejected during screening process.\r" +
+    "\n" +
+    "                    </p>\r" +
+    "\n" +
+    "                    <p>\r" +
+    "\n" +
+    "                        Please ensure that you do not upload celebrity photographs, if such is the case, we may deactivate your membership.\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                    </p>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -3291,29 +3369,93 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "        </div>\r" +
+    "            <div class=\"photo_guidlines_main_item clearfix\">\r" +
+    "\n" +
+    "                <div class=\"photo_guidlines_main_item_lt  pics_incorrect_list pics_correct_list clearfix\">\r" +
+    "\n" +
+    "                    <h3>Photos that can be uploaded</h3>\r" +
+    "\n" +
+    "                    <table id=\"DataList2\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
+    "\n" +
+    "                        <tbody>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td>\r" +
+    "\n" +
+    "                                    <img id=\"DataList2_ctl00_images\" src=\"src\\images/Close-up.png\">\r" +
+    "\n" +
+    "                                    <p>\r" +
+    "\n" +
+    "                                        Close Up\r" +
+    "\n" +
+    "                                    </p>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                                <td>\r" +
+    "\n" +
+    "                                    <img id=\"DataList2_ctl01_images\" src=\"src\\images/Fulsize.png\">\r" +
+    "\n" +
+    "                                    <p>\r" +
+    "\n" +
+    "                                        Full Size\r" +
+    "\n" +
+    "                                    </p>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                        </tbody>\r" +
+    "\n" +
+    "                    </table>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"photo_guidlines_main_item_rt\">\r" +
+    "\n" +
+    "                    <p>\r" +
+    "\n" +
+    "                        Please upload half-size or full-size recent photographs.\r" +
+    "\n" +
+    "                    </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            </div>\r" +
     "\n" +
     "\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <div class=\"photo_guidlines_main_guideslist\">\r" +
+    "            <div class=\"photo_guidlines_main_guideslist\">\r" +
     "\n" +
-    "            <h6>Please ensure that none of your photos are obscene or irrelevant. In such a case your account will be deactivated.</h6>\r" +
+    "                <h6>Please ensure that none of your photos are obscene or irrelevant. In such a case your account will be deactivated.</h6>\r" +
     "\n" +
-    "            <p title=\"1\">Mentioning contact details on photos is prohibited.</p>\r" +
+    "                <p title=\"1\">Mentioning contact details on photos is prohibited.</p>\r" +
     "\n" +
-    "            <p title=\"2\">Do not upload photograph which shows you with a cigarette / cigar.</p>\r" +
+    "                <p title=\"2\">Do not upload photograph which shows you with a cigarette / cigar.</p>\r" +
     "\n" +
-    "            <p title=\"3\">Photograph which does not match with the age specified in the profile will not be uploaded.</p>\r" +
+    "                <p title=\"3\">Photograph which does not match with the age specified in the profile will not be uploaded.</p>\r" +
     "\n" +
-    "            <p title=\"4\">Do not upload photos wearing govt service uniforms unless they match your profession.(eg.army,navy, police etc.)</p>\r" +
+    "                <p title=\"4\">Do not upload photos wearing govt service uniforms unless they match your profession.(eg.army,navy, police etc.)</p>\r" +
     "\n" +
-    "            <p title=\"5\">Optimum photo size is 400 width x 500 height.</p>\r" +
+    "                <p title=\"5\">Optimum photo size is 400 width x 500 height.</p>\r" +
     "\n" +
-    "            <p title=\"6\">If you choose to mail photos,please mention profile picture.</p>\r" +
+    "                <p title=\"6\">If you choose to mail photos,please mention profile picture.</p>\r" +
     "\n" +
-    "            <p title=\"7\">photos uploaded will undergo screening and updated within 2 hours during the business hours.</p>\r" +
+    "                <p title=\"7\">photos uploaded will undergo screening and updated within 2 hours during the business hours.</p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            </div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -3323,7 +3465,412 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    </div>\r" +
     "\n" +
+    "</div>"
+  );
+
+
+  $templateCache.put('registration/app/views/privacyPolicy.html',
+    "<div class=\"right_col\" role=\"main\">\r" +
+    "\n" +
+    "    <div class=\"register_page_main\" ng-init=\"initprivacy()\">\r" +
+    "\n" +
+    "        <h4>Privacy Policy</h4>\r" +
+    "\n" +
+    "        <div class=\"faq_main\">\r" +
+    "\n" +
+    "            <div class=\"faqs_list_main privacy_page_main\">\r" +
+    "\n" +
+    "                <h5><small>Updated December 23, 2003 - Version 1.7</small></h5>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\">\r" +
+    "\n" +
+    "                    <h5>Privacy Topics</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc privacy_topic_links clearfix\">\r" +
+    "\n" +
+    "                        <a href=\"#reg\">Registration</a>\r" +
+    "\n" +
+    "                        <a href=\"#advreg\">Advanced Registration</a>\r" +
+    "\n" +
+    "                        <a href=\"#cookies\">Cookies</a>\r" +
+    "\n" +
+    "                        <a href=\"#logfiles\">Log Files</a>\r" +
+    "\n" +
+    "                        <a href=\"#sharing\">Sharing</a>\r" +
+    "\n" +
+    "                        <a href=\"#links\">Links</a>\r" +
+    "\n" +
+    "                        <a href=\"#newsletters\">Newsletter</a>\r" +
+    "\n" +
+    "                        <a href=\"#surveys\">Surveys &amp; Contests</a>\r" +
+    "\n" +
+    "                        <a href=\"#tellafriend\">Tell-A-Friend</a>\r" +
+    "\n" +
+    "                        <a href=\"#supplement\">Supplementation of Information</a>\r" +
+    "\n" +
+    "                        <a href=\"#sploffers\">Special Offers</a>\r" +
+    "\n" +
+    "                        <a href=\"#siteupdates\">Site and Service Updates</a>\r" +
+    "\n" +
+    "                        <a href=\"#prsnlinformupdate\">Correction/Updating Personal Information</a>\r" +
+    "\n" +
+    "                        <a href=\"#chcoutput\">Choice/Opt-out</a>\r" +
+    "\n" +
+    "                        <a href=\"#emaillinks\">Email Links</a>\r" +
+    "\n" +
+    "                        <a href=\"#thidpartyadvrts\">Third Party Advertisers and Cookies</a>\r" +
+    "\n" +
+    "                        <a href=\"#notifychanges\">Notification of Changes</a>\r" +
+    "\n" +
+    "                        <a href=\"#feerefund\">Fees Refund</a>\r" +
+    "\n" +
+    "                        <a href=\"#cancelmembership\">Cancellation of Membership</a>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"reg\">\r" +
+    "\n" +
+    "                    <h5>Registration</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>In order to use this website, a user must first complete the registration form. During registration a user is required to give their contact information (such as name and email address). This information is used to contact the\r" +
+    "\n" +
+    "                            user about the services on our site for which they have expressed interest. It is optional for the user to provide demographic information (such as income level and gender), and unique identifiers (such as social security number),\r" +
+    "\n" +
+    "                            but encouraged so we can provide a more personalized experience on our site. Kaakateeya.com and its partners/ offices in India collect personal information necessary to respond to your requests for customized matrimonial services\r" +
+    "\n" +
+    "                            and to allow you to use the resources available on our website. Personal information includes, but is not limited to, name, physical address, email address, date of birth, religion, time of birth, caste, fathers name, mothers\r" +
+    "\n" +
+    "                            name, brothers and sisters details phone number, age and any other information that itself identifies or, when tied to the above information, may identify you as a specific individual. Kaakateeya.com and its partners. Kaakateeya.com\r" +
+    "\n" +
+    "                            also uses order forms, feedback for you to request certain information, products and services. On such order forms, we collect your contact information, financial information (We work with Verisign to process credit card transactions\r" +
+    "\n" +
+    "                            and we do not store your credit card details on our site like the credit card no, address and other related information) and demographic information.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"advreg\">\r" +
+    "\n" +
+    "                    <h5>Advanced Registration</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>Kaakateeya.com offers paid membership to user wishing to use our advance features such as Contact Information of other Registered Members, Membership to our Indian Offices. Here a user must provide contact information (like name\r" +
+    "\n" +
+    "                            and shipping address) and financial information (like credit card number, expiration date). This information is used for billing purposes and to fill customer's orders. If we have trouble processing an order, this contact information\r" +
+    "\n" +
+    "                            is used to get in touch with the user.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"cookies\">\r" +
+    "\n" +
+    "                    <h5>Cookies</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>kaakateeya.com does not use any cookies.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"logfiles\">\r" +
+    "\n" +
+    "                    <h5>Log Files </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We use IP addresses to analyze trends, administer the site, track user’s movement, and gather broad demographic information for aggregate use. IP addresses are not linked to personally identifiable information.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"sharing\">\r" +
+    "\n" +
+    "                    <h5>Sharing </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We do not share your personal information with anybody. We will share aggregated demographic information with our partners and advertisers. This is not linked to any personal information that can identify any individual person.\r" +
+    "\n" +
+    "                            We use an outside shipping company to ship orders, and a credit card processing company to bill users for goods and services. These companies do not retain, share, store or use personally identifiable information for any secondary\r" +
+    "\n" +
+    "                            purposes. We partner with another party to provide specific services. When the user signs up for these services, we will share names, or other contact information that is necessary for the third party to provide these services.These\r" +
+    "\n" +
+    "                            parties are not allowed to use personally identifiable information except for the purpose of providing these services.\r" +
+    "\n" +
+    "                        </p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"links\">\r" +
+    "\n" +
+    "                    <h5>Links </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>This web site contains links to other sites. Please be aware that we kaakateeya.com are not responsible for the privacy practices of such other sites. We encourage our users to be aware when they leave our site and to read the\r" +
+    "\n" +
+    "                            privacy statements of each and every web site that collects personally identifiable information. This privacy statement applies solely to information collected by this Web site.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"newsletters\">\r" +
+    "\n" +
+    "                    <h5>Newsletter </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>If a user wishes to subscribe to our newsletter, we ask for contact information such as name and email address.\r" +
+    "\n" +
+    "                        </p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"surveys\">\r" +
+    "\n" +
+    "                    <h5>Surveys &amp; Contests </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>From time-to-time our site requests information from users via surveys or contests. Participation in these surveys or contests is completely voluntary and the user therefore has a choice whether or not to disclose this information.\r" +
+    "\n" +
+    "                            Information requested may include contact information (such as name and shipping address), and demographic information (such as zip code, age level). Contact information will be used to notify the winners and award prizes.\r" +
+    "\n" +
+    "                            Survey information will be used for purposes of monitoring or improving the use and satisfaction of this site.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"tellafriend\">\r" +
+    "\n" +
+    "                    <h5>Tell-A-Friend </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>If a user elects to use our referral service for informing a friend about our site, we ask them for the friend’s name and email address. kaakateeya.com will automatically send the friend a one-time email inviting them to visit\r" +
+    "\n" +
+    "                            the site. kaakateeya.com stores this information for the sole purpose of sending this one-time email. The friend may contact kaakateeya.com at Mailing List to request the removal of this information from their database.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\">\r" +
+    "\n" +
+    "                    <h5>Security </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>This website takes every precaution to protect our users’ information. When users submit sensitive information via the website, your information is protected both online and off-line. When our registration/order form asks users\r" +
+    "\n" +
+    "                            to enter sensitive information (such as credit card number and/or social security number), that information is encrypted and is protected with the best encryption software in the industry - SSL. While on a secure page, such\r" +
+    "\n" +
+    "                            as our order form, the lock icon on the bottom of Web browsers such as Netscape Navigator and Microsoft Internet Explorer becomes locked, as opposed to un-locked, or open, when you are just ‘surfing’. To learn more about SSL,\r" +
+    "\n" +
+    "                            follow this link Verisign While we use SSL encryption to protect sensitive information online, we also do everything in our power to protect user-information off-line. All of our users’ information, not just the sensitive information\r" +
+    "\n" +
+    "                            mentioned above, is restricted in our offices. Only employees who need the information to perform a specific job (for example, our billing clerk or a customer service representative) are granted access to personally identifiable\r" +
+    "\n" +
+    "                            information. Our employees must use password-protected screen-savers when they leave their desk. When they return, they must re-enter their password to re-gain access to your information. Furthermore, ALL employees are kept\r" +
+    "\n" +
+    "                            up-to-date on our security and privacy practices. Every quarter, as well as any time new policies are added, our employees are notified and/or reminded about the importance we place on privacy, and what they can do to ensure\r" +
+    "\n" +
+    "                            our customers’ information is protected. Finally, the servers that we store personally identifiable information on are kept in a secure environment, behind a locked cage. If you have any questions about the security at our\r" +
+    "\n" +
+    "                            website, you can send an email to info@kaakateeya.com.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"supplement\">\r" +
+    "\n" +
+    "                    <h5>Supplementation of Information </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>Email Messages, Registration Forms, and other related forms. We make the contents of the registration form visible to you and other register members of kaakateeya.com or its offices in India. Please remember that any information\r" +
+    "\n" +
+    "                            that is disclosed in these areas becomes public information. You should exercise caution when deciding to disclose your personal information. In order for this website to properly fulfill its obligation to our customers, it\r" +
+    "\n" +
+    "                            is necessary for us to supplement the information we receive with information from 3rd party sources. For example, to determine if our customers qualify for one of our credit cards, we use their name and social security number\r" +
+    "\n" +
+    "                            to request a credit report. Once we determine a user’s credit-worthiness, this document is destroyed. (or) In order for this website to enhance its ability to tailor the site to an individual’s preference, we combine information\r" +
+    "\n" +
+    "                            about the purchasing habits of users with similar information from our partners, Company Y &amp; Company Z, to create a personalized user profile. When a user makes a purchase from either of these two companies, the companies\r" +
+    "\n" +
+    "                            collect and share that purchase information with us so we can tailor the site to our users’ preferences.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"sploffers\">\r" +
+    "\n" +
+    "                    <h5>Special Offers</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We send all new members a welcoming email to verify password and username. Established members will occasionally receive information on products, services, special deals, and a newsletter. Out of respect for the privacy of our\r" +
+    "\n" +
+    "                            users we present the option to not receive these types of communications. Please see our choice and opt-out below.\r" +
+    "\n" +
+    "                        </p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"siteupdates\">\r" +
+    "\n" +
+    "                    <h5>Site and Service Updates </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We also send the user site and service announcement updates. Members are not able to un-subscribe from service announcements, which contain important information about the service. We communicate with the user to provide requested\r" +
+    "\n" +
+    "                            services and in regards to issues relating to their account via email or phone.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"prsnlinformupdate\">\r" +
+    "\n" +
+    "                    <h5>Correction/Updating Personal Information </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>If a user’s personally identifiable information changes (such as your zip code), or if a user no longer desires our service, we will endeavor to provide a way to correct, update or remove that user’s personal data provided to us.\r" +
+    "\n" +
+    "                            This can usually be done at the member information page or by emailing our Customer Support at info@kaakateeya.com. You can also use the Modify and Delete pages to modify or delete your information by logging in with your userid\r" +
+    "\n" +
+    "                            and password. However, even if you delete your personal information in our database, it maybe stored by our offices in India / USA for archival purposes.\r" +
+    "\n" +
+    "                        </p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"chcoutput\">\r" +
+    "\n" +
+    "                    <h5>Choice/Opt-out </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>Our users are given the opportunity to ‘opt-out’ of having their information used for purposes not directly related to our site at the point where we ask for the information. For example, our order form has an ‘opt-out’ mechanism\r" +
+    "\n" +
+    "                            so users who buy a product from us, but don’t want any marketing material, can keep their email address off of our lists. Users who no longer wish to receive our newsletter or promotional materials from our partners may opt-out\r" +
+    "\n" +
+    "                            of receiving these communications by replying to unsubscribe in the subject line in the email or email us at info@kaakateeya.com. Users of our site are always notified when their information is being collected by any outside\r" +
+    "\n" +
+    "                            parties. We do this so our users can make an informed choice as to whether they should proceed with services that require an outside party, or not.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"emaillinks\">\r" +
+    "\n" +
+    "                    <h5>Email Links </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We use email links located on the \"Contact us\" page to allow you to contact us directly with any questions or comments you may have. We read every message sent in and try to reply promptly to every one. This information is used\r" +
+    "\n" +
+    "                            to respond directly to your questions or comments. We may also file your comments to improve the site and program, or review and discard the information. Your personal information is only shared with third parties with your\r" +
+    "\n" +
+    "                            explicit permission.\r" +
+    "\n" +
+    "                        </p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"thidpartyadvrts\">\r" +
+    "\n" +
+    "                    <h5>Third Party Advertisers and Cookies</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>kaakateeya.com may work with a third party to serve ads on our site. These ads may contain cookies. This policy only covers the use of cookies by kaakateeya.com and does not cover the use of cookies by any advertisers. kaakateeya.com.com\r" +
+    "\n" +
+    "                            does not have control, nor access to the information contained in its advertisers' cookies.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"notifychanges\">\r" +
+    "\n" +
+    "                    <h5>Notification of Changes </h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>We will notify you directly via email if there is a material change in our privacy practices. We will also post the changes in our privacy statement 30 days prior to a change.\r" +
+    "\n" +
+    "                            <br> Our address: Kaakateeya.Com 3233 Monument Ann Arbor, MI - 48108 USA http://www.kaakateeya.com</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"feerefund\">\r" +
+    "\n" +
+    "                    <h5>Fees Refund</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>If you choose to terminate your membership, the MEMBERSHIP FEES ARE NOT REFUNDABLE under any circumstances. Your membership in the kaakateeya.com is for yourself for personal use. You may not authorize others to use your membership\r" +
+    "\n" +
+    "                            and you may not assign or transfer your account to any other person or entity.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"faqs_list_main_item\" id=\"cancelmembership\">\r" +
+    "\n" +
+    "                    <h5>Cancellation of Membership</h5>\r" +
+    "\n" +
+    "                    <div class=\"faq_ans_block policy_list_desc\">\r" +
+    "\n" +
+    "                        <p>The membership may be cancelled by either party by serving a written notice on the other.kaakateeya.com reserves the right to cancel the membership, to suspend a profile or to disable access in respect of any member in breach of\r" +
+    "\n" +
+    "                            any of the terms. In no case will the Membership fees be refundable.</p>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
     "\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <a class=\"back-to-top\">&nbsp;</a>\r" +
     "\n" +
     "</div>"
   );
@@ -4168,7 +4715,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    ._md-datepicker-floating-label>md-datepicker .md-datepicker-button {\r" +
+    "    .md-datepicker-floating-label>md-datepicker .md-datepicker-button {\r" +
     "\n" +
     "        float: right;\r" +
     "\n" +
@@ -4178,7 +4725,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "    \r" +
     "\n" +
-    "    ._md-datepicker-floating-label._md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore) {\r" +
+    "    .md-datepicker-floating-label.md-datepicker-has-calendar-icon>label:not(.md-no-float):not(.md-container-ignore) {\r" +
     "\n" +
     "        right: 18px;\r" +
     "\n" +
@@ -4225,6 +4772,18 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        opacity: 1;\r" +
     "\n" +
     "        display: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-content {\r" +
+    "\n" +
+    "        display: block;\r" +
+    "\n" +
+    "        position: relative;\r" +
+    "\n" +
+    "        overflow: hidden;\r" +
     "\n" +
     "    }\r" +
     "\n" +

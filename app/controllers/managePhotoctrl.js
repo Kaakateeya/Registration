@@ -206,7 +206,7 @@ regApp.controller("managePhotoCtrl", ['$uibModal', '$scope', 'Commondependency',
                 window.open('registration/photoGuideLines', '_blank');
                 break;
             case 'Faqs':
-                window.open('faqs', '_blank');
+                window.open('registration/faqs', '_blank');
                 break;
             case 'uploadTips':
                 window.open('registration/uploadTips', '_blank');

@@ -33,9 +33,14 @@ regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         { name: 'registration', url: '/registration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
         { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
-        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' }
+        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
+        { name: 'registration.photoGuideLines', url: '/photoGuideLines', templateUrl: regApp.templateroot + 'app/views/photoGuideLines.html', controller: 'photoGuideLinesctrl' },
+        { name: 'registration.uploadTips', url: '/uploadTips', templateUrl: regApp.templateroot + 'app/views/uploadTips.html', controller: 'uploadTipsctrl' },
+        { name: 'registration.faqs', url: '/faqs', templateUrl: 'app/views/faqs.html', controller: 'faqs' },
+        { name: 'registration.privacyPolicy', url: '/privacyPolicy', templateUrl: 'app/views/privacyPolicy.html', controller: 'privacypolicy' }
 
     ];
+
 
     $urlRouterProvider.otherwise('registration');
 
@@ -55,7 +60,7 @@ regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView
-        })
+        });
         $locationProvider.html5Mode(true);
     });
 });
