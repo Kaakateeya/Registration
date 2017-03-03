@@ -1154,6 +1154,213 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
   );
 
 
+  $templateCache.put('registration/app/views/photoGuideLines.html',
+    "<div class=\"register_page_main\">\r" +
+    "\n" +
+    "    <h4>Guidelines for uploading correct photos</h4>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <div class=\"photo_guidlines_main\">\r" +
+    "\n" +
+    "        <div class=\"photo_guidlines_main_item clearfix\">\r" +
+    "\n" +
+    "            <div class=\"photo_guidlines_main_item_lt pics_incorrect_list clearfix\">\r" +
+    "\n" +
+    "                <h3>such photos cannot be uploaded</h3>\r" +
+    "\n" +
+    "                <table id=\"DataList3\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
+    "\n" +
+    "                    <tbody>\r" +
+    "\n" +
+    "                        <tr>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList3_ctl00_images\" src=\"src\\images/Side-face.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Side Face\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList3_ctl01_images\" src=\"src\\images/Blir.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Blur\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList3_ctl02_images\" src=\"src\\images/Group-photos.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Group Photo\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList3_ctl03_images\" src=\"src\\images/Water-mark.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Watermark\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                        </tr>\r" +
+    "\n" +
+    "                    </tbody>\r" +
+    "\n" +
+    "                </table>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"photo_guidlines_main_item_rt\">\r" +
+    "\n" +
+    "                <p>\r" +
+    "\n" +
+    "                    Do not send a photo which shows only a side of your face, blurred or unclear photos, or where your face is partially visible, They will be rejected during screening process.\r" +
+    "\n" +
+    "                </p>\r" +
+    "\n" +
+    "                <p>\r" +
+    "\n" +
+    "                    Please ensure that you do not upload celebrity photographs, if such is the case, we may deactivate your membership.\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </p>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"photo_guidlines_main_item clearfix\">\r" +
+    "\n" +
+    "            <div class=\"photo_guidlines_main_item_lt  pics_incorrect_list pics_correct_list clearfix\">\r" +
+    "\n" +
+    "                <h3>Photos that can be uploaded</h3>\r" +
+    "\n" +
+    "                <table id=\"DataList2\" class=\"clearfix\" style=\"border-collapse: collapse;\" cellspacing=\"0\">\r" +
+    "\n" +
+    "                    <tbody>\r" +
+    "\n" +
+    "                        <tr>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList2_ctl00_images\" src=\"src\\images/Close-up.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Close Up\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                            <td>\r" +
+    "\n" +
+    "                                <img id=\"DataList2_ctl01_images\" src=\"src\\images/Fulsize.png\">\r" +
+    "\n" +
+    "                                <p>\r" +
+    "\n" +
+    "                                    Full Size\r" +
+    "\n" +
+    "                                </p>\r" +
+    "\n" +
+    "                            </td>\r" +
+    "\n" +
+    "                        </tr>\r" +
+    "\n" +
+    "                    </tbody>\r" +
+    "\n" +
+    "                </table>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"photo_guidlines_main_item_rt\">\r" +
+    "\n" +
+    "                <p>\r" +
+    "\n" +
+    "                    Please upload half-size or full-size recent photographs.\r" +
+    "\n" +
+    "                </p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        <div class=\"photo_guidlines_main_guideslist\">\r" +
+    "\n" +
+    "            <h6>Please ensure that none of your photos are obscene or irrelevant. In such a case your account will be deactivated.</h6>\r" +
+    "\n" +
+    "            <p title=\"1\">Mentioning contact details on photos is prohibited.</p>\r" +
+    "\n" +
+    "            <p title=\"2\">Do not upload photograph which shows you with a cigarette / cigar.</p>\r" +
+    "\n" +
+    "            <p title=\"3\">Photograph which does not match with the age specified in the profile will not be uploaded.</p>\r" +
+    "\n" +
+    "            <p title=\"4\">Do not upload photos wearing govt service uniforms unless they match your profession.(eg.army,navy, police etc.)</p>\r" +
+    "\n" +
+    "            <p title=\"5\">Optimum photo size is 400 width x 500 height.</p>\r" +
+    "\n" +
+    "            <p title=\"6\">If you choose to mail photos,please mention profile picture.</p>\r" +
+    "\n" +
+    "            <p title=\"7\">photos uploaded will undergo screening and updated within 2 hours during the business hours.</p>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
+  );
+
+
   $templateCache.put('registration/app/views/secondaryRegisrtation.html',
     "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
@@ -2056,6 +2263,2867 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "</style>\r" +
     "\n" +
     "<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>"
+  );
+
+
+  $templateCache.put('registration/app/views/uploadTips.html',
+    "<style type=\"text/css\">\r" +
+    "\n" +
+    "    body {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        /*background-image:url('src/images/bg/bg3.jpg');*/\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    table {\r" +
+    "\n" +
+    "        padding: 0px;\r" +
+    "\n" +
+    "        border-spacing: 0;\r" +
+    "\n" +
+    "        border-collapse: collapse;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    p {\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "        /*color: #58a718;*/\r" +
+    "\n" +
+    "        color: #ffa500;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lstSearch {\r" +
+    "\n" +
+    "        height: 80px;\r" +
+    "\n" +
+    "        width: 150px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkSkipPage {\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "        padding-bottom: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .aspxContentdiv {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        height: 100%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* Top ribbon --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .pghd {\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        padding-left: 5px;\r" +
+    "\n" +
+    "        height: 25px;\r" +
+    "\n" +
+    "        line-height: 25px;\r" +
+    "\n" +
+    "        color: #ffffff;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        /*background-color: #BADD74; */\r" +
+    "\n" +
+    "        /*background-image: url(src/images/pgbg01.jpg); 	background-repeat: repeat-x; 	background-color: #ffffff; 	border-bottom: solid 1px #029348; 	border-left: solid 5px #029348;*/\r" +
+    "\n" +
+    "        border-bottom: 1px solid #3f89c3;\r" +
+    "\n" +
+    "        width: 99%;\r" +
+    "\n" +
+    "        margin: 0 auto;\r" +
+    "\n" +
+    "        margin-top: 10px;\r" +
+    "\n" +
+    "        margin-bottom: 10px;\r" +
+    "\n" +
+    "        /* IE9 SVG, needs conditional override of 'filter' to 'none' */\r" +
+    "\n" +
+    "        filter: none;\r" +
+    "\n" +
+    "        border-radius: 10px 10px 10px 10px;\r" +
+    "\n" +
+    "        background: rgb(249, 89, 89);\r" +
+    "\n" +
+    "        /* Old browsers */\r" +
+    "\n" +
+    "        /* IE9 SVG, needs conditional override of 'filter' to 'none' */\r" +
+    "\n" +
+    "        background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y5NTk1OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9Ijg4JSIgc3RvcC1jb2xvcj0iIzc3MDMwMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3OTM1MzIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);\r" +
+    "\n" +
+    "        background: -moz-linear-gradient(top, rgba(249, 89, 89, 1) 0%, rgba(119, 3, 0, 1) 88%, rgba(121, 53, 50, 1) 100%);\r" +
+    "\n" +
+    "        /* FF3.6+ */\r" +
+    "\n" +
+    "        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(249, 89, 89, 1)), color-stop(88%, rgba(119, 3, 0, 1)), color-stop(100%, rgba(121, 53, 50, 1)));\r" +
+    "\n" +
+    "        /* Chrome,Safari4+ */\r" +
+    "\n" +
+    "        background: -webkit-linear-gradient(top, rgba(249, 89, 89, 1) 0%, rgba(119, 3, 0, 1) 88%, rgba(121, 53, 50, 1) 100%);\r" +
+    "\n" +
+    "        /* Chrome10+,Safari5.1+ */\r" +
+    "\n" +
+    "        background: -o-linear-gradient(top, rgba(249, 89, 89, 1) 0%, rgba(119, 3, 0, 1) 88%, rgba(121, 53, 50, 1) 100%);\r" +
+    "\n" +
+    "        /* Opera 11.10+ */\r" +
+    "\n" +
+    "        background: -ms-linear-gradient(top, rgba(249, 89, 89, 1) 0%, rgba(119, 3, 0, 1) 88%, rgba(121, 53, 50, 1) 100%);\r" +
+    "\n" +
+    "        /* IE10+ */\r" +
+    "\n" +
+    "        background: linear-gradient(to bottom, rgba(249, 89, 89, 1) 0%, rgba(119, 3, 0, 1) 88%, rgba(121, 53, 50, 1) 100%);\r" +
+    "\n" +
+    "        /* W3C */\r" +
+    "\n" +
+    "        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f95959', endColorstr='#793532', GradientType=0);\r" +
+    "\n" +
+    "        /* IE6-8 */\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* Top ribbon --End*/\r" +
+    "\n" +
+    "    /*Control Holder in aspx page--Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ControlHolder {\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Control Holder in aspx page--Ends*/\r" +
+    "\n" +
+    "    /*Input fields(email, number, password, tel, text, url, file) style for show, hover and focus -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input[type=email],\r" +
+    "\n" +
+    "    input[type=number],\r" +
+    "\n" +
+    "    input[type=password],\r" +
+    "\n" +
+    "    input[type=tel],\r" +
+    "\n" +
+    "    input[type=text],\r" +
+    "\n" +
+    "    input[type=url],\r" +
+    "\n" +
+    "    input[type=file] {\r" +
+    "\n" +
+    "        display: inline-block;\r" +
+    "\n" +
+    "        height: 27px;\r" +
+    "\n" +
+    "        width: 200px;\r" +
+    "\n" +
+    "        line-height: 25px;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        padding: 0 8px;\r" +
+    "\n" +
+    "        background: #fff;\r" +
+    "\n" +
+    "        border: 1px solid #d9d9d9;\r" +
+    "\n" +
+    "        border-top: 1px solid #c0c0c0;\r" +
+    "\n" +
+    "        -webkit-box-sizing: border-box;\r" +
+    "\n" +
+    "        -moz-box-sizing: border-box;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        -webkit-border-radius: 3px;\r" +
+    "\n" +
+    "        -moz-border-radius: 3px;\r" +
+    "\n" +
+    "        border-radius: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input[type=email]:hover,\r" +
+    "\n" +
+    "    input[type=number]:hover,\r" +
+    "\n" +
+    "    input[type=password]:hover,\r" +
+    "\n" +
+    "    input[type=tel]:hover,\r" +
+    "\n" +
+    "    input[type=text]:hover,\r" +
+    "\n" +
+    "    input[type=url]:hover,\r" +
+    "\n" +
+    "    input[type=file]:hover {\r" +
+    "\n" +
+    "        border: 1px solid #b9b9b9;\r" +
+    "\n" +
+    "        border-top: 1px solid #a0a0a0;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input[type=email]:focus,\r" +
+    "\n" +
+    "    input[type=number]:focus,\r" +
+    "\n" +
+    "    input[type=password]:focus,\r" +
+    "\n" +
+    "    input[type=tel]:focus,\r" +
+    "\n" +
+    "    input[type=text]:focus,\r" +
+    "\n" +
+    "    input[type=url]:focus,\r" +
+    "\n" +
+    "    input[type=file]:focus {\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        border: 1px solid #793532;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Input fields(email, number, password, tel, text, url, file) style for show, hover and focus -- Ends*/\r" +
+    "\n" +
+    "    /*Textarea style for show, hover and focus -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    textarea {\r" +
+    "\n" +
+    "        resize: none;\r" +
+    "\n" +
+    "        display: inline-block;\r" +
+    "\n" +
+    "        height: 100px;\r" +
+    "\n" +
+    "        width: 300px;\r" +
+    "\n" +
+    "        line-height: 25px;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        padding: 0 8px;\r" +
+    "\n" +
+    "        background: #fff;\r" +
+    "\n" +
+    "        border: 1px solid #d9d9d9;\r" +
+    "\n" +
+    "        border-top: 1px solid #c0c0c0;\r" +
+    "\n" +
+    "        -webkit-box-sizing: border-box;\r" +
+    "\n" +
+    "        -moz-box-sizing: border-box;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        -webkit-border-radius: 3px;\r" +
+    "\n" +
+    "        -moz-border-radius: 3px;\r" +
+    "\n" +
+    "        border-radius: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    textarea:hover {\r" +
+    "\n" +
+    "        border: 1px solid #b9b9b9;\r" +
+    "\n" +
+    "        border-top: 1px solid #a0a0a0;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    textarea:focus {\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        border: 1px solid #793532;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Textarea style for show, hover and focus -- Ends*/\r" +
+    "\n" +
+    "    /*Input fields(Dropdown) style for show, hover and focus -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ddlInput {\r" +
+    "\n" +
+    "        display: inline-block;\r" +
+    "\n" +
+    "        height: 27px;\r" +
+    "\n" +
+    "        width: 200px;\r" +
+    "\n" +
+    "        padding-top: 0px;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        background: #fff;\r" +
+    "\n" +
+    "        border: 1px solid #d9d9d9;\r" +
+    "\n" +
+    "        border-top: 1px solid #c0c0c0;\r" +
+    "\n" +
+    "        -webkit-box-sizing: border-box;\r" +
+    "\n" +
+    "        -moz-box-sizing: border-box;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        -webkit-border-radius: 3px;\r" +
+    "\n" +
+    "        -moz-border-radius: 3px;\r" +
+    "\n" +
+    "        border-radius: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ddlInput:hover {\r" +
+    "\n" +
+    "        border: 1px solid #b9b9b9;\r" +
+    "\n" +
+    "        border-top: 1px solid #a0a0a0;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ddlInput:focus {\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        border: 1px solid #793532;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Input fields(Dropdown) style for show, hover and focus -- Ends*/\r" +
+    "\n" +
+    "    /*Input fields(Select) style for show, hover and focus -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .selInput {\r" +
+    "\n" +
+    "        display: inline-block;\r" +
+    "\n" +
+    "        height: 70px;\r" +
+    "\n" +
+    "        width: 200px;\r" +
+    "\n" +
+    "        padding-top: 4px;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        background: #fff;\r" +
+    "\n" +
+    "        border: 1px solid #d9d9d9;\r" +
+    "\n" +
+    "        border-top: 1px solid #c0c0c0;\r" +
+    "\n" +
+    "        -webkit-box-sizing: border-box;\r" +
+    "\n" +
+    "        -moz-box-sizing: border-box;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        -webkit-border-radius: 3px;\r" +
+    "\n" +
+    "        -moz-border-radius: 3px;\r" +
+    "\n" +
+    "        border-radius: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .selInput:hover {\r" +
+    "\n" +
+    "        border: 1px solid #b9b9b9;\r" +
+    "\n" +
+    "        border-top: 1px solid #a0a0a0;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .selInput:focus {\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        border: 1px solid #793532;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Input fields(Select) style for show, hover and focus -- Ends*/\r" +
+    "\n" +
+    "    /*Input fields(Other) style for show, hover and focus -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .txtOther {\r" +
+    "\n" +
+    "        display: inline-block;\r" +
+    "\n" +
+    "        height: 70px;\r" +
+    "\n" +
+    "        width: 27px;\r" +
+    "\n" +
+    "        padding-top: 2px;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        background: #fff;\r" +
+    "\n" +
+    "        border: 1px solid #d9d9d9;\r" +
+    "\n" +
+    "        border-top: 1px solid #c0c0c0;\r" +
+    "\n" +
+    "        -webkit-box-sizing: border-box;\r" +
+    "\n" +
+    "        -moz-box-sizing: border-box;\r" +
+    "\n" +
+    "        box-sizing: border-box;\r" +
+    "\n" +
+    "        -webkit-border-radius: 3px;\r" +
+    "\n" +
+    "        -moz-border-radius: 3px;\r" +
+    "\n" +
+    "        border-radius: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .txtOther:hover {\r" +
+    "\n" +
+    "        border: 1px solid #b9b9b9;\r" +
+    "\n" +
+    "        border-top: 1px solid #a0a0a0;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .txtOther:focus {\r" +
+    "\n" +
+    "        outline: none;\r" +
+    "\n" +
+    "        border: 1px solid #793532;\r" +
+    "\n" +
+    "        -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Input fields(Select) style for show, hover and focus -- Ends*/\r" +
+    "\n" +
+    "    /* Design -Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .UserControlContentDiv {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        border: solid 0px #ffffff;\r" +
+    "\n" +
+    "        padding-left: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .DesignTableContent {\r" +
+    "\n" +
+    "        width: 894px;\r" +
+    "\n" +
+    "        top: 150px;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "        padding: 0;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .BoxContentTD {\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .panelhd {\r" +
+    "\n" +
+    "        padding-left: 5px;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        /*background-color: #BADD74; */\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_center1.jpg);\r" +
+    "\n" +
+    "        /*background-image: url(src/images/pnlhdrbg.jpg); */\r" +
+    "\n" +
+    "        background-repeat: repeat-x;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        /*border-top: solid 1px #BADD74;*/\r" +
+    "\n" +
+    "        border-bottom: 1px solid #cccdcf;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .Boxleft {\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_left1.jpg);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        width: 10px;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .BoxRight {\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_right1.jpg);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        width: 10px;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .BoxHeadingTable {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .txtWaterMark {\r" +
+    "\n" +
+    "        border: solid 1px #6D6D6D;\r" +
+    "\n" +
+    "        width: 200px;\r" +
+    "\n" +
+    "        height: 18px;\r" +
+    "\n" +
+    "        margin-right: 10px;\r" +
+    "\n" +
+    "        background-image: url('src/images/txtbg_normal.png');\r" +
+    "\n" +
+    "        background-repeat: repeat-x;\r" +
+    "\n" +
+    "        color: #6a6a6a;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input.txtAraCode,\r" +
+    "\n" +
+    "    input.txtCurrencymini {\r" +
+    "\n" +
+    "        width: 55px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    input.txtDORmini {\r" +
+    "\n" +
+    "        width: 100px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .contactTable {\r" +
+    "\n" +
+    "        padding: 0px;\r" +
+    "\n" +
+    "        border-spacing: 0;\r" +
+    "\n" +
+    "        border-collapse: collapse;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .txtWaterMark {\r" +
+    "\n" +
+    "        border: solid 1px #6D6D6D;\r" +
+    "\n" +
+    "        margin-right: 10px;\r" +
+    "\n" +
+    "        background-image: url('src/images/txtbg_normal.png');\r" +
+    "\n" +
+    "        background-repeat: repeat-x;\r" +
+    "\n" +
+    "        color: #6a6a6a;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .multiSelectTable {\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        width: 60%;\r" +
+    "\n" +
+    "        padding: 2px;\r" +
+    "\n" +
+    "        border-spacing: 0;\r" +
+    "\n" +
+    "        border-collapse: collapse;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Subtitle --Starts */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblSubTitle {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #3f89c3;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SubTitleContentTD {\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .MandatoryLableContentTD {\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .HomeLinkContentTD {\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .MandatoryLabel {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .MandatoryLabelInline {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "        margin-right: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .Homelink {\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .Homelink:visited {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .Homelink:hover {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .Homelink:active {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkSkipPage {\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkSkipPage:visited {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkSkipPage:hover {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkSkipPage:active {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Subtitle --Ends*/\r" +
+    "\n" +
+    "    /*Field Content --Starts */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .InputFieldContentTable {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        padding: 0;\r" +
+    "\n" +
+    "        line-height: 2.5em;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .TextContent {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        padding: 0;\r" +
+    "\n" +
+    "        line-height: 1.2em;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "        font-style: normal;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .LeftLabelContentTD {\r" +
+    "\n" +
+    "        width: 300px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .LeftLabel {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "        padding-right: 2px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ColonLabel {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        padding-right: 2px;\r" +
+    "\n" +
+    "        width: 20px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .InputFieldTD {\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .tdlan {\r" +
+    "\n" +
+    "        padding-left: 25.5%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Field Content --Ends */\r" +
+    "\n" +
+    "    /*Validate message --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblValidate {\r" +
+    "\n" +
+    "        position: absolute;\r" +
+    "\n" +
+    "        margin-top: -10px;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        margin-left: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblValidate4Radio {\r" +
+    "\n" +
+    "        position: absolute;\r" +
+    "\n" +
+    "        margin-top: 0px;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        margin-left: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblValidate4Group {\r" +
+    "\n" +
+    "        position: absolute;\r" +
+    "\n" +
+    "        margin-top: -25px;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        margin-left: -62px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblValidate4Password {\r" +
+    "\n" +
+    "        position: absolute;\r" +
+    "\n" +
+    "        margin-top: -40px;\r" +
+    "\n" +
+    "        color: Red;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        margin-left: 202px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblMessage {\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblCalAge {\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        margin-left: 5px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblMessagelink {\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblMessagelink:visited {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblMessagelink:hover {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblMessagelink:active {\r" +
+    "\n" +
+    "        text-decoration: underline;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Validate message --Ends*/\r" +
+    "\n" +
+    "    /*Sub Content --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SubContentTR {\r" +
+    "\n" +
+    "        line-height: 0.3em;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Sub Content --Ends*/\r" +
+    "\n" +
+    "    /*Date picker --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-datepicker {\r" +
+    "\n" +
+    "        font-size: 70.5%;\r" +
+    "\n" +
+    "        border: 1px solid #aaaaaa;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Date picker --Ends*/\r" +
+    "\n" +
+    "    /*Alert --Starts */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_container {\r" +
+    "\n" +
+    "        position: fixed;\r" +
+    "\n" +
+    "        z-index: 100;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "        min-width: 300px;\r" +
+    "\n" +
+    "        /* Dialog will be no smaller than this */\r" +
+    "\n" +
+    "        max-width: 600px;\r" +
+    "\n" +
+    "        /* Dialog will wrap after this width */\r" +
+    "\n" +
+    "        background: #FFF;\r" +
+    "\n" +
+    "        border: solid 5px #999;\r" +
+    "\n" +
+    "        color: #000;\r" +
+    "\n" +
+    "        -moz-border-radius: 5px;\r" +
+    "\n" +
+    "        -webkit-border-radius: 5px;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_title {\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        line-height: 1.75em;\r" +
+    "\n" +
+    "        color: #666;\r" +
+    "\n" +
+    "        background: #CCC url(src/images/title.gif) top repeat-x;\r" +
+    "\n" +
+    "        border: solid 1px #FFF;\r" +
+    "\n" +
+    "        border-bottom: solid 1px #999;\r" +
+    "\n" +
+    "        cursor: default;\r" +
+    "\n" +
+    "        padding: 0em;\r" +
+    "\n" +
+    "        margin: 0em;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_content {\r" +
+    "\n" +
+    "        background: 16px 16px no-repeat url(src/images/info.gif);\r" +
+    "\n" +
+    "        padding: 1em 1.75em;\r" +
+    "\n" +
+    "        margin: 0em;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_content.alert {\r" +
+    "\n" +
+    "        background-image: url(src/images/info.gif);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_content.confirm {\r" +
+    "\n" +
+    "        background-image: url(src/images/important.gif);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_content.prompt {\r" +
+    "\n" +
+    "        background-image: url(src/images/help.gif);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_message {\r" +
+    "\n" +
+    "        padding-left: 48px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_panel {\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        margin: 1em 0em 0em 1em;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    #popup_prompt {\r" +
+    "\n" +
+    "        margin: .5em 0em;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Alert --Ends */\r" +
+    "\n" +
+    "    /*Processing Label --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblProcessing {\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "        font-style: normal;\r" +
+    "\n" +
+    "        color: #3f89c3;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Processing Label --Ends*/\r" +
+    "\n" +
+    "    /*Search Field Content --Starts */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .InputSearchFieldContentTable {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        padding: 0;\r" +
+    "\n" +
+    "        line-height: 2.0em;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SearchLeftLabelContentTD {\r" +
+    "\n" +
+    "        /* width: 200px; */\r" +
+    "\n" +
+    "        width: 40%;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "        padding: 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SearchLeftLabel {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        padding-right: 2px;\r" +
+    "\n" +
+    "        width: 200px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SearchColonLabel {\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        padding-right: 2px;\r" +
+    "\n" +
+    "        width: 20px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .SearchInputFieldTD {\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        padding: 5px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .divBasicDetailsValues {\r" +
+    "\n" +
+    "        width: 850px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Field Content --Ends */\r" +
+    "\n" +
+    "    /*Style for left menu--Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .sublnk {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        /*text-decoration: underline; 	color: #6B6B6B;*/\r" +
+    "\n" +
+    "        color: Black;\r" +
+    "\n" +
+    "        margin-left: 15px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .sublnk:hover {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "        /*text-decoration: underline; 	color: #6B6B6B;*/\r" +
+    "\n" +
+    "        color: #058dc6;\r" +
+    "\n" +
+    "        margin-left: 15px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Style for left menu--Ends*/\r" +
+    "\n" +
+    "    /*Left menu holde for employee-Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .leftmenuholder {\r" +
+    "\n" +
+    "        width: 173px;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        border-collapse: collapse;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Left menu holde for employee-Ends*/\r" +
+    "\n" +
+    "    /* Design -Ends*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .legend {\r" +
+    "\n" +
+    "        color: Orange;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Table design --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator {\r" +
+    "\n" +
+    "        margin: 0px;\r" +
+    "\n" +
+    "        padding: 0px;\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        border: 1px solid #000000;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator table {\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        height: 100%;\r" +
+    "\n" +
+    "        margin: 0px;\r" +
+    "\n" +
+    "        padding: 0px;\r" +
+    "\n" +
+    "        border: 1px solid #000000;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:hover td {\r" +
+    "\n" +
+    "        background-color: #efefef;\r" +
+    "\n" +
+    "        border: 1px solid #000000;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator td {\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        border: 1px solid #000000;\r" +
+    "\n" +
+    "        border-width: 0px 1px 1px 0px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
+    "\n" +
+    "        font-size: 10px;\r" +
+    "\n" +
+    "        font-family: Arial;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        color: #000000;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:last-child td {\r" +
+    "\n" +
+    "        border-width: 0px 1px 0px 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr td:last-child {\r" +
+    "\n" +
+    "        border-width: 0px 0px 1px 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:last-child td:last-child {\r" +
+    "\n" +
+    "        border-width: 0px 0px 0px 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableheader {\r" +
+    "\n" +
+    "        background: -o-linear-gradient(bottom, #ff5656 5%, #7f0000 100%);\r" +
+    "\n" +
+    "        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5656), color-stop(1, #7f0000));\r" +
+    "\n" +
+    "        background: -moz-linear-gradient( center top, #ff5656 5%, #7f0000 100%);\r" +
+    "\n" +
+    "        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=\"#ff5656\", endColorstr=\"#7f0000\");\r" +
+    "\n" +
+    "        background: -o-linear-gradient(top, #ff5656, 7f0000);\r" +
+    "\n" +
+    "        background-color: #ff5656;\r" +
+    "\n" +
+    "        border: 1px solid #000000;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        border-width: 1px 1px 1px 1px;\r" +
+    "\n" +
+    "        font-size: 14px;\r" +
+    "\n" +
+    "        font-family: Arial;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        color: #ffffff;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:first-child:hover td {\r" +
+    "\n" +
+    "        background: -o-linear-gradient(bottom, #ff5656 5%, #7f0000 100%);\r" +
+    "\n" +
+    "        background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ff5656), color-stop(1, #7f0000));\r" +
+    "\n" +
+    "        background: -moz-linear-gradient( center top, #ff5656 5%, #7f0000 100%);\r" +
+    "\n" +
+    "        filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=\"#ff5656\", endColorstr=\"#7f0000\");\r" +
+    "\n" +
+    "        background: -o-linear-gradient(top, #ff5656, 7f0000);\r" +
+    "\n" +
+    "        background-color: #efefef;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:first-child td:first-child {\r" +
+    "\n" +
+    "        border-width: 0px 0px 1px 0px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .CSSTableGenerator tr:first-child td:last-child {\r" +
+    "\n" +
+    "        border-width: 0px 0px 1px 1px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Tabel design--Ends\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "/*View page styles--Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblRegisterValue {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        color: #000000;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .rightlabel {\r" +
+    "\n" +
+    "        width: 250px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .centerlabel {\r" +
+    "\n" +
+    "        width: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .leftlabel {\r" +
+    "\n" +
+    "        width: 300px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .viewContentTable {\r" +
+    "\n" +
+    "        width: 90%;\r" +
+    "\n" +
+    "        margin: 0 auto;\r" +
+    "\n" +
+    "        line-height: 1.5em;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .colonBlack {\r" +
+    "\n" +
+    "        width: 3px;\r" +
+    "\n" +
+    "        color: #6b6b6b;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*View page styles-- Ends*/\r" +
+    "\n" +
+    "    /*Auto complete Styles -- Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .autocomplete_completionListElement {\r" +
+    "\n" +
+    "        visibility: hidden;\r" +
+    "\n" +
+    "        margin: 0px 0px 0px 0px;\r" +
+    "\n" +
+    "        background-color: #FFFFFF;\r" +
+    "\n" +
+    "        color: windowtext;\r" +
+    "\n" +
+    "        border: buttonshadow;\r" +
+    "\n" +
+    "        border-width: 1px;\r" +
+    "\n" +
+    "        border-style: solid;\r" +
+    "\n" +
+    "        cursor: 'default';\r" +
+    "\n" +
+    "        overflow: auto;\r" +
+    "\n" +
+    "        height: auto;\r" +
+    "\n" +
+    "        width: 160px;\r" +
+    "\n" +
+    "        text-align: Left;\r" +
+    "\n" +
+    "        list-style-type: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* AutoComplete highlighted item */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .autocomplete_highlightedListItem {\r" +
+    "\n" +
+    "        color: #3f89c3;\r" +
+    "\n" +
+    "        padding: 1px;\r" +
+    "\n" +
+    "        line-height: 20px;\r" +
+    "\n" +
+    "        margin-left: -40px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* AutoComplete item */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .autocomplete_listItem {\r" +
+    "\n" +
+    "        background-color: window;\r" +
+    "\n" +
+    "        color: windowtext;\r" +
+    "\n" +
+    "        padding: 1px;\r" +
+    "\n" +
+    "        background-color: #efefef;\r" +
+    "\n" +
+    "        line-height: 20px;\r" +
+    "\n" +
+    "        margin-left: -40px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*Auto complete Styles -- Ends*/\r" +
+    "\n" +
+    "    /*View Profile Page Menu --Starts*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkbtnMenu {\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        color: #006600;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblLandingData {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        color: #000000;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblLandingDataBold {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        color: #3399FF;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .modalBackground {\r" +
+    "\n" +
+    "        background-color: #DDCEFF;\r" +
+    "\n" +
+    "        filter: alpha(opacity=70);\r" +
+    "\n" +
+    "        opacity: 0.7;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .modalPopup {\r" +
+    "\n" +
+    "        background-color: #ffffdd;\r" +
+    "\n" +
+    "        border-width: 3px;\r" +
+    "\n" +
+    "        border-style: solid;\r" +
+    "\n" +
+    "        border-color: Gray;\r" +
+    "\n" +
+    "        padding: 3px;\r" +
+    "\n" +
+    "        width: 250px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*View Profile Page Menu --Ends*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .pophd {\r" +
+    "\n" +
+    "        background-image: url(src/images/pophd.jpg);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        background-color: White;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .leftcolrbold {\r" +
+    "\n" +
+    "        color: #6b6b6b;\r" +
+    "\n" +
+    "        font-size: 12px;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* Styles which are added from KaakateeyaStyles.css to Kaakateeya.css - Ramireddi  */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ProfileTitlel {\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_left1.jpg);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        width: 10px;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "        color: #029248;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ProfileTitleC {\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_center1.jpg);\r" +
+    "\n" +
+    "        background-repeat: repeat-x;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        width: 100%;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "        color: #029248;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ProfileTitler {\r" +
+    "\n" +
+    "        background-image: url(src/images/Corner_right1.jpg);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        width: 10px;\r" +
+    "\n" +
+    "        height: 150px;\r" +
+    "\n" +
+    "        color: #029248;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "        margin-left: 10px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        /* float: right; */\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .footerText {\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        color: #793532;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblSubSecTitle {\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #3399FF;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* Upload Photo */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ModalPopupBG {\r" +
+    "\n" +
+    "        background-color: #666699;\r" +
+    "\n" +
+    "        filter: alpha(opacity=50);\r" +
+    "\n" +
+    "        opacity: 0.7;\r" +
+    "\n" +
+    "        z-index: 100;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .HellowWorldPopup {\r" +
+    "\n" +
+    "        min-width: 200px;\r" +
+    "\n" +
+    "        min-height: 150px;\r" +
+    "\n" +
+    "        background: white;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .PopupHeader {\r" +
+    "\n" +
+    "        background-color: #58a718;\r" +
+    "\n" +
+    "        color: Blue;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* Upload Photo */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .pop_left {\r" +
+    "\n" +
+    "        background-image: url(src/images/pop_left.png);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        width: 12px;\r" +
+    "\n" +
+    "        height: 32px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .pop_right {\r" +
+    "\n" +
+    "        background-image: url(src/images/pop_right.png);\r" +
+    "\n" +
+    "        background-repeat: no-repeat;\r" +
+    "\n" +
+    "        width: 10px;\r" +
+    "\n" +
+    "        height: 32px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .pop_center {\r" +
+    "\n" +
+    "        background-image: url(src/images/pop_center.jpg);\r" +
+    "\n" +
+    "        background-repeat: repeat-x;\r" +
+    "\n" +
+    "        height: 32px;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        color: #376481;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .popcontent {\r" +
+    "\n" +
+    "        border: 1px solid #26ABE0;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        color: #376481;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        vertical-align: top;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .popcont {\r" +
+    "\n" +
+    "        border: 1px solid #26ABE0;\r" +
+    "\n" +
+    "        background-color: #ffffff;\r" +
+    "\n" +
+    "        color: #376481;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .btnshift {\r" +
+    "\n" +
+    "        width: 35px;\r" +
+    "\n" +
+    "        padding-bottom: 2px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /* css for timepicker */\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-timepicker-div .ui-widget-header {\r" +
+    "\n" +
+    "        margin-bottom: 8px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-timepicker-div dl {\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-timepicker-div dl dt {\r" +
+    "\n" +
+    "        height: 25px;\r" +
+    "\n" +
+    "        margin-bottom: -25px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-timepicker-div dl dd {\r" +
+    "\n" +
+    "        margin: 0 10px 10px 65px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-timepicker-div td {\r" +
+    "\n" +
+    "        font-size: 90%;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .ui-tpicker-grid-label {\r" +
+    "\n" +
+    "        background: none;\r" +
+    "\n" +
+    "        border: none;\r" +
+    "\n" +
+    "        margin: 0;\r" +
+    "\n" +
+    "        padding: 0;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .searching {\r" +
+    "\n" +
+    "        margin-left: 5px;\r" +
+    "\n" +
+    "        padding-top: 10px;\r" +
+    "\n" +
+    "        width: 366px;\r" +
+    "\n" +
+    "        position: relative;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .autocomplete_completionListElement {\r" +
+    "\n" +
+    "        visibility: hidden;\r" +
+    "\n" +
+    "        margin: 0px 0px 0px 0px;\r" +
+    "\n" +
+    "        background-color: #FFFFFF;\r" +
+    "\n" +
+    "        color: windowtext;\r" +
+    "\n" +
+    "        border: buttonshadow;\r" +
+    "\n" +
+    "        border-width: 1px;\r" +
+    "\n" +
+    "        border-style: solid;\r" +
+    "\n" +
+    "        cursor: 'default';\r" +
+    "\n" +
+    "        overflow: auto;\r" +
+    "\n" +
+    "        width: auto;\r" +
+    "\n" +
+    "        height: auto;\r" +
+    "\n" +
+    "        width: 160px;\r" +
+    "\n" +
+    "        text-align: Left;\r" +
+    "\n" +
+    "        list-style-type: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .charcount {\r" +
+    "\n" +
+    "        color: #6d6d6d;\r" +
+    "\n" +
+    "        text-align: center;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkbtnEdit {\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        color: #006600;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblEdit {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        margin-right: 5px;\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblEditValue {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-size: 15px;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblEditStatus {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        color: Green;\r" +
+    "\n" +
+    "        margin-right: 5px;\r" +
+    "\n" +
+    "        text-decoration: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .chkEdit {}\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lnkbtnMenu {\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "        color: #006600;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblLandingData {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        color: #000000;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .lblLandingDataBold {\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        color: #3399FF;\r" +
+    "\n" +
+    "        margin-left: 0px;\r" +
+    "\n" +
+    "        text-align: right;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .modalBackground {\r" +
+    "\n" +
+    "        background-color: #DDCEFF;\r" +
+    "\n" +
+    "        filter: alpha(opacity=70);\r" +
+    "\n" +
+    "        opacity: 0.7;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .modalPopup {\r" +
+    "\n" +
+    "        background-color: #ffffdd;\r" +
+    "\n" +
+    "        border-width: 3px;\r" +
+    "\n" +
+    "        border-style: solid;\r" +
+    "\n" +
+    "        border-color: Gray;\r" +
+    "\n" +
+    "        padding: 3px;\r" +
+    "\n" +
+    "        width: 250px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .chkSearch {\r" +
+    "\n" +
+    "        font-weight: normal;\r" +
+    "\n" +
+    "        text-align: left;\r" +
+    "\n" +
+    "        font-family: Arial, Verdana, Geneva, Helvetica, sans-serif;\r" +
+    "\n" +
+    "        font-size: 11px;\r" +
+    "\n" +
+    "        vertical-align: middle;\r" +
+    "\n" +
+    "        margin-left: 2px;\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        color: #6B6B6B;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .bdr_cont {\r" +
+    "\n" +
+    "        border-left: 1px solid #480EF7;\r" +
+    "\n" +
+    "        border-right: 1px solid #480EF7;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .btnstyleh {\r" +
+    "\n" +
+    "        color: #ffffff;\r" +
+    "\n" +
+    "        border: 3px solid #ffffff;\r" +
+    "\n" +
+    "        background-color: #ee5a1e;\r" +
+    "\n" +
+    "        padding: 3px 6px 3px 6px;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        /*margin: 3px; padding: 3px; vertical-align: top;*/\r" +
+    "\n" +
+    "        float: right;\r" +
+    "\n" +
+    "        box-shadow: 0px 0px 3px 3px #c4c4c4;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .btnstylehl {\r" +
+    "\n" +
+    "        color: #ffffff;\r" +
+    "\n" +
+    "        border: 3px solid #ffffff;\r" +
+    "\n" +
+    "        background-color: #ee5a1e;\r" +
+    "\n" +
+    "        padding: 3px 6px 3px 6px;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        /*margin: 3px; padding: 3px; vertical-align: top;*/\r" +
+    "\n" +
+    "        float: left;\r" +
+    "\n" +
+    "        box-shadow: 0px 0px 3px 3px #c4c4c4;\r" +
+    "\n" +
+    "        font-weight: bold;\r" +
+    "\n" +
+    "        margin-top: 3px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .headercls {\r" +
+    "\n" +
+    "        padding: 17px 0px 37px 2px;\r" +
+    "\n" +
+    "        font-size: 17px;\r" +
+    "\n" +
+    "        color: #000;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "</style>\r" +
+    "\n" +
+    "<div style=\"width: 100%; border-color: Gray; border: 1px;\">\r" +
+    "\n" +
+    "    <table style=\"width: 80%; top: 150px; vertical-align: top;\" align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r" +
+    "\n" +
+    "        <tbody>\r" +
+    "\n" +
+    "            <tr class=\"panelhd\">\r" +
+    "\n" +
+    "                <td class=\"ProfileTitlel\">\r" +
+    "\n" +
+    "                </td>\r" +
+    "\n" +
+    "                <td>\r" +
+    "\n" +
+    "                    <table style=\"width: 100%; top: 150px; vertical-align: top;\">\r" +
+    "\n" +
+    "                        <tbody>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td valign=\"top\" width=\"350px\">\r" +
+    "\n" +
+    "                                    <h3 class=\"headercls\">\r" +
+    "\n" +
+    "                                        Help / FAQs</h3>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td>\r" +
+    "\n" +
+    "                                    <div style=\"padding-bottom: 3px; padding-left: 5px; padding-right: 5px; padding-top: 3px\">\r" +
+    "\n" +
+    "                                        <span style=\"color: Black;\">\r" +
+    "\n" +
+    "                                        <h3>\r" +
+    "\n" +
+    "                                            <b>Photographs - Adding Photographs To Matrimonial Profiles</b></h3>\r" +
+    "\n" +
+    "                                    </span>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td align=\"justify\">\r" +
+    "\n" +
+    "                                    <ol style=\"width: 80%; text-align: justify;\">\r" +
+    "\n" +
+    "                                        <li><a href=\"#1\" class=\"sublnk\">1.  Why should I add my photograph to my matrimonial profile?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#2\" class=\"sublnk\">2.  Is it safe to add my photos along with the profile?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#3\" class=\"sublnk\">3.  How do I add my photo to my matrimonial profile on Kaakateeya.com?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#4\" class=\"sublnk\">4.  Can I make any of my album photos my profile photo?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#5\" class=\"sublnk\">5.  While uploading my photograph, I saw an error message\r" +
+    "\n" +
+    "                                        that the image must be in jpg, gif, bmp, tiff or png format, what does this mean?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#6\" class=\"sublnk\">6.  How do I remove my photo from my matrimonial profile\r" +
+    "\n" +
+    "                                        on Kaakateeya.com?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#7\" class=\"sublnk\" style=\"text-align:justify;\">7.  I can't find the information I need</a> :<span style=\"width: 100px; color:Black;\">\r" +
+    "\n" +
+    "                                        This link will allow you to contact Customer Relations who will get back to you\r" +
+    "\n" +
+    "                                        usually within 24 hours.If you want an answer immediately, please browse the</span>\r" +
+    "\n" +
+    "                                            <a href=\"/customer-relations/faq\" class=\"sublnk\">FAQs</a>.</li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#8\" class=\"sublnk\">8.  Where are the photos I uploaded while registering?</a></li>\r" +
+    "\n" +
+    "                                        <li><a href=\"#9\" class=\"sublnk\">9.  What privacy options are available for photos?</a></li>\r" +
+    "\n" +
+    "                                    </ol>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td>\r" +
+    "\n" +
+    "                                    <div style=\"padding-bottom: 3px; padding-left: 5px; padding-right: 5px; padding-top: 3px\" class=\"pghd\">\r" +
+    "\n" +
+    "                                        <span class=\"PageTitle\">Adding Photographs To Matrimonial Profiles</span>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                            <tr>\r" +
+    "\n" +
+    "                                <td>\r" +
+    "\n" +
+    "                                    <ol style=\"width: 80%;\">\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\" id=\"1\"><b style=\"font-size: 14px;\">1.Why should\r" +
+    "\n" +
+    "                                        I add my photograph to my matrimonial profile?</b></p>\r" +
+    "\n" +
+    "                                            Our statistics show that adding a photo to your matrimonial profile increases the number of times your profile is viewed by up to 7 times. You are likely to receive 12 times as many responses if you attach a photo. So we advise you to upload a photo to\r" +
+    "\n" +
+    "                                            increase your chances of finding your partner quickly.\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <br> Also read: <a class=\"sublnk\" href=\"/customer-relations/faq/phototips\">A Picture Is Worth\r" +
+    "\n" +
+    "                                            A Thousand Words</a><br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\"text-decoration: underline;\">Back to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"2\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">2.Is it safe\r" +
+    "\n" +
+    "                                        to add my photos along with the profile?</b></p>\r" +
+    "\n" +
+    "                                            Yes, it is absolutely safe to add photos to your profile. Kaakateeya.com ensures that all photographs are watermarked so as to prevent your photos from being tampered with.\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"3\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">3.How do I add\r" +
+    "\n" +
+    "                                        my photo to my matrimonial profile on Kaakateeya.com?</b></p>\r" +
+    "\n" +
+    "                                            To add your photo to your matrimonial profile please follow these steps.<br>\r" +
+    "\n" +
+    "                                            <ul class=\"list_disc\">\r" +
+    "\n" +
+    "                                                <li style=\"font-size: 12px;\">Login to your\r" +
+    "\n" +
+    "                                                    <a href=\"Login.aspx\" class=\"sublnk\" style=\"text-decoration: underline;\">\r" +
+    "\n" +
+    "                                                        <b>My Kaakateeya</b></a> Account.</li>\r" +
+    "\n" +
+    "                                                <li style=\"font-size: 12px;\">Click on \"Edit Photo\" link available on the My Kaakateeya page and follow the instructions there.</li>\r" +
+    "\n" +
+    "                                            </ul>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"4\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">4.Can I make\r" +
+    "\n" +
+    "                                        any of my album photos my profile photo?</b></p>\r" +
+    "\n" +
+    "                                            Yes, you can swap any album photo with your profile photo.To do this, click on “Make Profile Photo” option in the dropdown menu for the album photo.<br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"5\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">5.While uploading\r" +
+    "\n" +
+    "                                        my photograph, I saw an error message that the image must be in jpg, gif, bmp, tiff\r" +
+    "\n" +
+    "                                        or png format, what does this mean?</b></p>\r" +
+    "\n" +
+    "                                            jpg, gif, bmp, tiff and png are the most popular digital image formats on the internet. Kaakateeya.com accepts only these image formats for photos on your matrimonial profile.<br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"6\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">6.How do I remove\r" +
+    "\n" +
+    "                                        my photo from my matrimonial profile on Kaakateeya.com?</b></p>\r" +
+    "\n" +
+    "                                            To remove your photo on Kaakateeya.com all you need to do is:<br>\r" +
+    "\n" +
+    "                                            <ul>\r" +
+    "\n" +
+    "                                                <li style=\"font-size: 12px;\">Login to your\r" +
+    "\n" +
+    "                                                    <a href=\"Login.aspx\" class=\"sublnk\" style=\"text-decoration: underline;\">\r" +
+    "\n" +
+    "                                                        <b>My Kaakateeya</b></a> Account.</li>\r" +
+    "\n" +
+    "                                                <li style=\"font-size: 12px;\">Click on\r" +
+    "\n" +
+    "                                                    <a href=\"Login.aspx\" class=\"sublnk\" style=\"text-decoration: underline;\">\r" +
+    "\n" +
+    "                                                        <b>My Photos</b></a> in My Profile available under My Kaakateeya on the left of your screen and follow the instructions there.</li>\r" +
+    "\n" +
+    "                                                <li>Click on the down arrow at the bottom right side of the photo graph you want to Delete\r" +
+    "\n" +
+    "                                                </li>\r" +
+    "\n" +
+    "                                                <li>Choose Delete Photo</li>\r" +
+    "\n" +
+    "                                            </ul>\r" +
+    "\n" +
+    "                                            <br> Note: If you delete your profile photo then your first album photo will automatically become your profile photo.\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"7\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">7.Where are the\r" +
+    "\n" +
+    "                                        photos I uploaded while registering?</b></p>\r" +
+    "\n" +
+    "                                            Kaakateeya.com reviews all photographs uploaded by members. While we allow members the ability to upload their photographs, we reserve the right to remove/delete any photograph that violates socially accepted norms of decency. It takes us up to 24 hours\r" +
+    "\n" +
+    "                                            to screen your photos, during which period your photos will not be visible.<br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                        <li style=\"font-size: 12px;\">\r" +
+    "\n" +
+    "                                            <a name=\"8\"></a>\r" +
+    "\n" +
+    "                                            <p style=\"color:Black;\"><b style=\"font-size: 14px;\">8.What privacy\r" +
+    "\n" +
+    "                                        options are available for photos?</b></p>\r" +
+    "\n" +
+    "                                            Only Premium Members are entitled to the privacy options of 'Password Protection' and 'Photo Visible to Contacted and Accepted Members'. As a Premium Member, you can protect your photo with a password. In order to view your photograph other members will\r" +
+    "\n" +
+    "                                            require the password. The other privacy option available is 'Visible on accept' which means, only those people who you have accepted or expressed interest in will be able to view your photo. You can change your\r" +
+    "\n" +
+    "                                            privacy setting on the My Photos sectionunder My Kaakateeya.<br>\r" +
+    "\n" +
+    "                                            <br>\r" +
+    "\n" +
+    "                                            <div class=\"sublnk\" style=\"text-align: right;\">\r" +
+    "\n" +
+    "                                                <a href=\"#top\" class=\"sublnk\" style=\" text-decoration: underline;\">Back\r" +
+    "\n" +
+    "                                                to top</a></div>\r" +
+    "\n" +
+    "                                        </li>\r" +
+    "\n" +
+    "                                    </ol>\r" +
+    "\n" +
+    "                                </td>\r" +
+    "\n" +
+    "                            </tr>\r" +
+    "\n" +
+    "                        </tbody>\r" +
+    "\n" +
+    "                    </table>\r" +
+    "\n" +
+    "                </td>\r" +
+    "\n" +
+    "                <td class=\"ProfileTitler\">\r" +
+    "\n" +
+    "                </td>\r" +
+    "\n" +
+    "            </tr>\r" +
+    "\n" +
+    "        </tbody>\r" +
+    "\n" +
+    "    </table>\r" +
+    "\n" +
+    "</div>"
   );
 
 
