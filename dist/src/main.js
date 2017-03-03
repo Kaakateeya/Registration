@@ -989,6 +989,21 @@ regApp.directive('datePickerreg', function() {
 
     };
 });
+regApp.directive('fileModel', ['$parse', function($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+
+            element.bind('change', function() {
+                scope.$apply(function() {
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
 regApp.directive("materialMultiselect", ["$injector", function($injector) {
     return {
         restrict: "E",
@@ -1022,6 +1037,208 @@ regApp.directive("materialMultiselect", ["$injector", function($injector) {
         }
     };
 }]);
+// AngularJS: 1.3.15
+// bootstrap-multiselect: 0.9.6
+//var statticdata=require('./staticArrayBindings.json');
+regApp.directive('multiselectdropdownreg', ['arrayConstantsreg', 'SelectBindServicereg', function(cons, service) {
+    return {
+        require: 'ng-model',
+        scope: {
+            ngModel: '=',
+            typeofdata: "=",
+            parentVal: "="
+        },
+        link: function(scope, element, attrs) {
+            scope.options = [];
+
+            scope.databind = function(data) {
+                element.multiselect('dataprovider', data);
+                element.multiselect('select', scope.ngModel);
+            };
+
+            switch (scope.typeofdata) {
+
+                case 'MaritalStatus':
+                    scope.databind(cons.MaritalStatus);
+                    break;
+
+                case 'height':
+                    scope.databind(cons.height);
+                    break;
+
+                case 'Religion':
+                    scope.databind(cons.Religion);
+                    break;
+
+                case 'Mothertongue':
+                    scope.databind(cons.Mothertongue);
+                    break;
+
+                case 'educationcategory':
+                    scope.databind(cons.educationcategory);
+                    break;
+
+                case 'visastatus':
+                    scope.databind(cons.visastatus);
+                    break;
+
+                case 'stars':
+                    scope.databind(cons.stars);
+                    break;
+
+                case 'region':
+                    scope.databind(cons.region);
+                    break;
+
+                case 'bodyType':
+                    scope.databind(cons.bodyType);
+                    break;
+
+                case 'bloodGroup':
+                    scope.databind(cons.bloodGroup);
+                    break;
+
+                case 'healthCondition':
+                    scope.databind(cons.healthCondition);
+                    break;
+
+                case 'starLanguage':
+                    scope.databind(cons.starLanguage);
+                    break;
+
+                case 'lagnam':
+                    scope.databind(cons.lagnam);
+                    break;
+
+                case 'ZodaicSign':
+                    scope.databind(cons.ZodaicSign);
+                    break;
+
+                case 'paadam':
+                    scope.databind(cons.paadam);
+                    break;
+
+                case 'familyStatus':
+                    scope.databind(cons.familyStatus);
+                    break;
+
+                case 'RelationshipType':
+                    scope.databind(cons.RelationshipType);
+                    break;
+
+                case 'childStayingWith':
+                    scope.databind(cons.childStayingWith);
+                    break;
+
+
+
+                case 'Country':
+                    service.countrySelect().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+
+                case 'ProfCatgory':
+
+                    service.ProfessionCatgory().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+
+                case 'ProfGroup':
+                    service.ProfessionGroup().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+
+                case 'indiaStates':
+                    service.stateSelect('1').then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+                case 'countryCode':
+                    service.countryCodeselect().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+                case 'caste':
+                    service.casteselect().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+                case 'currency':
+                    service.currency().then(function(response) {
+                        var option = [];
+                        option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        _.each(response.data, function(item) {
+                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        });
+                        scope.databind(option);
+                    });
+                    break;
+            }
+
+            element.multiselect({
+                buttonClass: 'btn',
+                buttonWidth: 'auto',
+                inheritClass: true,
+                includeSelectAllOption: true,
+                disableIfEmpty: true,
+                nonSelectedText: 'Any',
+                allSelectedText: 'All Selected',
+                selectAllText: 'Check all!',
+                enableFiltering: true,
+                enableCaseInsensitiveFiltering: true,
+                filterPlaceholder: 'Type To Search',
+                buttonContainer: '<div class="btn-group" />',
+                // maxHeight: false,
+            });
+            // element.multiselect('setOptions', secondConfigurationSet);
+            // element.multiselect('rebuild');
+            //Watch for any changes to the length of our select element 
+            scope.$watch(function() {
+                return element[0].length;
+            }, function() {
+                scope.$applyAsync(element.multiselect('rebuild'));
+            });
+
+            // Watch for any changes from outside the directive and refresh
+            scope.$watch(attrs.ngModel, function() {
+                element.multiselect('refresh');
+            });
+        }
+    };
+}]);
 regApp.directive('textboxDirective', function() {
     return {
         scope: {
@@ -1050,6 +1267,120 @@ regApp.factory('emailVerificationService', ['$http', function(http) {
         }
     };
 }]);
+//  app.factory('authInterceptor', ['$rootScope', '$q', '$window', 'authSvc', function ($rootScope, $q, $window, authSvc) {
+//     return {
+//       request: function (config) {
+//         config.headers = config.headers || {};
+//         var user = authSvc.user();
+//         if (user.token) {
+//           config.headers.Authorization = 'Bearer ' + user.token;
+//         }
+//         return config;
+//       },
+//       responseError: function (rejection) {
+//         if (rejection.status === 401) {
+//           // handle the case where the user is not authenticated
+//         }
+//         return $q.reject(rejection);
+//       }
+//     };
+//   }]);
+
+regApp.factory('authSvc', ['$injector', function($injector) {
+
+    function setUser(value) {
+        //console.log(value);
+        setSession('cust.id', value.CustID);
+        setSession('cust.username', (value.FirstName + ' ' + value.LastName));
+        setSession('cust.profileid', (value.ProfileID));
+        setSession('cust.paidstatus', (value.PaidStatus));
+        setSession('cust.profilepic', (value.ProfilePic));
+    }
+
+    function getSession(key) {
+        return sessionStorage.getItem(key);
+    }
+
+    function setSession(key, value) {
+        if (value === undefined || value === null) {
+            clearSession(key);
+        } else {
+            sessionStorage.setItem(key, value);
+        }
+    }
+
+    function clearSession(key) {
+        sessionStorage.removeItem(key);
+    }
+
+    function clearUserSession() {
+
+        clearSession('cust.id');
+        clearSession('cust.username');
+        clearSession('cust.profileid');
+        clearSession('cust.paidstatus');
+        clearSession('cust.profilepic');
+    }
+
+    function getUser() {
+        return {
+            custid: getSession('cust.id'),
+            username: getSession('cust.username'),
+            profileid: getSession('cust.profileid'),
+            paidstatus: getSession('cust.paidstatus'),
+            profilepic: getSession('cust.profilepic')
+        };
+    }
+
+    return {
+        user: function(value) {
+            if (value) {
+                setUser(value);
+            }
+            return getUser();
+        },
+        isAuthenticated: function() {
+            return getSession('cust.id');
+        },
+        getCustId: function() {
+            return getSession('cust.id');
+        },
+        getProfileid: function() {
+            return getSession('cust.profileid');
+        },
+        getpaidstatus: function() {
+            return getSession('cust.paidstatus');
+        },
+        clearUserSessionDetails: function() {
+            return clearUserSession();
+        },
+        logout: function() {
+            clearUserSession();
+            window.location = "#/";
+        },
+        login: function(username, password) {
+
+            var body = {
+                Username: username,
+                Password: password
+            };
+            return $injector.invoke(function($http) {
+                return $http.post(regApp.apipath + 'DB/userLogin/person', body)
+                    .then(function(response) {
+                        if (response.status === 200) {
+
+                            return { success: true, response: response.data };
+                        }
+                        return { success: false, response: response.data };
+                    });
+            });
+        }
+    };
+}]);
+
+//   app.ng.config(['$httpProvider', function ($httpProvider) {
+//     $httpProvider.interceptors.push('authInterceptor');
+//   }]);
 regApp.factory('basicRegistrationService', ['$http', function(http) {
     return {
         submitBasicRegistration: function(obj) {
@@ -1446,6 +1777,11 @@ regApp.factory('editmanagePhotoServices', ['$http', function(http) {
         linqSubmits: function(Custid, iflag) {
             return http.get(regApp.apipath + 'CustomerPersonalUpdate/getPhotoPassword', { params: { CustID: Custid, ipassword: iflag } });
         }
+    };
+}]);
+regApp.service('route', ['$state', function($state) {
+    this.go = function(stateName, param) {
+        $state.go(stateName, param);
     };
 }]);
 regApp.factory('SecondaryRegistrationService', ['$http', function(http) {
@@ -2188,7 +2524,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
   $templateCache.put('registration/app/views/managePhoto.html',
     "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
-    "    <div class=\"register_page_main\">\r" +
+    "    <div>\r" +
     "\n" +
     "        <h4>\r" +
     "\n" +
@@ -2196,15 +2532,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "        <div class=\"register_page_main_in\">\r" +
+    "        <div class=\"regmain\">\r" +
     "\n" +
-    "            <div class=\"my_photos_main\">\r" +
+    "            <div>\r" +
     "\n" +
-    "                <h6>Upload your recent Photos for better response</h6>\r" +
+    "                <div class=\"row\">\r" +
     "\n" +
-    "                <a class=\"skip_button\" href=\"registration/upgradeMemberShip\">skip this page</a>\r" +
+    "                    <div class=\"col-lg-10\">\r" +
     "\n" +
-    "\r" +
+    "                        <h6 style=\"font-size: 21px;\">Upload your recent Photos for better response</h6>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <div class=\"col-lg-2\">\r" +
+    "\n" +
+    "                        <md-button class=\"md-raised md-warn md-hue-2\" href=\"registration/upgradeMemberShip\">skip this page</md-button>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "                <div class=\"clear\">&nbsp;</div>\r" +
     "\n" +
@@ -2558,7 +2904,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "</div>\r" +
     "\n" +
-    "</div>\r" +
+    "\r" +
     "\n" +
     "<style>\r" +
     "\n" +
@@ -2621,6 +2967,18 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        opacity: 1;\r" +
     "\n" +
     "        display: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
     "\n" +
     "    }\r" +
     "\n" +

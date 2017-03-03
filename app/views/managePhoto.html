@@ -1,13 +1,18 @@
 <div class="right_col" role="main">
-    <div class="register_page_main">
+    <div>
         <h4>
             <label Font-Bold="true">Registration</label></h4>
 
-        <div class="register_page_main_in">
-            <div class="my_photos_main">
-                <h6>Upload your recent Photos for better response</h6>
-                <a class="skip_button" href="registration/upgradeMemberShip">skip this page</a>
-
+        <div class="regmain">
+            <div>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h6 style="font-size: 21px;">Upload your recent Photos for better response</h6>
+                    </div>
+                    <div class="col-lg-2">
+                        <md-button class="md-raised md-warn md-hue-2" href="registration/upgradeMemberShip">skip this page</md-button>
+                    </div>
+                </div>
                 <div class="clear">&nbsp;</div>
 
                 <br />
@@ -184,7 +189,7 @@
 
 </script>
 </div>
-</div>
+
 <style>
     .cssMaskdiv {
         position: relative;
@@ -216,6 +221,12 @@
         top: 25px;
         opacity: 1;
         display: none;
+    }
+    
+    .regmain {
+        border: solid 1px #ccc;
+        border-radius: 5px;
+        padding: 7px;
     }
 </style>
 <script src="build/js/custom.js" type="text/javascript"></script>

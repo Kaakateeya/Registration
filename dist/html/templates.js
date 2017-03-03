@@ -661,7 +661,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
   $templateCache.put('registration/app/views/managePhoto.html',
     "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
-    "    <div class=\"register_page_main\">\r" +
+    "    <div>\r" +
     "\n" +
     "        <h4>\r" +
     "\n" +
@@ -669,15 +669,25 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "        <div class=\"register_page_main_in\">\r" +
+    "        <div class=\"regmain\">\r" +
     "\n" +
-    "            <div class=\"my_photos_main\">\r" +
+    "            <div>\r" +
     "\n" +
-    "                <h6>Upload your recent Photos for better response</h6>\r" +
+    "                <div class=\"row\">\r" +
     "\n" +
-    "                <a class=\"skip_button\" href=\"registration/upgradeMemberShip\">skip this page</a>\r" +
+    "                    <div class=\"col-lg-10\">\r" +
     "\n" +
-    "\r" +
+    "                        <h6 style=\"font-size: 21px;\">Upload your recent Photos for better response</h6>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <div class=\"col-lg-2\">\r" +
+    "\n" +
+    "                        <md-button class=\"md-raised md-warn md-hue-2\" href=\"registration/upgradeMemberShip\">skip this page</md-button>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "                <div class=\"clear\">&nbsp;</div>\r" +
     "\n" +
@@ -1031,7 +1041,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "</div>\r" +
     "\n" +
-    "</div>\r" +
+    "\r" +
     "\n" +
     "<style>\r" +
     "\n" +
@@ -1094,6 +1104,18 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "        opacity: 1;\r" +
     "\n" +
     "        display: none;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .regmain {\r" +
+    "\n" +
+    "        border: solid 1px #ccc;\r" +
+    "\n" +
+    "        border-radius: 5px;\r" +
+    "\n" +
+    "        padding: 7px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
