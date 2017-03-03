@@ -469,7 +469,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
                 strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
                 strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
-                intEmpID: null,
+                intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
                 //strMobileVerificationCode: obj.
             };
@@ -477,7 +477,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 console.log(res);
                 scope.genderID = 0;
-                authSvc.login(scope.reg.txtEmail, scope.reg.txtpassword).then(function(response) {
+                authSvc.login(scope.reg.txtEmail, "Admin@123").then(function(response) {
                     console.log(response);
                     authSvc.user(response.response !== null ? response.response[0] : null);
                     scope.genderID = response.response[0].GenderID;
