@@ -7676,491 +7676,495 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
 
 
   $templateCache.put('registration/masterTemplate/headerTemplate.html',
-    "<div class=\"col-md-3 left_col\">\r" +
+    "<div ng-controller=\"headerctrl as head\">\r" +
     "\n" +
-    "    <div class=\"left_col scroll-view\">\r" +
+    "    <div class=\"col-md-3 left_col\">\r" +
     "\n" +
-    "        <div class=\"navbar nav_title\" style=\"border: 0;\">\r" +
+    "        <div class=\"left_col scroll-view\">\r" +
     "\n" +
-    "            <a href=\"/\" class=\"site_title smalllogo\"><img src=\"src/images/kaakateeyalogo_001.jpg\" style=\"width:50px;height:50px;\"></img>\r" +
+    "            <div class=\"navbar nav_title\" style=\"border: 0;\">\r" +
     "\n" +
-    "            </a>\r" +
+    "                <a href=\"/\" class=\"site_title smalllogo\"><img src=\"src/images/kaakateeyalogo_001.jpg\" style=\"width:50px;height:50px;\"></img>\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "            <a href=\"/\" class=\"site_title kaakateeyalogo\"><img src=\"src/images/logo3.png\" style=\"width: 158px;\r" +
-    "\n" +
-    "    height: 61px;\"></img>\r" +
-    "\n" +
-    "            </a>\r" +
-    "\n" +
-    "        </div>\r" +
+    "                </a>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <div class=\"clearfix\"></div>\r" +
+    "                <a href=\"/\" class=\"site_title kaakateeyalogo\"><img src=\"src/images/logo3.png\" style=\"width: 158px;\r" +
     "\n" +
-    "\r" +
+    "                      height: 61px;\"></img>\r" +
     "\n" +
-    "        <!-- menu profile quick info -->\r" +
-    "\n" +
-    "        <div class=\"profile clearfix\">\r" +
-    "\n" +
-    "            <div class=\"profile_pic\">\r" +
-    "\n" +
-    "                <img src=\"src/images/img_notavail.jpg\" alt=\"...\" class=\"img-circle profile_img\">\r" +
+    "                </a>\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
-    "            <div class=\"profile_info\">\r" +
+    "\r" +
     "\n" +
-    "                <span>Welcome,</span>\r" +
+    "            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                <h2 style=\"color:#0d1aca;\">Admin</h2>\r" +
+    "\r" +
+    "\n" +
+    "            <!-- menu profile quick info -->\r" +
+    "\n" +
+    "            <div class=\"profile clearfix\">\r" +
+    "\n" +
+    "                <div class=\"profile_pic\">\r" +
+    "\n" +
+    "                    <img src=\"src/images/img_notavail.jpg\" alt=\"...\" class=\"img-circle profile_img\">\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "                <div class=\"profile_info\">\r" +
+    "\n" +
+    "                    <span>Welcome,</span>\r" +
+    "\n" +
+    "                    <h2 style=\"color:#0d1aca;\">{{head.name}}</h2>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "            </div>\r" +
     "\n" +
-    "        </div>\r" +
-    "\n" +
-    "        <!-- /menu profile quick info -->\r" +
+    "            <!-- /menu profile quick info -->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <br />\r" +
+    "            <br />\r" +
     "\n" +
     "\r" +
     "\n" +
-    "        <!-- sidebar menu -->\r" +
+    "            <!-- sidebar menu -->\r" +
     "\n" +
-    "        <div id=\"sidebar-menu\" class=\"main_menu_side hidden-print main_menu\">\r" +
+    "            <div id=\"sidebar-menu\" class=\"main_menu_side hidden-print main_menu\">\r" +
     "\n" +
-    "            <div class=\"menu_section\">\r" +
+    "                <div class=\"menu_section\">\r" +
     "\n" +
-    "                <h3>General</h3>\r" +
+    "                    <h3>General</h3>\r" +
     "\n" +
-    "                <ul class=\"nav side-menu\">\r" +
+    "                    <ul class=\"nav side-menu\">\r" +
     "\n" +
-    "                    <li><a><i class=\"fa fa-video-camera\"></i> Demo <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"bootstrapslidepopup\">BootstrapslidePopup</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"bootstrapslide\">Bootstrapslide</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"bootstrapTable\">BootstrapTable</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-home\"></i> Home <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"/home\">Dashboard</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"dashboard2\">Dashboard2</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"dashboard3\">Dashboard3</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"dashBoardNew\">dashBoardNew</a></li>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-edit\"></i> Edit <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Education</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Parents</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">siblings</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Relatives</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Astro</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Managephoto</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-search\"></i> Search <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">General Search</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Advanced search</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-table\"></i> Reports <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Myprofile</a></li>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-clone\"></i>Slide shows <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">marketing</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Matchfollowup</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                </ul>\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "            <div class=\"menu_section\">\r" +
-    "\n" +
-    "                <h3>Live On</h3>\r" +
-    "\n" +
-    "                <ul class=\"nav side-menu\">\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-bug\"></i> Additional Pages <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">E-commerce</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Projects</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Project Detail</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Contacts</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Profile</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-windows\"></i> Extras <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">403 Error</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">404 Error</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">500 Error</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Plain Page</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Login Page</a></li>\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Pricing Tables</a></li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                    </li>\r" +
-    "\n" +
-    "                    <li><a><i class=\"fa fa-sitemap\"></i> Multilevel Menu <span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                        <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                            <li><a href=\"javascript:void(0)\">Level One</a>\r" +
-    "\n" +
-    "                                <li><a>Level One<span class=\"fa fa-chevron-down\"></span></a>\r" +
-    "\n" +
-    "                                    <ul class=\"nav child_menu\">\r" +
-    "\n" +
-    "                                        <li class=\"sub_menu\"><a href=\"javascript:void(0)\">Level Two</a>\r" +
-    "\n" +
-    "                                        </li>\r" +
-    "\n" +
-    "                                        <li><a href=\"javascript:void(0);\">Level Two</a>\r" +
-    "\n" +
-    "                                        </li>\r" +
-    "\n" +
-    "                                        <li><a href=\"javascript:void(0);\">Level Two</a>\r" +
-    "\n" +
-    "                                        </li>\r" +
-    "\n" +
-    "                                    </ul>\r" +
-    "\n" +
-    "                                </li>\r" +
-    "\n" +
-    "                                <li><a href=\"javascript:void(0);\">Level One</a>\r" +
-    "\n" +
-    "                                </li>\r" +
-    "\n" +
-    "                        </ul>\r" +
-    "\n" +
-    "                        </li>\r" +
-    "\n" +
-    "                        <li><a href=\"javascript:void(0)\"><i class=\"fa fa-laptop\"></i> Landing Page\r" +
-    "\n" +
-    "                         <span class=\"fa fa-chevron-down\"></span></a>\r" +
+    "                        <li><a><i class=\"fa fa-file-text\" aria-hidden=\"true\"></i> Registration <span class=\"fa fa-chevron-down\"></span></a>\r" +
     "\n" +
     "                            <ul class=\"nav child_menu\">\r" +
     "\n" +
-    "                                <li><a href=\"/\">Dashboard</a></li>\r" +
+    "                                <li><a href=\"registration\">Customer New Registration</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"bootstrapslide\">Edit/View Profile</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"bootstrapTable\">Registration Validation</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"bootstrapTable\">Payment Details</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"bootstrapTable\">Customer New Admin Profile</a></li>\r" +
     "\n" +
     "                            </ul>\r" +
     "\n" +
     "                        </li>\r" +
     "\n" +
-    "                </ul>\r" +
+    "                        <li><a href=\"search\"><i class=\"fa fa-search\"></i> Search <span class=\"fa fa-chevron-down\"></span></a>\r" +
     "\n" +
-    "            </div>\r" +
+    "                            <ul class=\"nav child_menu\">\r" +
     "\n" +
-    "\r" +
+    "                                <li><a href=\"search\">General Search</a></li>\r" +
     "\n" +
-    "        </div>\r" +
+    "                                <li><a href=\"search\">Advanced search</a></li>\r" +
     "\n" +
-    "        <!-- /sidebar menu -->\r" +
+    "                                <li><a href=\"search\">Keyword Search</a></li>\r" +
     "\n" +
-    "\r" +
+    "                                <li><a href=\"search\">Keyword Search_Kmpl</a></li>\r" +
     "\n" +
-    "        <!-- /menu footer buttons -->\r" +
-    "\n" +
-    "        <div class=\"sidebar-footer hidden-small\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "            <a data-toggle=\"tooltip\" data-placement=\"top\" title=\"Lock\">\r" +
-    "\n" +
-    "                <span class=\"glyphicon glyphicon-eye-close\" aria-hidden=\"true\"></span>\r" +
-    "\n" +
-    "            </a>\r" +
-    "\n" +
-    "            <a data-toggle=\"tooltip\" data-placement=\"top\" title=\"Logout\" href=\"login\">\r" +
-    "\n" +
-    "                <span class=\"glyphicon glyphicon-off\" aria-hidden=\"true\"></span>\r" +
-    "\n" +
-    "            </a>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "        <!-- /menu footer buttons -->\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<!-- top navigation -->\r" +
-    "\n" +
-    "<div class=\"top_nav\">\r" +
-    "\n" +
-    "    <div class=\"nav_menu\">\r" +
-    "\n" +
-    "        <nav>\r" +
-    "\n" +
-    "            <div class=\"nav toggle\">\r" +
-    "\n" +
-    "                <a id=\"menu_toggle\" style=\"color:white;\" ng-click=\"menuclick()\"><i class=\"fa fa-bars\"></i></a>\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "            <ul class=\"nav navbar-nav navbar-right\">\r" +
-    "\n" +
-    "                <li class=\"\">\r" +
-    "\n" +
-    "                    <a href=\"javascript:void(0)\" class=\"user-profile dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">\r" +
-    "\n" +
-    "                        <img src=\"src/images/img_notavail.jpg\" alt=\"\">Admin\r" +
-    "\n" +
-    "                        <span class=\"fa fa-angle-down\"></span>\r" +
-    "\n" +
-    "                    </a>\r" +
-    "\n" +
-    "                    <ul class=\"dropdown-menu dropdown-usermenu pull-right\">\r" +
-    "\n" +
-    "                        <li><a href=\"javascript:void(0)\"> Profile</a></li>\r" +
-    "\n" +
-    "                        <li>\r" +
-    "\n" +
-    "                            <a href=\"javascript:void(0)\">\r" +
-    "\n" +
-    "                                <span class=\"badge bg-red pull-right\">50%</span>\r" +
-    "\n" +
-    "                                <span>Settings</span>\r" +
-    "\n" +
-    "                            </a>\r" +
+    "                            </ul>\r" +
     "\n" +
     "                        </li>\r" +
     "\n" +
-    "                        <li><a href=\"javascript:void(0)\">Help</a></li>\r" +
+    "                        <li><a href=\"search\"><i class=\"fa fa-user-circle-o\" aria-hidden=\"true\"></i> My Account <span class=\"fa fa-chevron-down\"></span></a>\r" +
     "\n" +
-    "                        <li><a href=\"login\"><i class=\"fa fa-sign-out pull-right\"></i> Log Out</a></li>\r" +
+    "                            <ul class=\"nav child_menu\">\r" +
+    "\n" +
+    "                                <li><a href=\"search\">My Profiles</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Marketing Tickets</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Match Followup Tickets</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">My Assigned Photos</a></li>\r" +
+    "\n" +
+    "                            </ul>\r" +
+    "\n" +
+    "                        </li>\r" +
+    "\n" +
+    "                        <li><a href=\"search\"><i class=\"fa fa-folder\" aria-hidden=\"true\"></i>Maintance Work <span class=\"fa fa-chevron-down\"></span></a>\r" +
+    "\n" +
+    "                            <ul class=\"nav child_menu\">\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Unassigned Profiles</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Unassigned Photos</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Match Meeting Report</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Upload Success Stories</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">View Success Stories</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Customer Message Verification</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Re Assign Employee</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Book Marks</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Customer/Employee Config</a></li>\r" +
+    "\n" +
+    "                            </ul>\r" +
+    "\n" +
+    "                        </li>\r" +
+    "\n" +
+    "                        <li><a href=\"search\"><i class=\"fa fa-clone\"></i>Admin Forms <span class=\"fa fa-chevron-down\"></span></a>\r" +
+    "\n" +
+    "                            <ul class=\"nav child_menu\">\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Branch Creation</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">List Branches</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"search\">Add/Edit Faqs</a></li>\r" +
+    "\n" +
+    "                            </ul>\r" +
+    "\n" +
+    "                        </li>\r" +
+    "\n" +
+    "                        <li><a><i class=\"fa fa-table\"></i> Reports <span class=\"fa fa-chevron-down\"></span></a>\r" +
+    "\n" +
+    "                            <ul class=\"nav child_menu\">\r" +
+    "\n" +
+    "                                <li><a href=\"javascript:void(0)\">Payment Report</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"javascript:void(0)\">Summary Profile Report</a></li>\r" +
+    "\n" +
+    "                                <li><a href=\"javascript:void(0)\">Profile Modification </a></li>\r" +
+    "\n" +
+    "                            </ul>\r" +
+    "\n" +
+    "                        </li>\r" +
     "\n" +
     "                    </ul>\r" +
     "\n" +
-    "                </li>\r" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <!-- /sidebar menu -->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                <li role=\"presentation\" class=\"dropdown\">\r" +
+    "            <!-- /menu footer buttons -->\r" +
     "\n" +
-    "                    <a href=\"javascript:void(0)\" class=\"dropdown-toggle info-number\" data-toggle=\"dropdown\" aria-expanded=\"false\">\r" +
+    "            <div class=\"sidebar-footer hidden-small\">\r" +
     "\n" +
-    "                        <span>Notifications</span>\r" +
+    "\r" +
     "\n" +
-    "                        <i class=\"fa fa-envelope-o\"></i>\r" +
+    "                <a data-toggle=\"tooltip\" data-placement=\"top\" title=\"Lock\" href=\"javascript:void(0)\" ng-click=\"head.lockscreen()\">\r" +
     "\n" +
-    "                        <span class=\"badge bg-green\">6</span>\r" +
+    "                    <span class=\"glyphicon glyphicon-eye-close\" aria-hidden=\"true\"></span>\r" +
     "\n" +
-    "                    </a>\r" +
+    "                </a>\r" +
     "\n" +
-    "                    <ul id=\"menu1\" class=\"dropdown-menu list-unstyled msg_list\" role=\"menu\">\r" +
+    "                <a data-toggle=\"tooltip\" data-placement=\"top\" title=\"Logout\" href=\"javascript:void(0)\" ng-click=\"head.logout()\">\r" +
     "\n" +
-    "                        <li>\r" +
+    "                    <span class=\"glyphicon glyphicon-off\" aria-hidden=\"true\"></span>\r" +
     "\n" +
-    "                            <a>\r" +
+    "                </a>\r" +
     "\n" +
-    "                                <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "            </div>\r" +
     "\n" +
-    "                                <span>\r" +
+    "            <!-- /menu footer buttons -->\r" +
     "\n" +
-    "                          <span>210910352</span>\r" +
+    "        </div>\r" +
     "\n" +
-    "                                <span class=\"time\">3 mins ago</span>\r" +
+    "        <div class=\"row\" ng-show=\"isLoader\">\r" +
     "\n" +
-    "                                </span>\r" +
+    "            <md-progress-circular class=\"md-accent md-hue-1 col-lg-offset-5\" md-diameter=\"60\"></md-progress-circular>\r" +
     "\n" +
-    "                                <span class=\"message\">\r" +
+    "        </div>\r" +
     "\n" +
-    "                          bookmarked By 310910220\r" +
+    "    </div>\r" +
     "\n" +
-    "                        </span>\r" +
+    "\r" +
     "\n" +
-    "                            </a>\r" +
+    "    <!-- top navigation -->\r" +
     "\n" +
-    "                        </li>\r" +
+    "    <div class=\"top_nav\" id=\"top_navdiv\">\r" +
     "\n" +
-    "                        <li>\r" +
+    "        <div class=\"nav_menu\">\r" +
     "\n" +
-    "                            <a>\r" +
+    "            <nav>\r" +
     "\n" +
-    "                                <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "                <div class=\"nav toggle\">\r" +
     "\n" +
-    "                                <span>\r" +
+    "                    <a id=\"menu_toggle\" style=\"color:white;\"><i class=\"fa fa-bars\"></i></a>\r" +
     "\n" +
-    "                          <span>210910352</span>\r" +
+    "                </div>\r" +
     "\n" +
-    "                                <span class=\"time\">3 mins ago</span>\r" +
+    "\r" +
     "\n" +
-    "                                </span>\r" +
+    "                <ul class=\"nav navbar-nav navbar-right\">\r" +
     "\n" +
-    "                                <span class=\"message\">\r" +
+    "                    <li class=\"\">\r" +
     "\n" +
-    "                          bookmarked By 310910220\r" +
+    "                        <a href=\"javascript:void(0)\" class=\"user-profile dropdown-toggle\" data-toggle=\"dropdown\" aria-expanded=\"false\">\r" +
     "\n" +
-    "                        </span>\r" +
+    "                            <img src=\"src/images/img_notavail.jpg\" alt=\"\">{{head.name}}\r" +
     "\n" +
-    "                            </a>\r" +
+    "                            <span class=\"fa fa-angle-down\"></span>\r" +
     "\n" +
-    "                        </li>\r" +
+    "                        </a>\r" +
     "\n" +
-    "                        <li>\r" +
+    "                        <ul class=\"dropdown-menu dropdown-usermenu pull-right\">\r" +
     "\n" +
-    "                            <a>\r" +
+    "                            <li><a href=\"javascript:void(0)\" ng-click=\"head.logout()\"><i class=\"fa fa-sign-out pull-right\"></i> Log Out</a></li>\r" +
     "\n" +
-    "                                <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "                            <li>\r" +
     "\n" +
-    "                                <span>\r" +
+    "                                <a data-toggle=\"tooltip\" data-placement=\"top\" title=\"Lock\" href=\"javascript:void(0)\" ng-click=\"head.lockscreen()\">\r" +
     "\n" +
-    "                          <span>210910352</span>\r" +
-    "\n" +
-    "                                <span class=\"time\">3 mins ago</span>\r" +
-    "\n" +
-    "                                </span>\r" +
-    "\n" +
-    "                                <span class=\"message\">\r" +
-    "\n" +
-    "                          bookmarked By 310910220\r" +
-    "\n" +
-    "                        </span>\r" +
-    "\n" +
-    "                            </a>\r" +
-    "\n" +
-    "                        </li>\r" +
-    "\n" +
-    "                        <li>\r" +
-    "\n" +
-    "                            <a>\r" +
-    "\n" +
-    "                                <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
-    "\n" +
-    "                                <span>\r" +
-    "\n" +
-    "                          <span>210910352</span>\r" +
-    "\n" +
-    "                                <span class=\"time\">3 mins ago</span>\r" +
-    "\n" +
-    "                                </span>\r" +
-    "\n" +
-    "                                <span class=\"message\">\r" +
-    "\n" +
-    "                          bookmarked By 310910220\r" +
-    "\n" +
-    "                        </span>\r" +
-    "\n" +
-    "                            </a>\r" +
-    "\n" +
-    "                        </li>\r" +
-    "\n" +
-    "                        <li>\r" +
-    "\n" +
-    "                            <div class=\"text-center\">\r" +
-    "\n" +
-    "                                <a>\r" +
-    "\n" +
-    "                                    <strong>See All Alerts</strong>\r" +
-    "\n" +
-    "                                    <i class=\"fa fa-angle-right\"></i>\r" +
+    "                                    <span class=\"glyphicon glyphicon-eye-close pull-right\" aria-hidden=\"true\"></span>Lock\r" +
     "\n" +
     "                                </a>\r" +
     "\n" +
-    "                            </div>\r" +
+    "                            </li>\r" +
     "\n" +
-    "                        </li>\r" +
+    "                        </ul>\r" +
     "\n" +
-    "                    </ul>\r" +
-    "\n" +
-    "                </li>\r" +
-    "\n" +
-    "            </ul>\r" +
-    "\n" +
-    "        </nav>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "</div>\r" +
+    "                    </li>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<!-- /top navigation -->"
+    "                    <li role=\"presentation\" class=\"dropdown\">\r" +
+    "\n" +
+    "                        <a href=\"javascript:void(0)\" class=\"dropdown-toggle info-number\" data-toggle=\"dropdown\" aria-expanded=\"false\">\r" +
+    "\n" +
+    "                            <span>Notifications</span>\r" +
+    "\n" +
+    "                            <i class=\"fa fa-envelope-o\"></i>\r" +
+    "\n" +
+    "                            <span class=\"badge bg-green\">6</span>\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                        <ul id=\"menu1\" class=\"dropdown-menu list-unstyled msg_list\" role=\"menu\">\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a>\r" +
+    "\n" +
+    "                                    <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "\n" +
+    "                                    <span>\r" +
+    "\n" +
+    "                          <span>210910352</span>\r" +
+    "\n" +
+    "                                    <span class=\"time\">3 mins ago</span>\r" +
+    "\n" +
+    "                                    </span>\r" +
+    "\n" +
+    "                                    <span class=\"message\">\r" +
+    "\n" +
+    "                          bookmarked By 310910220\r" +
+    "\n" +
+    "                        </span>\r" +
+    "\n" +
+    "                                </a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a>\r" +
+    "\n" +
+    "                                    <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "\n" +
+    "                                    <span>\r" +
+    "\n" +
+    "                          <span>210910352</span>\r" +
+    "\n" +
+    "                                    <span class=\"time\">3 mins ago</span>\r" +
+    "\n" +
+    "                                    </span>\r" +
+    "\n" +
+    "                                    <span class=\"message\">\r" +
+    "\n" +
+    "                          bookmarked By 310910220\r" +
+    "\n" +
+    "                        </span>\r" +
+    "\n" +
+    "                                </a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a>\r" +
+    "\n" +
+    "                                    <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "\n" +
+    "                                    <span>\r" +
+    "\n" +
+    "                          <span>210910352</span>\r" +
+    "\n" +
+    "                                    <span class=\"time\">3 mins ago</span>\r" +
+    "\n" +
+    "                                    </span>\r" +
+    "\n" +
+    "                                    <span class=\"message\">\r" +
+    "\n" +
+    "                          bookmarked By 310910220\r" +
+    "\n" +
+    "                        </span>\r" +
+    "\n" +
+    "                                </a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <a>\r" +
+    "\n" +
+    "                                    <span class=\"image\"><img src=\"src/images/profilepic.png\" alt=\"Profile Image\" /></span>\r" +
+    "\n" +
+    "                                    <span>\r" +
+    "\n" +
+    "                          <span>210910352</span>\r" +
+    "\n" +
+    "                                    <span class=\"time\">3 mins ago</span>\r" +
+    "\n" +
+    "                                    </span>\r" +
+    "\n" +
+    "                                    <span class=\"message\">\r" +
+    "\n" +
+    "                          bookmarked By 310910220\r" +
+    "\n" +
+    "                        </span>\r" +
+    "\n" +
+    "                                </a>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                            <li>\r" +
+    "\n" +
+    "                                <div class=\"text-center\">\r" +
+    "\n" +
+    "                                    <a>\r" +
+    "\n" +
+    "                                        <strong>See All Alerts</strong>\r" +
+    "\n" +
+    "                                        <i class=\"fa fa-angle-right\"></i>\r" +
+    "\n" +
+    "                                    </a>\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                            </li>\r" +
+    "\n" +
+    "                        </ul>\r" +
+    "\n" +
+    "                    </li>\r" +
+    "\n" +
+    "                </ul>\r" +
+    "\n" +
+    "            </nav>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    <script type=\"text/ng-template\" id=\"loginContent.html\">\r" +
+    "\n" +
+    "        <form name=\"loginForm\" novalidate role=\"form\" style='z-index: 99999'>\r" +
+    "\n" +
+    "            <div class=\"modal-body clearfix pop_content_my\" id=\"modal-body\">\r" +
+    "\n" +
+    "                <div class='row'>\r" +
+    "\n" +
+    "                    <h3 class='text-center'>Employee login</h3>\r" +
+    "\n" +
+    "                    <div class='col-lg-4'>\r" +
+    "\n" +
+    "                        <br>\r" +
+    "\n" +
+    "                        <img src=\"src\\images\\logo3.png\" alt=\"\">\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "                    <div class='col-lg-7'>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        <md-input-container class=\"md-block\" flex-gt-sm ng-show=\"!head.lock\">\r" +
+    "\n" +
+    "                            <label for=\"username\" lass='col-lg-4'>User name </label>\r" +
+    "\n" +
+    "                            <input type=\"text\" class=\"usernameemployee\" ng-model=\"head.usernameemployee\" name=\"usernameemployee\" required md-no-asterisk>\r" +
+    "\n" +
+    "                            <div ng-messages=\"loginForm.usernameemployee.$error\">\r" +
+    "\n" +
+    "                                <div ng-message=\"required\">This is required.</div>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                        </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        <label ng-show=\"head.lock\" class=\"form-label\">{{head.usernameemployee}}</label>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                        <md-input-container class=\"md-block\" flex-gt-sm>\r" +
+    "\n" +
+    "                            <label for=\"username\" class='col-lg-4'>Password 	</label>\r" +
+    "\n" +
+    "                            <input type=\"Password\" class=\"usernameemployee\" ng-model=\"head.passwordemployee\" name=\"passwordemployee\" required md-no-asterisk>\r" +
+    "\n" +
+    "                            <div ng-messages=\"loginForm.passwordemployee.$error\">\r" +
+    "\n" +
+    "                                <div ng-message=\"required\">This is required.</div>\r" +
+    "\n" +
+    "                                <div ng-message=\"pattern\">username is invalid</div>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                        </md-input-container>\r" +
+    "\n" +
+    "                        <label class=\"labelred\">{{head.errormessage}}</label>\r" +
+    "\n" +
+    "                        <div class='col-lg-offset-3'>\r" +
+    "\n" +
+    "                            <md-button class=\"md-raised md-warn md-hue-2\" ng-disabled=\"loginForm.$invalid\" ng-click=\"head.loginsubmit(head)\">Login\r" +
+    "\n" +
+    "                            </md-button>\r" +
+    "\n" +
+    "                        </div>\r" +
+    "\n" +
+    "                    </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "        </form>\r" +
+    "\n" +
+    "    </script>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "</div>"
   );
 
 }]);
