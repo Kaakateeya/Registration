@@ -129,13 +129,7 @@ module.exports = function(grunt) {
                 // separator: ';'
             },
             js: { //target
-                src: ['index.js',
-                    'base/**/*.js',
-                    'app/**/**/*.js',
-                    'common/**/*.js',
-                    'dist/html/templates.js',
-                    '!common/directives/datePickerDirective.js'
-                ],
+                src: ['index.js', 'app/**/**/*.js', 'common/**/*.js', 'dist/html/templates.js', '!common/directives/datePickerDirective.js'],
                 dest: 'dist/src/main.js'
             },
             // css: {
@@ -151,12 +145,7 @@ module.exports = function(grunt) {
                     module: "KaakateeyaEmpEdit",
                     // prefix: 'editview/',
                 },
-                src: ['index.html',
-                    'app/**/*.html',
-                    'common/**/*.html',
-                    'PageCode/viewFormat.html',
-                    'templates\*.html'
-                ],
+                src: ['index.html', 'app/**/*.html', 'common/**/*.html', 'PageCode/viewFormat.html', 'templates\*.html'],
                 dest: "dist/html/templates.js"
             }
         },
