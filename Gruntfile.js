@@ -1,19 +1,31 @@
-/*
- * grunt-init
- * https://gruntjs.com/
- *
- * Copyright (c) 2014 "Cowboy" Ben Alman, contributors
- * Licensed under the MIT license.
- */
+// Gruntfile.js
 
-'use strict';
+// our wrapper function (required by grunt and its plugins)
+// all configuration goes inside this function
 var fs = require('fs');
 var packageJson = JSON.parse(fs.readFileSync('./package.json'));
 var plugins = packageJson.buildSettings.plugins;
 var css = packageJson.buildSettings.css;
+var folder = {
+    'app/editAstro/src/script.min.js': 'app/editAstro/**/*.js',
+    'app/editContact/src/script.min.js': 'app/editContact/**/*.js',
+    'app/editEducation/src/script.min.js': 'app/editEducation/**/*.js',
+    'app/editManagePhoto/src/script.min.js': 'app/editManagePhoto/**/*.js',
+    'app/editOfcePurpose/src/script.min.js': 'app/editOfcePurpose/**/*.js',
+    'app/editParent/src/script.min.js': 'app/editParent/**/*.js',
+    'app/editPartnerpreference/src/script.min.js': 'app/editPartnerpreference/**/*.js',
+    'app/editProfileSetting/src/script.min.js': 'app/editProfileSetting/**/*.js',
+    'app/editProperty/src/script.min.js': 'app/editProperty/**/*.js',
+    'app/editReference/src/script.min.js': 'app/editReference/**/*.js',
+    'app/editRelative/src/script.min.js': 'app/editRelative/**/*.js',
+    'app/editSibbling/src/script.min.js': 'app/editSibbling/**/*.js',
+    'app/editSpouse/src/script.min.js': 'app/editSpouse/**/*.js'
+};
 module.exports = function(grunt) {
-
-    // Project configuration.
+    console.log(plugins);
+    // ===========================================================================
+    // CONFIGURE GRUNT ===========================================================
+    // ===========================================================================
     grunt.initConfig({
 
         // get the configuration info from package.json ----------------------------
@@ -37,7 +49,6 @@ module.exports = function(grunt) {
             },
             build: {
                 files: {
-
                     'dist/js/main.min.js': ['dist/src/main.js']
                 }
             }
@@ -83,7 +94,7 @@ module.exports = function(grunt) {
                 files: [{
                     // Target-specific file lists and/or options go here. 
                     'index.html': [
-                        plugins, 'index.js', 'app/**/*.js'
+                        plugins, 'index.js', 'app/**/**/*.js'
                     ]
                 }],
             },
@@ -96,10 +107,15 @@ module.exports = function(grunt) {
                 },
                 files: {
                     // Target-specific file lists and/or options go here. 
+                    // 'index.html': [plugins, 'index.js', 'dist/js/*.js']
                     'index.html': ['dist/js/*.js']
                 },
             },
         },
+        // dirs: {
+        //     src: 'app/**',
+        //     dest: 'app/<%= pkg.name %>/<%= pkg.version %>',
+        // },
         concat: {
             options: {
                 stripBanners: true,
@@ -113,37 +129,154 @@ module.exports = function(grunt) {
                 // separator: ';'
             },
             js: { //target
-                src: ['index.js', 'app/**/*.js', 'dist/html/templates.js', '!app/directives/multiSelectDirective.js',
-                    '!app/services/authSvc.js', '!app/controllers/headercontroller.js', '!app/directives/fileModel.js', '!app/services/route.js'
+                src: ['index.js',
+                    'base/**/*.js',
+                    'app/**/**/*.js',
+                    'common/**/*.js',
+                    'dist/html/templates.js',
+                    '!common/directives/datePickerDirective.js'
                 ],
                 dest: 'dist/src/main.js'
             },
-            css: {
-                src: css,
-                dest: 'dist/src/main.css'
-            }
+            // css: {
+            //     src: css,
+            //     dest: 'dist/src/main.css'
+            // }
         },
+
         ngtemplates: {
             myapp: {
                 options: {
                     base: "web",
-                    module: "KaakateeyaRegistration",
-                    prefix: 'registration/',
+                    module: "KaakateeyaEmpEdit",
+                    // prefix: 'editview/',
                 },
-                src: ['app/**/*.html', 'masterTemplate/*.html'],
+                src: ['index.html',
+                    'app/**/*.html',
+                    'common/**/*.html',
+                    'PageCode/viewFormat.html',
+                    'templates\*.html'
+                ],
                 dest: "dist/html/templates.js"
             }
+        },
+
+        copy: {
+            images: {
+                expand: true,
+                cwd: 'src/images/',
+                src: ['**/*'],
+                dest: 'dist/images/',
+                filter: 'isFile',
+                flatten: true
+            }
+        },
+
+        imagemin: { // Task            
+            dynamic: { // Another target
+                files: [{
+                    expand: true, // Enable dynamic expansion
+                    cwd: 'src/images', // Src matches are relative to this path
+                    src: ['**/*.{png,jpg,gif}'], // Actual patterns to match
+                    dest: 'dist/images' // Destination path prefix
+                }]
+            }
+        },
+
+
+        //grunt  Robot --option-path=testgruntttt
+
+        mkdir: {
+            all: {
+                options: {
+                    create: [grunt.option('option-path')]
+                },
+            },
+        },
+        "file-creator": {
+            "option": {
+                files: [{
+                        file: ((grunt.option('option-path') + '/controller/') + (grunt.option('option-path') + "ctrl.js")),
+                        method: function(fs, fd, done) {
+                            done();
+                        }
+                    },
+                    {
+                        file: ((grunt.option('option-path') + '/model/') + (grunt.option('option-path') + "Mdl.js")),
+                        method: function(fs, fd, done) {
+                            done();
+                        }
+                    },
+                    {
+                        file: ((grunt.option('option-path') + '/service/') + (grunt.option('option-path') + "service.js")),
+                        method: function(fs, fd, done) {
+                            done();
+                        }
+                    },
+                    {
+                        file: ((grunt.option('option-path') + '/') + ("index.html")),
+                        method: function(fs, fd, done) {
+                            done();
+                        }
+                    }
+                ]
+            },
+            options: {
+                replacements: [{
+                    pattern: 'parametervalue',
+                    replacement: grunt.option('option-path')
+                }]
+            }
+        },
+
+        'string-replace': {
+            dist: {
+                files: [{
+                        src: './PageCode/ctrlFormat.js',
+                        dest: ((grunt.option('option-path') + '/controller/') + (grunt.option('option-path') + "ctrl.js"))
+                    },
+                    {
+                        src: './PageCode/mdlFormat.js',
+                        dest: ((grunt.option('option-path') + '/model/') + (grunt.option('option-path') + "Mdl.js"))
+                    },
+                    {
+                        src: './PageCode/serviceFormat.js',
+                        dest: ((grunt.option('option-path') + '/service/') + (grunt.option('option-path') + "service.js")),
+                    },
+                    {
+                        src: './PageCode/viewFormat.html',
+                        dest: ((grunt.option('option-path') + '/') + ("index.html"))
+                    }
+                ],
+                options: {
+                    replacements: [{
+                        pattern: 'parametervalue',
+                        replacement: grunt.option('option-path')
+                    }]
+                }
+            }
+        },
+        folder_list: {
+            options: {
+                // Default options, you dont need these they are just to highlight the options available. 
+                files: false,
+                folders: true
+            },
+            files: {
+                src: ['app/**'],
+                dest: 'tmp/fixtures.json',
+            },
         }
 
     });
-
-    grunt.registerTask('default', ['jshint', 'concat', 'cssmin', 'scriptlinker:dev']);
+    grunt.registerTask('default', ['jshint', 'cssmin', 'concat', 'scriptlinker:dev', 'imagemin']);
 
     // this task will only run the dev configuration 
-    grunt.registerTask('dev', ['jshint', 'cssmin', 'scriptlinker:dev']);
+    grunt.registerTask('dev', ['jshint', 'cssmin', 'concat', 'scriptlinker:dev', 'imagemin']);
 
     // only run production configuration 
-    grunt.registerTask('prod', ['jshint', 'ngtemplates', 'concat', 'cssmin', 'uglify', 'scriptlinker:prod']);
+    grunt.registerTask('prod', ['jshint', 'concat', 'ngtemplates', 'concat', 'uglify', 'scriptlinker:prod', 'imagemin']);
+    grunt.registerTask('Robot', ['mkdir', 'file-creator', 'string-replace']);
 
     // ===========================================================================
     // LOAD GRUNT PLUGINS ========================================================
@@ -158,6 +291,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-dev-prod-switch');
     grunt.loadNpmTasks('grunt-scriptlinker');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+    grunt.loadNpmTasks('grunt-mkdir');
+    grunt.loadNpmTasks('grunt-file-creator');
+    grunt.loadNpmTasks('grunt-string-replace');
+    grunt.loadNpmTasks('grunt-folder-list');
     grunt.loadNpmTasks('grunt-angular-templates');
-
 };

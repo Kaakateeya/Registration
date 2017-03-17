@@ -7,60 +7,70 @@
  * Main App Creation
  */
 
-var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword', 'jcs-autoValidate']);
-// regApp.apipath = 'http://54.169.133.223:8070/Api/';
-regApp.apipath = 'http://183.82.0.58:8010/Api/';
-// regApp.apipath = '/webroot/Api/';
+var regapp = angular.module('KaakateeyaEmpReg', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngIdle', 'ngMaterial',
+    'ngMessages', 'ngAria', 'ngPassword', 'jcs-autoValidate', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
+]);
+regapp.apipath = 'http://183.82.0.58:8025/Api/';
+// regapp.apipath = 'http://183.82.0.58:8010/Api/';
+regapp.env = 'dev';
 
-//regApp.apipath = 'http://52.66.131.254:8010/Api/';
+regapp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
+regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
 
-regApp.templateroot = 'registration/';
-// regApp.templateroot = '';
-regApp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
-regApp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
+regapp.prefixPath = 'Images/ProfilePics/';
+regapp.S3PhotoPath = '';
+regapp.Mnoimage = regapp.GlobalImgPath + "Images/customernoimages/Mnoimage.jpg";
+regapp.Fnoimage = regapp.GlobalImgPath + "Images/customernoimages/Fnoimage.jpg";
+regapp.accesspathdots = regapp.GlobalImgPathforimage + regapp.prefixPath;
 
-regApp.prefixPath = 'Images/ProfilePics/';
-regApp.S3PhotoPath = '';
-regApp.Mnoimage = regApp.GlobalImgPath + "Images/customernoimages/Mnoimage.jpg";
-regApp.Fnoimage = regApp.GlobalImgPath + "Images/customernoimages/Fnoimage.jpg";
-regApp.accesspathdots = regApp.GlobalImgPathforimage + regApp.prefixPath;
-regApp.BucketName = 'kaakateeyaprod';
+regapp.BucketName = 'kaakateeyaprod';
+regapp.editName = 'edit/:custId/';
 
-// regApp.templateroot = '';
-
-regApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$ocLazyLoadProvider', function($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider) {
     var states = [
-        { name: 'registration', url: '/registration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
-        { name: 'registration.basicRegistration', url: '/basicRegistration', templateUrl: regApp.templateroot + 'app/views/basicRegistration.html', controller: 'basicRegistrationctrl' },
-        { name: 'registration.seconadryRegistration', url: '/seconadryRegistration/:fn/:ln/:countryID/:genderID', templateUrl: regApp.templateroot + 'app/views/secondaryRegisrtation.html', controller: 'secondaryRegistrationctrl' },
-        { name: 'registration.managePhoto', url: '/managePhoto/:genderID', templateUrl: regApp.templateroot + 'app/views/managePhoto.html', controller: 'managePhotoCtrl' },
-        { name: 'registration.upgradeMemberShip', url: '/upgradeMemberShip', templateUrl: regApp.templateroot + 'app/views/payment.html', controller: 'upgrademembership' },
-        { name: 'registration.CreatePwd', url: '/CreatePwd/:eid', templateUrl: regApp.templateroot + 'app/views/createNewPassoward.html', controller: 'createNewPwdCtrl' },
-        { name: 'registration.confirmEmail', url: '/confirmEmail/:vid', templateUrl: regApp.templateroot + 'app/views/confirmEmail.html', controller: 'confirmEmailCtrl' },
-        { name: 'registration.photoGuideLines', url: '/photoGuideLines', templateUrl: regApp.templateroot + 'app/views/photoGuideLines.html', controller: 'photoGuideLinesctrl' },
-        { name: 'registration.uploadTips', url: '/uploadTips', templateUrl: regApp.templateroot + 'app/views/uploadTips.html', controller: 'uploadTipsctrl' }
+        { name: 'reg', url: '', subname: [], abstract: true },
+        { name: 'reg.basicRegistration', url: '/Registration', subname: [] },
+        { name: 'reg.secondaryRegistration', url: '/secondaryReg/:CustID/:fn/:ln/:countryID/:genderID', subname: ['common/directives/datePickerDirective.js'] },
+        { name: 'reg.regManagePhoto', url: '/ManagePhoto/:CustID/:genderID', subname: ['common/services/fileUploadSevice.js', 'common/directives/fileUploadDirective.js'] },
 
     ];
-
-    $urlRouterProvider.otherwise('registration');
+    $ocLazyLoadProvider.config({
+        debug: true
+    });
+    $urlRouterProvider.otherwise('/Registration');
 
     _.each(states, function(item) {
-        var innerView = {
+
+        var innerView = {};
+        var regitem = item.name.slice(4);
+        innerView = {
             "topbar@": {
-                templateUrl: regApp.templateroot + (item.url === '/confirmEmail' || item.url === '/uploadTips' ? '' : "masterTemplate/headerTemplate.html")
+                templateUrl: "templates/topheader.html"
             },
-            "content@": {
-                templateUrl: item.templateUrl,
-                controller: item.controller
+            "lazyLoadView@": {
+                templateUrl: 'app/' + regitem + '/index.html',
+                controller: regitem + 'Ctrl as page'
             },
             "bottompanel@": {
-                templateUrl: regApp.templateroot + "masterTemplate/footerTemplate.html"
+                templateUrl: "templates/footer.html"
             }
         };
+
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView
-        })
+            views: innerView,
+            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    if (regapp.env === 'dev') {
+                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname]);
+                    } else {
+                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                    }
+                }]
+            }
+        });
         $locationProvider.html5Mode(true);
     });
-});
+
+}]);
