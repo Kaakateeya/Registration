@@ -142,7 +142,7 @@ module.exports = function(grunt) {
             myapp: {
                 options: {
                     base: "web",
-                    module: "KaakateeyaEmpEdit",
+                    module: "KaakateeyaEmpReg",
                     // prefix: 'editview/',
                 },
                 src: ['index.html', 'app/**/*.html', 'common/**/*.html', 'PageCode/viewFormat.html', 'templates\*.html'],

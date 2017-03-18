@@ -2073,7 +2073,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
     }
 })();
-angular.module('KaakateeyaEmpEdit').run(['$templateCache', function($templateCache) {
+angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCache) {
   'use strict';
 
   $templateCache.put('index.html',
