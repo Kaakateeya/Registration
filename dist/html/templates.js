@@ -172,7 +172,11 @@ angular.module('KaakateeyaEmpEdit').run(['$templateCache', function($templateCac
     "\n" +
     "    <!--SCRIPTS END-->\r" +
     "\n" +
-    "    <!-- SCRIPTSP DATA --><script src=\"dist/js/main.min.js\"></script><!--SCRIPTSP END-->\r" +
+    "    <!-- SCRIPTSP DATA -->\r" +
+    "\n" +
+    "    <script src=\"dist/js/main.min.js\"></script>\r" +
+    "\n" +
+    "    <!--SCRIPTSP END-->\r" +
     "\n" +
     "</body>\r" +
     "\n" +

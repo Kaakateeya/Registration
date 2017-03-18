@@ -338,10 +338,10 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         return {
             submitBasicRegistration: function(obj) {
                 console.log(obj);
-                return http.post(regApp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
+                return http.post(regapp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
             },
             emailExists: function(obj) {
-                return http.get(regApp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
+                return http.get(regapp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
             }
         };
     }
@@ -2247,7 +2247,11 @@ angular.module('KaakateeyaEmpEdit').run(['$templateCache', function($templateCac
     "\n" +
     "    <!--SCRIPTS END-->\r" +
     "\n" +
-    "    <!-- SCRIPTSP DATA --><script src=\"dist/js/main.min.js\"></script><!--SCRIPTSP END-->\r" +
+    "    <!-- SCRIPTSP DATA -->\r" +
+    "\n" +
+    "    <script src=\"dist/js/main.min.js\"></script>\r" +
+    "\n" +
+    "    <!--SCRIPTSP END-->\r" +
     "\n" +
     "</body>\r" +
     "\n" +
