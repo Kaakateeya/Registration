@@ -678,3 +678,21 @@
 .button_custom_reset {
     background: #959595;
 }
+
+.md-icon-button+.md-datepicker-input-container {
+    margin-left: 0px;
+}
+
+md-input-container label:not(.md-container-ignore) {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: auto;
+    color: black;
+    font-weight: normal;
+}
+
+.md-placeholder {
+    color: black;
+    font-weight: normal;
+}

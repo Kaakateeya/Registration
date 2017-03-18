@@ -172,7 +172,11 @@ angular.module('KaakateeyaEmpEdit').run(['$templateCache', function($templateCac
     "\n" +
     "    <!--SCRIPTS END-->\r" +
     "\n" +
-    "    <!-- SCRIPTSP DATA --><script src=\"dist/js/main.min.js\"></script><!--SCRIPTSP END-->\r" +
+    "    <!-- SCRIPTSP DATA -->\r" +
+    "\n" +
+    "    <script src=\"dist/js/main.min.js\"></script>\r" +
+    "\n" +
+    "    <!--SCRIPTSP END-->\r" +
     "\n" +
     "</body>\r" +
     "\n" +
@@ -1717,7 +1721,7 @@ angular.module('KaakateeyaEmpEdit').run(['$templateCache', function($templateCac
     "\n" +
     "\r" +
     "\n" +
-    "                            <md-input-container class=\"col-lg-4\" style=\"padding-right: 0px;\" ng-hide=\"page.model.regsec.ddlBornCitizenship==page.model.regsec.ddlCountryLivingIn\">\r" +
+    "                            <md-input-container class=\"col-lg-4\" style=\"padding-right: 0px;margin-left: 0px;\" ng-hide=\"page.model.regsec.ddlBornCitizenship==page.model.regsec.ddlCountryLivingIn\">\r" +
     "\n" +
     "                                <label>Residing since</label>\r" +
     "\n" +
