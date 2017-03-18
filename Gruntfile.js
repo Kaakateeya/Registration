@@ -145,7 +145,7 @@ module.exports = function(grunt) {
     grunt.registerTask('dev', ['jshint', 'cssmin', 'scriptlinker:dev']);
 
     // only run production configuration 
-    grunt.registerTask('prod', ['jshint', 'ngtemplates', 'concat', 'cssmin', 'uglify', 'scriptlinker:prod']);
+    grunt.registerTask('prod', ['jshint', 'ngtemplates', 'concat', 'uglify', 'scriptlinker:prod']);
 
     // ===========================================================================
     // LOAD GRUNT PLUGINS ========================================================
