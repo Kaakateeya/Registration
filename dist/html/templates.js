@@ -62,7 +62,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "<body class=\"nav-sm\" ng-app=\"KaakateeyaEmpReg\" ui-router-styles>\r" +
     "\n" +
-    "    <div class=\"container body\">\r" +
+    "    <div class=\"container body\" id=\"registationID\">\r" +
     "\n" +
     "        <div class=\"main_container\">\r" +
     "\n" +
