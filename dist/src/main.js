@@ -1752,32 +1752,32 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
     }
 })();
-(function(editviewapp) {
-    'use strict';
-    editviewapp.factory('errorInterceptor', ['$rootScope', '$q', function($rootScope, $q) {
-        return {
-            request: function(config) {
-                $rootScope.$broadcast('request-start');
-                config.headers = config.headers || {};
-                return config;
-            },
-            responseError: function(rejection) {
-                $rootScope.$broadcast('request-fail');
-                $rootScope.$broadcast('notify-error', rejection);
-                return $q.reject(rejection);
-            },
-            response: function(config) {
-                $rootScope.$broadcast('request-end');
-                var deferred = $q.defer();
-                deferred.resolve(config);
-                return deferred.promise;
-            }
-        };
-    }]);
-    angular.module('KaakateeyaEmpReg').config(['$httpProvider', function($httpProvider) {
-        $httpProvider.interceptors.push('errorInterceptor');
-    }]);
-}(window.editviewapp));
+// (function(editviewapp) {
+//     'use strict';
+//     editviewapp.factory('errorInterceptor', ['$rootScope', '$q', function($rootScope, $q) {
+//         return {
+//             request: function(config) {
+//                 $rootScope.$broadcast('request-start');
+//                 config.headers = config.headers || {};
+//                 return config;
+//             },
+//             responseError: function(rejection) {
+//                 $rootScope.$broadcast('request-fail');
+//                 $rootScope.$broadcast('notify-error', rejection);
+//                 return $q.reject(rejection);
+//             },
+//             response: function(config) {
+//                 $rootScope.$broadcast('request-end');
+//                 var deferred = $q.defer();
+//                 deferred.resolve(config);
+//                 return deferred.promise;
+//             }
+//         };
+//     }]);
+//     angular.module('KaakateeyaEmpReg').config(['$httpProvider', function($httpProvider) {
+//         $httpProvider.interceptors.push('errorInterceptor');
+//     }]);
+// }(window.editviewapp));
 (function() {
     'use strict';
 
@@ -2247,11 +2247,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    <!--SCRIPTS END-->\r" +
     "\n" +
-    "    <!-- SCRIPTSP DATA -->\r" +
-    "\n" +
-    "    <script src=\"dist/js/main.min.js\"></script>\r" +
-    "\n" +
-    "    <!--SCRIPTSP END-->\r" +
+    "    <!-- SCRIPTSP DATA --><script src=\"dist/js/main.min.js\"></script><!--SCRIPTSP END-->\r" +
     "\n" +
     "</body>\r" +
     "\n" +
