@@ -1,187 +1,6 @@
 angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCache) {
   'use strict';
 
-  $templateCache.put('index.html',
-    "<!DOCTYPE html>\r" +
-    "\n" +
-    "<html lang=\"en\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<head>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <!-- Meta, title, CSS, favicons, etc. -->\r" +
-    "\n" +
-    "    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r" +
-    "\n" +
-    "    <title>Kaakateeya Marriages</title>\r" +
-    "\n" +
-    "    <meta charset=\"utf-8\">\r" +
-    "\n" +
-    "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r" +
-    "\n" +
-    "    <base href=\"/\">\r" +
-    "\n" +
-    "    <meta name=\"description\" content=\"ACME Inc.\">\r" +
-    "\n" +
-    "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <!-- Bootstrap -->\r" +
-    "\n" +
-    "    <link href=\"node_modules/bootstrap/dist/css/bootstrap.min.css\" rel=\"stylesheet\">\r" +
-    "\n" +
-    "    <!-- Font Awesome -->\r" +
-    "\n" +
-    "    <link href=\"node_modules/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <link href=\"build/css/custom.min.css\" rel=\"stylesheet\" />\r" +
-    "\n" +
-    "    <link href=\"node_modules/angular-material/angular-material.css\" rel=\"stylesheet\" />\r" +
-    "\n" +
-    "    <link href=\"node_modules/bootstrap-multiselect/dist/css/bootstrap-multiselect.css\" rel=\"stylesheet\" />\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <link href=\"bower_components/angular-loading-bar/build/loading-bar.min.css\" rel=\"stylesheet\" />\r" +
-    "\n" +
-    "    <link href=\"stylesreg.css\" rel=\"stylesheet\" />\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</head>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "<body class=\"nav-sm\" ng-app=\"KaakateeyaEmpReg\" ui-router-styles>\r" +
-    "\n" +
-    "    <div class=\"container body\" id=\"registationID\">\r" +
-    "\n" +
-    "        <div class=\"main_container\">\r" +
-    "\n" +
-    "            <div ui-view=\"topbar\">\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "            <div ui-view=\"lazyLoadView\">\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "            <div ui-view=\"bottompanel\">\r" +
-    "\n" +
-    "            </div>\r" +
-    "\n" +
-    "        </div>\r" +
-    "\n" +
-    "    </div>\r" +
-    "\n" +
-    "    <!-- jQuery -->\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <!-- SCRIPTS DATA --#>\r" +
-    "\n" +
-    "    <script src=\"node_modules/jquery/dist/jquery.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/bootstrap/dist/js/bootstrap.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular/angular.min.js\"></script>\r" +
-    "\n" +
-    "    <script type=\"text/javascript\" src=\"node_modules/oclazyload/dist/ocLazyLoad.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-ui-router/release/angular-ui-router.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/underscore/underscore-min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/bootstrap-multiselect/dist/js/bootstrap-multiselect.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/ng-idle/angular-idle.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/angular-loading-bar/build/loading-bar.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/angular-animate/angular-animate.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-module-sanitize/angular-sanitize.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-animate/angular-animate.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/toastr/toastr.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-aria/angular-aria.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-messages/angular-messages.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-material/angular-material.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/editandview/dist/js/main.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-password/angular-password.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/angular-material-icons/angular-material-icons.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"node_modules/moment/min/moment.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/angular-auto-validate/dist/jcs-auto-validate.min.js\"></script>\r" +
-    "\n" +
-    "    <script src=\"bower_components/angular-promise-buttons/dist/angular-promise-buttons.min.js\"></script>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <script src=\"index.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"commonpage.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <script src=\"https://rawgithub.com/eligrey/FileSaver.js/master/FileSaver.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"build/js/custom.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "    <script src=\"common/constants/arrayBindConstatns.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/services/selectBindServices.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/services/authSvc.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/directives/commondependency.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/directives/editFooter.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/model/countryArrayModel.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/model/eduprofArrayModel.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/model/otherArrayModel.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/directives/dynamicAlets.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <script src=\"common/services/getArrayService.js\" type=\"text/javascript\"></script>\r" +
-    "\n" +
-    "    <!--SCRIPTS END-->\r" +
-    "\n" +
-    "    <!-- SCRIPTSP DATA --><script src=\"dist/js/main.min.js\"></script><!--SCRIPTSP END-->\r" +
-    "\n" +
-    "</body>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "</html>"
-  );
-
-
   $templateCache.put('app/basicRegistration/index.html',
     "<div role=\"main\" class=\"right_col\">\r" +
     "\n" +
@@ -2181,28 +2000,58 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
   );
 
 
-  $templateCache.put('PageCode/viewFormat.html',
-    "<html>\r" +
+  $templateCache.put('templates/SlideHeader.html',
+    "<div class=\"row\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<head>\r" +
+    "\r" +
     "\n" +
-    "    <title></title>\r" +
-    "\n" +
-    "</head>\r" +
+    "    <div class=\"col-lg-6 col-md-6 col-xs-8 col-sm-8\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "<body>\r" +
+    "        <label id=\"lbltotalrecords\">Total Records :</label>\r" +
+    "\n" +
+    "        <label id=\"lblcurrentprofile\"></label> &nbsp;of&nbsp;\r" +
+    "\n" +
+    "        <label id=\"lblcurSlide\"></label>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "</body>\r" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"col-lg-4 col-md-4 col-xs-4 col-sm-4\">\r" +
     "\n" +
     "\r" +
     "\n" +
-    "</html>"
+    "        <div class=\"col-lg-6 col-md-6 col-xs-6 col-sm-6\">\r" +
+    "\n" +
+    "            <label>Viewed</label>&nbsp;<label id=\"lnkLastSlide\" style=\"color: blue;\">1</label>&nbsp;<label>Profiles</label>\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"col-lg-1 col-md-1 col-xs-1 col-sm-1\">\r" +
+    "\n" +
+    "            <input type=\"text\" id=\"txtGotoVal\" class=\"form-control\" style=\"width: 50px; height: 24px; margin-left: -20px;\" onchange=\"gotoSlide(this);\" />\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "    <div class=\"col-lg-2\" ng-if=\"slidetype==='popup'\">\r" +
+    "\n" +
+    "        <a href=\"javascript:void(0);\">\r" +
+    "\n" +
+    "            <a class=\"pull-right\" size=\"25\">close</a>\r" +
+    "\n" +
+    "        </a>\r" +
+    "\n" +
+    "    </div>\r" +
+    "\n" +
+    "</div>"
   );
 
 }]);
