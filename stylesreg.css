@@ -690,6 +690,7 @@ md-input-container label:not(.md-container-ignore) {
     right: auto;
     color: black;
     font-weight: normal;
+    font-size: 13px;
 }
 
 .md-placeholder {

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEU,0CAAM;EACF,SAAS,EAAE,IAAI",
+"sources": ["registrationCss.scss"],
+"names": [],
+"file": "registrationCss.css"
+}

@@ -54,17 +54,17 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView
-                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                //         // you can lazy load files for an existing module
-                //         if (regapp.env === 'dev') {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname]);
-                //         } else {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-                //         }
-                //     }]
-                // }
+            views: innerView,
+            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            //         // you can lazy load files for an existing module
+            //         if (regapp.env === 'dev') {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname]);
+            //         } else {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+            //         }
+            //     }]
+            // }
         });
         $locationProvider.html5Mode(true);
     });
@@ -881,307 +881,49 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                            <div class=\"row\">\r" +
     "\n" +
-    "                                <label> First name</label>\r" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
-    "                                <input maxlength=\"100\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
+    "                                    <label> First name</label>\r" +
     "\n" +
-    "                                <div ng-messages=\"regForm.txtfirstname.$error\">\r" +
+    "                                    <input maxlength=\"100\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
     "\n" +
-    "                                    <div ng-message=\"required\">This is required.</div>\r" +
+    "                                    <div ng-messages=\"regForm.txtfirstname.$error\">\r" +
     "\n" +
-    "                                    <div ng-message=\"md-maxlength\">The description must be less than 30 characters long.</div>\r" +
+    "                                        <div ng-message=\"required\">This is required.</div>\r" +
     "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Last name</label>\r" +
-    "\n" +
-    "                                <input maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtlastname\" ng-model=\"page.model.reg.txtlastname\">\r" +
-    "\n" +
-    "                                <div ng-messages=\"regForm.txtlastname.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">This is required.</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Email</label>\r" +
-    "\n" +
-    "                                <input ng-required=\"emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
-    "\n" +
-    "                                <div ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
-    "\n" +
-    "                                    <div ng-message-exp=\"['required', 'pattern']\">\r" +
-    "\n" +
-    "                                        This is required and enter valid e-mail address.\r" +
-    "\n" +
-    "                                    </div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Posted by</label>\r" +
-    "\n" +
-    "                                <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
-    "\n" +
-    "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.postedby\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                </md-select>\r" +
-    "\n" +
-    "                                <div class=\"errors\" ng-messages=\"regForm.ddlpostedby.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "                            <div class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
-    "\n" +
-    "                                    <label>date</label>\r" +
-    "\n" +
-    "                                    <md-select name=\"ddlDD\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
-    "\n" +
-    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.dateArr\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlDD.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-message=\"md-maxlength\">The description must be less than 30 characters long.</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
-    "                                    <label>Month</label>\r" +
+    "                                    <label>Last name</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlMM\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
+    "                                    <input maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtlastname\" ng-model=\"page.model.reg.txtlastname\">\r" +
     "\n" +
-    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.monthArr\">{{h.label}} </md-option>\r" +
+    "                                    <div ng-messages=\"regForm.txtlastname.$error\">\r" +
     "\n" +
-    "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlMM.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-message=\"required\">This is required.</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "\r" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:34%;\">\r" +
+    "                                    <label>Email</label>\r" +
     "\n" +
-    "                                    <label>year</label>\r" +
+    "                                    <input ng-required=\"emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
     "\n" +
-    "                                    <md-select name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
+    "                                    <div ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
     "\n" +
-    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.yearArr\">{{h.label}} </md-option>\r" +
+    "                                        <div ng-message-exp=\"['required', 'pattern']\">\r" +
     "\n" +
-    "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlYear.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                    </div>\r" +
-    "\n" +
-    "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            </div>\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Religion</label>\r" +
-    "\n" +
-    "                                <md-select name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
-    "\n" +
-    "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.religion\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                </md-select>\r" +
-    "\n" +
-    "                                <div class=\"errors\" ng-messages=\"regForm.ddlreligion.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Mother Tongue</label>\r" +
-    "\n" +
-    "                                <md-select name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
-    "\n" +
-    "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Mothertongue\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                </md-select>\r" +
-    "\n" +
-    "                                <div class=\"errors\" ng-messages=\"regForm.ddlmothertongue.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Caste</label>\r" +
-    "\n" +
-    "                                <md-select name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
-    "\n" +
-    "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                </md-select>\r" +
-    "\n" +
-    "                                <div class=\"errors\" ng-messages=\"regForm.ddlcaste.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <label>Residing At</label>\r" +
-    "\n" +
-    "                                <md-select name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
-    "\n" +
-    "                                    <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                </md-select>\r" +
-    "\n" +
-    "                                <div class=\"errors\" ng-messages=\"regForm.ddlcountry.$error\">\r" +
-    "\n" +
-    "                                    <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                            </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            <div class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width: 50%;\">\r" +
-    "\n" +
-    "                                    <label>country code</label>\r" +
-    "\n" +
-    "                                    <md-select name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
-    "\n" +
-    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlmobilecountry.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                    </div>\r" +
-    "\n" +
-    "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                <md-input-container class=\"md-block col-lg-4\" style=\"width: 50%;\">\r" +
-    "\n" +
-    "                                    <label>Mobile number</label>\r" +
-    "\n" +
-    "                                    <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
-    "\n" +
-    "                                    <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
-    "\n" +
-    "                                            This is required and enter only numbers(10 digits).\r" +
-    "\n" +
-    "                                        </div>\r" +
-    "\n" +
-    "                                    </div>\r" +
-    "\n" +
-    "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            </div>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                            <div class=\"col-lg-4\">\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
-    "\n" +
-    "                                    <label>Land code</label>\r" +
-    "\n" +
-    "                                    <md-select name=\"ddllandcountry\" ng-model=\"page.model.reg.ddllandcountry\">\r" +
-    "\n" +
-    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
-    "\n" +
-    "                                    </md-select>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                <md-input-container class=\"md-block col-lg-4\" style=\"width:33%;\">\r" +
-    "\n" +
-    "                                    <label>Area code</label>\r" +
-    "\n" +
-    "                                    <input maxlength=\"8\" name=\"txtArea\" ng-model=\"page.model.reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
-    "\n" +
-    "                                    <div ng-messages=\"regForm.txtArea.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"pattern\">\r" +
-    "\n" +
-    "                                            Enter only numbers.\r" +
-    "\n" +
-    "                                        </div>\r" +
-    "\n" +
-    "                                    </div>\r" +
-    "\n" +
-    "                                </md-input-container>\r" +
-    "\n" +
-    "                                <md-input-container class=\"md-block col-lg-4\" style=\"width:34%;\">\r" +
-    "\n" +
-    "                                    <label>Landline number</label>\r" +
-    "\n" +
-    "                                    <input maxlength=\"8\" name=\"txtlandNum\" ng-model=\"page.model.reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
-    "\n" +
-    "                                    <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
-    "\n" +
-    "                                        <div ng-message=\"pattern\">\r" +
-    "\n" +
-    "                                            Enter only numbers.\r" +
+    "                                            This is required and enter valid e-mail address.\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -1191,7 +933,275 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <label>Posted by</label>\r" +
+    "\n" +
+    "                                    <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.postedby\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlpostedby.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "                                <div class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "\n" +
+    "                                        <label>date</label>\r" +
+    "\n" +
+    "                                        <md-select name=\"ddlDD\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
+    "\n" +
+    "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.dateArr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                        </md-select>\r" +
+    "\n" +
+    "                                        <div class=\"errors\" ng-messages=\"regForm.ddlDD.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "\n" +
+    "                                        <label>Month</label>\r" +
+    "\n" +
+    "                                        <md-select name=\"ddlMM\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
+    "\n" +
+    "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.monthArr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                        </md-select>\r" +
+    "\n" +
+    "                                        <div class=\"errors\" ng-messages=\"regForm.ddlMM.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
     "\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:34%;\">\r" +
+    "\n" +
+    "                                        <label>year</label>\r" +
+    "\n" +
+    "                                        <md-select name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
+    "\n" +
+    "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.yearArr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                        </md-select>\r" +
+    "\n" +
+    "                                        <div class=\"errors\" ng-messages=\"regForm.ddlYear.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <label>Religion</label>\r" +
+    "\n" +
+    "                                    <md-select name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.religion\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlreligion.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <label>Mother Tongue</label>\r" +
+    "\n" +
+    "                                    <md-select name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Mothertongue\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlmothertongue.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <label>Caste</label>\r" +
+    "\n" +
+    "                                    <md-select name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlcaste.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <label>Residing At</label>\r" +
+    "\n" +
+    "                                    <md-select name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlcountry.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <div class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width: 50%;\">\r" +
+    "\n" +
+    "                                        <label>country code</label>\r" +
+    "\n" +
+    "                                        <md-select name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
+    "\n" +
+    "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                        </md-select>\r" +
+    "\n" +
+    "                                        <div class=\"errors\" ng-messages=\"regForm.ddlmobilecountry.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width: 50%;\">\r" +
+    "\n" +
+    "                                        <label>Mobile number</label>\r" +
+    "\n" +
+    "                                        <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
+    "\n" +
+    "                                        <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
+    "\n" +
+    "                                                This is required and enter only numbers(10 digits).\r" +
+    "\n" +
+    "                                            </div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <div class=\"col-lg-4\">\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "\n" +
+    "                                        <label>Land code</label>\r" +
+    "\n" +
+    "                                        <md-select name=\"ddllandcountry\" ng-model=\"page.model.reg.ddllandcountry\">\r" +
+    "\n" +
+    "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                        </md-select>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width:33%;\">\r" +
+    "\n" +
+    "                                        <label>Area code</label>\r" +
+    "\n" +
+    "                                        <input maxlength=\"8\" name=\"txtArea\" ng-model=\"page.model.reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "\n" +
+    "                                        <div ng-messages=\"regForm.txtArea.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"pattern\">\r" +
+    "\n" +
+    "                                                Enter only numbers.\r" +
+    "\n" +
+    "                                            </div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width:34%;\">\r" +
+    "\n" +
+    "                                        <label>Landline number</label>\r" +
+    "\n" +
+    "                                        <input maxlength=\"8\" name=\"txtlandNum\" ng-model=\"page.model.reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "\n" +
+    "                                        <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message=\"pattern\">\r" +
+    "\n" +
+    "                                                Enter only numbers.\r" +
+    "\n" +
+    "                                            </div>\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </md-input-container>\r" +
+    "\n" +
+    "                                </div>\r" +
+    "\n" +
+    "                            </div>\r" +
     "\n" +
     "                            <div class=\"clear\"></div>\r" +
     "\n" +
@@ -1230,6 +1240,8 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "                                </div>\r" +
     "\n" +
     "                            </div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "                            <label ID=\"lblResult\" Font-Bold=\"true\" />\r" +
     "\n" +
@@ -1337,6 +1349,28 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    \r" +
     "\n" +
+    "    md-input-container.md-default-theme .md-input,\r" +
+    "\n" +
+    "    md-input-container .md-input {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.87);\r" +
+    "\n" +
+    "        border-color: rgba(31, 25, 25, 0.38);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-has-value label {\r" +
+    "\n" +
+    "        font-size: 16px !important;\r" +
+    "\n" +
+    "        color: rgba(48, 45, 45, 0.98) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
     "    md-input-container.md-input-focused:not(.md-input-invalid) label input[type=\"password\"],\r" +
     "\n" +
     "    md-input-container.md-input-focused:not(.md-input-invalid) .md-input {\r" +
@@ -1421,11 +1455,21 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    \r" +
     "\n" +
-    "    body {\r" +
+    "    md-select {\r" +
     "\n" +
-    "        color: black;\r" +
+    "        border-bottom: 1px solid #110404;\r" +
     "\n" +
-    "        font-weight: bold;\r" +
+    "        border-color: rgba(31, 25, 25, 0.45);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.65);\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -1921,9 +1965,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                    <form name=\"secregForm\" accessible-form novalidate role=\"form\" ng-submit=\"secregForm.$valid && page.model.secondRegSubmit(page.model.regsec);\">\r" +
     "\n" +
-    "                        <div class=\"reg_fields_entry clearfix\">\r" +
+    "\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "\r" +
+    "\n" +
+    "                        <div class=\"reg_fields_entry clearfix\"><br>\r" +
+    "\n" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
@@ -1975,7 +2023,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -2049,7 +2097,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </br>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -2133,7 +2181,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </br>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -2197,7 +2245,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2233,7 +2281,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Monthly Salary</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"7\" md-no-asterisk=\"\" name=\"txtSalary\" ng-model=\"page.model.regsec.txtSalary\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                    <input maxlength=\"7\" md-no-asterisk=\"\" onkeyup=\"this.value=this.value.replace(/[^\\d\\.\\-]/g,'');\" name=\"txtSalary\" ng-model=\"page.model.regsec.txtSalary\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtSalary.$error\">\r" +
     "\n" +
@@ -2267,7 +2315,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <br>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -2327,7 +2375,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -2385,7 +2433,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <br>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
@@ -2427,7 +2475,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
@@ -2469,7 +2517,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"col-md-12\">\r" +
+    "                            <div class=\"col-lg-12\">\r" +
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
@@ -2561,11 +2609,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container class=\"md-block\">\r" +
+    "                                <md-input-container class=\"md-block\" style=\"margin: 28px 0px\">\r" +
     "\n" +
     "                                    <label>About yourself</label>\r" +
     "\n" +
-    "                                    <textarea maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
+    "                                    <textarea style=\"height: 87px;\r" +
+    "\n" +
+    "    border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
@@ -2694,6 +2744,38 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "    md-input-container.md-input-invalid .md-input {\r" +
     "\n" +
     "        border-color: rgb(221, 44, 0) !important;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-focused {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.87);\r" +
+    "\n" +
+    "        border-color: rgba(0, 0, 0, 0.12);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-default-theme .md-input,\r" +
+    "\n" +
+    "    md-input-container .md-input {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.87);\r" +
+    "\n" +
+    "        border-color: rgba(31, 25, 25, 0.38);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-has-value label {\r" +
+    "\n" +
+    "        font-size: 16px !important;\r" +
+    "\n" +
+    "        color: rgba(48, 45, 45, 0.98) !important;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2828,6 +2910,26 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        position: relative;\r" +
     "\n" +
     "        overflow: hidden;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select {\r" +
+    "\n" +
+    "        border-bottom: 1px solid #110404;\r" +
+    "\n" +
+    "        border-color: rgba(31, 25, 25, 0.45);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgba(0, 0, 0, 0.65);\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -3196,6 +3298,42 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
 //         .constant('constant', constant);
 
 // }());
+(function(angular) {
+    'use strict';
+    /** @ngInject */
+    function ControllerCtrl(scope, authSvc, $uibModal, $state) {
+        var vm = this;
+        var modalpopupopen;
+        vm.lock = false;
+        vm.CurrentDate = new Date();
+        vm.logincounts = [];
+        vm.initheader = function() {
+            var empname = authSvc.LoginEmpid() !== undefined && authSvc.LoginEmpid() !== null && authSvc.LoginEmpid() !== "" ? authSvc.LoginEmpid() : "";
+            // authSvc.getmacaddress();
+            // authSvc.getClientIp();
+            vm.name = authSvc.LoginEmpName();
+            vm.empphoto = authSvc.empphoto();
+
+        };
+        vm.initheader();
+
+        vm.logout = function() {
+            vm.name = "";
+            $state.go("login", {});
+            authSvc.logout();
+        };
+        vm.lockscreen = function() {
+            vm.lock = true;
+            vm.passwordemployee = "";
+        };
+    }
+    angular
+        .module('Kaakateeya')
+        .controller('headerctrl', ['$scope', 'authSvc', '$uibModal', '$state',
+            ControllerCtrl
+        ]);
+
+}(angular));
 (function() {
     'use strict';
 
