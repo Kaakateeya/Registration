@@ -1504,7 +1504,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                    <div class=\"col-lg-2\">\r" +
     "\n" +
-    "                        <!--<md-button class=\"md-raised md-warn md-hue-2\" href=\"registration/upgradeMemberShip\">skip this page</md-button>-->\r" +
+    "                        <md-button class=\"md-raised md-warn md-hue-2\" href=\"dashboardpage\">skip this page</md-button>\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
