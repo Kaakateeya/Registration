@@ -68,45 +68,43 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <div class=\"row\">\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <label> First name</label>\r" +
+    "                                    <label> First Name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
+    "                                    <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtfirstname.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">This is required.</div>\r" +
-    "\n" +
-    "                                        <div ng-message=\"md-maxlength\">The description must be less than 30 characters long.</div>\r" +
+    "                                        <div ng-if=\"regForm.txtfirstname.$invalid && (regForm.$submitted)\" ng-message=\"required\">This is required.</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <label>Last name</label>\r" +
+    "                                    <label>Last Name</label>\r" +
     "\n" +
     "                                    <input maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtlastname\" ng-model=\"page.model.reg.txtlastname\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtlastname.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">This is required.</div>\r" +
+    "                                        <div ng-if=\"regForm.txtlastname.$invalid && (regForm.$submitted)\" ng-message=\"required\">This is required.</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Email</label>\r" +
     "\n" +
-    "                                    <input ng-required=\"emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
+    "                                    <input ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['required', 'pattern']\">\r" +
+    "                                        <div ng-if=\"regForm.txtEmail.$invalid && (regForm.$submitted)\" ng-message-exp=\"['required', 'pattern']\">\r" +
     "\n" +
     "                                            This is required and enter valid e-mail address.\r" +
     "\n" +
@@ -116,11 +114,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                            </div>\r" +
-    "\n" +
-    "                            <div class=\"row\">\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Posted by</label>\r" +
     "\n" +
@@ -132,17 +126,23 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"regForm.ddlpostedby.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"regForm.ddlpostedby.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                                <div class=\"col-lg-4\">\r" +
+    "                            </div>\r" +
     "\n" +
-    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                                        <label>date</label>\r" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <div class=\"col-lg-3\">\r" +
+    "\n" +
+    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "\n" +
+    "                                        <label>Date</label>\r" +
     "\n" +
     "                                        <md-select name=\"ddlDD\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
     "\n" +
@@ -152,13 +152,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"regForm.ddlDD.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"regForm.ddlDD.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
     "                                    </md-input-container>\r" +
     "\n" +
-    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                        <label>Month</label>\r" +
     "\n" +
@@ -170,7 +170,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"regForm.ddlMM.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"regForm.ddlMM.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -178,9 +178,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:34%;\">\r" +
+    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:34%;\">\r" +
     "\n" +
-    "                                        <label>year</label>\r" +
+    "                                        <label>Year</label>\r" +
     "\n" +
     "                                        <md-select name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
     "\n" +
@@ -190,7 +190,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"regForm.ddlYear.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"regForm.ddlYear.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -200,7 +200,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                </div>\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Religion</label>\r" +
     "\n" +
@@ -212,17 +212,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"regForm.ddlreligion.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"regForm.ddlreligion.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                            </div>\r" +
-    "\n" +
-    "                            <div class=\"row\">\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Mother Tongue</label>\r" +
     "\n" +
@@ -234,15 +230,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"regForm.ddlmothertongue.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"regForm.ddlmothertongue.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "\r" +
-    "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
@@ -254,15 +248,21 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"regForm.ddlcaste.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"regForm.ddlcaste.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "\r" +
+    "                            </div>\r" +
     "\n" +
-    "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
+    "                            <br>\r" +
+    "\n" +
+    "                            <div class=\"clearfix\"></div>\r" +
+    "\n" +
+    "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <label>Residing At</label>\r" +
     "\n" +
@@ -274,21 +274,19 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"regForm.ddlcountry.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"regForm.ddlcountry.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                            </div>\r" +
+    "\r" +
     "\n" +
-    "                            <div class=\"row\">\r" +
+    "                                <div class=\"col-lg-3\">\r" +
     "\n" +
-    "                                <div class=\"col-lg-4\">\r" +
+    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width: 50%;\">\r" +
     "\n" +
-    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width: 50%;\">\r" +
-    "\n" +
-    "                                        <label>country code</label>\r" +
+    "                                        <label>Country code</label>\r" +
     "\n" +
     "                                        <md-select name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
     "\n" +
@@ -298,7 +296,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"regForm.ddlmobilecountry.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"regForm.ddlmobilecountry.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -310,11 +308,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Mobile number</label>\r" +
     "\n" +
-    "                                        <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
+    "                                        <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
     "\n" +
     "                                        <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
     "\n" +
-    "                                            <div ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
+    "                                            <div ng-if=\"regForm.txtMobileNo.$invalid && (regForm.$submitted)\" ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
     "\n" +
     "                                                This is required and enter only numbers(10 digits).\r" +
     "\n" +
@@ -330,9 +328,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <div class=\"col-lg-4\">\r" +
+    "                                <div class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <md-input-container flex=\"50\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                        <label>Land code</label>\r" +
     "\n" +
@@ -442,8 +440,6 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "        </div>\r" +
     "\n" +
-    "        <!--<button ng-click=\"redirect();\">test</button>-->\r" +
-    "\n" +
     "    </div>\r" +
     "\n" +
     "\r" +
@@ -548,9 +544,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    .md-input-has-value label {\r" +
     "\n" +
-    "        font-size: 16px !important;\r" +
+    "        font-size: 17px !important;\r" +
     "\n" +
     "        color: rgba(48, 45, 45, 0.98) !important;\r" +
+    "\n" +
+    "        font-weight: 700 !important;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -655,6 +653,16 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "    md-select .md-select-value.md-select-placeholder {\r" +
     "\n" +
     "        color: rgba(0, 0, 0, 0.65);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .register_page_main h4 {\r" +
+    "\n" +
+    "        color: #b10c0c;\r" +
+    "\n" +
+    "        font-size: 21px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -1180,7 +1188,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.rbtnmarital.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.rbtnmarital.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1200,7 +1208,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.rbtncomplexion.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.rbtncomplexion.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1222,7 +1230,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.rbtnphysicalstatus.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.rbtnphysicalstatus.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1244,7 +1252,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlHeight.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlHeight.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1264,7 +1272,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlBornCitizenship.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlBornCitizenship.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1296,7 +1304,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlEduCategory.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlEduCategory.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1314,7 +1322,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlEduGroup.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlEduGroup.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1334,7 +1342,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlEduSpecialisation.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlEduSpecialisation.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1348,7 +1356,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Education merits</label>\r" +
     "\n" +
-    "                                    <textarea maxlength=\"500\" rows=\"2\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"page.model.regsec.txtEducationMerits\"></textarea>\r" +
+    "                                    <textarea maxlength=\"500\" style=\"height: 87px;\r" +
+    "\n" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" rows=\"2\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"page.model.regsec.txtEducationMerits\"></textarea>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -1380,7 +1390,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlEmployedIn.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlEmployedIn.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1402,7 +1412,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlProfessionalGroup.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlProfessionalGroup.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1422,7 +1432,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlProfession.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlProfession.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1486,7 +1496,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <label>Occupation details</label>\r" +
     "\n" +
-    "                                <textarea maxlength=\"500\" rows=\"2\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"page.model.regsec.txtOcccupationDetails\"></textarea>\r" +
+    "                                <textarea maxlength=\"500\" rows=\"2\" style=\"height: 87px;\r" +
+    "\n" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"page.model.regsec.txtOcccupationDetails\"></textarea>\r" +
     "\n" +
     "                            </md-input-container>\r" +
     "\n" +
@@ -1514,7 +1526,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlCountryLivingIn.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlCountryLivingIn.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1534,7 +1546,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlStatelivingIn.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlStatelivingIn.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1552,15 +1564,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlDistricLivingIn.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlDistricLivingIn.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
-    "                            </div>\r" +
-    "\n" +
-    "                            <div class=\"col-lg-12\">\r" +
+    "\r" +
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
@@ -1574,7 +1584,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div class=\"errors\" ng-messages=\"secregForm.ddlcityLivingIn.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">Required</div>\r" +
+    "                                        <div ng-if=\"secregForm.ddlcityLivingIn.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1628,9 +1638,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtFatherName.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">This is required.</div>\r" +
+    "                                        <div ng-if=\"secregForm.txtFatherName.$invalid && (secregForm.$submitted)\" ng-message=\"required\">This is required.</div>\r" +
     "\n" +
-    "                                        <div ng-message=\"md-maxlength\">The description must be less than 30 characters long.</div>\r" +
+    "\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1670,7 +1680,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtMotherName.$error\">\r" +
     "\n" +
-    "                                        <div ng-message=\"required\">This is required.</div>\r" +
+    "                                        <div ng-if=\"secregForm.txtMotherName.$invalid && (secregForm.$submitted)\" ng-message=\"required\">This is required.</div>\r" +
     "\n" +
     "                                    </div>\r" +
     "\n" +
@@ -1738,7 +1748,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"secregForm.ddlBrothers.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"secregForm.ddlBrothers.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -1758,7 +1768,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <div class=\"errors\" ng-messages=\"secregForm.ddlSisters.$error\">\r" +
     "\n" +
-    "                                            <div ng-message=\"required\">Required</div>\r" +
+    "                                            <div ng-if=\"secregForm.ddlSisters.$invalid && (secregForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -1800,11 +1810,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <textarea style=\"height: 87px;\r" +
     "\n" +
-    "    border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['required', 'minlength']\">\r" +
+    "                                        <div ng-if=\"secregForm.txtabouturself.$invalid && (secregForm.$submitted)\" ng-message-exp=\"['required', 'minlength']\">\r" +
     "\n" +
     "                                            This is required and enter Minimum 50 characters\r" +
     "\n" +
@@ -1958,9 +1968,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    .md-input-has-value label {\r" +
     "\n" +
-    "        font-size: 16px !important;\r" +
+    "        font-size: 17px !important;\r" +
     "\n" +
     "        color: rgba(48, 45, 45, 0.98) !important;\r" +
+    "\n" +
+    "        font-weight: 700 !important;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2115,6 +2127,16 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "    md-select .md-select-value.md-select-placeholder {\r" +
     "\n" +
     "        color: rgba(0, 0, 0, 0.65);\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .register_page_main h4 {\r" +
+    "\n" +
+    "        color: #b10c0c;\r" +
+    "\n" +
+    "        font-size: 21px;\r" +
     "\n" +
     "    }\r" +
     "\n" +

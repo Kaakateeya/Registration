@@ -192,7 +192,6 @@
         };
         model.mobilemailvalidation = function() {
             if (model.reg.Chkfree_reg === true) {
-
                 if ((model.reg.txtEmail === null || model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === null || model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
                     model.emailrequired = false;
                     model.mobilenumberrequired = true;

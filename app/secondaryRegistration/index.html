@@ -23,7 +23,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.MaritalStatus">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.rbtnmarital.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.rbtnmarital.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -33,7 +33,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.Complexion">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.rbtncomplexion.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.rbtncomplexion.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                             </div>
@@ -44,7 +44,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.PhysicalStatus">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.rbtnphysicalstatus.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.rbtnphysicalstatus.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -55,7 +55,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.height">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlHeight.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlHeight.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -65,7 +65,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.Country">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlBornCitizenship.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlBornCitizenship.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                             </div>
@@ -81,7 +81,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.educationcategory">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlEduCategory.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlEduCategory.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container flex="50" class="col-lg-4">
@@ -90,7 +90,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.edugroup">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlEduGroup.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlEduGroup.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -100,14 +100,15 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.eduSplArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlEduSpecialisation.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlEduSpecialisation.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                             </div>
                             <div class="control-group col-lg-12">
                                 <md-input-container class="md-block col-lg-12">
                                     <label>Education merits</label>
-                                    <textarea maxlength="500" rows="2" md-no-asterisk="" name="txtEducationMerits" ng-model="page.model.regsec.txtEducationMerits"></textarea>
+                                    <textarea maxlength="500" style="height: 87px;
+                                  border: 0.5px solid rgba(31, 25, 25, 0.38);" rows="2" md-no-asterisk="" name="txtEducationMerits" ng-model="page.model.regsec.txtEducationMerits"></textarea>
                                 </md-input-container>
                             </div>
 
@@ -123,7 +124,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.ProfCatgory">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlEmployedIn.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlEmployedIn.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -134,7 +135,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.ProfGroup">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlProfessionalGroup.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlProfessionalGroup.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -144,7 +145,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.professionArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlProfession.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlProfession.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                             </div>
@@ -176,7 +177,8 @@
                             </div>
                             <md-input-container class="md-block col-lg-12">
                                 <label>Occupation details</label>
-                                <textarea maxlength="500" rows="2" md-no-asterisk="" name="txtOcccupationDetails" ng-model="page.model.regsec.txtOcccupationDetails"></textarea>
+                                <textarea maxlength="500" rows="2" style="height: 87px;
+                                  border: 0.5px solid rgba(31, 25, 25, 0.38);" md-no-asterisk="" name="txtOcccupationDetails" ng-model="page.model.regsec.txtOcccupationDetails"></textarea>
                             </md-input-container>
 
                             <div class="clear"></div>
@@ -190,7 +192,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.Country">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlCountryLivingIn.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlCountryLivingIn.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -200,7 +202,7 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.stateArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlStatelivingIn.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlStatelivingIn.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
                                 <md-input-container flex="50" class="col-lg-4" ng-if="page.model.regsec.ddlCountryLivingIn==1">
@@ -209,18 +211,17 @@
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.districtArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlDistricLivingIn.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlDistricLivingIn.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
-                            </div>
-                            <div class="col-lg-12">
+
                                 <md-input-container flex="50" class="col-lg-4">
                                     <label>City</label>
                                     <md-select name="ddlcityLivingIn" ng-model="page.model.regsec.ddlcityLivingIn" required="">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.cityArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.ddlcityLivingIn.$error">
-                                        <div ng-message="required">Required</div>
+                                        <div ng-if="secregForm.ddlcityLivingIn.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                     </div>
                                 </md-input-container>
 
@@ -247,8 +248,8 @@
                                     <label>Father Name</label>
                                     <input maxlength="100" required="" md-asterisk="" name="txtFatherName" ng-model="page.model.regsec.txtFatherName">
                                     <div ng-messages="secregForm.txtFatherName.$error">
-                                        <div ng-message="required">This is required.</div>
-                                        <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+                                        <div ng-if="secregForm.txtFatherName.$invalid && (secregForm.$submitted)" ng-message="required">This is required.</div>
+
                                     </div>
                                 </md-input-container>
 
@@ -268,7 +269,7 @@
                                     <label>Mother’s name</label>
                                     <input maxlength="100" required="" md-asterisk="" name="txtMotherName" ng-model="page.model.regsec.txtMotherName">
                                     <div ng-messages="secregForm.txtMotherName.$error">
-                                        <div ng-message="required">This is required.</div>
+                                        <div ng-if="secregForm.txtMotherName.$invalid && (secregForm.$submitted)" ng-message="required">This is required.</div>
                                     </div>
                                 </md-input-container>
 
@@ -302,7 +303,7 @@
                                             <md-option ng-value="h.value" ng-repeat="h in page.model.noOfsibblingsArr">{{h.label}} </md-option>
                                         </md-select>
                                         <div class="errors" ng-messages="secregForm.ddlBrothers.$error">
-                                            <div ng-message="required">Required</div>
+                                            <div ng-if="secregForm.ddlBrothers.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                         </div>
                                     </md-input-container>
 
@@ -312,7 +313,7 @@
                                             <md-option ng-value="h.value" ng-repeat="h in page.model.noOfsibblingsArr">{{h.label}} </md-option>
                                         </md-select>
                                         <div class="errors" ng-messages="secregForm.ddlSisters.$error">
-                                            <div ng-message="required">Required</div>
+                                            <div ng-if="secregForm.ddlSisters.$invalid && (secregForm.$submitted)" ng-message="required">Required</div>
                                         </div>
                                     </md-input-container>
                                 </div>
@@ -333,9 +334,9 @@
                                 <md-input-container class="md-block" style="margin: 28px 0px">
                                     <label>About yourself</label>
                                     <textarea style="height: 87px;
-    border: 0.5px solid rgba(31, 25, 25, 0.38);" maxlength="1000" rows="3" ng-minlength="50" required="" md-asterisk="" name="txtabouturself" ng-model="page.model.regsec.txtabouturself"></textarea>
+                                  border: 0.5px solid rgba(31, 25, 25, 0.38);" maxlength="1000" rows="3" ng-minlength="50" required="" md-asterisk="" name="txtabouturself" ng-model="page.model.regsec.txtabouturself"></textarea>
                                     <div ng-messages="secregForm.txtabouturself.$error">
-                                        <div ng-message-exp="['required', 'minlength']">
+                                        <div ng-if="secregForm.txtabouturself.$invalid && (secregForm.$submitted)" ng-message-exp="['required', 'minlength']">
                                             This is required and enter Minimum 50 characters
                                         </div>
                                     </div>
@@ -412,8 +413,9 @@
     }
     
     .md-input-has-value label {
-        font-size: 16px !important;
+        font-size: 17px !important;
         color: rgba(48, 45, 45, 0.98) !important;
+        font-weight: 700 !important;
     }
     
     .md-datepicker-input {
@@ -491,6 +493,11 @@
     md-select.md-default-theme .md-select-value.md-select-placeholder,
     md-select .md-select-value.md-select-placeholder {
         color: rgba(0, 0, 0, 0.65);
+    }
+    
+    .register_page_main h4 {
+        color: #b10c0c;
+        font-size: 21px;
     }
 </style>
 <script src="build/js/custom.js" type="text/javascript"></script>
