@@ -2104,7 +2104,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <div class=\"wellOverride\">Education details</div>\r" +
     "\n" +
-    "\r" +
+    "                            <br>\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2188,7 +2188,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <div class=\"wellOverride\">profession details</div>\r" +
     "\n" +
-    "\r" +
+    "                            <br>\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2322,7 +2322,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <div class=\"wellOverride\">Candidate location details</div>\r" +
     "\n" +
-    "\r" +
+    "                            <br>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2440,7 +2440,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "\r" +
+    "                            <br>\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
