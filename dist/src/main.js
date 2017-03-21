@@ -2096,15 +2096,15 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
     "                            <!--<hr>-->\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                            <h4 class=\"wellOverride\">Education details</h4>\r" +
+    "                            <div class=\"wellOverride\">Education details</div>\r" +
     "\n" +
-    "                            </br>\r" +
+    "\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2182,15 +2182,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
-    "\n" +
-    "                            <!--<hr>-->\r" +
-    "\n" +
     "\r" +
     "\n" +
-    "                            <h4 class=\"wellOverride\">profession details</h4>\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                            </br>\r" +
+    "                            <div class=\"wellOverride\">profession details</div>\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2320,13 +2318,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                            <!--<hr>-->\r" +
+    "                            <div class=\"wellOverride\">Candidate location details</div>\r" +
     "\n" +
-    "                            <h4 class=\"wellOverride\">Candidate location details</h4>\r" +
+    "\r" +
     "\n" +
-    "                            <br>\r" +
+    "\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2436,13 +2434,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                            <!--<hr>-->\r" +
+    "                            <div class=\"wellOverride\">Family details</div>\r" +
     "\n" +
-    "                            <h4 class=\"wellOverride\">Family details</h4>\r" +
+    "\r" +
     "\n" +
-    "                            <br>\r" +
+    "\r" +
     "\n" +
     "                            <div class=\"col-lg-12\">\r" +
     "\n" +
@@ -2594,15 +2592,17 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
+    "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
-    "                            <!--<hr>-->\r" +
+    "\r" +
+    "\n" +
+    "\r" +
     "\n" +
     "\r" +
     "\n" +
     "                            <div>\r" +
     "\n" +
-    "                                <h4 class=\"wellOverride\">About yourself</h4>\r" +
+    "                                <div class=\"wellOverride\">About yourself</div>\r" +
     "\n" +
     "                                <p>\r" +
     "\n" +
