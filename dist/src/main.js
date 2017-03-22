@@ -54,19 +54,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            views: innerView
+                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         // you can lazy load files for an existing module
+                //         if (regapp.env === 'dev') {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                //                 'app/' + regitem + '/css/style.css'
+                //             ]);
+                //         } else {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                //         }
+                //     }]
+                // }
         });
         $locationProvider.html5Mode(true);
     });
@@ -956,7 +956,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <div class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                    <md-input-container class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                        <label>Date</label>\r" +
     "\n" +
@@ -974,7 +974,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    </md-input-container>\r" +
     "\n" +
-    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                    <md-input-container class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                        <label>Month</label>\r" +
     "\n" +
@@ -994,7 +994,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:34%;\">\r" +
+    "                                    <md-input-container class=\"col-lg-4\" style=\"width:34%;\">\r" +
     "\n" +
     "                                        <label>Year</label>\r" +
     "\n" +
@@ -1100,7 +1100,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <div class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width: 50%;\">\r" +
+    "                                    <md-input-container class=\"col-lg-4\" style=\"width: 50%;\">\r" +
     "\n" +
     "                                        <label>Country code</label>\r" +
     "\n" +
@@ -1120,7 +1120,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width: 50%;\">\r" +
+    "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width:50%;\">\r" +
     "\n" +
     "                                        <label>Mobile number</label>\r" +
     "\n" +
@@ -1144,9 +1144,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <div class=\"col-lg-3\">\r" +
+    "                                <div class=\"col-lg-4\">\r" +
     "\n" +
-    "                                    <md-input-container flex=\"40\" class=\"col-lg-4\" style=\"width:33%;\">\r" +
+    "                                    <md-input-container class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
     "                                        <label>Land code</label>\r" +
     "\n" +

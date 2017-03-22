@@ -688,7 +688,7 @@ md-input-container label:not(.md-container-ignore) {
     bottom: 100%;
     left: 0;
     right: auto;
-    color: black;
+    color: #656060;
     font-weight: normal;
     font-size: 13px;
 }
@@ -707,4 +707,18 @@ md-input-container label:not(.md-container-ignore) {
     color: #b10c0c;
     font-weight: bold;
     font-size: 16px;
+}
+
+.md-select-value {
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 2px 2px 1px;
+    border-bottom-width: 1px;
+    position: relative;
+    box-sizing: content-box;
+    min-width: 64px;
+    min-height: 26px;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    border-bottom-style: none;
 }
