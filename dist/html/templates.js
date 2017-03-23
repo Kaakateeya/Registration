@@ -668,7 +668,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "</style>\r" +
     "\n" +
-    "<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>"
+    "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
   );
 
 
@@ -1131,9 +1131,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
-    "</style>\r" +
-    "\n" +
-    "<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>"
+    "</style>"
   );
 
 
@@ -2142,7 +2140,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "</style>\r" +
     "\n" +
-    "<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>"
+    "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
   );
 
 
