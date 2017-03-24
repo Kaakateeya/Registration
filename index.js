@@ -59,6 +59,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView
+                // ,
                 // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
                 //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
                 //         // you can lazy load files for an existing module

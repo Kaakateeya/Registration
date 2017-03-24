@@ -55,7 +55,7 @@
                                     </div>
                                 </md-input-container>
                                 <md-input-container class="col-lg-3">
-                                    <label>Posted by</label>
+                                    <label class="droplabel">Posted by</label>
                                     <md-select name="ddlpostedby" ng-model="page.model.reg.ddlpostedby" required="">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.postedby">{{h.label}} </md-option>
                                     </md-select>
@@ -329,6 +329,32 @@
     .register_page_main h4 {
         color: #b10c0c;
         font-size: 21px;
+    }
+    
+    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {
+        color: rgb(221, 44, 0)!important;
+        border-bottom-color: rgb(221, 44, 0)!important;
+        font-size: 18px;
+    }
+    /*md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,
+    md-select.ng-invalid.ng-touched .md-select-value {
+        color: rgb(221, 44, 0)!important;
+        border-bottom-color: rgb(221, 44, 0)!important;
+        font-size: 16px;
+    }*/
+    
+    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,
+    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,
+    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,
+    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {
+        color: rgb(63, 81, 181);
+        font-size: 18px;
+    }
+    
+    md-select-menu.md-default-theme md-content md-option,
+    md-select-menu md-content md-option {
+        color: rgba(33, 33, 33, 0.87);
+        font-size: 13px;
     }
 </style>
 <!--<script src="build/js/custom.js" type="text/javascript"></script>-->

@@ -55,6 +55,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView
+                // ,
                 // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
                 //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
                 //         // you can lazy load files for an existing module
@@ -247,8 +248,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 IsCustomer: 0,
                 strMobileNo: (obj.txtMobileNo !== '') && (obj.txtMobileNo !== null) && (obj.txtMobileNo !== undefined) ? (obj.txtMobileNo) : "0000000000",
                 ID: 1,
-                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : '',
-                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : '',
+                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : null,
+                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : null,
                 strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
                 strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
@@ -260,15 +261,18 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 console.log(res);
                 model.genderID = 0;
-                authSvc.login(model.reg.txtEmail, "Admin@123").then(function(response) {
-                    console.log(response);
-                    model.genderID = response.response[0].GenderID;
-                    $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
-                    return false;
-                });
+                //  console.log(obj.txtEmail);
+                //    obj.txtEmail = (obj.txtEmail !== undefined && obj.txtEmail !== null && obj.txtEmail !== "") ? obj.txtEmail : "kmpl@gmail.com";
+                if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
+                    authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
+                        console.log(response);
+                        model.genderID = response.response[0].GenderID;
+                        $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
+                        return false;
+                    });
+                }
             });
         };
-
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
@@ -345,7 +349,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         return {
             submitBasicRegistration: function(obj) {
                 console.log(obj);
-                return http.post(regapp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
+                // return http.post(regapp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
+                return http.post(regapp.apipath + 'Registration/EmployeeRegisterCustomerHomepages', JSON.stringify(obj));
             },
             emailExists: function(obj) {
                 return http.get(regapp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
@@ -950,7 +955,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <label>Posted by</label>\r" +
+    "                                    <label class=\"droplabel\">Posted by</label>\r" +
     "\n" +
     "                                    <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
     "\n" +
@@ -1500,6 +1505,58 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select-menu.md-default-theme md-content md-option,\r" +
+    "\n" +
+    "    md-select-menu md-content md-option {\r" +
+    "\n" +
+    "        color: rgba(33, 33, 33, 0.87);\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "</style>\r" +
     "\n" +
     "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
@@ -1507,6 +1564,18 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
 
 
   $templateCache.put('app/regManagePhoto/index.html',
+    "<!--md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }-->\r" +
+    "\n" +
     "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
     "    <div>\r" +
@@ -1962,6 +2031,34 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        border-radius: 5px;\r" +
     "\n" +
     "        padding: 7px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2969,6 +3066,58 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        color: #b10c0c;\r" +
     "\n" +
     "        font-size: 21px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select-menu.md-default-theme md-content md-option,\r" +
+    "\n" +
+    "    md-select-menu md-content md-option {\r" +
+    "\n" +
+    "        color: rgba(33, 33, 33, 0.87);\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -4027,7 +4176,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
             },
 
             login: function(username, password) {
-
+                debugger;
                 var body = {
                     Username: username,
                     Password: password

@@ -139,8 +139,8 @@
                 IsCustomer: 0,
                 strMobileNo: (obj.txtMobileNo !== '') && (obj.txtMobileNo !== null) && (obj.txtMobileNo !== undefined) ? (obj.txtMobileNo) : "0000000000",
                 ID: 1,
-                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : '',
-                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : '',
+                strAreaCode: (obj.txtArea !== '') && (obj.txtArea !== null) && (obj.txtArea !== undefined) ? obj.txtArea : null,
+                strLandNo: (obj.txtlandNum !== '') && (obj.txtlandNum !== null) && (obj.txtlandNum !== undefined) ? obj.txtlandNum : null,
                 strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
                 strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
@@ -152,15 +152,18 @@
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 console.log(res);
                 model.genderID = 0;
-                authSvc.login(model.reg.txtEmail, "Admin@123").then(function(response) {
-                    console.log(response);
-                    model.genderID = response.response[0].GenderID;
-                    $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
-                    return false;
-                });
+                //  console.log(obj.txtEmail);
+                //    obj.txtEmail = (obj.txtEmail !== undefined && obj.txtEmail !== null && obj.txtEmail !== "") ? obj.txtEmail : "kmpl@gmail.com";
+                if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
+                    authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
+                        console.log(response);
+                        model.genderID = response.response[0].GenderID;
+                        $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
+                        return false;
+                    });
+                }
             });
         };
-
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {

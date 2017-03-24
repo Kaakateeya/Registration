@@ -116,7 +116,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <label>Posted by</label>\r" +
+    "                                    <label class=\"droplabel\">Posted by</label>\r" +
     "\n" +
     "                                    <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
     "\n" +
@@ -666,6 +666,58 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select-menu.md-default-theme md-content md-option,\r" +
+    "\n" +
+    "    md-select-menu md-content md-option {\r" +
+    "\n" +
+    "        color: rgba(33, 33, 33, 0.87);\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "</style>\r" +
     "\n" +
     "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
@@ -673,6 +725,18 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
 
 
   $templateCache.put('app/regManagePhoto/index.html',
+    "<!--md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }-->\r" +
+    "\n" +
     "<div class=\"right_col\" role=\"main\">\r" +
     "\n" +
     "    <div>\r" +
@@ -1128,6 +1192,34 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        border-radius: 5px;\r" +
     "\n" +
     "        padding: 7px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2135,6 +2227,58 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        color: #b10c0c;\r" +
     "\n" +
     "        font-size: 21px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-input-focused>md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    /*md-select.md-default-theme.ng-invalid.ng-touched .md-select-value,\r" +
+    "\n" +
+    "    md-select.ng-invalid.ng-touched .md-select-value {\r" +
+    "\n" +
+    "        color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        border-bottom-color: rgb(221, 44, 0)!important;\r" +
+    "\n" +
+    "        font-size: 16px;\r" +
+    "\n" +
+    "    }*/\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-default-theme .md-select-value.md-select-placeholder,\r" +
+    "\n" +
+    "    md-input-container.md-input-focused:not(.md-input-has-value) md-select .md-select-value.md-select-placeholder {\r" +
+    "\n" +
+    "        color: rgb(63, 81, 181);\r" +
+    "\n" +
+    "        font-size: 18px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-select-menu.md-default-theme md-content md-option,\r" +
+    "\n" +
+    "    md-select-menu md-content md-option {\r" +
+    "\n" +
+    "        color: rgba(33, 33, 33, 0.87);\r" +
+    "\n" +
+    "        font-size: 13px;\r" +
     "\n" +
     "    }\r" +
     "\n" +
