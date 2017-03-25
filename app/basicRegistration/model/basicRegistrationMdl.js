@@ -119,7 +119,13 @@
 
         };
 
-        model.regSubmit = function(obj) {
+        model.regSubmit = function(obj, regForm) {
+
+            // if (!regForm.$valid) {
+            //     debugger;
+            //     angular.element("[name='" + regForm.$name + "']").find('.ng-invalid-required:visible:first').focus();
+            //     return false;
+            // } else {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
 
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
@@ -163,6 +169,7 @@
                     });
                 }
             });
+            // }
         };
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {

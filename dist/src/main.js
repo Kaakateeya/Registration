@@ -54,20 +54,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView
-                // ,
-                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                //         // you can lazy load files for an existing module
-                //         if (regapp.env === 'dev') {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-                //                 'app/' + regitem + '/css/style.css'
-                //             ]);
-                //         } else {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-                //         }
-                //     }]
-                // }
+            views: innerView,
+            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            //         // you can lazy load files for an existing module
+            //         if (regapp.env === 'dev') {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+            //                 'app/' + regitem + '/css/style.css'
+            //             ]);
+            //         } else {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+            //         }
+            //     }]
+            // }
         });
         $locationProvider.html5Mode(true);
     });
@@ -228,7 +227,13 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         };
 
-        model.regSubmit = function(obj) {
+        model.regSubmit = function(obj, regForm) {
+
+            // if (!regForm.$valid) {
+            //     debugger;
+            //     angular.element("[name='" + regForm.$name + "']").find('.ng-invalid-required:visible:first').focus();
+            //     return false;
+            // } else {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
 
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
@@ -272,6 +277,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     });
                 }
             });
+            // }
         };
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {
@@ -687,7 +693,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.MaritalStatus = getArray.GArray('MaritalStatus');
         model.Complexion = getArray.GArray('Complexion');
         model.PhysicalStatus = getArray.GArray('PhysicalStatus');
-        model.height = getArray.GArray('height');
+        model.height = getArray.GArray('heightregistration');
         model.educationcategory = getArray.GArray('educationcategory');
         model.visastatus = getArray.GArray('visastatus');
         model.regsec = {};
@@ -855,7 +861,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
-    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
+    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg,regForm);\">\r" +
     "\n" +
     "                        <div class=\"reg_fields_entry clearfix\">\r" +
     "\n" +
@@ -957,7 +963,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label class=\"droplabel\">Posted by</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
+    "                                    <md-select name=\"ddlpostedby\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.postedby\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -983,7 +989,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Date</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlDD\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
+    "                                        <md-select name=\"ddlDD\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.dateArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1001,7 +1007,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Month</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlMM\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
+    "                                        <md-select name=\"ddlMM\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.monthArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1021,7 +1027,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Year</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
+    "                                        <md-select md-asterisk=\"\" name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.yearArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1043,7 +1049,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Religion</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.religion\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1061,7 +1067,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother Tongue</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Mothertongue\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1079,7 +1085,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1105,7 +1111,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Residing At</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1127,7 +1133,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Country code</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
+    "                                        <md-select md-asterisk=\"\" name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1147,7 +1153,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Mobile number</label>\r" +
     "\n" +
-    "                                        <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
+    "                                        <input md-asterisk=\"\" maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
     "\n" +
     "                                        <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
     "\n" +
@@ -2407,7 +2413,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtSalary.$error\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['pattern']\">\r" +
+    "                                        <div ng-if=\"secregForm.txtSalary.$invalid\" ng-message-exp=\"['pattern']\">\r" +
     "\n" +
     "                                            enter only numbers.\r" +
     "\n" +
@@ -2733,7 +2739,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container class=\"md-block\" style=\"margin: 28px 0px\">\r" +
+    "                                <md-input-container class=\"md-block\" style=\"margin: 28px 0px 1px 0px\">\r" +
     "\n" +
     "                                    <label>About yourself</label>\r" +
     "\n" +
@@ -2751,19 +2757,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    </div>\r" +
     "\n" +
+    "                                    <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>\r" +
+    "\n" +
     "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>\r" +
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "                            <div class=\"clear\"></div>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "                            <div class=\"pull-right\">\r" +
     "\n" +
@@ -3202,6 +3202,24 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
                 { "label": "4'3 in - 130 cms", "title": "4'3 in - 130 cms", "value": 4 }, { "label": "4'4 in - 132 cms", "title": "4'4 in - 132 cms", "value": 5 },
                 { "label": "4'5 in - 135 cms", "title": "4'5 in - 135 cms", "value": 6 }, { "label": "4'6 in - 137 cms", "title": "4'6 in - 137 cms", "value": 7 },
                 { "label": "4'7 in - 140 cms", "title": "4'7 in - 140 cms", "value": 8 },
+                { "label": "4'8 in - 142 cms", "title": "4'8 in - 142 cms", "value": 9 },
+                { "label": "4'9 in - 144 cms", "title": "4'9 in - 144 cms", "value": 10 }, { "label": "4'10 in - 147 cms", "title": "4'10 in - 147 cms", "value": 11 },
+                { "label": "4'11 in - 150 cms", "title": "4'11 in - 150 cms", "value": 12 }, { "label": "5'0 in - 152 cms", "title": "5'0 in - 152 cms", "value": 13 },
+                { "label": "5'1 in - 155 cms", "title": "5'1 in - 155 cms", "value": 14 }, { "label": "5'2 in - 157 cms", "title": "5'2 in - 157 cms", "value": 15 },
+                { "label": "5'3 in - 160 cms", "title": "5'3 in - 160 cms", "value": 16 }, { "label": "5'4 in - 162 cms", "title": "5'4 in - 162 cms", "value": 17 },
+                { "label": "5'5 in - 165 cms", "title": "5'5 in - 165 cms", "value": 18 }, { "label": "5'6 in - 167 cms", "title": "5'6 in - 167 cms", "value": 19 },
+                { "label": "5'7 in - 170 cms", "title": "5'7 in - 170 cms", "value": 20 }, { "label": "5'8 in - 172 cms", "title": "5'8 in - 172 cms", "value": 21 },
+                { "label": "5'9 in - 175 cms", "title": "5'9 in - 175 cms", "value": 22 }, { "label": "5'10 in - 177 cms", "title": "5'10 in - 177 cms", "value": 23 },
+                { "label": "5'11 in - 180 cms", "title": "5'11 in - 180 cms", "value": 24 }, { "label": "6'0 in - 183 cms", "title": "6'0 in - 183 cms", "value": 25 },
+                { "label": "6'1 in - 185 cms", "title": "6'1 in - 185 cms", "value": 26 }, { "label": "6'2 in - 188 cms", "title": "6'2 in - 188 cms", "value": 27 },
+                { "label": "6'3 in - 190 cms", "title": "6'3 in - 190 cms", "value": 28 }, { "label": "6'4 in - 193 cms", "title": "6'4 in - 193 cms", "value": 29 },
+                { "label": "6'5 in - 195 cms", "title": "6'5 in - 195 cms", "value": 30 }, { "label": "6'6 in - 198 cms", "title": "6'6 in - 198 cms", "value": 31 },
+                { "label": "6'7 in - 200 cms", "title": "6'7 in - 200 cms", "value": 32 }, { "label": "6'8 in - 203 cms", "title": "6'8 in - 203 cms", "value": 33 },
+                { "label": "6'9 in - 205 cms", "title": "6'9 in - 205 cms", "value": 34 }, { "label": "6'10 in - 208 cms", "title": "6'10 in - 208 cms", "value": 35 },
+                { "label": "6'11 in - 210 cms", "title": "6'11 in - 210 cms", "value": 36 }, { "label": "7'0 in - 213 cms\t", "title": "7'0 in - 213 cms\t", "value": 37 },
+                { "label": "7'1 in - 215 cms\t", "title": "7'1 in - 215 cms\t", "value": 38 }, { "label": "7'2 in - 218 cms\t", "title": "7'2 in - 218 cms\t", "value": 39 }
+            ],
+            "heightregistration": [
                 { "label": "4'8 in - 142 cms", "title": "4'8 in - 142 cms", "value": 9 },
                 { "label": "4'9 in - 144 cms", "title": "4'9 in - 144 cms", "value": 10 }, { "label": "4'10 in - 147 cms", "title": "4'10 in - 147 cms", "value": 11 },
                 { "label": "4'11 in - 150 cms", "title": "4'11 in - 150 cms", "value": 12 }, { "label": "5'0 in - 152 cms", "title": "5'0 in - 152 cms", "value": 13 },
@@ -4264,7 +4282,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
                     case 'height':
                         option = cons.height;
                         break;
-
+                    case 'heightregistration':
+                        option = cons.heightregistration;
+                        break;
                     case 'Religion':
                         option = cons.Religion;
                         break;

@@ -16,7 +16,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
-    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
+    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg,regForm);\">\r" +
     "\n" +
     "                        <div class=\"reg_fields_entry clearfix\">\r" +
     "\n" +
@@ -118,7 +118,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label class=\"droplabel\">Posted by</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlpostedby\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
+    "                                    <md-select name=\"ddlpostedby\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlpostedby\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.postedby\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -144,7 +144,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Date</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlDD\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
+    "                                        <md-select name=\"ddlDD\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlDD\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'day');\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.dateArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -162,7 +162,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Month</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlMM\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
+    "                                        <md-select name=\"ddlMM\" md-asterisk=\"\" ng-model=\"page.model.reg.ddlMM\" required=\"\" ng-change=\"page.model.dayChange(page.model.reg,'month');\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.monthArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -182,7 +182,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Year</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
+    "                                        <md-select md-asterisk=\"\" name=\"ddlYear\" ng-model=\"page.model.reg.ddlYear\" required=\"\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.yearArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -204,7 +204,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Religion</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlreligion\" ng-model=\"page.model.reg.ddlreligion\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.religion\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -222,7 +222,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother Tongue</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlmothertongue\" ng-model=\"page.model.reg.ddlmothertongue\" required=\"\" ng-change=\"page.model.changeBind(page.model.reg.ddlreligion,page.model.reg.ddlmothertongue);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Mothertongue\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -240,7 +240,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -266,7 +266,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Residing At</label>\r" +
     "\n" +
-    "                                    <md-select name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -288,7 +288,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Country code</label>\r" +
     "\n" +
-    "                                        <md-select name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
+    "                                        <md-select md-asterisk=\"\" name=\"ddlmobilecountry\" ng-model=\"page.model.reg.ddlmobilecountry\" ng-required=\"mobilecountrycoderequired\">\r" +
     "\n" +
     "                                            <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -308,7 +308,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Mobile number</label>\r" +
     "\n" +
-    "                                        <input maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
+    "                                        <input md-asterisk=\"\" maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
     "\n" +
     "                                        <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
     "\n" +
@@ -1568,7 +1568,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtSalary.$error\">\r" +
     "\n" +
-    "                                        <div ng-message-exp=\"['pattern']\">\r" +
+    "                                        <div ng-if=\"secregForm.txtSalary.$invalid\" ng-message-exp=\"['pattern']\">\r" +
     "\n" +
     "                                            enter only numbers.\r" +
     "\n" +
@@ -1894,7 +1894,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <md-input-container class=\"md-block\" style=\"margin: 28px 0px\">\r" +
+    "                                <md-input-container class=\"md-block\" style=\"margin: 28px 0px 1px 0px\">\r" +
     "\n" +
     "                                    <label>About yourself</label>\r" +
     "\n" +
@@ -1912,19 +1912,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    </div>\r" +
     "\n" +
+    "                                    <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>\r" +
+    "\n" +
     "                                </md-input-container>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>\r" +
     "\n" +
     "                            </div>\r" +
     "\n" +
-    "\r" +
-    "\n" +
     "                            <div class=\"clear\"></div>\r" +
-    "\n" +
-    "\r" +
     "\n" +
     "                            <div class=\"pull-right\">\r" +
     "\n" +

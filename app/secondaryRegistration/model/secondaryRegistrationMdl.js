@@ -11,7 +11,7 @@
         model.MaritalStatus = getArray.GArray('MaritalStatus');
         model.Complexion = getArray.GArray('Complexion');
         model.PhysicalStatus = getArray.GArray('PhysicalStatus');
-        model.height = getArray.GArray('height');
+        model.height = getArray.GArray('heightregistration');
         model.educationcategory = getArray.GArray('educationcategory');
         model.visastatus = getArray.GArray('visastatus');
         model.regsec = {};

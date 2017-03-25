@@ -168,7 +168,7 @@
                                     <label>Monthly Salary</label>
                                     <input maxlength="7" md-no-asterisk="" onkeyup="this.value=this.value.replace(/[^\d\.\-]/g,'');" name="txtSalary" ng-model="page.model.regsec.txtSalary" ng-pattern="/^[0-9]+$/">
                                     <div ng-messages="secregForm.txtSalary.$error">
-                                        <div ng-message-exp="['pattern']">
+                                        <div ng-if="secregForm.txtSalary.$invalid" ng-message-exp="['pattern']">
                                             enter only numbers.
                                         </div>
                                     </div>
@@ -331,7 +331,7 @@
                                     <p>(Minimum 50 characters and maximum 1000 characters).</p>
                                 </div>
 
-                                <md-input-container class="md-block" style="margin: 28px 0px">
+                                <md-input-container class="md-block" style="margin: 28px 0px 1px 0px">
                                     <label>About yourself</label>
                                     <textarea style="height: 87px;
                                   border: 0.5px solid rgba(31, 25, 25, 0.38);" maxlength="1000" rows="3" ng-minlength="50" required="" md-asterisk="" name="txtabouturself" ng-model="page.model.regsec.txtabouturself"></textarea>
@@ -340,13 +340,10 @@
                                             This is required and enter Minimum 50 characters
                                         </div>
                                     </div>
+                                    <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>
                                 </md-input-container>
-
-                                <p><span>Note: </span>Do not mention any contact information <b>phone numbers, email id’s</b> or your profile may be rejected.</p>
                             </div>
-
                             <div class="clear"></div>
-
                             <div class="pull-right">
                                 <md-button type="submit" class="md-raised md-warn md-hue-2" class="button_custom" tabindex="37">SUBMIT</md-button>
                             </div>
