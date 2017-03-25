@@ -55,18 +55,18 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    if (regapp.env === 'dev') {
+                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                            'app/' + regitem + '/css/style.css'
+                        ]);
+                    } else {
+                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                    }
+                }]
+            }
         });
         $locationProvider.html5Mode(true);
     });
@@ -227,15 +227,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         };
 
-        model.regSubmit = function(obj, regForm) {
-
-            // if (!regForm.$valid) {
-            //     debugger;
-            //     angular.element("[name='" + regForm.$name + "']").find('.ng-invalid-required:visible:first').focus();
-            //     return false;
-            // } else {
+        model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
-
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
             valmm = valmm >= 10 ? valmm : '0' + valmm;
             var date = obj.ddlDD + '-' + valmm + '-' + obj.ddlYear;
@@ -277,7 +270,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     });
                 }
             });
-            // }
         };
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {
@@ -806,11 +798,12 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 }
             };
             console.log(model.secondRegSubmit);
+
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
                 console.log(res);
-                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-
+                //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
             });
+            $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
 
         };
 
@@ -861,7 +854,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
-    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg,regForm);\">\r" +
+    "                    <form accessible-form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
     "\n" +
     "                        <div class=\"reg_fields_entry clearfix\">\r" +
     "\n" +
@@ -4242,12 +4235,6 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
 (function() {
     'use strict';
 
-    angular
-        .module('KaakateeyaEmpReg')
-        .service('fileUpload', service)
-
-    service.$inject = ['$http'];
-
     function service($http) {
         this.uploadFileToUrl = function(file, uploadUrl, keyname) {
             var fd = new FormData();
@@ -4259,6 +4246,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
             });
         };
     }
+    angular
+        .module('KaakateeyaEmpReg')
+        .service('fileUpload', service);
+
+    service.$inject = ['$http'];
 })();
 (function() {
     'use strict';

@@ -119,15 +119,8 @@
 
         };
 
-        model.regSubmit = function(obj, regForm) {
-
-            // if (!regForm.$valid) {
-            //     debugger;
-            //     angular.element("[name='" + regForm.$name + "']").find('.ng-invalid-required:visible:first').focus();
-            //     return false;
-            // } else {
+        model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
-
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
             valmm = valmm >= 10 ? valmm : '0' + valmm;
             var date = obj.ddlDD + '-' + valmm + '-' + obj.ddlYear;
@@ -169,7 +162,6 @@
                     });
                 }
             });
-            // }
         };
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {

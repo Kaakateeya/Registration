@@ -116,7 +116,8 @@ module.exports = function(grunt) {
                 src: ['index.js', 'app/**/**/*.js', 'dist/html/templates.js',
                     '!common/services/authSvc.js', '!common/directives/datePickerDirective.js',
                     '!common/directives/dynamicAlets.js', '!common/directives/editFooter.js',
-                    '!common/model/*.js', '!common/services/fileUploadSevice.js', 'common/**/*.js'
+                    '!common/model/*.js', '!common/services/fileUploadSevice.js', 'common/**/*.js',
+                    '!common/directives/accessForm.js'
                 ],
                 dest: 'dist/src/main.js'
             },

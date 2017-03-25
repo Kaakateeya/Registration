@@ -16,7 +16,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
-    "                    <form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg,regForm);\">\r" +
+    "                    <form accessible-form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
     "\n" +
     "                        <div class=\"reg_fields_entry clearfix\">\r" +
     "\n" +

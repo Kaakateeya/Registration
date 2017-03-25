@@ -1,12 +1,6 @@
 (function() {
     'use strict';
 
-    angular
-        .module('KaakateeyaEmpReg')
-        .service('fileUpload', service)
-
-    service.$inject = ['$http'];
-
     function service($http) {
         this.uploadFileToUrl = function(file, uploadUrl, keyname) {
             var fd = new FormData();
@@ -18,4 +12,9 @@
             });
         };
     }
+    angular
+        .module('KaakateeyaEmpReg')
+        .service('fileUpload', service);
+
+    service.$inject = ['$http'];
 })();

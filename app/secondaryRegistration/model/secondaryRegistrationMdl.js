@@ -124,11 +124,12 @@
                 }
             };
             console.log(model.secondRegSubmit);
+
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
                 console.log(res);
-                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-
+                //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
             });
+            $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
 
         };
 
