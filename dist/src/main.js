@@ -54,19 +54,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView,
-            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                    // you can lazy load files for an existing module
-                    if (regapp.env === 'dev') {
-                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-                            'app/' + regitem + '/css/style.css'
-                        ]);
-                    } else {
-                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-                    }
-                }]
-            }
+            views: innerView
+                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         // you can lazy load files for an existing module
+                //         if (regapp.env === 'dev') {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                //                 'app/' + regitem + '/css/style.css'
+                //             ]);
+                //         } else {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                //         }
+                //     }]
+                // }
         });
         $locationProvider.html5Mode(true);
     });
@@ -80,8 +80,10 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          var vm = this,
              model;
          vm.init = function() {
+             model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
+             model.reg.Chkfree_reg = false;
              $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
                  event.preventDefault();
                  event.stopPropagation();
@@ -654,6 +656,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          /* jshint validthis:true */
          var vm = this;
          vm.init = function() {
+             model = {};
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
              $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {

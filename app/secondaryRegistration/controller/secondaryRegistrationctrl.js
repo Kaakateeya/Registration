@@ -5,6 +5,7 @@
          /* jshint validthis:true */
          var vm = this;
          vm.init = function() {
+             model = {};
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
              $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {

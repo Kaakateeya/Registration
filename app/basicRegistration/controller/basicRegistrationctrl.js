@@ -6,8 +6,10 @@
          var vm = this,
              model;
          vm.init = function() {
+             model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
+             model.reg.Chkfree_reg = false;
              $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
                  event.preventDefault();
                  event.stopPropagation();
