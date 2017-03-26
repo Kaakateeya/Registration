@@ -19,7 +19,7 @@
 
                                 <md-input-container flex="50" class="col-lg-4">
                                     <label>Marital Status</label>
-                                    <md-select name="rbtnmarital" ng-model="page.model.regsec.rbtnmarital" required="">
+                                    <md-select ng-focus="true" autofocus name="rbtnmarital" ng-model="page.model.regsec.rbtnmarital" required="">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.MaritalStatus">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="secregForm.rbtnmarital.$error">

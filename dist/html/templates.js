@@ -72,7 +72,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label> First Name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
+    "                                    <input ng-focus=\"true\" autofocus maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtfirstname.$error\">\r" +
     "\n" +
@@ -1270,7 +1270,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Marital Status</label>\r" +
     "\n" +
-    "                                    <md-select name=\"rbtnmarital\" ng-model=\"page.model.regsec.rbtnmarital\" required=\"\">\r" +
+    "                                    <md-select ng-focus=\"true\" autofocus name=\"rbtnmarital\" ng-model=\"page.model.regsec.rbtnmarital\" required=\"\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.MaritalStatus\">{{h.label}} </md-option>\r" +
     "\n" +
