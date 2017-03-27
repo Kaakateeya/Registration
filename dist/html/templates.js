@@ -749,79 +749,71 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "        <div class=\"regmain\">\r" +
     "\n" +
-    "            <div>\r" +
+    "\r" +
     "\n" +
-    "                <div class=\"row\">\r" +
+    "            <div class=\"row\">\r" +
     "\n" +
-    "                    <div class=\"col-lg-10\">\r" +
+    "                <div class=\"col-lg-10\">\r" +
     "\n" +
-    "                        <h6 style=\"font-size: 21px;\">Upload your recent Photos for better response</h6>\r" +
-    "\n" +
-    "                    </div>\r" +
-    "\n" +
-    "                    <div class=\"col-lg-2\">\r" +
-    "\n" +
-    "                        <md-button class=\"md-raised md-warn md-hue-2\" href=\"dashboardpage\">skip this page</md-button>\r" +
-    "\n" +
-    "                    </div>\r" +
+    "                    <h6 style=\"font-size: 21px;\">Upload Your Recent Photos For Better Response</h6>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
-    "                <div class=\"clear\">&nbsp;</div>\r" +
+    "                <div class=\"col-lg-2\">\r" +
+    "\n" +
+    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"dashboardpage\">skip this page</md-button>\r" +
+    "\n" +
+    "                </div>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "            <div class=\"dragzone\">\r" +
+    "\n" +
+    "                <div class=\"pics_selected_list_main clearfix\">\r" +
+    "\n" +
+    "                    <div class=\"pics_selected_list_main_lt clearfix\">\r" +
+    "\n" +
+    "                        <p class=\"clearfix\"><span>Upload Your Three Different Photos</span></p>\r" +
+    "\n" +
+    "                        <div id=\"dtimagephoto\" class=\"clearfix\" ng-repeat=\"item in page.model.manageArr\" style=\"width:33%;float:left;\">\r" +
+    "\n" +
+    "                            <div class=\"photos\">\r" +
+    "\n" +
+    "                                <div class=\"pics_selected_list_item\">\r" +
+    "\n" +
+    "                                    <div ng-class=\"item.IsActive == 0 && item.PhotoName !== null?'cssMaskdiv clearfix':''\">\r" +
+    "\n" +
+    "                                        <img ng-model=\"page.model.imgPhotoName\" ng-src=\"{{item.ImageUrl}}\" />\r" +
+    "\n" +
+    "                                    </div>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                <br />\r" +
+    "                                    <div class=\"pics_selected_list_item_ui clearfix\">\r" +
     "\n" +
-    "                <div class=\"dragzone\">\r" +
+    "                                        <div class=\"photos_icon\">\r" +
     "\n" +
-    "                    <div class=\"pics_selected_list_main clearfix\">\r" +
+    "                                            <!--<input type=\"image\" id=\"imgAdd\" alt=\"add\" ng-click=\"page.model.AddImage($index+1,item.Cust_Photos_ID,item.DisplayOrder,item.IsActive);\" ng-show=\"{{item.addButtonvisible}}\" />-->\r" +
     "\n" +
-    "                        <div class=\"pics_selected_list_main_lt clearfix\">\r" +
+    "                                            <a href=\"javascript:void(0);\" ng-click=\"page.model.AddImage($index+1,item.Cust_Photos_ID,item.DisplayOrder,item.IsActive);\" ng-show=\"{{item.addButtonvisible}}\">\r" +
     "\n" +
-    "                            <p class=\"clearfix\"><span>Upload your three different photos</span></p>\r" +
+    "                                                <ng-md-icon icon=\"add_a_photo\" style=\"fill:#665454\" size=\"25\">Add</ng-md-icon>\r" +
     "\n" +
-    "                            <div id=\"dtimagephoto\" class=\"clearfix\" ng-repeat=\"item in page.model.manageArr\" style=\"width:33%;float:left;\">\r" +
-    "\n" +
-    "                                <div class=\"photos\">\r" +
-    "\n" +
-    "                                    <div class=\"pics_selected_list_item\">\r" +
-    "\n" +
-    "                                        <div ng-class=\"item.IsActive == 0 && item.PhotoName !== null?'cssMaskdiv clearfix':''\">\r" +
-    "\n" +
-    "                                            <img ng-model=\"page.model.imgPhotoName\" ng-src=\"{{item.ImageUrl}}\" />\r" +
-    "\n" +
-    "                                        </div>\r" +
+    "                                            </a>\r" +
     "\n" +
     "\r" +
     "\n" +
-    "                                        <div class=\"pics_selected_list_item_ui clearfix\">\r" +
+    "                                            <a href=\"javascript:void(0);\" ng-show=\"{{item.IsMain==1?false:(item.PhotoName!=null?true:false)}}\" ng-click=\"page.model.DeleteImage(item.keyname,item.Cust_Photos_ID);\">\r" +
     "\n" +
-    "                                            <div class=\"photos_icon\">\r" +
+    "                                                <ng-md-icon icon=\"delete\" style=\"fill:#665454\" size=\"25\">Delete</ng-md-icon>\r" +
     "\n" +
-    "                                                <!--<input type=\"image\" id=\"imgAdd\" alt=\"add\" ng-click=\"page.model.AddImage($index+1,item.Cust_Photos_ID,item.DisplayOrder,item.IsActive);\" ng-show=\"{{item.addButtonvisible}}\" />-->\r" +
+    "                                            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r" +
     "\n" +
-    "                                                <a href=\"javascript:void(0);\" ng-click=\"page.model.AddImage($index+1,item.Cust_Photos_ID,item.DisplayOrder,item.IsActive);\" ng-show=\"{{item.addButtonvisible}}\">\r" +
-    "\n" +
-    "                                                    <ng-md-icon icon=\"add_a_photo\" style=\"fill:#665454\" size=\"25\">Add</ng-md-icon>\r" +
-    "\n" +
-    "                                                </a>\r" +
-    "\n" +
-    "\r" +
-    "\n" +
-    "                                                <a href=\"javascript:void(0);\" ng-show=\"{{item.IsMain==1?false:(item.PhotoName!=null?true:false)}}\" ng-click=\"page.model.DeleteImage(item.keyname,item.Cust_Photos_ID);\">\r" +
-    "\n" +
-    "                                                    <ng-md-icon icon=\"delete\" style=\"fill:#665454\" size=\"25\">Delete</ng-md-icon>\r" +
-    "\n" +
-    "                                                </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\r" +
-    "\n" +
-    "                                                <a href=\"javascript:void(0);\" class=\"set_pic\" ng-click=\"page.model.setAsProfilePic(item.Cust_Photos_ID);\" style=\"color:#665454;font-weight:bold;\" ng-show='{{item.IsMain==\"1\"?false:(item.PhotoName!=null?true:false) }}'>\r" +
+    "                                            <a href=\"javascript:void(0);\" class=\"set_pic\" ng-click=\"page.model.setAsProfilePic(item.Cust_Photos_ID);\" style=\"color:#665454;font-weight:bold;\" ng-show='{{item.IsMain==\"1\"?false:(item.PhotoName!=null?true:false) }}'>\r" +
     "\n" +
     "                                            Set as Profilepic\r" +
     "\n" +
     "                                            </a>\r" +
-    "\n" +
-    "                                            </div>\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -831,57 +823,55 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
+    "                        </div>\r" +
+    "\n" +
     "\r" +
     "\n" +
-    "                            <div class=\"clear\"></div>\r" +
+    "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                            <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
+    "                        <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
     "\n" +
-    "                                <div class=\"edit_page_photo_manage_protect pull-left clearfix\" id=\"divPassword\">\r" +
+    "                            <div class=\"edit_page_photo_manage_protect pull-left clearfix\" id=\"divPassword\">\r" +
     "\n" +
-    "                                    <label class=\"\">\r" +
+    "                                <label class=\"\">\r" +
     "\n" +
     "                                <div class=\"radio_my2 clearfix\">\r" +
     "\n" +
     "                                <label style=\"font-size: 14px !important; font-weight: 400;\"> Protect with Password :</label> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;\r" +
     "\n" +
-    "                                    <md-radio-group layout=\"row\" ng-model=\"page.model.rbtProtectPassword\" class=\"md-block\" flex-gt-sm ng-disabled=\"manageakerts\" ng-change=\"setPhotoPassword(rbtProtectPassword);\">\r" +
+    "                                <md-radio-group layout=\"row\" ng-model=\"page.model.rbtProtectPassword\" class=\"md-block\" flex-gt-sm ng-disabled=\"manageakerts\" ng-change=\"setPhotoPassword(rbtProtectPassword);\">\r" +
     "\n" +
-    "                                        <md-radio-button value=\"1\" class=\"md-primary\">Yes</md-radio-button>\r" +
+    "                                    <md-radio-button value=\"1\" class=\"md-primary\">Yes</md-radio-button>\r" +
     "\n" +
-    "                                        <md-radio-button value=\"0\"> No </md-radio-button>\r" +
+    "                                    <md-radio-button value=\"0\"> No </md-radio-button>\r" +
     "\n" +
-    "                                    </md-radio-group>\r" +
-    "\n" +
-    "                                </div>\r" +
-    "\n" +
-    "                                </label>\r" +
+    "                                </md-radio-group>\r" +
     "\n" +
     "                            </div>\r" +
+    "\n" +
+    "                            </label>\r" +
     "\n" +
     "                        </div>\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
-    "                    <div class=\"photo_upload_instrctns_list clearfix\">\r" +
-    "\n" +
-    "                        <a ID=\"phtoguide\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('PhotoGuideLines');\">Photo guidelines\r" +
-    "\n" +
-    "                        </a>\r" +
-    "\n" +
-    "                        <a ID=\"photofaq\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('Faqs');\">Photo faq’s\r" +
-    "\n" +
-    "                        </a>\r" +
-    "\n" +
-    "                        <a ID=\"photoupload\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('uploadTips');\">Photo upload tips\r" +
-    "\n" +
-    "                        </a>\r" +
-    "\n" +
-    "                    </div>\r" +
-    "\n" +
     "                </div>\r" +
     "\n" +
-    "\r" +
+    "                <div class=\"photo_upload_instrctns_list clearfix\">\r" +
+    "\n" +
+    "                    <a ID=\"phtoguide\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('PhotoGuideLines');\">Photo guidelines\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                    <a ID=\"photofaq\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('Faqs');\">Photo faq’s\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                    <a ID=\"photoupload\" href=\"javascript:void(0);\" ng-click=\"page.model.redirectPage('uploadTips');\">Photo upload tips\r" +
+    "\n" +
+    "                        </a>\r" +
+    "\n" +
+    "                </div>\r" +
     "\n" +
     "            </div>\r" +
     "\n" +

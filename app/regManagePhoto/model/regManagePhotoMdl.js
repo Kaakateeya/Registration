@@ -100,12 +100,11 @@
             var gifFormat = "gif, jpeg, png,jpg";
 
             if (typeof(obj.myFile.name) != "undefined") {
-
                 var size = parseFloat(obj.myFile.size / 1024).toFixed(2);
                 if (extension !== null && gifFormat.indexOf(angular.lowercase(extension)) === -1) {
                     alert('Your uploaded image contains an unapproved file formats.');
                 } else if (size > 4 * 1024) {
-                    alert('Sorry,Upload Photo Size Must Be Less than 1 mb');
+                    alert('Sorry,Upload Photo Size Must Be Less than 4 mb');
                 } else {
                     console.log(obj.myFile);
                     // var extension = ((obj.myFile.name).split('.'))[1];
