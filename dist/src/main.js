@@ -1619,7 +1619,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            <div class=\"photos\">\r" +
     "\n" +
-    "                                <div class=\"pics_selected_list_item\">\r" +
+    "                                <div class=\"pics_selected_list_itemreg\">\r" +
     "\n" +
     "                                    <div ng-class=\"item.IsActive == 0 && item.PhotoName !== null?'cssMaskdiv clearfix':''\">\r" +
     "\n" +

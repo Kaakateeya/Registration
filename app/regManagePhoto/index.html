@@ -25,7 +25,7 @@
                         <p class="clearfix"><span>Upload Your Three Different Photos</span></p>
                         <div id="dtimagephoto" class="clearfix" ng-repeat="item in page.model.manageArr" style="width:33%;float:left;">
                             <div class="photos">
-                                <div class="pics_selected_list_item">
+                                <div class="pics_selected_list_itemreg">
                                     <div ng-class="item.IsActive == 0 && item.PhotoName !== null?'cssMaskdiv clearfix':''">
                                         <img ng-model="page.model.imgPhotoName" ng-src="{{item.ImageUrl}}" />
                                     </div>
