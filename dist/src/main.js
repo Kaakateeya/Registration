@@ -1593,7 +1593,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "            <div class=\"row\">\r" +
     "\n" +
-    "                <div class=\"col-lg-10\">\r" +
+    "                <div class=\"col-lg-6\">\r" +
     "\n" +
     "                    <h6 style=\"font-size: 21px;\">Upload Your Recent Photos For Better Response</h6>\r" +
     "\n" +
