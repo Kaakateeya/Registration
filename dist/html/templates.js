@@ -16,7 +16,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\" md-dynamic-height>\r" +
     "\n" +
-    "                    <form accessible-form name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
+    "                    <form accessible-formreg name=\"regForm\" novalidate role=\"form\" ng-submit=\"regForm.$valid && page.model.regSubmit(page.model.reg);\">\r" +
     "\n" +
     "                        <div class=\"reg_fields_entry clearfix\">\r" +
     "\n" +
@@ -1236,7 +1236,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <md-content layout-padding=\"\">\r" +
     "\n" +
-    "                    <form name=\"secregForm\" accessible-form novalidate role=\"form\" ng-submit=\"secregForm.$valid && page.model.secondRegSubmit(page.model.regsec);\">\r" +
+    "                    <form name=\"secregForm\" accessible-formreg novalidate role=\"form\" ng-submit=\"secregForm.$valid && page.model.secondRegSubmit(page.model.regsec);\">\r" +
     "\n" +
     "\r" +
     "\n" +
