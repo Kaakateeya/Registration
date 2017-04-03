@@ -11,7 +11,8 @@ regapp.apipath = 'http://183.82.0.58:8025/Api/';
 regapp.env = 'dev';
 
 regapp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
-regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
+//regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
+regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
 
 regapp.prefixPath = 'Images/ProfilePics/';
 regapp.S3PhotoPath = '';
