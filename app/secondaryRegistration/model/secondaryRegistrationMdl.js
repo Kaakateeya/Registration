@@ -130,7 +130,9 @@
                 //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
             });
             $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-
+            model.regsec = {};
+            model.scope.secregForm.$setPristine();
+            model.scope.secregForm.$setUntouched();
         };
 
         return model.init();

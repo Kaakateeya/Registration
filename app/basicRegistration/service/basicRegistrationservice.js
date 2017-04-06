@@ -5,7 +5,6 @@
         return {
             submitBasicRegistration: function(obj) {
                 console.log(obj);
-                // return http.post(regapp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
                 return http.post(regapp.apipath + 'Registration/EmployeeRegisterCustomerHomepages', JSON.stringify(obj));
             },
             emailExists: function(obj) {

@@ -112,9 +112,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 (function(angular) {
     'use strict';
 
-
     function factory(basicRegistrationService, getArray, commondependency, filter, authSvc, timeout, $state, SelectBindServicereg) {
-
         var model = {};
         model.scope = {};
         model.init = function() {
@@ -122,7 +120,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             return model;
         };
         // start declaretion
-
         model.reg = {};
         model.monthArr = [];
         model.reg.Chkprivacy = true;
@@ -130,9 +127,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.mobilenumberrequired = true;
         model.mobilecountrycoderequired = true;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
         //end declaration
-
         model.monthBind = function() {
             var option = [];
             _.each(monthArr, function(item) {
@@ -142,7 +137,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
         model.date = function(str, from, to) {
             var Arr = [];
-
             for (var i = from; i <= to; i++) {
                 var strValue = null;
                 if (i <= 9) {
@@ -168,33 +162,23 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             model.monthArr = model.monthBind();
             model.dateArr = model.date('', 1, 31);
             model.yearArr = model.year('', 1936, 1998);
-
             timeout(function() {
                 model.postedby = getArray.GArray('childStayingWith');
-
-                console.log('arrayyyyy');
-                console.log(model.postedby);
-
                 model.religion = getArray.GArray('Religion');
                 model.Mothertongue = getArray.GArray('Mothertongue');
                 model.Caste = getArray.GArray('Caste');
-                // model.countryCode = getArray.GArray('countryCode');
             }, 1000);
             timeout(function() {
-
                 // model.Country = getArray.GArray('Country');
                 var Country = [],
                     CountryCode = [];
                 SelectBindServicereg.CountryWithCode().then(function(response) {
-
                     _.each(response.data, function(item) {
                         Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
                     });
-
                     console.log('test..');
                     console.log(Country);
-
                     model.Country = Country;
                     model.countryCode = CountryCode;
                 });
@@ -203,17 +187,12 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         };
 
-
         model.statuses = ['Planned', 'Confirmed', 'Cancelled'];
-
         model.dayChange = function(obj, type) {
-
             var months31 = 'Jan,Mar,May,Jul,Aug,Oct,Dec';
             var minth30 = 'Apr,Jun,Sep,Nov';
             var month28 = 'Feb';
-            if ((obj.ddlDD <= 30 && minth30.indexOf(obj.ddlMM) !== -1) || (obj.ddlDD <= 31 && months31.indexOf(obj.ddlMM) !== -1) || ((obj.ddlDD <= 28 && month28.indexOf(obj.ddlMM) !== -1))) {
-
-            } else {
+            if ((obj.ddlDD <= 30 && minth30.indexOf(obj.ddlMM) !== -1) || (obj.ddlDD <= 31 && months31.indexOf(obj.ddlMM) !== -1) || ((obj.ddlDD <= 28 && month28.indexOf(obj.ddlMM) !== -1))) {} else {
                 if (type === 'day') {
                     obj.ddlMM = '';
                 } else {
@@ -227,9 +206,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.changeBind = function(parentval, parentval2) {
             if (parentval !== undefined && parentval !== null && parentval !== '' && parentval2 !== undefined && parentval2 !== null && parentval2 !== '')
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
-
         };
-
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
@@ -262,13 +239,15 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 console.log(res);
                 model.genderID = 0;
-                //  console.log(obj.txtEmail);
-                //    obj.txtEmail = (obj.txtEmail !== undefined && obj.txtEmail !== null && obj.txtEmail !== "") ? obj.txtEmail : "kmpl@gmail.com";
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
                         console.log(response);
                         model.genderID = response.response[0].GenderID;
                         $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
+                        model.reg = {};
+                        model.reg.Chkprivacy = true;
+                        model.scope.regForm.$setPristine();
+                        model.scope.regForm.$setUntouched();
                         return false;
                     });
                 }
@@ -277,7 +256,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.valueExists = function(type, flag, val) {
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
-
                     console.log(response);
                     if (response.data === 1) {
                         if (type === 'email') {
@@ -335,9 +313,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     factory.$inject = ['basicRegistrationService', 'getArray', 'Commondependency',
         '$filter', 'authSvc', '$timeout', '$state', 'SelectBindServicereg'
     ];
-
-
-
     // factory.$inject = ['basicRegistrationService', '$scope', 'getArray', 'Commondependency',
     //     '$filter', 'authSvc', '$timeout', 'route', 'SelectBindServicereg',
     // ];
@@ -350,7 +325,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         return {
             submitBasicRegistration: function(obj) {
                 console.log(obj);
-                // return http.post(regapp.apipath + 'Registration/RegisterCustomerHomepages', JSON.stringify(obj));
                 return http.post(regapp.apipath + 'Registration/EmployeeRegisterCustomerHomepages', JSON.stringify(obj));
             },
             emailExists: function(obj) {
@@ -406,7 +380,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         model.photorowID = 0;
         model.imgArr = [];
-
+        var loginEmpid = authSvc.LoginEmpid();
+        var AdminID = authSvc.isAdmin();
         //end declaration
         model.init = function() {
             model.getData();
@@ -525,8 +500,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                                 },
                                 customerpersonaldetails: {
                                     intCusID: CustID,
-                                    EmpID: null,
-                                    Admin: null
+                                    EmpID: loginEmpid,
+                                    Admin: AdminID
                                 }
                             };
 
@@ -807,7 +782,9 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
             });
             $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-
+            model.regsec = {};
+            model.scope.secregForm.$setPristine();
+            model.scope.secregForm.$setUntouched();
         };
 
         return model.init();

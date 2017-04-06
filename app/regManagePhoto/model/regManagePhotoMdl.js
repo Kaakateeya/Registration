@@ -14,7 +14,8 @@
 
         model.photorowID = 0;
         model.imgArr = [];
-
+        var loginEmpid = authSvc.LoginEmpid();
+        var AdminID = authSvc.isAdmin();
         //end declaration
         model.init = function() {
             model.getData();
@@ -133,8 +134,8 @@
                                 },
                                 customerpersonaldetails: {
                                     intCusID: CustID,
-                                    EmpID: null,
-                                    Admin: null
+                                    EmpID: loginEmpid,
+                                    Admin: AdminID
                                 }
                             };
 
