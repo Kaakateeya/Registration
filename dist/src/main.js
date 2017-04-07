@@ -85,12 +85,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
-             $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-                 event.preventDefault();
-                 event.stopPropagation();
-                 $(this).parent().siblings().removeClass('open');
-                 $(this).parent().toggleClass('open');
-             });
          };
 
 
@@ -349,12 +343,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              window.scrollTo(0, 0);
              vm.model = regManagePhotoModel;
              vm.model.scope = scope;
-             $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-                 event.preventDefault();
-                 event.stopPropagation();
-                 $(this).parent().siblings().removeClass('open');
-                 $(this).parent().toggleClass('open');
-             });
          };
          vm.init();
      }
@@ -634,12 +622,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          vm.init = function() {
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
-             $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
-                 event.preventDefault();
-                 event.stopPropagation();
-                 $(this).parent().siblings().removeClass('open');
-                 $(this).parent().toggleClass('open');
-             });
          };
 
          vm.init();
@@ -1536,9 +1518,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
-    "</style>\r" +
-    "\n" +
-    "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
+    "</style>"
   );
 
 
@@ -3084,9 +3064,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
-    "</style>\r" +
-    "\n" +
-    "<!--<script src=\"build/js/custom.js\" type=\"text/javascript\"></script>-->"
+    "</style>"
   );
 
 
