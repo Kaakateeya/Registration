@@ -451,7 +451,7 @@ table.tile_info td p {
 }
 
 body .container.body .right_col {
-    /*background: #F7F7F7*/
+    background: #F7F7F7
 }
 
 .nav-md .container.body .right_col {
@@ -616,7 +616,7 @@ body .container.body .right_col {
 
 body {
     color: #73879C;
-    /*background: #fff;*/
+    background: #fff;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;

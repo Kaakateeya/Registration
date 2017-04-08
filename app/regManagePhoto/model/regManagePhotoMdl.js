@@ -2,7 +2,7 @@
     'use strict';
 
 
-    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams) {
+    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams, authSvc) {
         var model = {};
         model.scope = {};
         // start declaration
@@ -233,6 +233,6 @@
         .module('KaakateeyaEmpReg')
         .factory('regManagePhotoModel', factory);
 
-    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams'];
+    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams', 'authSvc'];
 
 })(angular);

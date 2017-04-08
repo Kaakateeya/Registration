@@ -356,7 +356,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     'use strict';
 
 
-    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams) {
+    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams, authSvc) {
         var model = {};
         model.scope = {};
         // start declaration
@@ -587,7 +587,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         .module('KaakateeyaEmpReg')
         .factory('regManagePhotoModel', factory);
 
-    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams'];
+    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams', 'authSvc'];
 
 })(angular);
 (function(angular) {
