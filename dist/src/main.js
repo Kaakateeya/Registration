@@ -1545,6 +1545,24 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    }\r" +
     "\n" +
+    "    \r" +
+    "\n" +
+    "    .md-select-value>span:not(.md-select-icon) {\r" +
+    "\n" +
+    "        max-width: 100%;\r" +
+    "\n" +
+    "        -webkit-box-flex: 1;\r" +
+    "\n" +
+    "        flex: 1 1 auto;\r" +
+    "\n" +
+    "        text-overflow: inherit;\r" +
+    "\n" +
+    "        white-space: nowrap;\r" +
+    "\n" +
+    "        overflow: hidden;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
     "</style>"
   );
 
