@@ -240,7 +240,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange('subcaste',page.model.reg.ddlcaste);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -261,6 +261,24 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
     "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
+    "\n" +
+    "                                    <label>SubCaste</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\" required=\"\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.subCastearr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlsubcaste.$error\">\r" +
+    "\n" +
+    "                                        <div ng-if=\"regForm.ddlsubcaste.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
     "\n" +
     "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
@@ -328,7 +346,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <div class=\"col-lg-4\">\r" +
+    "                                <div class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <md-input-container class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +

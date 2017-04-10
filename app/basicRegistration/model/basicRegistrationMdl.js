@@ -96,6 +96,14 @@
             if (parentval !== undefined && parentval !== null && parentval !== '' && parentval2 !== undefined && parentval2 !== null && parentval2 !== '')
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
         };
+        model.subcastechange = function(type, paerntval) {
+            switch (type) {
+                case 'subcaste':
+                    model.subCastearr = [];
+                    model.subCastearr = commondependency.subCaste(paerntval);
+                    break;
+            }
+        };
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
@@ -122,7 +130,8 @@
                 intProfileRegisteredBy: null,
                 intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
-                //strMobileVerificationCode: obj.
+                intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
+                    //strMobileVerificationCode: obj.
             };
             console.log(inputObj);
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {

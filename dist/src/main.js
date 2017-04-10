@@ -201,6 +201,14 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             if (parentval !== undefined && parentval !== null && parentval !== '' && parentval2 !== undefined && parentval2 !== null && parentval2 !== '')
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
         };
+        model.subcastechange = function(type, paerntval) {
+            switch (type) {
+                case 'subcaste':
+                    model.subCastearr = [];
+                    model.subCastearr = commondependency.subCaste(paerntval);
+                    break;
+            }
+        };
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
@@ -227,7 +235,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 intProfileRegisteredBy: null,
                 intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
-                //strMobileVerificationCode: obj.
+                intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
+                    //strMobileVerificationCode: obj.
             };
             console.log(inputObj);
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
@@ -1040,7 +1049,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange('subcaste',page.model.reg.ddlcaste);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1061,6 +1070,24 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
     "                            <div class=\"row\">\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-3\">\r" +
+    "\n" +
+    "                                    <label>SubCaste</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\" required=\"\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.subCastearr\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlsubcaste.$error\">\r" +
+    "\n" +
+    "                                        <div ng-if=\"regForm.ddlsubcaste.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
     "\n" +
     "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
@@ -1128,7 +1155,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "                                <div class=\"col-lg-4\">\r" +
+    "                                <div class=\"col-lg-3\">\r" +
     "\n" +
     "                                    <md-input-container class=\"col-lg-4\" style=\"width:33%;\">\r" +
     "\n" +
