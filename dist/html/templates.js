@@ -240,7 +240,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange('subcaste',page.model.reg.ddlcaste);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange(page.model.reg.ddlcaste);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -266,17 +266,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>SubCaste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\" required=\"\">\r" +
+    "                                    <md-select name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.subCastearr\">{{h.label}} </md-option>\r" +
     "\n" +
     "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlsubcaste.$error\">\r" +
-    "\n" +
-    "                                        <div ng-if=\"regForm.ddlsubcaste.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -284,7 +278,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Residing At</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\" ng-change=\"page.model.residingChange(page.model.reg.ddlcountry);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
     "\n" +

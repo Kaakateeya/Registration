@@ -55,19 +55,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            views: innerView
+                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         // you can lazy load files for an existing module
+                //         if (regapp.env === 'dev') {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                //                 'app/' + regitem + '/css/style.css'
+                //             ]);
+                //         } else {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                //         }
+                //     }]
+                // }
         });
         $locationProvider.html5Mode(true);
     });
@@ -77,7 +77,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
      'use strict';
 
      function controller(basicRegistrationModel, scope) {
-         /* jshint validthis:true */
+
          var vm = this,
              model;
          vm.init = function() {
@@ -85,16 +85,17 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
+
+             scope.$on("$destroy", scope.destroy);
+             // write destroy method 
+
          };
-
-
-         scope.$watch(function() {
-             return model.reg.ddlcountry;
-         }, function(current, original) {
-             model.reg.ddllandcountry = model.reg.ddlmobilecountry = current;
-         });
-
-
+         scope.destroy = function() {
+             model.reg = {};
+             model.reg.Chkprivacy = true;
+             scope.regForm.$setPristine();
+             scope.regForm.$setUntouched();
+         };
          vm.init();
      }
      angular
@@ -106,7 +107,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 (function(angular) {
     'use strict';
 
-    function factory(basicRegistrationService, getArray, commondependency, filter, authSvc, timeout, $state, SelectBindServicereg) {
+    function factory(basicRegistrationService, getArray, commondependency, filter, authSvc, timeout, $state, svcSelectBindServicereg, dynamicalert) {
         var model = {};
         model.scope = {};
         model.init = function() {
@@ -145,7 +146,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         model.year = function(str, from, to) {
             var Arr = [];
-            // Arr.push({ "label": str, "title": str, "value": '' });
             for (var i = to; i >= from; i--) {
                 Arr.push({ "label": i, "title": i, "value": i });
             }
@@ -163,17 +163,16 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 model.Caste = getArray.GArray('Caste');
             }, 1000);
             timeout(function() {
-                // model.Country = getArray.GArray('Country');
                 var Country = [],
                     CountryCode = [];
-                SelectBindServicereg.CountryWithCode().then(function(response) {
+
+                svcSelectBindServicereg.CountryWithCode().then(function(response) {
                     _.each(response.data, function(item) {
                         Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
                     });
-                    console.log('test..');
-                    console.log(Country);
                     model.Country = Country;
+                    model.Countrybind = Country;
                     model.countryCode = CountryCode;
                 });
 
@@ -181,7 +180,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         };
 
-        model.statuses = ['Planned', 'Confirmed', 'Cancelled'];
         model.dayChange = function(obj, type) {
             var months31 = 'Jan,Mar,May,Jul,Aug,Oct,Dec';
             var minth30 = 'Apr,Jun,Sep,Nov';
@@ -198,16 +196,12 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
 
         model.changeBind = function(parentval, parentval2) {
-            if (parentval !== undefined && parentval !== null && parentval !== '' && parentval2 !== undefined && parentval2 !== null && parentval2 !== '')
+            if (parentval !== undefined && parentval2 !== undefined)
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
         };
-        model.subcastechange = function(type, paerntval) {
-            switch (type) {
-                case 'subcaste':
-                    model.subCastearr = [];
-                    model.subCastearr = commondependency.subCaste(paerntval);
-                    break;
-            }
+        model.subcastechange = function(paerntval) {
+            model.subCastearr = [];
+            model.subCastearr = commondependency.subCaste(paerntval);
         };
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
@@ -217,6 +211,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             var inputObj = {
                 strFirstName: obj.txtfirstname,
                 strLastName: obj.txtlastname,
+                //use moment
                 dtDOB: date !== '' ? filter('date')(date, 'yyyy-MM-dd') : null,
                 intGenderID: obj.rbtngender,
                 intReligionID: obj.ddlreligion,
@@ -236,37 +231,33 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
                 intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
-                    //strMobileVerificationCode: obj.
+
             };
-            console.log(inputObj);
+
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
-                console.log(res);
+
                 model.genderID = 0;
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
-                        console.log(response);
                         model.genderID = response.response[0].GenderID;
+
                         $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
-                        model.reg = {};
-                        model.reg.Chkprivacy = true;
-                        model.scope.regForm.$setPristine();
-                        model.scope.regForm.$setUntouched();
                         return false;
                     });
                 }
             });
         };
         model.valueExists = function(type, flag, val) {
+
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
-                    console.log(response);
                     if (response.data === 1) {
                         if (type === 'email') {
                             model.reg.txtEmail = '';
-                            alert('Email Already Exists');
+                            dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Email Already Exists', 9500);
                         } else {
                             model.reg.txtMobileNo = '';
-                            alert('Mobile number Already Exists');
+                            dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Mobile number Already Exists', 9500);
                         }
                     } else {
                         if (model.reg.Chkfree_reg === true) {
@@ -286,12 +277,11 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
         model.mobilemailvalidation = function() {
             if (model.reg.Chkfree_reg === true) {
-                if ((model.reg.txtEmail === null || model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === null || model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
-                    model.emailrequired = false;
+                model.emailrequired = false;
+                if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
                     model.mobilenumberrequired = true;
                     model.mobilecountrycoderequired = true;
-                } else if ((model.reg.txtEmail !== null && model.reg.txtEmail !== "" && model.reg.txtEmail !== undefined) || (model.reg.txtMobileNo !== null && model.reg.txtMobileNo !== "" && model.reg.txtMobileNo !== undefined)) {
-                    model.emailrequired = false;
+                } else {
                     model.mobilenumberrequired = false;
                     model.mobilecountrycoderequired = false;
                 }
@@ -306,6 +296,10 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             window.open('registration/privacyPolicy', '_blank');
         };
 
+        model.residingChange = function(val) {
+            model.reg.ddllandcountry = model.reg.ddlmobilecountry = val;
+        };
+
         return model.init();
     }
 
@@ -314,11 +308,9 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         .factory('basicRegistrationModel', factory);
 
     factory.$inject = ['basicRegistrationService', 'getArray', 'Commondependency',
-        '$filter', 'authSvc', '$timeout', '$state', 'SelectBindServicereg'
+        '$filter', 'authSvc', '$timeout', '$state', 'SelectBindServicereg', 'alert'
     ];
-    // factory.$inject = ['basicRegistrationService', '$scope', 'getArray', 'Commondependency',
-    //     '$filter', 'authSvc', '$timeout', 'route', 'SelectBindServicereg',
-    // ];
+
 
 })(angular);
 (function(angular) {
@@ -390,6 +382,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
 
         model.refreshPageLoad = function(Arr) {
+
             _.each(Arr, function(item) {
 
                 model.rbtProtectPassword = item.PhotoPassword === 'Admin@123' ? '1' : '0';
@@ -403,32 +396,35 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     item.deleteVisibility = true;
                     item.keyname = strCustDirName1 + "/" + item.PhotoName;
 
-                } else if (item.IsActive === 1 && item.IsThumbNailCreated === 1) {
+                }
 
-                    var strCustDirName = "KMPL_" + CustID + "_Images";
-                    item.addButtonvisible = false;
-                    item.deleteVisibility = true;
-                    switch (item.DisplayOrder) {
-                        case 1:
-                            var photoshoppath = "Img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var path = imagepath + strCustDirName + "/" + photoshoppath;
-                            item.ImageUrl = path;
-                            item.keyname = strCustDirName + "/" + photoshoppath;
-                            break;
-                        case 2:
-                            var photoshoppathnew = "Img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var pathnew = imagepath + strCustDirName + "/" + photoshoppathnew;
-                            item.ImageUrl = pathnew;
-                            item.keyname = strCustDirName + "/" + photoshoppathnew;
-                            break;
-                        case 3:
-                            var photoshoppathneew3 = "Img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var pathneww = imagepath + strCustDirName + "/" + photoshoppathneew3;
-                            item.ImageUrl = pathneww;
-                            item.keyname = strCustDirName + "/" + photoshoppathneew3;
-                            break;
-                    }
-                } else if (item.IsActive === 0 && item.PhotoName === null) {
+                // else if (item.IsActive === 1 && item.IsThumbNailCreated === 1) {
+
+                //     var strCustDirName = "KMPL_" + CustID + "_Images";
+                //     item.addButtonvisible = false;
+                //     item.deleteVisibility = true;
+                //     switch (item.DisplayOrder) {
+                //         case 1:
+                //             var photoshoppath = "Img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var path = imagepath + strCustDirName + "/" + photoshoppath;
+                //             item.ImageUrl = path;
+                //             item.keyname = strCustDirName + "/" + photoshoppath;
+                //             break;
+                //         case 2:
+                //             var photoshoppathnew = "Img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var pathnew = imagepath + strCustDirName + "/" + photoshoppathnew;
+                //             item.ImageUrl = pathnew;
+                //             item.keyname = strCustDirName + "/" + photoshoppathnew;
+                //             break;
+                //         case 3:
+                //             var photoshoppathneew3 = "Img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var pathneww = imagepath + strCustDirName + "/" + photoshoppathneew3;
+                //             item.ImageUrl = pathneww;
+                //             item.keyname = strCustDirName + "/" + photoshoppathneew3;
+                //             break;
+                //     }
+                // }
+                else if (item.IsActive === 0 && item.PhotoName === null) {
                     item.addButtonvisible = true;
                     item.deleteVisibility = false;
                     item.ImageUrl = stateParams.genderID === '1' || stateParams.genderID === 1 ? regapp.Mnoimage : regapp.Fnoimage;
@@ -440,8 +436,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.getData = function() {
 
             regManagePhotoService.getPhotoData(CustID).then(function(response) {
-                var StrCustID = CustID;
-                console.log(response.data);
                 model.manageArr = response.data;
                 model.refreshPageLoad(model.manageArr);
             });
@@ -458,7 +452,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             Commondependency.open('AddimagePopup.html', model.scope, uibModal, 'sm');
         };
         model.upload = function(obj) {
-            console.log(obj.myFile);
             var extension = (obj.myFile.name !== '' && obj.myFile.name !== undefined && obj.myFile.name !== null) ? (obj.myFile.name.split('.'))[1] : null;
             extension = angular.lowercase(extension);
             var gifFormat = "gif, jpeg, png,jpg";
@@ -470,12 +463,10 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 } else if (size > 4 * 1024) {
                     alert('Sorry,Upload Photo Size Must Be Less than 4 mb');
                 } else {
-                    console.log(obj.myFile);
-                    // var extension = ((obj.myFile.name).split('.'))[1];
+
                     var keyname = regapp.prefixPath + 'KMPL_' + CustID + '_Images/Img' + model.photorowID + '.' + extension;
 
                     fileUpload.uploadFileToUrl(obj.myFile, '/photoUplad', keyname).then(function(res) {
-                        console.log(res.status);
                         if (res.status == 200) {
                             Commondependency.closepopup();
                             model.uploadData = {
@@ -503,7 +494,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                             };
 
                             regManagePhotoService.submituploadData(model.uploadData).then(function(response) {
-                                console.log(response);
                                 if (response.status === 200) {
                                     alert('submitted Succesfully');
                                     model.manageArr = response.data;
@@ -542,10 +532,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 }
             });
         };
-
         model.setAsProfilePic = function(cust_photoID) {
             regManagePhotoService.linqSubmits(cust_photoID, 2).then(function(response) {
-                console.log(response.data);
 
                 if (response.data === 1) {
                     Commondependency.closepopup();
@@ -553,11 +541,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 }
             });
         };
-
         model.setPhotoPassword = function(obj) {
-
             regManagePhotoService.linqSubmits(CustID, obj).then(function(response) {
-                console.log(response);
                 if (response.data === 1) {
 
                     if (obj === '1') {
@@ -570,9 +555,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         };
 
-        model.skip = function() {
-            //window.location = "#/registration/managePhoto" + stateParams.genderID;
-        };
+
         model.redirectPage = function(type) {
 
             switch (type) {
@@ -631,8 +614,13 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          vm.init = function() {
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
+             scope.$on("$destroy", scope.destroy);
          };
-
+         scope.destroy = function() {
+             model.regsec = {};
+             scope.secregForm.$setPristine();
+             scope.secregForm.$setUntouched();
+         };
          vm.init();
      }
      angular
@@ -661,7 +649,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.noOfsibblingsArr = commondependency.numbersBind('', 0, 5);
         var countryID = stateParams.countryID;
         model.regsec.LabelName = stateParams.fn + ' ' + stateParams.ln;
-        // model.regsec.ddlCountryLivingIn = stateParams.countryID;
         model.stateArr = commondependency.StateBind(stateParams.countryID);
         var custID = stateParams.CustID;
 
@@ -674,7 +661,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         model.pageload = function() {
             timeout(function() {
-                model.Country = getArray.GArray('Country');
+                model.Country = _.isArray(model.Countrybind) && model.Countrybind.length > 0 ? model.Countrybind : getArray.GArray('Country');
                 model.ProfCatgory = getArray.GArray('ProfCatgory');
                 model.ProfGroup = getArray.GArray('ProfGroup');
                 model.currency = getArray.GArray('currency');
@@ -766,16 +753,14 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     Admin: null
                 }
             };
-            console.log(model.secondRegSubmit);
+
 
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
-                console.log(res);
+
                 //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
             });
             $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-            model.regsec = {};
-            model.scope.secregForm.$setPristine();
-            model.scope.secregForm.$setUntouched();
+
         };
 
         return model.init();
@@ -1049,7 +1034,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Caste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange('subcaste',page.model.reg.ddlcaste);\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcaste\" ng-model=\"page.model.reg.ddlcaste\" required=\"\" ng-change=\"page.model.subcastechange(page.model.reg.ddlcaste);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.casteArr\">{{h.label}} </md-option>\r" +
     "\n" +
@@ -1075,17 +1060,11 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>SubCaste</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\" required=\"\">\r" +
+    "                                    <md-select name=\"ddlsubcaste\" ng-model=\"page.model.reg.ddlsubcaste\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.subCastearr\">{{h.label}} </md-option>\r" +
     "\n" +
     "                                    </md-select>\r" +
-    "\n" +
-    "                                    <div class=\"errors\" ng-messages=\"regForm.ddlsubcaste.$error\">\r" +
-    "\n" +
-    "                                        <div ng-if=\"regForm.ddlsubcaste.$invalid && (regForm.$submitted)\" ng-message=\"required\">Required</div>\r" +
-    "\n" +
-    "                                    </div>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -1093,7 +1072,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Residing At</label>\r" +
     "\n" +
-    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\">\r" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlcountry\" ng-model=\"page.model.reg.ddlcountry\" required=\"\" ng-change=\"page.model.residingChange(page.model.reg.ddlcountry);\">\r" +
     "\n" +
     "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.Country\">{{h.label}} </md-option>\r" +
     "\n" +
