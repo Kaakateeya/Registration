@@ -357,7 +357,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     'use strict';
 
 
-    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams, authSvc) {
+    function factory(regManagePhotoService, uibModal, Commondependency, http, fileUpload, stateParams, authSvc, dynamicalert) {
         var model = {};
         model.scope = {};
         // start declaration
@@ -459,9 +459,11 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             if (typeof(obj.myFile.name) != "undefined") {
                 var size = parseFloat(obj.myFile.size / 1024).toFixed(2);
                 if (extension !== null && gifFormat.indexOf(angular.lowercase(extension)) === -1) {
-                    alert('Your uploaded image contains an unapproved file formats.');
+
+                    dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Your uploaded image contains an unapproved file formats.', 4500);
                 } else if (size > 4 * 1024) {
-                    alert('Sorry,Upload Photo Size Must Be Less than 4 mb');
+
+                    dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Sorry,Upload Photo Size Must Be Less than 4 mb', 4500);
                 } else {
 
                     var keyname = regapp.prefixPath + 'KMPL_' + CustID + '_Images/Img' + model.photorowID + '.' + extension;
@@ -495,12 +497,14 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
                             regManagePhotoService.submituploadData(model.uploadData).then(function(response) {
                                 if (response.status === 200) {
-                                    alert('submitted Succesfully');
+
+                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-success', 'submitted Succesfully', 4500);
                                     model.manageArr = response.data;
                                     model.refreshPageLoad(model.manageArr);
 
                                 } else {
-                                    alert('Updation failed');
+
+                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Updation failed', 4500);
                                 }
                             });
 
@@ -508,7 +512,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     });
                 }
             } else {
-                alert("This browser does not support HTML5.");
+
+                dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'This browser does not support HTML5.', 4500);
             }
         };
 
@@ -544,11 +549,10 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.setPhotoPassword = function(obj) {
             regManagePhotoService.linqSubmits(CustID, obj).then(function(response) {
                 if (response.data === 1) {
-
                     if (obj === '1') {
-                        alert('Protect with Password  Uploaded Successfully');
+                        dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Protect with Password  Uploaded Successfully', 4500);
                     } else {
-                        alert('Protect with Password Removed Successfully');
+                        dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Protect with Password Removed Successfully', 4500);
                     }
                 }
             });
@@ -579,7 +583,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         .module('KaakateeyaEmpReg')
         .factory('regManagePhotoModel', factory);
 
-    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams', 'authSvc'];
+    factory.$inject = ['regManagePhotoService', '$uibModal', 'Commondependency', '$http', 'fileUpload', '$stateParams', 'authSvc', 'alert'];
 
 })(angular);
 (function(angular) {
