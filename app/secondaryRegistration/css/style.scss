@@ -17,3 +17,17 @@ md-input-container label:not(.md-no-float):not(.md-container-ignore),
 md-input-container .md-placeholder {
     padding-left: 13px;
 }
+
+._md-datepicker-floating-label>md-datepicker .md-datepicker-button {
+    float: none;
+    margin-top: -12px;
+    top: 9.5px;
+}
+
+._md-datepicker-floating-label>md-datepicker .md-datepicker-button {
+    margin-left: -9px;
+}
+
+.md-icon-button+.md-datepicker-input-container {
+    margin-left: -11px;
+}
