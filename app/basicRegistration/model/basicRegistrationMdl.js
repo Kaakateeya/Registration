@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    function factory(basicRegistrationService, getArray, commondependency, filter, authSvc, timeout, $state, SelectBindServicereg) {
+    function factory(basicRegistrationService, getArray, commondependency, filter, authSvc, timeout, $state, svcSelectBindServicereg, dynamicalert) {
         var model = {};
         model.scope = {};
         model.init = function() {
@@ -40,7 +40,6 @@
 
         model.year = function(str, from, to) {
             var Arr = [];
-            // Arr.push({ "label": str, "title": str, "value": '' });
             for (var i = to; i >= from; i--) {
                 Arr.push({ "label": i, "title": i, "value": i });
             }
@@ -58,17 +57,16 @@
                 model.Caste = getArray.GArray('Caste');
             }, 1000);
             timeout(function() {
-                // model.Country = getArray.GArray('Country');
                 var Country = [],
                     CountryCode = [];
-                SelectBindServicereg.CountryWithCode().then(function(response) {
+
+                svcSelectBindServicereg.CountryWithCode().then(function(response) {
                     _.each(response.data, function(item) {
                         Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
                         CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
                     });
-                    console.log('test..');
-                    console.log(Country);
                     model.Country = Country;
+                    model.Countrybind = Country;
                     model.countryCode = CountryCode;
                 });
 
@@ -76,7 +74,6 @@
 
         };
 
-        model.statuses = ['Planned', 'Confirmed', 'Cancelled'];
         model.dayChange = function(obj, type) {
             var months31 = 'Jan,Mar,May,Jul,Aug,Oct,Dec';
             var minth30 = 'Apr,Jun,Sep,Nov';
@@ -93,16 +90,12 @@
         };
 
         model.changeBind = function(parentval, parentval2) {
-            if (parentval !== undefined && parentval !== null && parentval !== '' && parentval2 !== undefined && parentval2 !== null && parentval2 !== '')
+            if (parentval !== undefined && parentval2 !== undefined)
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
         };
-        model.subcastechange = function(type, paerntval) {
-            switch (type) {
-                case 'subcaste':
-                    model.subCastearr = [];
-                    model.subCastearr = commondependency.subCaste(paerntval);
-                    break;
-            }
+        model.subcastechange = function(paerntval) {
+            model.subCastearr = [];
+            model.subCastearr = commondependency.subCaste(paerntval);
         };
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
@@ -112,6 +105,7 @@
             var inputObj = {
                 strFirstName: obj.txtfirstname,
                 strLastName: obj.txtlastname,
+                //use moment
                 dtDOB: date !== '' ? filter('date')(date, 'yyyy-MM-dd') : null,
                 intGenderID: obj.rbtngender,
                 intReligionID: obj.ddlreligion,
@@ -131,37 +125,33 @@
                 intEmpID: 2,
                 intCustPostedBY: obj.ddlpostedby,
                 intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
-                    //strMobileVerificationCode: obj.
+
             };
-            console.log(inputObj);
+
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
-                console.log(res);
+
                 model.genderID = 0;
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
-                        console.log(response);
                         model.genderID = response.response[0].GenderID;
+
                         $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
-                        model.reg = {};
-                        model.reg.Chkprivacy = true;
-                        model.scope.regForm.$setPristine();
-                        model.scope.regForm.$setUntouched();
                         return false;
                     });
                 }
             });
         };
         model.valueExists = function(type, flag, val) {
+
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
-                    console.log(response);
                     if (response.data === 1) {
                         if (type === 'email') {
                             model.reg.txtEmail = '';
-                            alert('Email Already Exists');
+                            dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Email Already Exists', 9500);
                         } else {
                             model.reg.txtMobileNo = '';
-                            alert('Mobile number Already Exists');
+                            dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Mobile number Already Exists', 9500);
                         }
                     } else {
                         if (model.reg.Chkfree_reg === true) {
@@ -181,12 +171,11 @@
         };
         model.mobilemailvalidation = function() {
             if (model.reg.Chkfree_reg === true) {
-                if ((model.reg.txtEmail === null || model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === null || model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
-                    model.emailrequired = false;
+                model.emailrequired = false;
+                if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
                     model.mobilenumberrequired = true;
                     model.mobilecountrycoderequired = true;
-                } else if ((model.reg.txtEmail !== null && model.reg.txtEmail !== "" && model.reg.txtEmail !== undefined) || (model.reg.txtMobileNo !== null && model.reg.txtMobileNo !== "" && model.reg.txtMobileNo !== undefined)) {
-                    model.emailrequired = false;
+                } else {
                     model.mobilenumberrequired = false;
                     model.mobilecountrycoderequired = false;
                 }
@@ -201,6 +190,10 @@
             window.open('registration/privacyPolicy', '_blank');
         };
 
+        model.residingChange = function(val) {
+            model.reg.ddllandcountry = model.reg.ddlmobilecountry = val;
+        };
+
         return model.init();
     }
 
@@ -209,10 +202,8 @@
         .factory('basicRegistrationModel', factory);
 
     factory.$inject = ['basicRegistrationService', 'getArray', 'Commondependency',
-        '$filter', 'authSvc', '$timeout', '$state', 'SelectBindServicereg'
+        '$filter', 'authSvc', '$timeout', '$state', 'SelectBindServicereg', 'alert'
     ];
-    // factory.$inject = ['basicRegistrationService', '$scope', 'getArray', 'Commondependency',
-    //     '$filter', 'authSvc', '$timeout', 'route', 'SelectBindServicereg',
-    // ];
+
 
 })(angular);

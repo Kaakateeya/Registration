@@ -27,6 +27,7 @@
         };
 
         model.refreshPageLoad = function(Arr) {
+
             _.each(Arr, function(item) {
 
                 model.rbtProtectPassword = item.PhotoPassword === 'Admin@123' ? '1' : '0';
@@ -40,32 +41,35 @@
                     item.deleteVisibility = true;
                     item.keyname = strCustDirName1 + "/" + item.PhotoName;
 
-                } else if (item.IsActive === 1 && item.IsThumbNailCreated === 1) {
+                }
 
-                    var strCustDirName = "KMPL_" + CustID + "_Images";
-                    item.addButtonvisible = false;
-                    item.deleteVisibility = true;
-                    switch (item.DisplayOrder) {
-                        case 1:
-                            var photoshoppath = "Img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var path = imagepath + strCustDirName + "/" + photoshoppath;
-                            item.ImageUrl = path;
-                            item.keyname = strCustDirName + "/" + photoshoppath;
-                            break;
-                        case 2:
-                            var photoshoppathnew = "Img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var pathnew = imagepath + strCustDirName + "/" + photoshoppathnew;
-                            item.ImageUrl = pathnew;
-                            item.keyname = strCustDirName + "/" + photoshoppathnew;
-                            break;
-                        case 3:
-                            var photoshoppathneew3 = "Img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
-                            var pathneww = imagepath + strCustDirName + "/" + photoshoppathneew3;
-                            item.ImageUrl = pathneww;
-                            item.keyname = strCustDirName + "/" + photoshoppathneew3;
-                            break;
-                    }
-                } else if (item.IsActive === 0 && item.PhotoName === null) {
+                // else if (item.IsActive === 1 && item.IsThumbNailCreated === 1) {
+
+                //     var strCustDirName = "KMPL_" + CustID + "_Images";
+                //     item.addButtonvisible = false;
+                //     item.deleteVisibility = true;
+                //     switch (item.DisplayOrder) {
+                //         case 1:
+                //             var photoshoppath = "Img1_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var path = imagepath + strCustDirName + "/" + photoshoppath;
+                //             item.ImageUrl = path;
+                //             item.keyname = strCustDirName + "/" + photoshoppath;
+                //             break;
+                //         case 2:
+                //             var photoshoppathnew = "Img2_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var pathnew = imagepath + strCustDirName + "/" + photoshoppathnew;
+                //             item.ImageUrl = pathnew;
+                //             item.keyname = strCustDirName + "/" + photoshoppathnew;
+                //             break;
+                //         case 3:
+                //             var photoshoppathneew3 = "Img3_Images/" + item.ProfileID + "_ApplicationPhoto.jpg";
+                //             var pathneww = imagepath + strCustDirName + "/" + photoshoppathneew3;
+                //             item.ImageUrl = pathneww;
+                //             item.keyname = strCustDirName + "/" + photoshoppathneew3;
+                //             break;
+                //     }
+                // }
+                else if (item.IsActive === 0 && item.PhotoName === null) {
                     item.addButtonvisible = true;
                     item.deleteVisibility = false;
                     item.ImageUrl = stateParams.genderID === '1' || stateParams.genderID === 1 ? regapp.Mnoimage : regapp.Fnoimage;
@@ -77,8 +81,6 @@
         model.getData = function() {
 
             regManagePhotoService.getPhotoData(CustID).then(function(response) {
-                var StrCustID = CustID;
-                console.log(response.data);
                 model.manageArr = response.data;
                 model.refreshPageLoad(model.manageArr);
             });
@@ -95,7 +97,6 @@
             Commondependency.open('AddimagePopup.html', model.scope, uibModal, 'sm');
         };
         model.upload = function(obj) {
-            console.log(obj.myFile);
             var extension = (obj.myFile.name !== '' && obj.myFile.name !== undefined && obj.myFile.name !== null) ? (obj.myFile.name.split('.'))[1] : null;
             extension = angular.lowercase(extension);
             var gifFormat = "gif, jpeg, png,jpg";
@@ -107,12 +108,10 @@
                 } else if (size > 4 * 1024) {
                     alert('Sorry,Upload Photo Size Must Be Less than 4 mb');
                 } else {
-                    console.log(obj.myFile);
-                    // var extension = ((obj.myFile.name).split('.'))[1];
+
                     var keyname = regapp.prefixPath + 'KMPL_' + CustID + '_Images/Img' + model.photorowID + '.' + extension;
 
                     fileUpload.uploadFileToUrl(obj.myFile, '/photoUplad', keyname).then(function(res) {
-                        console.log(res.status);
                         if (res.status == 200) {
                             Commondependency.closepopup();
                             model.uploadData = {
@@ -140,7 +139,6 @@
                             };
 
                             regManagePhotoService.submituploadData(model.uploadData).then(function(response) {
-                                console.log(response);
                                 if (response.status === 200) {
                                     alert('submitted Succesfully');
                                     model.manageArr = response.data;
@@ -179,10 +177,8 @@
                 }
             });
         };
-
         model.setAsProfilePic = function(cust_photoID) {
             regManagePhotoService.linqSubmits(cust_photoID, 2).then(function(response) {
-                console.log(response.data);
 
                 if (response.data === 1) {
                     Commondependency.closepopup();
@@ -190,11 +186,8 @@
                 }
             });
         };
-
         model.setPhotoPassword = function(obj) {
-
             regManagePhotoService.linqSubmits(CustID, obj).then(function(response) {
-                console.log(response);
                 if (response.data === 1) {
 
                     if (obj === '1') {
@@ -207,9 +200,7 @@
 
         };
 
-        model.skip = function() {
-            //window.location = "#/registration/managePhoto" + stateParams.genderID;
-        };
+
         model.redirectPage = function(type) {
 
             switch (type) {
