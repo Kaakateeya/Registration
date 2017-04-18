@@ -123,7 +123,7 @@
                 strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
                 strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
-                intEmpID: model.empid,
+                intEmpID: model.empid === "" ? "2" : model.empid,
                 intCustPostedBY: obj.ddlpostedby,
                 intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
 
@@ -131,6 +131,7 @@
 
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 model.genderID = 0;
+                console.log(res);
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
                         model.genderID = response.response[0].GenderID;

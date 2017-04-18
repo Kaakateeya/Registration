@@ -4,15 +4,15 @@
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         vm.init = function() {
-             vm.model = secondaryRegistrationModel;
-             vm.model.scope = scope;
-             scope.$on("$destroy", scope.destroy);
-         };
-         scope.destroy = function() {
+         vm.destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
+         };
+         vm.init = function() {
+             vm.model = secondaryRegistrationModel;
+             vm.model.scope = scope;
+             vm.$on("$destroy", scope.destroy);
          };
          vm.init();
      }

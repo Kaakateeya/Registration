@@ -56,18 +56,18 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    if (regapp.env === 'dev') {
+                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                            'app/' + regitem + '/css/style.css'
+                        ]);
+                    } else {
+                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                    }
+                }]
+            }
 
         });
         $locationProvider.html5Mode(true);
@@ -81,20 +81,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
          var vm = this,
              model;
+         vm.destroy = function() {
+             model.reg = {};
+             model.reg.Chkprivacy = true;
+             scope.regForm.$setPristine();
+             scope.regForm.$setUntouched();
+         };
          vm.init = function() {
              model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
-             scope.$on("$destroy", scope.destroy);
+             vm.$on("$destroy", scope.destroy);
              // write destroy method 
-
-         };
-         scope.destroy = function() {
-             model.reg = {};
-             model.reg.Chkprivacy = true;
-             scope.regForm.$setPristine();
-             scope.regForm.$setUntouched();
          };
          vm.init();
      }
@@ -229,7 +228,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 strEmail: (obj.txtEmail !== '') && ((obj.txtEmail) !== null) && ((obj.txtEmail) !== undefined) ? obj.txtEmail : "kmpl@gmail.com",
                 strPassword: (obj.txtpassword !== '') && (obj.txtpassword !== null) && (obj.txtpassword !== undefined) ? obj.txtpassword : "Admin@123",
                 intProfileRegisteredBy: null,
-                intEmpID: model.empid,
+                intEmpID: model.empid === "" ? "2" : model.empid,
                 intCustPostedBY: obj.ddlpostedby,
                 intSubCasteID: obj.ddlsubcaste !== undefined && obj.ddlsubcaste !== null && obj.ddlsubcaste !== "" && obj.ddlsubcaste !== "undefined" ? obj.ddlsubcaste : null
 
@@ -237,6 +236,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
             basicRegistrationService.submitBasicRegistration(inputObj).then(function(res) {
                 model.genderID = 0;
+                console.log(res);
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
                         model.genderID = response.response[0].GenderID;
@@ -605,15 +605,15 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         vm.init = function() {
-             vm.model = secondaryRegistrationModel;
-             vm.model.scope = scope;
-             scope.$on("$destroy", scope.destroy);
-         };
-         scope.destroy = function() {
+         vm.destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
+         };
+         vm.init = function() {
+             vm.model = secondaryRegistrationModel;
+             vm.model.scope = scope;
+             vm.$on("$destroy", scope.destroy);
          };
          vm.init();
      }
