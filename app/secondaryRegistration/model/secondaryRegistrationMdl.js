@@ -18,7 +18,6 @@
         model.noOfsibblingsArr = commondependency.numbersBind('', 0, 5);
         var countryID = stateParams.countryID;
         model.regsec.LabelName = stateParams.fn + ' ' + stateParams.ln;
-        // model.regsec.ddlCountryLivingIn = stateParams.countryID;
         model.stateArr = commondependency.StateBind(stateParams.countryID);
         var custID = stateParams.CustID;
 
@@ -30,8 +29,11 @@
         };
 
         model.pageload = function() {
+            model.empid = authSvc.LoginEmpid() !== undefined && authSvc.LoginEmpid() !== null && authSvc.LoginEmpid() !== "" ? authSvc.LoginEmpid() : "";
+
+            model.AdminID = authSvc.isAdmin() !== undefined && authSvc.isAdmin() !== null && authSvc.isAdmin() !== "" ? authSvc.isAdmin() : "";
             timeout(function() {
-                model.Country = getArray.GArray('Country');
+                model.Country = _.isArray(model.Countrybind) && model.Countrybind.length > 0 ? model.Countrybind : getArray.GArray('Country');
                 model.ProfCatgory = getArray.GArray('ProfCatgory');
                 model.ProfGroup = getArray.GArray('ProfGroup');
                 model.currency = getArray.GArray('currency');
@@ -119,25 +121,21 @@
                 },
                 customerpersonaldetails: {
                     intCusID: custID,
-                    EmpID: null,
-                    Admin: null
+                    EmpID: model.empid,
+                    Admin: model.AdminID
                 }
             };
-            console.log(model.secondRegSubmit);
+
 
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
-                console.log(res);
-                //   $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
+
+                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
+
             });
-            $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
-            model.regsec = {};
-            model.scope.secregForm.$setPristine();
-            model.scope.secregForm.$setUntouched();
+            //$state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
+
         };
-
         return model.init();
-
-
     }
 
     angular

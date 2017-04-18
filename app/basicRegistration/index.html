@@ -117,7 +117,7 @@
                                 </md-input-container>
                                 <md-input-container class="col-lg-3">
                                     <label>Caste</label>
-                                    <md-select md-asterisk="" name="ddlcaste" ng-model="page.model.reg.ddlcaste" required="" ng-change="page.model.subcastechange('subcaste',page.model.reg.ddlcaste);">
+                                    <md-select md-asterisk="" name="ddlcaste" ng-model="page.model.reg.ddlcaste" required="" ng-change="page.model.subcastechange(page.model.reg.ddlcaste);">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.casteArr">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="regForm.ddlcaste.$error">
@@ -130,16 +130,13 @@
                             <div class="row">
                                 <md-input-container class="col-lg-3">
                                     <label>SubCaste</label>
-                                    <md-select md-asterisk="" name="ddlsubcaste" ng-model="page.model.reg.ddlsubcaste" required="">
+                                    <md-select name="ddlsubcaste" ng-model="page.model.reg.ddlsubcaste">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.subCastearr">{{h.label}} </md-option>
                                     </md-select>
-                                    <div class="errors" ng-messages="regForm.ddlsubcaste.$error">
-                                        <div ng-if="regForm.ddlsubcaste.$invalid && (regForm.$submitted)" ng-message="required">Required</div>
-                                    </div>
                                 </md-input-container>
                                 <md-input-container class="col-lg-3">
                                     <label>Residing At</label>
-                                    <md-select md-asterisk="" name="ddlcountry" ng-model="page.model.reg.ddlcountry" required="">
+                                    <md-select md-asterisk="" name="ddlcountry" ng-model="page.model.reg.ddlcountry" required="" ng-change="page.model.residingChange(page.model.reg.ddlcountry);">
                                         <md-option ng-value="h.value" ng-repeat="h in page.model.Country">{{h.label}} </md-option>
                                     </md-select>
                                     <div class="errors" ng-messages="regForm.ddlcountry.$error">
