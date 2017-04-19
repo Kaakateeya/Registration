@@ -605,9 +605,11 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
-         var vm = this;
+         var vm = this,
+             model;
          vm.init = function() {
-             vm.model = secondaryRegistrationModel;
+             model = {};
+             vm.model = model = secondaryRegistrationModel;
              vm.model.scope = scope;
              scope.$on("$destroy", scope.destroy);
          };
