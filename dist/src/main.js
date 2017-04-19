@@ -81,12 +81,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
          var vm = this,
              model;
-         scope.$destroy = function() {
-             model.reg = {};
-             model.reg.Chkprivacy = true;
-             scope.regForm.$setPristine();
-             scope.regForm.$setUntouched();
-         };
+
          vm.init = function() {
              model = {};
              vm.model = model = basicRegistrationModel;
@@ -96,6 +91,12 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              // write destroy method 
          };
          vm.init();
+         scope.$destroy = function() {
+             model.reg = {};
+             model.reg.Chkprivacy = true;
+             scope.regForm.$setPristine();
+             scope.regForm.$setUntouched();
+         };
      }
      angular
          .module('KaakateeyaEmpReg')
@@ -605,17 +606,17 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         scope.$destroy = function() {
-             model.regsec = {};
-             scope.secregForm.$setPristine();
-             scope.secregForm.$setUntouched();
-         };
          vm.init = function() {
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
              scope.$on("$destroy", scope.destroy);
          };
          vm.init();
+         scope.$destroy = function() {
+             model.regsec = {};
+             scope.secregForm.$setPristine();
+             scope.secregForm.$setUntouched();
+         };
      }
      angular
          .module('KaakateeyaEmpReg')

@@ -5,12 +5,7 @@
 
          var vm = this,
              model;
-         scope.$destroy = function() {
-             model.reg = {};
-             model.reg.Chkprivacy = true;
-             scope.regForm.$setPristine();
-             scope.regForm.$setUntouched();
-         };
+
          vm.init = function() {
              model = {};
              vm.model = model = basicRegistrationModel;
@@ -20,6 +15,12 @@
              // write destroy method 
          };
          vm.init();
+         scope.$destroy = function() {
+             model.reg = {};
+             model.reg.Chkprivacy = true;
+             scope.regForm.$setPristine();
+             scope.regForm.$setUntouched();
+         };
      }
      angular
          .module('KaakateeyaEmpReg')
