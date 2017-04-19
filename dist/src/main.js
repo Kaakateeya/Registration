@@ -81,7 +81,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
          var vm = this,
              model;
-         vm.destroy = function() {
+         scope.destroy = function() {
              model.reg = {};
              model.reg.Chkprivacy = true;
              scope.regForm.$setPristine();
@@ -92,7 +92,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
-             vm.$on("$destroy", scope.destroy);
+             scope.$on("$destroy", scope.destroy);
              // write destroy method 
          };
          vm.init();
@@ -605,7 +605,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         vm.destroy = function() {
+         scope.destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
@@ -613,7 +613,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          vm.init = function() {
              vm.model = secondaryRegistrationModel;
              vm.model.scope = scope;
-             vm.$on("$destroy", scope.destroy);
+             scope.$on("$destroy", scope.destroy);
          };
          vm.init();
      }

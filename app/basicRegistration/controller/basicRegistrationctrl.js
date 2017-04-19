@@ -5,7 +5,7 @@
 
          var vm = this,
              model;
-         vm.destroy = function() {
+         scope.destroy = function() {
              model.reg = {};
              model.reg.Chkprivacy = true;
              scope.regForm.$setPristine();
@@ -16,7 +16,7 @@
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
-             vm.$on("$destroy", scope.destroy);
+             scope.$on("$destroy", scope.destroy);
              // write destroy method 
          };
          vm.init();
