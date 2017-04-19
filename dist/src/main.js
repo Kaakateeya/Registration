@@ -81,7 +81,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
          var vm = this,
              model;
-         scope.destroy = function() {
+         scope.$destroy = function() {
              model.reg = {};
              model.reg.Chkprivacy = true;
              scope.regForm.$setPristine();
@@ -605,7 +605,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         scope.destroy = function() {
+         scope.$destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();

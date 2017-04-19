@@ -4,7 +4,7 @@
      function controller(secondaryRegistrationModel, scope) {
          /* jshint validthis:true */
          var vm = this;
-         scope.destroy = function() {
+         scope.$destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
