@@ -618,7 +618,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              vm.model.scope = scope;
              scope.$on("$destroy", scope.destroy);
          };
-         scope.$destroy = function() {
+         scope.destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
