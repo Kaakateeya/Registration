@@ -8,7 +8,7 @@
  */
 
 var regapp = angular.module('KaakateeyaEmpReg', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngIdle', 'ngMaterial',
-    'ngMessages', 'ngAria', 'ngPassword', 'jcs-autoValidate', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
+    'ngMessages', 'ngAria', 'ngPassword', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
 ]);
 regapp.apipath = 'http://183.82.0.58:8025/Api/';
 // regapp.apipath = 'http://183.82.0.58:8010/Api/';
@@ -60,18 +60,18 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    if (regapp.env === 'dev') {
+                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                            'app/' + regitem + '/css/style.css'
+                        ]);
+                    } else {
+                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                    }
+                }]
+            }
 
         });
         $locationProvider.html5Mode(true);

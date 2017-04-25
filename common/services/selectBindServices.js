@@ -62,7 +62,7 @@
                 return http.get(regapp.apipath + 'Dependency/getDropdownValues_dependency_injection', { params: { dependencyName: 'Caste', dependencyValue: obj1, dependencyflagID: obj2 } });
             },
             subCasteBind: function(obj1) {
-
+                debugger;
                 return http.get(regapp.apipath + 'Dependency/getDropdownValues_dependency_injection', { params: { dependencyName: 'SubCaste', dependencyValue: obj1, dependencyflagID: '' } });
             },
             branch: function(obj1) {

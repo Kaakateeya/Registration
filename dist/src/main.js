@@ -4,7 +4,7 @@
  */
 
 var regapp = angular.module('KaakateeyaEmpReg', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngIdle', 'ngMaterial',
-    'ngMessages', 'ngAria', 'ngPassword', 'jcs-autoValidate', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
+    'ngMessages', 'ngAria', 'ngPassword', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
 ]);
 regapp.apipath = 'http://183.82.0.58:8025/Api/';
 // regapp.apipath = 'http://183.82.0.58:8010/Api/';
@@ -56,18 +56,18 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         $stateProvider.state(item.name, {
             url: item.url,
             views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                    // you can lazy load files for an existing module
+                    if (regapp.env === 'dev') {
+                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                            'app/' + regitem + '/css/style.css'
+                        ]);
+                    } else {
+                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                    }
+                }]
+            }
 
         });
         $locationProvider.html5Mode(true);
@@ -83,20 +83,20 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              model;
 
          vm.init = function() {
-             model = {};
+             // model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
              scope.$on("$destroy", scope.destroy);
              // write destroy method 
          };
-         vm.init();
-         scope.$destroy = function() {
+         scope.destroy = function() {
              model.reg = {};
              model.reg.Chkprivacy = true;
              scope.regForm.$setPristine();
              scope.regForm.$setUntouched();
          };
+         vm.init();
      }
      angular
          .module('KaakateeyaEmpReg')
@@ -197,12 +197,20 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
 
         model.changeBind = function(parentval, parentval2) {
-            if (parentval !== undefined && parentval2 !== undefined)
+            debugger;
+            model.casteArr = [];
+            if (parentval !== undefined && parentval2 !== undefined && parentval2 !== "" && parentval2 !== null && parentval !== "" && parentval !== null) {
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
+            }
         };
         model.subcastechange = function(paerntval) {
+            debugger;
             model.subCastearr = [];
-            model.subCastearr = commondependency.subCaste(paerntval);
+            if (paerntval !== null && paerntval !== undefined && paerntval !== "") {
+                timeout(function() {
+                    model.subCastearr = commondependency.subCaste(paerntval);
+                }, 300);
+            }
         };
         model.regSubmit = function(obj) {
             var valmm = _.indexOf(monthArr, obj.ddlMM);
@@ -607,18 +615,20 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
          /* jshint validthis:true */
          var vm = this,
              model;
+
          vm.init = function() {
              model = {};
              vm.model = model = secondaryRegistrationModel;
              vm.model.scope = scope;
              scope.$on("$destroy", scope.destroy);
          };
-         vm.init();
          scope.$destroy = function() {
              model.regsec = {};
              scope.secregForm.$setPristine();
              scope.secregForm.$setUntouched();
          };
+         vm.init();
+
      }
      angular
          .module('KaakateeyaEmpReg')
@@ -4484,7 +4494,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
                 return http.get(regapp.apipath + 'Dependency/getDropdownValues_dependency_injection', { params: { dependencyName: 'Caste', dependencyValue: obj1, dependencyflagID: obj2 } });
             },
             subCasteBind: function(obj1) {
-
+                debugger;
                 return http.get(regapp.apipath + 'Dependency/getDropdownValues_dependency_injection', { params: { dependencyName: 'SubCaste', dependencyValue: obj1, dependencyflagID: '' } });
             },
             branch: function(obj1) {
