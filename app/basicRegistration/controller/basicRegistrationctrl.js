@@ -15,6 +15,7 @@
              // write destroy method 
          };
          scope.destroy = function() {
+             model.casteArr = [];
              model.reg = {};
              model.reg.Chkprivacy = true;
              scope.regForm.$setPristine();
