@@ -4,7 +4,7 @@
  */
 
 var regapp = angular.module('KaakateeyaEmpReg', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngIdle', 'ngMaterial',
-    'ngMessages', 'ngAria', 'ngPassword', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons'
+    'ngMessages', 'ngAria', 'ngPassword', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons', 'jcs-autoValidate'
 ]);
 regapp.apipath = 'http://183.82.0.58:8025/Api/';
 // regapp.apipath = 'http://183.82.0.58:8010/Api/';
@@ -197,19 +197,15 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
 
         model.changeBind = function(parentval, parentval2) {
-            debugger;
             model.casteArr = [];
             if (parentval !== undefined && parentval2 !== undefined && parentval2 !== "" && parentval2 !== null && parentval !== "" && parentval !== null) {
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
             }
         };
         model.subcastechange = function(paerntval) {
-            debugger;
             model.subCastearr = [];
             if (paerntval !== null && paerntval !== undefined && paerntval !== "") {
-                timeout(function() {
-                    model.subCastearr = commondependency.subCaste(paerntval);
-                }, 300);
+                model.subCastearr = commondependency.subCaste(paerntval);
             }
         };
         model.regSubmit = function(obj) {

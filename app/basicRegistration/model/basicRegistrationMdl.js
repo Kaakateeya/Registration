@@ -91,19 +91,15 @@
         };
 
         model.changeBind = function(parentval, parentval2) {
-            debugger;
             model.casteArr = [];
             if (parentval !== undefined && parentval2 !== undefined && parentval2 !== "" && parentval2 !== null && parentval !== "" && parentval !== null) {
                 model.casteArr = commondependency.casteDepedency(commondependency.listSelectedVal(parentval), commondependency.listSelectedVal(parentval2));
             }
         };
         model.subcastechange = function(paerntval) {
-            debugger;
             model.subCastearr = [];
             if (paerntval !== null && paerntval !== undefined && paerntval !== "") {
-                timeout(function() {
-                    model.subCastearr = commondependency.subCaste(paerntval);
-                }, 300);
+                model.subCastearr = commondependency.subCaste(paerntval);
             }
         };
         model.regSubmit = function(obj) {
