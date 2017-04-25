@@ -83,7 +83,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              model;
 
          vm.init = function() {
-             // model = {};
+             model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
              model.reg.Chkfree_reg = false;
