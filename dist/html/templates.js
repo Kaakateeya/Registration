@@ -769,9 +769,25 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    <div>\r" +
     "\n" +
-    "        <h4>\r" +
+    "\r" +
     "\n" +
-    "            <label Font-Bold=\"true\">Registration</label></h4>\r" +
+    "        <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "            <h4 class=\"col-lg-2\" style=\"color:#A00201;\">\r" +
+    "\n" +
+    "                <label> Registration</label></h4>\r" +
+    "\n" +
+    "            <div class=\"col-lg-3\">\r" +
+    "\n" +
+    "                <h5><span style=\"color:black;\">Your ProfileID:</span> {{page.model.profileid}}</h5>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clearfix\"></div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -789,7 +805,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <div class=\"col-lg-2\">\r" +
     "\n" +
-    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"dashboardpage\">skip this page</md-button>\r" +
+    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"Education/{{page.model.CustIDper}}\">Edit this page</md-button>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -1252,9 +1268,21 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "        <h4>Registration</h4>\r" +
+    "        <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "            <h4 class=\"col-lg-2\">Registration</h4>\r" +
+    "\n" +
+    "            <div class=\"col-lg-3\">\r" +
+    "\n" +
+    "                <h5><span style=\"color:black;\">Your ProfileID:</span> {{page.model.profileid}}</h5>\r" +
+    "\n" +
+    "            </div>\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clearfix\"></div>\r" +
     "\n" +
     "        <div class=\"regmain\">\r" +
     "\n" +

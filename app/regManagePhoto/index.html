@@ -6,8 +6,16 @@
     }-->
 <div class="right_col" role="main">
     <div>
-        <h4>
-            <label Font-Bold="true">Registration</label></h4>
+
+        <div class="col-lg-12">
+            <h4 class="col-lg-2" style="color:#A00201;">
+                <label> Registration</label></h4>
+            <div class="col-lg-3">
+                <h5><span style="color:black;">Your ProfileID:</span> {{page.model.profileid}}</h5>
+            </div>
+
+        </div>
+        <div class="clearfix"></div>
 
         <div class="regmain">
 
@@ -16,7 +24,7 @@
                     <h6 style="font-size: 21px;">Upload Your Recent Photos For Better Response</h6>
                 </div>
                 <div class="col-lg-2">
-                    <md-button class="md-raised md-warn md-hue-2" href="dashboardpage">skip this page</md-button>
+                    <md-button class="md-raised md-warn md-hue-2" href="Education/{{page.model.CustIDper}}">Edit this page</md-button>
                 </div>
             </div>
             <div class="dragzone">

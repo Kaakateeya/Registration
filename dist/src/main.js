@@ -27,8 +27,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     var states = [
         { name: 'reg', url: '', subname: [], abstract: true },
         { name: 'reg.basicRegistration', url: '/Registration', subname: [] },
-        { name: 'reg.secondaryRegistration', url: '/secondaryReg/:CustID/:fn/:ln/:countryID/:genderID', subname: ['common/directives/datePickerDirective.js'] },
-        { name: 'reg.regManagePhoto', url: '/ManagePhoto/:CustID/:genderID', subname: ['common/services/fileUploadSevice.js', 'common/directives/fileUploadDirective.js'] },
+        { name: 'reg.secondaryRegistration', url: '/secondaryReg/:CustID/:ProfileID/:fn/:ln/:countryID/:genderID', subname: ['common/directives/datePickerDirective.js'] },
+        { name: 'reg.regManagePhoto', url: '/ManagePhoto/:CustID/:ProfileID/:genderID', subname: ['common/services/fileUploadSevice.js', 'common/directives/fileUploadDirective.js'] },
 
     ];
     $ocLazyLoadProvider.config({
@@ -246,7 +246,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 if (res !== undefined && res !== null && res !== "" && res.data !== undefined && res.data !== null && res.data !== "" && res.data.length > 0) {
                     authSvc.login(res.data[0].ProfileID, "Admin@123").then(function(response) {
                         model.genderID = response.response[0].GenderID;
-                        $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
+                        $state.go('reg.secondaryRegistration', { CustID: response.response[0].CustID, ProfileID: response.response[0].ProfileID, fn: obj.txtfirstname, ln: obj.txtlastname, countryID: obj.ddlcountry, genderID: response.response[0].GenderID });
                         return false;
                     });
                 }
@@ -368,6 +368,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         var EmpIDQueryString = '2';
         model.up = {};
         var CustID = stateParams.CustID;
+        model.CustIDper = CustID;
+        model.profileid = stateParams.ProfileID;
         model.photorowID = 0;
         model.imgArr = [];
         var loginEmpid = authSvc.LoginEmpid();
@@ -655,7 +657,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.regsec.LabelName = stateParams.fn + ' ' + stateParams.ln;
         model.stateArr = commondependency.StateBind(stateParams.countryID);
         var custID = stateParams.CustID;
-
+        model.profileid = stateParams.ProfileID;
         //end declaration
 
         model.init = function() {
@@ -764,7 +766,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
 
-                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
+                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, ProfileID: stateParams.ProfileID, genderID: stateParams.genderID });
 
             });
             //$state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
@@ -1568,9 +1570,25 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "    <div>\r" +
     "\n" +
-    "        <h4>\r" +
+    "\r" +
     "\n" +
-    "            <label Font-Bold=\"true\">Registration</label></h4>\r" +
+    "        <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "            <h4 class=\"col-lg-2\" style=\"color:#A00201;\">\r" +
+    "\n" +
+    "                <label> Registration</label></h4>\r" +
+    "\n" +
+    "            <div class=\"col-lg-3\">\r" +
+    "\n" +
+    "                <h5><span style=\"color:black;\">Your ProfileID:</span> {{page.model.profileid}}</h5>\r" +
+    "\n" +
+    "            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clearfix\"></div>\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -1588,7 +1606,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <div class=\"col-lg-2\">\r" +
     "\n" +
-    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"dashboardpage\">skip this page</md-button>\r" +
+    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"Education/{{page.model.CustIDper}}\">Edit this page</md-button>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +
@@ -2051,9 +2069,21 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "\r" +
     "\n" +
-    "        <h4>Registration</h4>\r" +
+    "        <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "            <h4 class=\"col-lg-2\">Registration</h4>\r" +
+    "\n" +
+    "            <div class=\"col-lg-3\">\r" +
+    "\n" +
+    "                <h5><span style=\"color:black;\">Your ProfileID:</span> {{page.model.profileid}}</h5>\r" +
+    "\n" +
+    "            </div>\r" +
     "\n" +
     "\r" +
+    "\n" +
+    "        </div>\r" +
+    "\n" +
+    "        <div class=\"clearfix\"></div>\r" +
     "\n" +
     "        <div class=\"regmain\">\r" +
     "\n" +

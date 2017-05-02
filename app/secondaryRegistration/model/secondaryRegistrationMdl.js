@@ -20,7 +20,7 @@
         model.regsec.LabelName = stateParams.fn + ' ' + stateParams.ln;
         model.stateArr = commondependency.StateBind(stateParams.countryID);
         var custID = stateParams.CustID;
-
+        model.profileid = stateParams.ProfileID;
         //end declaration
 
         model.init = function() {
@@ -129,7 +129,7 @@
 
             secondaryRegistrationService.submitSecodaryRegistration(regInput).then(function(res) {
 
-                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
+                $state.go('reg.regManagePhoto', { CustID: stateParams.CustID, ProfileID: stateParams.ProfileID, genderID: stateParams.genderID });
 
             });
             //$state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });

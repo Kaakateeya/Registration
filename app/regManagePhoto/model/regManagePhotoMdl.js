@@ -9,6 +9,8 @@
         var EmpIDQueryString = '2';
         model.up = {};
         var CustID = stateParams.CustID;
+        model.CustIDper = CustID;
+        model.profileid = stateParams.ProfileID;
         model.photorowID = 0;
         model.imgArr = [];
         var loginEmpid = authSvc.LoginEmpid();

@@ -31,8 +31,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     var states = [
         { name: 'reg', url: '', subname: [], abstract: true },
         { name: 'reg.basicRegistration', url: '/Registration', subname: [] },
-        { name: 'reg.secondaryRegistration', url: '/secondaryReg/:CustID/:fn/:ln/:countryID/:genderID', subname: ['common/directives/datePickerDirective.js'] },
-        { name: 'reg.regManagePhoto', url: '/ManagePhoto/:CustID/:genderID', subname: ['common/services/fileUploadSevice.js', 'common/directives/fileUploadDirective.js'] },
+        { name: 'reg.secondaryRegistration', url: '/secondaryReg/:CustID/:ProfileID/:fn/:ln/:countryID/:genderID', subname: ['common/directives/datePickerDirective.js'] },
+        { name: 'reg.regManagePhoto', url: '/ManagePhoto/:CustID/:ProfileID/:genderID', subname: ['common/services/fileUploadSevice.js', 'common/directives/fileUploadDirective.js'] },
 
     ];
     $ocLazyLoadProvider.config({
