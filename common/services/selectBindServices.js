@@ -42,6 +42,9 @@
 
                 return http.get(regapp.apipath + 'Dependency/getProfessionDependency', { params: { dependencyName: "ProfessionSpecialisation", dependencyValue: dependencyVal2 } });
             },
+            profspecialization: function(dependencyVal2) {
+                return http.get(regapp.apipath + 'Dependency/getProfessionDependency', { params: { dependencyName: "ProfessionSpecialisation", dependencyValue: dependencyVal2 } });
+            },
             casteselect: function() {
 
                 return http.get(regapp.apipath + 'Dependency/getDropdown_filling_values', { params: { strDropdownname: "CasteName" } });

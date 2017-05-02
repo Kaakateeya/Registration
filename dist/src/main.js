@@ -55,19 +55,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView,
-            resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-                loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                    // you can lazy load files for an existing module
-                    if (regapp.env === 'dev') {
-                        return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-                            'app/' + regitem + '/css/style.css'
-                        ]);
-                    } else {
-                        return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-                    }
-                }]
-            }
+            views: innerView
+                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         // you can lazy load files for an existing module
+                //         if (regapp.env === 'dev') {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                //                 'app/' + regitem + '/css/style.css'
+                //             ]);
+                //         } else {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                //         }
+                //     }]
+                // }
 
         });
         $locationProvider.html5Mode(true);
@@ -687,7 +687,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     model.eduSplArr = commondependency.educationSpeciakisationBind(paerntval);
                     break;
                 case 'profGroup':
-                    model.professionArr = commondependency.professionBind(paerntval);
+                    model.professionArr = commondependency.professionspecialisationBind(paerntval);
                     break;
                 case 'Country':
                     model.stateArr = commondependency.StateBind(paerntval);
@@ -3590,6 +3590,15 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
                 });
                 return professionArr;
             },
+            professionspecialisationBind: function(parentval) {
+                var professionArr = [];
+                SelectBindService.profspecialization(parentval).then(function(response) {
+                    _.each(response.data, function(item) {
+                        professionArr.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                    });
+                });
+                return professionArr;
+            },
             educationGroupBind: function(parentval) {
                 var educationGroupArr = [];
                 // educationGroupArr.push({ "label": "--select--", "title": "--select--", "value": "" });
@@ -4468,6 +4477,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
             },
             ProfessionSpecialisation: function(dependencyVal2) {
 
+                return http.get(regapp.apipath + 'Dependency/getProfessionDependency', { params: { dependencyName: "ProfessionSpecialisation", dependencyValue: dependencyVal2 } });
+            },
+            profspecialization: function(dependencyVal2) {
                 return http.get(regapp.apipath + 'Dependency/getProfessionDependency', { params: { dependencyName: "ProfessionSpecialisation", dependencyValue: dependencyVal2 } });
             },
             casteselect: function() {

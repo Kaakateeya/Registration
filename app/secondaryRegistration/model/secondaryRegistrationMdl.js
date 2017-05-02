@@ -53,7 +53,7 @@
                     model.eduSplArr = commondependency.educationSpeciakisationBind(paerntval);
                     break;
                 case 'profGroup':
-                    model.professionArr = commondependency.professionBind(paerntval);
+                    model.professionArr = commondependency.professionspecialisationBind(paerntval);
                     break;
                 case 'Country':
                     model.stateArr = commondependency.StateBind(paerntval);
