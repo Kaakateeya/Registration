@@ -15,8 +15,14 @@
         model.emailrequired = true;
         model.mobilenumberrequired = true;
         model.mobilecountrycoderequired = true;
+        model.emailmeessages = false;
+        model.mobilemessages = false;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        //  model.emailpattaren = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,3}(?:\.[a-z]{2})?)$/i;
+        model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
+
         //end declaration
+
         model.monthBind = function() {
             var option = [];
             _.each(monthArr, function(item) {
@@ -102,7 +108,44 @@
                 model.subCastearr = commondependency.subCaste(paerntval);
             }
         };
+        // model.mobilemailvalidation = function() {
+        //     if (model.reg.Chkfree_reg === true) {
+        //         if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
+        //             model.mobilenumberrequired = true;
+        //             model.mobilecountrycoderequired = true;
+        //         } else {
+        //             model.mobilenumberrequired = false;
+        //             model.mobilecountrycoderequired = false;
+        //         }
+        //     } else {
+        //         model.emailrequired = true;
+        //         model.mobilenumberrequired = true;
+        //         model.mobilecountrycoderequired = true;
+        //     }
+        // };
+        model.mobilemailvalidation = function() {
+            debugger;
+            if (model.reg.Chkfree_reg === true) {
+                if ((model.reg.txtEmail !== "" && model.reg.txtEmail !== undefined && model.reg.txtEmail !== null)) {
+                    model.mobilenumberrequired = false;
+                    model.mobilecountrycoderequired = false;
+                    model.mobilemessages = false;
+                } else if ((model.reg.txtMobileNo !== "" && model.reg.txtMobileNo !== undefined && model.reg.txtMobileNo !== null)) {
+                    model.emailrequired = false;
+                    model.emailmeessages = false;
+                } else {
+                    model.mobilenumberrequired = true;
+                    model.mobilecountrycoderequired = true;
+                    model.emailrequired = true;
+                }
+            } else {
+                model.emailrequired = true;
+                model.mobilenumberrequired = true;
+                model.mobilecountrycoderequired = true;
+            }
+        };
         model.regSubmit = function(obj) {
+            //  model.mobilemailvalidation();
             var valmm = _.indexOf(monthArr, obj.ddlMM);
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
             valmm = valmm >= 10 ? valmm : '0' + valmm;
@@ -146,6 +189,8 @@
             });
         };
         model.valueExists = function(type, flag, val) {
+            model.mobilemailvalidation();
+
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
                     if (response.data === 1) {
@@ -172,22 +217,6 @@
                 });
             }
         };
-        model.mobilemailvalidation = function() {
-            if (model.reg.Chkfree_reg === true) {
-                model.emailrequired = false;
-                if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
-                    model.mobilenumberrequired = true;
-                    model.mobilecountrycoderequired = true;
-                } else {
-                    model.mobilenumberrequired = false;
-                    model.mobilecountrycoderequired = false;
-                }
-            } else {
-                model.emailrequired = true;
-                model.mobilenumberrequired = true;
-                model.mobilecountrycoderequired = true;
-            }
-        };
 
         model.redirectprivacy = function(type) {
             window.open('registration/privacyPolicy', '_blank');
@@ -197,6 +226,21 @@
             model.reg.ddllandcountry = model.reg.ddlmobilecountry = val;
         };
 
+        model.emailvalidation = function(condition) {
+
+            if (condition === true) {
+                model.emailmeessages = true;
+            } else {
+                model.emailmeessages = false;
+            }
+        };
+        model.mobilecondition = function(condition) {
+            if (condition === true) {
+                model.mobilemessages = true;
+            } else {
+                model.mobilemessages = false;
+            }
+        };
         return model.init();
     }
 

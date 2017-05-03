@@ -55,19 +55,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView
-                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-                //         // you can lazy load files for an existing module
-                //         if (regapp.env === 'dev') {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-                //                 'app/' + regitem + '/css/style.css'
-                //             ]);
-                //         } else {
-                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-                //         }
-                //     }]
-                // }
+            views: innerView,
+            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+            //         // you can lazy load files for an existing module
+            //         if (regapp.env === 'dev') {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+            //                 'app/' + regitem + '/css/style.css'
+            //             ]);
+            //         } else {
+            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+            //         }
+            //     }]
+            // }
 
         });
         $locationProvider.html5Mode(true);
@@ -122,8 +122,14 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.emailrequired = true;
         model.mobilenumberrequired = true;
         model.mobilecountrycoderequired = true;
+        model.emailmeessages = false;
+        model.mobilemessages = false;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        //  model.emailpattaren = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,3}(?:\.[a-z]{2})?)$/i;
+        model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
+
         //end declaration
+
         model.monthBind = function() {
             var option = [];
             _.each(monthArr, function(item) {
@@ -209,7 +215,44 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 model.subCastearr = commondependency.subCaste(paerntval);
             }
         };
+        // model.mobilemailvalidation = function() {
+        //     if (model.reg.Chkfree_reg === true) {
+        //         if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
+        //             model.mobilenumberrequired = true;
+        //             model.mobilecountrycoderequired = true;
+        //         } else {
+        //             model.mobilenumberrequired = false;
+        //             model.mobilecountrycoderequired = false;
+        //         }
+        //     } else {
+        //         model.emailrequired = true;
+        //         model.mobilenumberrequired = true;
+        //         model.mobilecountrycoderequired = true;
+        //     }
+        // };
+        model.mobilemailvalidation = function() {
+            debugger;
+            if (model.reg.Chkfree_reg === true) {
+                if ((model.reg.txtEmail !== "" && model.reg.txtEmail !== undefined && model.reg.txtEmail !== null)) {
+                    model.mobilenumberrequired = false;
+                    model.mobilecountrycoderequired = false;
+                    model.mobilemessages = false;
+                } else if ((model.reg.txtMobileNo !== "" && model.reg.txtMobileNo !== undefined && model.reg.txtMobileNo !== null)) {
+                    model.emailrequired = false;
+                    model.emailmeessages = false;
+                } else {
+                    model.mobilenumberrequired = true;
+                    model.mobilecountrycoderequired = true;
+                    model.emailrequired = true;
+                }
+            } else {
+                model.emailrequired = true;
+                model.mobilenumberrequired = true;
+                model.mobilecountrycoderequired = true;
+            }
+        };
         model.regSubmit = function(obj) {
+            //  model.mobilemailvalidation();
             var valmm = _.indexOf(monthArr, obj.ddlMM);
             valmm = (valmm != -1 ? parseInt(valmm) + 1 : 0);
             valmm = valmm >= 10 ? valmm : '0' + valmm;
@@ -253,6 +296,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             });
         };
         model.valueExists = function(type, flag, val) {
+            model.mobilemailvalidation();
+
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
                     if (response.data === 1) {
@@ -279,22 +324,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 });
             }
         };
-        model.mobilemailvalidation = function() {
-            if (model.reg.Chkfree_reg === true) {
-                model.emailrequired = false;
-                if ((model.reg.txtEmail === "" || model.reg.txtEmail === undefined) && (model.reg.txtMobileNo === "" || model.reg.txtMobileNo === undefined)) {
-                    model.mobilenumberrequired = true;
-                    model.mobilecountrycoderequired = true;
-                } else {
-                    model.mobilenumberrequired = false;
-                    model.mobilecountrycoderequired = false;
-                }
-            } else {
-                model.emailrequired = true;
-                model.mobilenumberrequired = true;
-                model.mobilecountrycoderequired = true;
-            }
-        };
 
         model.redirectprivacy = function(type) {
             window.open('registration/privacyPolicy', '_blank');
@@ -304,6 +333,21 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             model.reg.ddllandcountry = model.reg.ddlmobilecountry = val;
         };
 
+        model.emailvalidation = function(condition) {
+
+            if (condition === true) {
+                model.emailmeessages = true;
+            } else {
+                model.emailmeessages = false;
+            }
+        };
+        model.mobilecondition = function(condition) {
+            if (condition === true) {
+                model.mobilemessages = true;
+            } else {
+                model.mobilemessages = false;
+            }
+        };
         return model.init();
     }
 
@@ -873,7 +917,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label> First Name</label>\r" +
     "\n" +
-    "                                    <input ng-focus=\"true\" autofocus maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" ng-focus=\"true\" autofocus maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtfirstname\" ng-model=\"page.model.reg.txtfirstname\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtfirstname.$error\">\r" +
     "\n" +
@@ -887,7 +931,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Last Name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtlastname\" ng-model=\"page.model.reg.txtlastname\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtlastname\" ng-model=\"page.model.reg.txtlastname\">\r" +
     "\n" +
     "                                    <div ng-messages=\"regForm.txtlastname.$error\">\r" +
     "\n" +
@@ -899,13 +943,17 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container class=\"col-lg-3\">\r" +
     "\n" +
-    "                                    <label>Email</label>\r" +
+    "                                    <label>Email<span style=\"color:red;\">*</span></label>\r" +
     "\n" +
-    "                                    <input ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"/^.+@.+\\..+$/\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
+    "                                    <!--ng-pattern=\"/^.+@.+\\..+$/\"-->\r" +
     "\n" +
-    "                                    <div ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
+    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
     "\n" +
-    "                                        <div ng-if=\"regForm.txtEmail.$invalid && (regForm.$submitted)\" ng-message-exp=\"['required', 'pattern']\">\r" +
+    "                                        name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"page.model.emailpattaren\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
+    "\n" +
+    "                                    <div ng-if=\"page.model.emailmeessages || ((regForm.txtEmail.$invalid) && (regForm.$submitted))\" ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
+    "\n" +
+    "                                        <div ng-message-exp=\"['required', 'pattern']\">\r" +
     "\n" +
     "                                            This is required and enter valid e-mail address.\r" +
     "\n" +
@@ -1119,13 +1167,15 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <md-input-container class=\"md-block col-lg-4\" style=\"width:50%;\">\r" +
     "\n" +
-    "                                        <label>Mobile number</label>\r" +
+    "                                        <label>Mobile number<span style=\"color:red;\">*</span></label>\r" +
     "\n" +
-    "                                        <input md-asterisk=\"\" maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
+    "                                        <input ng-keydown=\"page.model.mobilecondition(regForm.txtMobileNo.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" md-asterisk=\"\" maxlength=\"10\" ng-minlength=\"10\" ng-required=\"page.model.mobilenumberrequired\"\r" +
     "\n" +
-    "                                        <div ng-messages=\"regForm.txtMobileNo.$error\">\r" +
+    "                                            md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMobileNo\" ng-model=\"page.model.reg.txtMobileNo\" ng-blur=\"page.model.valueExists('number',1,page.model.reg.txtMobileNo);\">\r" +
     "\n" +
-    "                                            <div ng-if=\"regForm.txtMobileNo.$invalid && (regForm.$submitted)\" ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
+    "                                        <div ng-if=\"page.model.mobilemessages || ((regForm.txtMobileNo.$invalid) && (regForm.$submitted))\" ng-messages=\"regForm.txtMobileNo.$error\">\r" +
+    "\n" +
+    "                                            <div ng-message-exp=\"['required', 'pattern','minlength']\">\r" +
     "\n" +
     "                                                This is required and enter only numbers(10 digits).\r" +
     "\n" +
@@ -1163,7 +1213,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Area code</label>\r" +
     "\n" +
-    "                                        <input maxlength=\"8\" name=\"txtArea\" ng-model=\"page.model.reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                        <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"8\" name=\"txtArea\" ng-model=\"page.model.reg.txtArea\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                        <div ng-messages=\"regForm.txtArea.$error\">\r" +
     "\n" +
@@ -1181,7 +1231,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                        <label>Landline number</label>\r" +
     "\n" +
-    "                                        <input maxlength=\"8\" name=\"txtlandNum\" ng-model=\"page.model.reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
+    "                                        <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"8\" name=\"txtlandNum\" ng-model=\"page.model.reg.txtlandNum\" ng-pattern=\"/^[0-9]+$/\">\r" +
     "\n" +
     "                                        <div ng-messages=\"regForm.txtlandNum.$error\">\r" +
     "\n" +
@@ -1381,6 +1431,8 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "        margin-left: 0px;\r" +
     "\n" +
+    "        color: red;\r" +
+    "\n" +
     "    }\r" +
     "\n" +
     "    \r" +
@@ -1546,6 +1598,26 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        white-space: nowrap;\r" +
     "\n" +
     "        overflow: hidden;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-default-theme .md-select-value span:first-child:after,\r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select .md-select-value span:first-child:after {\r" +
+    "\n" +
+    "        color: red;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-default-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after,\r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-required:after {\r" +
+    "\n" +
+    "        color: red;\r" +
     "\n" +
     "    }\r" +
     "\n" +
@@ -2293,9 +2365,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Education merits</label>\r" +
     "\n" +
-    "                                    <textarea maxlength=\"500\" style=\"height: 87px;\r" +
+    "                                    <textarea maxlength=\"500\" style=\"height: 87px; \r" +
     "\n" +
-    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" rows=\"2\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"page.model.regsec.txtEducationMerits\"></textarea>\r" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" rows=\"2\" md-no-asterisk=\"\" name=\"txtEducationMerits\" ng-model=\"page.model.regsec.txtEducationMerits\"></textarea>\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -2383,7 +2455,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Company name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" md-no-asterisk=\"\" name=\"txtCompanyName\" ng-model=\"page.model.regsec.txtCompanyName\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" md-no-asterisk=\"\" name=\"txtCompanyName\" ng-model=\"page.model.regsec.txtCompanyName\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2431,7 +2503,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <label>Occupation details</label>\r" +
     "\n" +
-    "                                <textarea maxlength=\"500\" rows=\"2\" style=\"height: 87px;\r" +
+    "                                <textarea onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"500\" rows=\"2\" style=\"height: 87px;\r" +
     "\n" +
     "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" md-no-asterisk=\"\" name=\"txtOcccupationDetails\" ng-model=\"page.model.regsec.txtOcccupationDetails\"></textarea>\r" +
     "\n" +
@@ -2569,7 +2641,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father Name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtFatherName\" ng-model=\"page.model.regsec.txtFatherName\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtFatherName\" ng-model=\"page.model.regsec.txtFatherName\">\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtFatherName.$error\">\r" +
     "\n" +
@@ -2587,7 +2659,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father’s education</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"150\" md-no-asterisk=\"\" name=\"txtFatherEducation\" ng-model=\"page.model.regsec.txtFatherEducation\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"150\" md-no-asterisk=\"\" name=\"txtFatherEducation\" ng-model=\"page.model.regsec.txtFatherEducation\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2599,7 +2671,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father’s profession</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"200\" md-no-asterisk=\"\" name=\"txtFatherProfession\" ng-model=\"page.model.regsec.txtFatherProfession\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"200\" md-no-asterisk=\"\" name=\"txtFatherProfession\" ng-model=\"page.model.regsec.txtFatherProfession\">\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -2611,7 +2683,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother’s name</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtMotherName\" ng-model=\"page.model.regsec.txtMotherName\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtMotherName\" ng-model=\"page.model.regsec.txtMotherName\">\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtMotherName.$error\">\r" +
     "\n" +
@@ -2629,7 +2701,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother’s education</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"150\" md-no-asterisk=\"\" name=\"txtMotherEducation\" ng-model=\"page.model.regsec.txtMotherEducation\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"150\" md-no-asterisk=\"\" name=\"txtMotherEducation\" ng-model=\"page.model.regsec.txtMotherEducation\">\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -2639,7 +2711,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother’s profession</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"200\" md-no-asterisk=\"\" name=\"txtMotherprofession\" ng-model=\"page.model.regsec.txtMotherprofession\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"200\" md-no-asterisk=\"\" name=\"txtMotherprofession\" ng-model=\"page.model.regsec.txtMotherprofession\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2653,7 +2725,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father’s Native place</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" md-no-asterisk=\"\" name=\"txtfathernative\" ng-model=\"page.model.regsec.txtfathernative\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" md-no-asterisk=\"\" name=\"txtfathernative\" ng-model=\"page.model.regsec.txtfathernative\">\r" +
     "\n" +
     "\r" +
     "\n" +
@@ -2665,7 +2737,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother’s Native place</label>\r" +
     "\n" +
-    "                                    <input maxlength=\"100\" md-no-asterisk=\"\" name=\"txtmothernative\" ng-model=\"page.model.regsec.txtmothernative\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" md-no-asterisk=\"\" name=\"txtmothernative\" ng-model=\"page.model.regsec.txtmothernative\">\r" +
     "\n" +
     "                                </md-input-container>\r" +
     "\n" +
@@ -2745,7 +2817,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>About yourself</label>\r" +
     "\n" +
-    "                                    <textarea style=\"height: 87px;\r" +
+    "                                    <textarea onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" style=\"height: 87px;\r" +
     "\n" +
     "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
     "\n" +
@@ -3120,6 +3192,26 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "        color: rgba(33, 33, 33, 0.87);\r" +
     "\n" +
     "        font-size: 13px;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-default-theme .md-select-value span:first-child:after,\r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select .md-select-value span:first-child:after {\r" +
+    "\n" +
+    "        color: red;\r" +
+    "\n" +
+    "    }\r" +
+    "\n" +
+    "    \r" +
+    "\n" +
+    "    md-input-container.md-default-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after,\r" +
+    "\n" +
+    "    md-input-container:not(.md-input-focused):not(.md-input-invalid) label.md-required:after {\r" +
+    "\n" +
+    "        color: red;\r" +
     "\n" +
     "    }\r" +
     "\n" +
