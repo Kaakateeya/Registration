@@ -55,19 +55,19 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
 
         $stateProvider.state(item.name, {
             url: item.url,
-            views: innerView,
-            // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
-            //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
-            //         // you can lazy load files for an existing module
-            //         if (regapp.env === 'dev') {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
-            //                 'app/' + regitem + '/css/style.css'
-            //             ]);
-            //         } else {
-            //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
-            //         }
-            //     }]
-            // }
+            views: innerView
+                // resolve: { // Any property in resolve should return a promise and is executed before the view is loaded
+                //     loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+                //         // you can lazy load files for an existing module
+                //         if (regapp.env === 'dev') {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/controller/' + regitem + 'ctrl.js', 'app/' + regitem + '/model/' + regitem + 'Mdl.js', 'app/' + regitem + '/service/' + regitem + 'service.js', item.subname,
+                //                 'app/' + regitem + '/css/style.css'
+                //             ]);
+                //         } else {
+                //             return $ocLazyLoad.load(['app/' + regitem + '/src/script.min.js', item.subname]);
+                //         }
+                //     }]
+                // }
 
         });
         $locationProvider.html5Mode(true);
@@ -86,7 +86,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
-             model.reg.Chkfree_reg = false;
+             model.reg.Chkfree_reg = true;
              scope.$on("$destroy", scope.destroy);
              // write destroy method 
          };
@@ -94,6 +94,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
              model.casteArr = [];
              model.reg = {};
              model.reg.Chkprivacy = true;
+             model.reg.Chkfree_reg = true;
              scope.regForm.$setPristine();
              scope.regForm.$setUntouched();
          };
@@ -348,6 +349,15 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                 model.mobilemessages = false;
             }
         };
+
+        model.AvoidSpace = function(event) {
+            if (event.keyCode == 32) {
+                event.returnValue = false;
+                return false;
+            }
+        };
+
+
         return model.init();
     }
 
@@ -540,12 +550,11 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                             regManagePhotoService.submituploadData(model.uploadData).then(function(response) {
                                 if (response.status === 200) {
 
-                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-success', 'submitted Succesfully', 4500);
+                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-success', 'Photo uploaded Succesfully', 4500);
                                     model.manageArr = response.data;
                                     model.refreshPageLoad(model.manageArr);
 
                                 } else {
-
                                     dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Updation failed', 4500);
                                 }
                             });
@@ -715,6 +724,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             model.AdminID = authSvc.isAdmin() !== undefined && authSvc.isAdmin() !== null && authSvc.isAdmin() !== "" ? authSvc.isAdmin() : "";
             timeout(function() {
                 model.Country = _.isArray(model.Countrybind) && model.Countrybind.length > 0 ? model.Countrybind : getArray.GArray('Country');
+                model.countryCode = getArray.GArray('countryCode');
                 model.ProfCatgory = getArray.GArray('ProfCatgory');
                 model.ProfGroup = getArray.GArray('ProfGroup');
                 model.currency = getArray.GArray('currency');
@@ -947,7 +957,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <!--ng-pattern=\"/^.+@.+\\..+$/\"-->\r" +
     "\n" +
-    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
+    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, '');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
     "\n" +
     "                                        name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"page.model.emailpattaren\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
     "\n" +
@@ -2681,7 +2691,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
-    "                                    <label>Mother’s name</label>\r" +
+    "                                    <label>Mother name</label>\r" +
     "\n" +
     "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtMotherName\" ng-model=\"page.model.regsec.txtMotherName\">\r" +
     "\n" +
@@ -2785,6 +2795,126 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-2\">\r" +
+    "\n" +
+    "                                    <label>Country code</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlFathermobilecountry\" ng-model=\"page.model.regsec.ddlFathermobilecountry\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"md-block col-lg-2\" style=\"padding-right:3%;\">\r" +
+    "\n" +
+    "                                    <label>Father mobile number</label>\r" +
+    "\n" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\">\r" +
+    "\n" +
+    "                                    <div ng-if=\"secregForm.txtFatherMobileNo.$invalid\" ng-messages=\"secregForm.txtFatherMobileNo.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message-exp=\"[ 'pattern','minlength']\">\r" +
+    "\n" +
+    "                                            Enter only numbers(10 digits).\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-2\">\r" +
+    "\n" +
+    "                                    <label>Country code</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlMothermobilecountry\" ng-model=\"page.model.regsec.ddlMothermobilecountry\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"md-block col-lg-2\" style=\"padding-right:3%;\">\r" +
+    "\n" +
+    "                                    <label>Mother mobile number</label>\r" +
+    "\n" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\">\r" +
+    "\n" +
+    "                                    <div ng-if=\"secregForm.txtMotherMobileNo.$invalid\" ng-messages=\"secregForm.txtMotherMobileNo.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message-exp=\"['pattern','minlength']\">\r" +
+    "\n" +
+    "                                            Enter only numbers(10 digits).\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
     "\r" +
@@ -2819,13 +2949,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <textarea onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" style=\"height: 87px;\r" +
     "\n" +
-    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
     "                                        <div ng-if=\"secregForm.txtabouturself.$invalid && (secregForm.$submitted)\" ng-message-exp=\"['required', 'minlength']\">\r" +
     "\n" +
-    "                                            This is required and enter Minimum 50 characters\r" +
+    "                                            Enter Minimum 50 characters\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
@@ -4009,6 +4139,37 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
             });
 
 
+        }
+    }
+
+})();
+(function() {
+    'use strict';
+
+    angular
+        .module('KaakateeyaEmpReg')
+        .directive('restrictField', directive);
+
+    directive.$inject = ['$window'];
+
+    function directive($window) {
+
+        var directive = {
+            link: link,
+            restrict: 'EA',
+            scope: {
+                restrictField: '='
+            }
+        };
+        return directive;
+
+        function link(scope, element, attrs) {
+            var regex = /\s/g;
+            scope.$watch('restrictField', function(newValue, oldValue) {
+                if (newValue != oldValue && regex.test(newValue)) {
+                    scope.restrictField = newValue.replace(regex, '');
+                }
+            });
         }
     }
 

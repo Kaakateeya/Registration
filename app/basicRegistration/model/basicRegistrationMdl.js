@@ -241,6 +241,15 @@
                 model.mobilemessages = false;
             }
         };
+
+        model.AvoidSpace = function(event) {
+            if (event.keyCode == 32) {
+                event.returnValue = false;
+                return false;
+            }
+        };
+
+
         return model.init();
     }
 

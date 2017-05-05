@@ -10,7 +10,7 @@
              model = {};
              vm.model = model = basicRegistrationModel;
              vm.model.scope = scope;
-             model.reg.Chkfree_reg = false;
+             model.reg.Chkfree_reg = true;
              scope.$on("$destroy", scope.destroy);
              // write destroy method 
          };
@@ -18,6 +18,7 @@
              model.casteArr = [];
              model.reg = {};
              model.reg.Chkprivacy = true;
+             model.reg.Chkfree_reg = true;
              scope.regForm.$setPristine();
              scope.regForm.$setUntouched();
          };

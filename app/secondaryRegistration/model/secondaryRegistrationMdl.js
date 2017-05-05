@@ -34,6 +34,7 @@
             model.AdminID = authSvc.isAdmin() !== undefined && authSvc.isAdmin() !== null && authSvc.isAdmin() !== "" ? authSvc.isAdmin() : "";
             timeout(function() {
                 model.Country = _.isArray(model.Countrybind) && model.Countrybind.length > 0 ? model.Countrybind : getArray.GArray('Country');
+                model.countryCode = getArray.GArray('countryCode');
                 model.ProfCatgory = getArray.GArray('ProfCatgory');
                 model.ProfGroup = getArray.GArray('ProfGroup');
                 model.currency = getArray.GArray('currency');

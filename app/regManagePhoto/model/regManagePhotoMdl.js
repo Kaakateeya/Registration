@@ -137,12 +137,11 @@
                             regManagePhotoService.submituploadData(model.uploadData).then(function(response) {
                                 if (response.status === 200) {
 
-                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-success', 'submitted Succesfully', 4500);
+                                    dynamicalert.timeoutoldalerts(model.scope, 'alert-success', 'Photo uploaded Succesfully', 4500);
                                     model.manageArr = response.data;
                                     model.refreshPageLoad(model.manageArr);
 
                                 } else {
-
                                     dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Updation failed', 4500);
                                 }
                             });

@@ -102,7 +102,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <!--ng-pattern=\"/^.+@.+\\..+$/\"-->\r" +
     "\n" +
-    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
+    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, '');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
     "\n" +
     "                                        name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"page.model.emailpattaren\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
     "\n" +
@@ -1836,7 +1836,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container class=\"md-block col-lg-4\">\r" +
     "\n" +
-    "                                    <label>Mother’s name</label>\r" +
+    "                                    <label>Mother name</label>\r" +
     "\n" +
     "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"100\" required=\"\" md-asterisk=\"\" name=\"txtMotherName\" ng-model=\"page.model.regsec.txtMotherName\">\r" +
     "\n" +
@@ -1940,6 +1940,126 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                            </div>\r" +
     "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                            <div class=\"col-lg-12\">\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-2\">\r" +
+    "\n" +
+    "                                    <label>Country code</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlFathermobilecountry\" ng-model=\"page.model.regsec.ddlFathermobilecountry\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"md-block col-lg-2\" style=\"padding-right:3%;\">\r" +
+    "\n" +
+    "                                    <label>Father mobile number</label>\r" +
+    "\n" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\">\r" +
+    "\n" +
+    "                                    <div ng-if=\"secregForm.txtFatherMobileNo.$invalid\" ng-messages=\"secregForm.txtFatherMobileNo.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message-exp=\"[ 'pattern','minlength']\">\r" +
+    "\n" +
+    "                                            Enter only numbers(10 digits).\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"col-lg-2\">\r" +
+    "\n" +
+    "                                    <label>Country code</label>\r" +
+    "\n" +
+    "                                    <md-select md-asterisk=\"\" name=\"ddlMothermobilecountry\" ng-model=\"page.model.regsec.ddlMothermobilecountry\">\r" +
+    "\n" +
+    "                                        <md-option ng-value=\"h.value\" ng-repeat=\"h in page.model.countryCode\">{{h.label}} </md-option>\r" +
+    "\n" +
+    "                                    </md-select>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "                                <md-input-container class=\"md-block col-lg-2\" style=\"padding-right:3%;\">\r" +
+    "\n" +
+    "                                    <label>Mother mobile number</label>\r" +
+    "\n" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\">\r" +
+    "\n" +
+    "                                    <div ng-if=\"secregForm.txtMotherMobileNo.$invalid\" ng-messages=\"secregForm.txtMotherMobileNo.$error\">\r" +
+    "\n" +
+    "                                        <div ng-message-exp=\"['pattern','minlength']\">\r" +
+    "\n" +
+    "                                            Enter only numbers(10 digits).\r" +
+    "\n" +
+    "                                        </div>\r" +
+    "\n" +
+    "                                    </div>\r" +
+    "\n" +
+    "                                </md-input-container>\r" +
+    "\n" +
+    "                            </div>\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
+    "\r" +
+    "\n" +
     "                            <div class=\"clearfix\"></div>\r" +
     "\n" +
     "\r" +
@@ -1974,13 +2094,13 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <textarea onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" style=\"height: 87px;\r" +
     "\n" +
-    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" required=\"\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
+    "                                  border: 0.5px solid rgba(31, 25, 25, 0.38);\" maxlength=\"1000\" rows=\"3\" ng-minlength=\"50\" md-asterisk=\"\" name=\"txtabouturself\" ng-model=\"page.model.regsec.txtabouturself\"></textarea>\r" +
     "\n" +
     "                                    <div ng-messages=\"secregForm.txtabouturself.$error\">\r" +
     "\n" +
     "                                        <div ng-if=\"secregForm.txtabouturself.$invalid && (secregForm.$submitted)\" ng-message-exp=\"['required', 'minlength']\">\r" +
     "\n" +
-    "                                            This is required and enter Minimum 50 characters\r" +
+    "                                            Enter Minimum 50 characters\r" +
     "\n" +
     "                                        </div>\r" +
     "\n" +
