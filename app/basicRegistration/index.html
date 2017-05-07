@@ -48,8 +48,8 @@
                                 <md-input-container class="col-lg-3">
                                     <label>Email<span style="color:red;">*</span></label>
                                     <!--ng-pattern="/^.+@.+\..+$/"-->
-                                    <input ng-keydown="page.model.emailvalidation(regForm.txtEmail.$invalid)" ng-change="page.model.mobilemailvalidation()" onkeyup="this.value=this.value.replace(/^ +/g, '').replace(/  +/g, '');" ng-required="page.model.emailrequired" maxlength="50" md-no-asterisk=""
-                                        name="txtEmail" ng-model="page.model.reg.txtEmail" ng-pattern="page.model.emailpattaren" ng-blur="page.model.valueExists('email',0,page.model.reg.txtEmail);">
+                                    <input ng-keydown="page.model.emailvalidation(regForm.txtEmail.$invalid)" ng-change="page.model.mobilemailvalidation()" ng-required="page.model.emailrequired" maxlength="50" md-no-asterisk="" name="txtEmail" ng-model="page.model.reg.txtEmail" ng-pattern="page.model.emailpattaren"
+                                        ng-blur="page.model.valueExists('email',0,page.model.reg.txtEmail);" onkeypress="return (event.keyCode != 32 && event.which!=32)">
                                     <div ng-if="page.model.emailmeessages || ((regForm.txtEmail.$invalid) && (regForm.$submitted))" ng-messages="regForm.txtEmail.$error" role="alert">
                                         <div ng-message-exp="['required', 'pattern']">
                                             This is required and enter valid e-mail address.

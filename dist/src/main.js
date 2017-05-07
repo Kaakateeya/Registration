@@ -127,8 +127,8 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         model.mobilemessages = false;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         //  model.emailpattaren = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,3}(?:\.[a-z]{2})?)$/i;
+        // model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
         model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
-
         //end declaration
 
         model.monthBind = function() {
@@ -335,7 +335,6 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         };
 
         model.emailvalidation = function(condition) {
-
             if (condition === true) {
                 model.emailmeessages = true;
             } else {
@@ -808,7 +807,11 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
                     fathereducationdetails: obj.txtFatherEducation,
                     fatherProfessiondetails: obj.txtFatherProfession,
                     mothereducationdetails: obj.txtMotherEducation,
-                    motherProfessiondetails: obj.txtMotherprofession
+                    motherProfessiondetails: obj.txtMotherprofession,
+                    FatherMobileCountryCode: obj.ddlFathermobilecountry !== '' && obj.ddlFathermobilecountry !== undefined ? obj.ddlFathermobilecountry : null,
+                    FatherMobileNumber: obj.txtFatherMobileNo !== '' && obj.txtFatherMobileNo !== undefined ? obj.txtFatherMobileNo : null,
+                    MotherMobileCountryCode: obj.ddlMothermobilecountry !== '' && obj.ddlMothermobilecountry !== undefined ? obj.ddlMothermobilecountry : null,
+                    MotherMobileNumber: obj.txtMotherMobileNo !== "" && obj.txtMotherMobileNo !== undefined ? obj.txtMotherMobileNo : null,
                 },
                 customerpersonaldetails: {
                     intCusID: custID,
@@ -957,9 +960,9 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <!--ng-pattern=\"/^.+@.+\\..+$/\"-->\r" +
     "\n" +
-    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, '');\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\"\r" +
+    "                                    <input ng-keydown=\"page.model.emailvalidation(regForm.txtEmail.$invalid)\" ng-change=\"page.model.mobilemailvalidation()\" ng-required=\"page.model.emailrequired\" maxlength=\"50\" md-no-asterisk=\"\" name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"page.model.emailpattaren\"\r" +
     "\n" +
-    "                                        name=\"txtEmail\" ng-model=\"page.model.reg.txtEmail\" ng-pattern=\"page.model.emailpattaren\" ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\">\r" +
+    "                                        ng-blur=\"page.model.valueExists('email',0,page.model.reg.txtEmail);\" onkeypress=\"return (event.keyCode != 32 && event.which!=32)\">\r" +
     "\n" +
     "                                    <div ng-if=\"page.model.emailmeessages || ((regForm.txtEmail.$invalid) && (regForm.$submitted))\" ng-messages=\"regForm.txtEmail.$error\" role=\"alert\">\r" +
     "\n" +
@@ -1688,7 +1691,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                <div class=\"col-lg-2\">\r" +
     "\n" +
-    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"Education/{{page.model.CustIDper}}\">Edit this page</md-button>\r" +
+    "                    <md-button class=\"md-raised md-warn md-hue-2\" href=\"Education/{{page.model.CustIDper}}\">Edit This Profile</md-button>\r" +
     "\n" +
     "                </div>\r" +
     "\n" +

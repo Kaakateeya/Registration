@@ -118,7 +118,11 @@
                     fathereducationdetails: obj.txtFatherEducation,
                     fatherProfessiondetails: obj.txtFatherProfession,
                     mothereducationdetails: obj.txtMotherEducation,
-                    motherProfessiondetails: obj.txtMotherprofession
+                    motherProfessiondetails: obj.txtMotherprofession,
+                    FatherMobileCountryCode: obj.ddlFathermobilecountry !== '' && obj.ddlFathermobilecountry !== undefined ? obj.ddlFathermobilecountry : null,
+                    FatherMobileNumber: obj.txtFatherMobileNo !== '' && obj.txtFatherMobileNo !== undefined ? obj.txtFatherMobileNo : null,
+                    MotherMobileCountryCode: obj.ddlMothermobilecountry !== '' && obj.ddlMothermobilecountry !== undefined ? obj.ddlMothermobilecountry : null,
+                    MotherMobileNumber: obj.txtMotherMobileNo !== "" && obj.txtMotherMobileNo !== undefined ? obj.txtMotherMobileNo : null,
                 },
                 customerpersonaldetails: {
                     intCusID: custID,

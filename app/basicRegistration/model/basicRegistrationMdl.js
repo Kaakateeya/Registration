@@ -19,8 +19,8 @@
         model.mobilemessages = false;
         var monthArr = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
         //  model.emailpattaren = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,3}(?:\.[a-z]{2})?)$/i;
+        // model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
         model.emailpattaren = /^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$/i;
-
         //end declaration
 
         model.monthBind = function() {
@@ -227,7 +227,6 @@
         };
 
         model.emailvalidation = function(condition) {
-
             if (condition === true) {
                 model.emailmeessages = true;
             } else {
