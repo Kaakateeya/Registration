@@ -2242,7 +2242,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                <md-input-container flex=\"50\" class=\"col-lg-4\">\r" +
     "\n" +
-    "                                    <label>Physically Challenged</label>\r" +
+    "                                    <label>Physical Status</label>\r" +
     "\n" +
     "                                    <md-select name=\"rbtnphysicalstatus\" ng-model=\"page.model.regsec.rbtnphysicalstatus\" required=\"\">\r" +
     "\n" +
