@@ -341,7 +341,7 @@
 
                                 <md-input-container class="md-block col-lg-2" style="padding-right:3%;">
                                     <label>Father mobile number</label>
-                                    <input onkeyup="this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');" maxlength="10" ng-minlength="10" md-no-asterisk="" ng-pattern="/^[0-9]+$/" name="txtFatherMobileNo" ng-model="page.model.regsec.txtFatherMobileNo">
+                                    <input onkeyup="this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');" maxlength="10" ng-minlength="10" md-no-asterisk="" ng-pattern="/^[0-9]+$/" name="txtFatherMobileNo" ng-model="page.model.regsec.txtFatherMobileNo" ng-blur="page.model.mobilevalueExists('father',1,page.model.regsec.txtFatherMobileNo);">
                                     <div ng-if="secregForm.txtFatherMobileNo.$invalid" ng-messages="secregForm.txtFatherMobileNo.$error">
                                         <div ng-message-exp="[ 'pattern','minlength']">
                                             Enter only numbers(10 digits).
@@ -360,7 +360,7 @@
 
                                 <md-input-container class="md-block col-lg-2" style="padding-right:3%;">
                                     <label>Mother mobile number</label>
-                                    <input onkeyup="this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');" maxlength="10" ng-minlength="10" md-no-asterisk="" ng-pattern="/^[0-9]+$/" name="txtMotherMobileNo" ng-model="page.model.regsec.txtMotherMobileNo">
+                                    <input onkeyup="this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');" maxlength="10" ng-minlength="10" md-no-asterisk="" ng-pattern="/^[0-9]+$/" name="txtMotherMobileNo" ng-model="page.model.regsec.txtMotherMobileNo" ng-blur="page.model.mobilevalueExists('mother',1,page.model.regsec.txtMotherMobileNo);">
                                     <div ng-if="secregForm.txtMotherMobileNo.$invalid" ng-messages="secregForm.txtMotherMobileNo.$error">
                                         <div ng-message-exp="['pattern','minlength']">
                                             Enter only numbers(10 digits).

@@ -691,7 +691,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
     'use strict';
 
 
-    function factory(secondaryRegistrationService, getArray, commondependency, filter, timeout, stateParams, authSvc, $state) {
+    function factory(secondaryRegistrationService, getArray, commondependency, filter, timeout, stateParams, authSvc, $state, dynamicalert) {
         var model = {};
         model.scope = {};
 
@@ -829,6 +829,23 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
             //$state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
 
         };
+
+
+        model.mobilevalueExists = function(type, flag, val) {
+            if (val !== undefined) {
+                secondaryRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
+                    if (response.data === 1) {
+                        if (type === 'father') {
+                            model.regsec.txtFatherMobileNo = '';
+                        } else {
+                            model.regsec.txtMotherMobileNo = '';
+                        }
+                        dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Mobile number Already Exists', 9500);
+                    }
+                });
+            }
+        };
+
         return model.init();
     }
 
@@ -836,7 +853,7 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         .module('KaakateeyaEmpReg')
         .factory('secondaryRegistrationModel', factory);
 
-    factory.$inject = ['secondaryRegistrationService', 'getArray', 'Commondependency', '$filter', '$timeout', '$stateParams', 'authSvc', '$state'];
+    factory.$inject = ['secondaryRegistrationService', 'getArray', 'Commondependency', '$filter', '$timeout', '$stateParams', 'authSvc', '$state', 'alert'];
 
 })(angular);
 (function(angular) {
@@ -846,6 +863,9 @@ regapp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$oc
         return {
             submitSecodaryRegistration: function(obj) {
                 return http.post(regapp.apipath + 'Registration/CustomerRegProfileDetails', JSON.stringify(obj));
+            },
+            emailExists: function(obj) {
+                return http.get(regapp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
             }
         };
     }
@@ -2834,7 +2854,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father mobile number</label>\r" +
     "\n" +
-    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\" ng-blur=\"page.model.mobilevalueExists('father',1,page.model.regsec.txtFatherMobileNo);\">\r" +
     "\n" +
     "                                    <div ng-if=\"secregForm.txtFatherMobileNo.$invalid\" ng-messages=\"secregForm.txtFatherMobileNo.$error\">\r" +
     "\n" +
@@ -2872,7 +2892,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother mobile number</label>\r" +
     "\n" +
-    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\" ng-blur=\"page.model.mobilevalueExists('mother',1,page.model.regsec.txtMotherMobileNo);\">\r" +
     "\n" +
     "                                    <div ng-if=\"secregForm.txtMotherMobileNo.$invalid\" ng-messages=\"secregForm.txtMotherMobileNo.$error\">\r" +
     "\n" +

@@ -5,6 +5,9 @@
         return {
             submitSecodaryRegistration: function(obj) {
                 return http.post(regapp.apipath + 'Registration/CustomerRegProfileDetails', JSON.stringify(obj));
+            },
+            emailExists: function(obj) {
+                return http.get(regapp.apipath + 'StaticPages/getEmailMobilenumberexists', { params: obj });
             }
         };
     }

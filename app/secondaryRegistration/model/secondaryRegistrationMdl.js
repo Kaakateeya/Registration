@@ -2,7 +2,7 @@
     'use strict';
 
 
-    function factory(secondaryRegistrationService, getArray, commondependency, filter, timeout, stateParams, authSvc, $state) {
+    function factory(secondaryRegistrationService, getArray, commondependency, filter, timeout, stateParams, authSvc, $state, dynamicalert) {
         var model = {};
         model.scope = {};
 
@@ -140,6 +140,23 @@
             //$state.go('reg.regManagePhoto', { CustID: stateParams.CustID, genderID: stateParams.genderID });
 
         };
+
+
+        model.mobilevalueExists = function(type, flag, val) {
+            if (val !== undefined) {
+                secondaryRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
+                    if (response.data === 1) {
+                        if (type === 'father') {
+                            model.regsec.txtFatherMobileNo = '';
+                        } else {
+                            model.regsec.txtMotherMobileNo = '';
+                        }
+                        dynamicalert.timeoutoldalerts(model.scope, 'alert-danger', 'Mobile number Already Exists', 9500);
+                    }
+                });
+            }
+        };
+
         return model.init();
     }
 
@@ -147,6 +164,6 @@
         .module('KaakateeyaEmpReg')
         .factory('secondaryRegistrationModel', factory);
 
-    factory.$inject = ['secondaryRegistrationService', 'getArray', 'Commondependency', '$filter', '$timeout', '$stateParams', 'authSvc', '$state'];
+    factory.$inject = ['secondaryRegistrationService', 'getArray', 'Commondependency', '$filter', '$timeout', '$stateParams', 'authSvc', '$state', 'alert'];
 
 })(angular);

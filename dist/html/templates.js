@@ -1976,7 +1976,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Father mobile number</label>\r" +
     "\n" +
-    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtFatherMobileNo\" ng-model=\"page.model.regsec.txtFatherMobileNo\" ng-blur=\"page.model.mobilevalueExists('father',1,page.model.regsec.txtFatherMobileNo);\">\r" +
     "\n" +
     "                                    <div ng-if=\"secregForm.txtFatherMobileNo.$invalid\" ng-messages=\"secregForm.txtFatherMobileNo.$error\">\r" +
     "\n" +
@@ -2014,7 +2014,7 @@ angular.module('KaakateeyaEmpReg').run(['$templateCache', function($templateCach
     "\n" +
     "                                    <label>Mother mobile number</label>\r" +
     "\n" +
-    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\">\r" +
+    "                                    <input onkeyup=\"this.value=this.value.replace(/^ +/g, '').replace(/  +/g, ' ');\" maxlength=\"10\" ng-minlength=\"10\" md-no-asterisk=\"\" ng-pattern=\"/^[0-9]+$/\" name=\"txtMotherMobileNo\" ng-model=\"page.model.regsec.txtMotherMobileNo\" ng-blur=\"page.model.mobilevalueExists('mother',1,page.model.regsec.txtMotherMobileNo);\">\r" +
     "\n" +
     "                                    <div ng-if=\"secregForm.txtMotherMobileNo.$invalid\" ng-messages=\"secregForm.txtMotherMobileNo.$error\">\r" +
     "\n" +
