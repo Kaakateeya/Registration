@@ -10,13 +10,13 @@
 var regapp = angular.module('KaakateeyaEmpReg', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'angular-loading-bar', 'ngAnimate', 'ngIdle', 'ngMaterial',
     'ngMessages', 'ngAria', 'ngPassword', 'angularPromiseButtons', 'oc.lazyLoad', 'ngMdIcons', 'jcs-autoValidate'
 ]);
-regapp.apipath = 'http://183.82.0.58:8025/Api/';
+regapp.apipath = 'http://52.66.131.254:8025/Api/';
 // regapp.apipath = 'http://183.82.0.58:8010/Api/';
 regapp.env = 'dev';
 
 regapp.GlobalImgPath = 'http://d16o2fcjgzj2wp.cloudfront.net/';
 //regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
-regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/angularkaknew/';
+regapp.GlobalImgPathforimage = 'https://s3.ap-south-1.amazonaws.com/kaakateeyaprod/';
 
 regapp.prefixPath = 'Images/ProfilePics/';
 regapp.S3PhotoPath = '';
