@@ -54,10 +54,11 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             scope.Mothertongue = getArray.GArray('Mothertongue');
             scope.Caste = getArray.GArray('Caste');
             scope.countryCode = getArray.GArray('countryCode');
+            scope.Country = getArray.GArray('Country');
         }, 1000);
         timeout(function() {
 
-            scope.Country = getArray.GArray('Country');
+
             // var Country = [],
             //     CountryCode = [];
             // SelectBindServicereg.CountryWithCode().then(function(response) {
