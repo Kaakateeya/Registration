@@ -53,26 +53,26 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             scope.religion = getArray.GArray('Religion');
             scope.Mothertongue = getArray.GArray('Mothertongue');
             scope.Caste = getArray.GArray('Caste');
-            // scope.countryCode = getArray.GArray('countryCode');
+            scope.countryCode = getArray.GArray('countryCode');
         }, 1000);
         timeout(function() {
 
-            // scope.Country = getArray.GArray('Country');
-            var Country = [],
-                CountryCode = [];
-            SelectBindServicereg.CountryWithCode().then(function(response) {
+            scope.Country = getArray.GArray('Country');
+            // var Country = [],
+            //     CountryCode = [];
+            // SelectBindServicereg.CountryWithCode().then(function(response) {
 
-                _.each(response.data, function(item) {
-                    Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                    CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
-                });
+            //     _.each(response.data, function(item) {
+            //         Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+            //         CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
+            //     });
 
-                console.log('test..');
-                console.log(Country);
+            //     console.log('test..');
+            //     console.log(Country);
 
-                scope.Country = Country;
-                scope.countryCode = CountryCode;
-            });
+            //     scope.Country = Country;
+            //     scope.countryCode = CountryCode;
+            // });
 
         }, 100);
 

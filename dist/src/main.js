@@ -390,26 +390,26 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             scope.religion = getArray.GArray('Religion');
             scope.Mothertongue = getArray.GArray('Mothertongue');
             scope.Caste = getArray.GArray('Caste');
-            // scope.countryCode = getArray.GArray('countryCode');
+            scope.countryCode = getArray.GArray('countryCode');
         }, 1000);
         timeout(function() {
 
-            // scope.Country = getArray.GArray('Country');
-            var Country = [],
-                CountryCode = [];
-            SelectBindServicereg.CountryWithCode().then(function(response) {
+            scope.Country = getArray.GArray('Country');
+            // var Country = [],
+            //     CountryCode = [];
+            // SelectBindServicereg.CountryWithCode().then(function(response) {
 
-                _.each(response.data, function(item) {
-                    Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                    CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
-                });
+            //     _.each(response.data, function(item) {
+            //         Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+            //         CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
+            //     });
 
-                console.log('test..');
-                console.log(Country);
+            //     console.log('test..');
+            //     console.log(Country);
 
-                scope.Country = Country;
-                scope.countryCode = CountryCode;
-            });
+            //     scope.Country = Country;
+            //     scope.countryCode = CountryCode;
+            // });
 
         }, 100);
 
@@ -1338,192 +1338,242 @@ regApp.service('fileUpload', ['$http', function($http) {
         });
     };
 }]);
-regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', function(cons, service) {
-    return {
-        GArray: function(type) {
-            var option = [];
-            switch (type) {
+regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countryArrayModel',
+    'eduprofArrayModel', 'otherArrayModel',
+    function(cons, service, countryArrayModel, eduprofArrayModel, otherArrayModel) {
+        return {
+            GArray: function(type) {
+                var option = [];
+                switch (type) {
 
-                case 'MaritalStatus':
-                    option = cons.MaritalStatus;
-                    break;
+                    case 'MaritalStatus':
+                        option = cons.MaritalStatus;
+                        break;
 
-                case 'height':
-                    option = cons.height;
-                    break;
+                    case 'height':
+                        option = cons.height;
+                        break;
 
-                case 'Religion':
-                    option = cons.Religion;
-                    break;
+                    case 'Religion':
+                        option = cons.Religion;
+                        break;
 
-                case 'Mothertongue':
-                    option = cons.Mothertongue;
-                    break;
+                    case 'Mothertongue':
+                        option = cons.Mothertongue;
+                        break;
 
-                case 'educationcategory':
-                    option = cons.educationcategory;
-                    break;
+                    case 'educationcategory':
+                        option = cons.educationcategory;
+                        break;
 
-                case 'visastatus':
-                    option = cons.visastatus;
-                    break;
+                    case 'visastatus':
+                        option = cons.visastatus;
+                        break;
 
-                case 'stars':
-                    option = cons.stars;
-                    break;
+                    case 'stars':
+                        option = cons.stars;
+                        break;
 
-                case 'region':
-                    option = cons.region;
-                    break;
+                    case 'region':
+                        option = cons.region;
+                        break;
 
-                case 'bodyType':
-                    option = cons.bodyType;
-                    break;
+                    case 'bodyType':
+                        option = cons.bodyType;
+                        break;
 
-                case 'bloodGroup':
-                    option = cons.bloodGroup;
-                    break;
+                    case 'bloodGroup':
+                        option = cons.bloodGroup;
+                        break;
 
-                case 'healthCondition':
-                    option = cons.healthCondition;
-                    break;
+                    case 'healthCondition':
+                        option = cons.healthCondition;
+                        break;
 
-                case 'starLanguage':
-                    option = cons.starLanguage;
-                    break;
+                    case 'starLanguage':
+                        option = cons.starLanguage;
+                        break;
 
-                case 'lagnam':
-                    option = cons.lagnam;
-                    break;
+                    case 'lagnam':
+                        option = cons.lagnam;
+                        break;
 
-                case 'ZodaicSign':
-                    option = cons.ZodaicSign;
-                    break;
+                    case 'ZodaicSign':
+                        option = cons.ZodaicSign;
+                        break;
 
-                case 'paadam':
-                    option = cons.paadam;
-                    break;
+                    case 'paadam':
+                        option = cons.paadam;
+                        break;
 
-                case 'familyStatus':
-                    option = cons.familyStatus;
-                    break;
+                    case 'familyStatus':
+                        option = cons.familyStatus;
+                        break;
 
-                case 'RelationshipType':
-                    option = cons.RelationshipType;
-                    break;
+                    case 'RelationshipType':
+                        option = cons.RelationshipType;
+                        break;
 
-                case 'childStayingWith':
-                    option = cons.childStayingWith;
-                    break;
+                    case 'childStayingWith':
+                        option = cons.childStayingWith;
+                        break;
 
-                case 'Complexion':
-                    option = cons.Complexion;
-                    break;
+                    case 'Complexion':
+                        option = cons.Complexion;
+                        break;
 
-                case 'PhysicalStatus':
-                    option = cons.PhysicalStatus;
-                    break;
-
-
-                case 'Country':
-                    service.countrySelect().then(function(response) {
-
-                        // option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-
-                case 'ProfCatgory':
-
-                    service.ProfessionCatgory().then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-
-                case 'ProfGroup':
-                    service.ProfessionGroup().then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-
-                case 'indiaStates':
-                    service.stateSelect('1').then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-                case 'countryCode':
-                    service.countryCodeselect().then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-                case 'caste':
-                    service.casteselect().then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-                case 'currency':
-                    service.currency().then(function(response) {
-
-                        //option.push({ "label": "--select--", "title": "--select--", "value": "" });
-                        _.each(response.data, function(item) {
-                            option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                        });
-                        option = option;
-                    });
-                    break;
-
-                    // case 'CountrYWithCode':
-                    //     var Country = [],
-                    //         CountryCode = [];
-                    //     service.CountryWithCode().then(function(response) {
-
-                    //         _.each(response.data, function(item) {
-                    //             Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
-                    //             CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
-                    //         });
-                    //         option = [Country, CountryCode];
-                    //         console.log('test..');
-                    //         console.log(option);
-                    //     });
+                    case 'PhysicalStatus':
+                        option = cons.PhysicalStatus;
+                        break;
 
 
-                    //     break;
+                    case 'Country':
+                        // service.countrySelect().then(function(response) {
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+                        option = countryArrayModel.Country;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+                        break;
+
+                    case 'ProfCatgory':
+
+                        // service.ProfessionCatgory().then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+                        option = eduprofArrayModel.ProfCatgory;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+                        break;
+
+                    case 'ProfGroup':
+                        // service.ProfessionGroup().then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
 
 
+                        option = eduprofArrayModel.ProfGroup;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+
+
+                        break;
+
+                    case 'indiaStates':
+                        // service.stateSelect('1').then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+                        option = countryArrayModel.IndiaStates;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+                        break;
+                    case 'countryCode':
+                        // service.countryCodeselect().then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+
+                        option = countryArrayModel.countryCode;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+                        break;
+                    case 'caste':
+                        // service.casteselect().then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+
+                        option = otherArrayModel.caste;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+                        break;
+                    case 'currency':
+                        // service.currency().then(function(response) {
+
+                        //     //option.push({ "label": "--select--", "title": "--select--", "value": "" });
+                        //     _.each(response.data, function(item) {
+                        //         option.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //     });
+                        //     option = option;
+                        // });
+
+                        option = countryArrayModel.currency;
+                        if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
+                            option.splice(0, 1);
+                        }
+
+
+
+                        break;
+
+                        // case 'CountrYWithCode':
+                        //     var Country = [],
+                        //         CountryCode = [];
+                        //     service.CountryWithCode().then(function(response) {
+
+                        //         _.each(response.data, function(item) {
+                        //             Country.push({ "label": item.Name, "title": item.Name, "value": item.ID });
+                        //             CountryCode.push({ "label": item.CountryCode, "title": item.CountryCode, "value": item.ID });
+                        //         });
+                        //         option = [Country, CountryCode];
+                        //         console.log('test..');
+                        //         console.log(option);
+                        //     });
+
+
+                        //     break;
+
+
+                }
+                return option;
             }
-            return option;
-        }
-    };
+        };
 
-}]);
+    }
+]);
 regApp.factory('editmanagePhotoServices', ['$http', function(http) {
     return {
         getPhotoData: function(obj) {
