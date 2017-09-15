@@ -1436,7 +1436,10 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-                        option = countryArrayModel.Country;
+                        // option = (countryArrayModel.Country);
+                        angular.copy(countryArrayModel.Country, option);
+
+
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
@@ -1454,7 +1457,9 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-                        option = eduprofArrayModel.ProfCatgory;
+                        angular.copy(eduprofArrayModel.ProfCatgory, option);
+
+                        // option = eduprofArrayModel.ProfCatgory;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
@@ -1471,13 +1476,11 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-
-                        option = eduprofArrayModel.ProfGroup;
+                        angular.copy(eduprofArrayModel.ProfGroup, option);
+                        // option = eduprofArrayModel.ProfGroup;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
-
-
 
                         break;
 
@@ -1490,8 +1493,9 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     });
                         //     option = option;
                         // });
+                        angular.copy(countryArrayModel.IndiaStates, option);
 
-                        option = countryArrayModel.IndiaStates;
+                        // option = countryArrayModel.IndiaStates;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
@@ -1507,8 +1511,8 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-
-                        option = countryArrayModel.countryCode;
+                        angular.copy(countryArrayModel.countryCode, option);
+                        // option = countryArrayModel.countryCode;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
@@ -1523,9 +1527,9 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     });
                         //     option = option;
                         // });
+                        angular.copy(otherArrayModel.caste, option);
 
-
-                        option = otherArrayModel.caste;
+                        // option = otherArrayModel.caste;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
@@ -1540,8 +1544,9 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     });
                         //     option = option;
                         // });
+                        angular.copy(countryArrayModel.currency, option);
 
-                        option = countryArrayModel.currency;
+                        // option = countryArrayModel.currency;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
                         }
