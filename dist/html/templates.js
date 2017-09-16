@@ -6466,6 +6466,8 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "</div>\r" +
     "\n" +
+    "<span us-spinner=\"{radius:30, width:8, length: 16}\" spinner-start-active=\"true\"></span>\r" +
+    "\n" +
     "\r" +
     "\n" +
     "\r" +
