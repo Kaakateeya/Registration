@@ -1457,7 +1457,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-                        angular.copy(countryArrayModel.ProfCatgory, option);
+                        angular.copy(eduprofArrayModel.ProfCatgory, option);
 
                         // option = eduprofArrayModel.ProfCatgory;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
@@ -1476,7 +1476,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     option = option;
                         // });
 
-                        angular.copy(countryArrayModel.ProfGroup, option);
+                        angular.copy(eduprofArrayModel.ProfGroup, option);
                         // option = eduprofArrayModel.ProfGroup;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
                             option.splice(0, 1);
@@ -1527,7 +1527,7 @@ regApp.factory('getArray', ['arrayConstantsreg', 'SelectBindServicereg', 'countr
                         //     });
                         //     option = option;
                         // });
-                        angular.copy(countryArrayModel.caste, option);
+                        angular.copy(otherArrayModel.caste, option);
 
                         // option = otherArrayModel.caste;
                         if (option[0] !== undefined && angular.lowercase(option[0].title) === '--select--') {
