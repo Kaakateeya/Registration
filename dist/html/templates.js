@@ -691,7 +691,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "\r" +
     "\n" +
-    "        <md-button class=\"md-primary\" ng-href=\"{{googleUrl}}\" target=\"_blank\">Invalid verification code.</md-button>\r" +
+    "        <!-- <md-button class=\"md-primary\" ng-href=\"{{googleUrl}}\" target=\"_blank\">Invalid verification code.</md-button> -->\r" +
     "\n" +
     "\r" +
     "\n" +
