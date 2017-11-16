@@ -6,7 +6,7 @@
 var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngMaterial', 'ngMessages', 'ngAria', 'ngMdIcons', 'ngPassword', 'jcs-autoValidate']);
 // regApp.apipath = 'http://54.169.133.223:8070/Api/';
 // regApp.apipath = 'http://183.82.0.58:8010/Api/';
-regApp.apipath = 'http://183.82.0.58:8010/Api/';
+regApp.apipath = 'http://183.82.0.58:8070/Api/';
 
 // regApp.apipath = 'http://52.66.131.254:8010/Api/';
 
@@ -2804,7 +2804,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
+    "                        <!-- <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
     "\n" +
     "                            <div class=\"edit_page_photo_manage_protect pull-left clearfix\" id=\"divPassword\">\r" +
     "\n" +
@@ -2826,7 +2826,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </label>\r" +
     "\n" +
-    "                        </div>\r" +
+    "                        </div> -->\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +

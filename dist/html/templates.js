@@ -1115,7 +1115,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                        <div class=\"clear\"></div>\r" +
     "\n" +
-    "                        <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
+    "                        <!-- <div class=\"edit_page_photo_manage_submit\" ng-hide=\"true\">\r" +
     "\n" +
     "                            <div class=\"edit_page_photo_manage_protect pull-left clearfix\" id=\"divPassword\">\r" +
     "\n" +
@@ -1137,7 +1137,7 @@ angular.module('KaakateeyaRegistration').run(['$templateCache', function($templa
     "\n" +
     "                            </label>\r" +
     "\n" +
-    "                        </div>\r" +
+    "                        </div> -->\r" +
     "\n" +
     "                    </div>\r" +
     "\n" +
