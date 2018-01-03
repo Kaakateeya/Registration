@@ -11,7 +11,7 @@ var regApp = angular.module('KaakateeyaRegistration', ['ui.router', 'ngAnimate',
 // regApp.apipath = 'http://54.169.133.223:8070/Api/';
 // regApp.apipath = 'http://183.82.0.58:8010/Api/';
 //regApp.apipath = 'http://183.82.0.58:8070/Api/';
-regApp.apipath = 'http://localhost:3000/Api/';
+regApp.apipath = 'http://183.82.0.58:3000/Api/';
 
 
 // regApp.apipath = 'http://52.66.131.254:8010/Api/';
