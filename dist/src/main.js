@@ -491,7 +491,7 @@ regApp.controller('basicRegistrationctrl', ['$scope', 'getArray', 'Commondepende
             if (val !== undefined) {
                 basicRegistrationService.emailExists({ iflagEmailmobile: flag, EmailMobile: val }).then(function(response) {
                     console.log(response);
-                    if (response.data === 1) {
+                    if (parseInt(response.data) === 1) {
                         if (type === 'email') {
                             scope.reg.txtEmail = '';
                             alert('Email Already Exists');
